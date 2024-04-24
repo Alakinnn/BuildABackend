@@ -18,10 +18,19 @@ public class CreateClaimFormController implements Initializable {
     private TextField claimAmountField;
     @FXML
     private DatePicker examDatePicker;
+    @FXML
+    private TextField bankNameField;
+    @FXML
+    private TextField receiverNameField;
+    @FXML
+    private TextField accountNumberField;
 
     private String insuredCustomer;
     private double claimAmount;
     private LocalDate examDate;
+    private String bankName;
+    private String receiverName;
+    private String accountNumber;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,10 +50,16 @@ public class CreateClaimFormController implements Initializable {
             insuredCustomer = insuredCustomerChoice.getValue().getValue();
             claimAmount = Double.parseDouble(claimAmountField.getText());
             examDate = examDatePicker.getValue();
+            bankName = bankNameField.getText();
+            receiverName = receiverNameField.getText();
+            accountNumber = accountNumberField.getText();
 
             System.out.println(insuredCustomer);
             System.out.println(claimAmount);
             System.out.println(examDate);
+            System.out.println(bankName);
+            System.out.println(receiverName);
+            System.out.println(accountNumber);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

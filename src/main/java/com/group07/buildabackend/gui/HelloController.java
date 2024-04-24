@@ -1,4 +1,4 @@
-package com.group07.buildabackend;
+package com.group07.buildabackend.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

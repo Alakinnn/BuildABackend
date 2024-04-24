@@ -5,4 +5,9 @@ module com.group07.buildabackend {
 
     opens com.group07.buildabackend to javafx.fxml;
     exports com.group07.buildabackend;
+    exports com.group07.buildabackend.gui;
+    opens com.group07.buildabackend.gui to javafx.fxml;
+
+//    opens com.group07.buildabackend.gui to javafx.fxml;
+//    exports com.group07.buildabackend.gui;
 }

@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class CreateClaimPage extends Page {
-    public CreateClaimPage() throws IOException {
+    public CreateClaimPage() {
         super();
     }
 

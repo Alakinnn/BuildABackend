@@ -27,7 +27,6 @@ public class HeaderPage extends Page {
     @Override
     public Node getRoot() throws IOException {
         // Load FXML
-        Node headerPageRoot = FXMLLoader.load(getClass().getResource("HeaderPage.fxml"));
         FXMLLoader headerLoader = new FXMLLoader(Header.class.getResource("Header.fxml"));
         Node headerRoot = headerLoader.load();
 
@@ -37,10 +36,10 @@ public class HeaderPage extends Page {
 
 
         // Add the roots to the layout
-        VBox headerContainer = (VBox) headerPageRoot.lookup("#headerContainer");
+        VBox headerContainer = new VBox();
         headerContainer.getChildren().add(headerRoot);
         headerContainer.getChildren().add(page.getRoot());
 
-        return headerPageRoot;
+        return headerContainer;
     }
 }

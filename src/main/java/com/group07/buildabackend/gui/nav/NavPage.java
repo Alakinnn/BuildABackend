@@ -23,15 +23,14 @@ public class NavPage extends Page {
     @Override
     public Node getRoot() throws IOException {
         // Load FXML
-        Node navPageRoot = FXMLLoader.load(getClass().getResource("NavPage.fxml"));
         Node navBarRoot = FXMLLoader.load(NavBar.class.getResource("NavBar.fxml"));
 
         // Add the roots to the layout
-        HBox navContainer = (HBox) navPageRoot.lookup("#navContainer");
+        HBox navContainer = new HBox();
         navContainer.getChildren().add(navBarRoot);
         navContainer.getChildren().add(page.getRoot());
 
-        return navPageRoot;
+        return navContainer;
     }
 
 }

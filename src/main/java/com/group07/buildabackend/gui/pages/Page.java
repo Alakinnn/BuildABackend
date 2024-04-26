@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui;
+package com.group07.buildabackend.gui.pages;
 
 import javafx.scene.Node;
 import javafx.scene.Parent;

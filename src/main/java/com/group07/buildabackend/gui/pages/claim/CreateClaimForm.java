@@ -1,5 +1,6 @@
-package com.group07.buildabackend.gui;
+package com.group07.buildabackend.gui.pages.claim;
 
+import com.group07.buildabackend.gui.ChoiceField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +12,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class CreateClaimFormController implements Initializable {
+public class CreateClaimForm implements Initializable {
     @FXML
     private ChoiceBox<ChoiceField<String>> insuredCustomerChoice;
     @FXML

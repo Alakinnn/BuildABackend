@@ -1,25 +1,24 @@
 package com.group07.buildabackend.gui.header;
 
-import com.group07.buildabackend.gui.Page;
-import javafx.fxml.FXML;
+import com.group07.buildabackend.gui.pages.Page;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class HeaderPage extends Page {
-    // A HeaderPage is a page with a Header (NavBar)
+public class HeaderDecorator extends Page {
+    // Renders a page with a Header (NavBar)
     // Decorator for Page
 
     private Page page;
     private String title;
 
-    public HeaderPage() {
+    public HeaderDecorator() {
         super();
     }
 
-    public HeaderPage(Page page, String title) {
+    public HeaderDecorator(Page page, String title) {
         this.page = page;
         this.title = title;
     }

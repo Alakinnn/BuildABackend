@@ -1,6 +1,5 @@
 package com.group07.buildabackend.gui.header;
 
-import com.group07.buildabackend.gui.Page;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;

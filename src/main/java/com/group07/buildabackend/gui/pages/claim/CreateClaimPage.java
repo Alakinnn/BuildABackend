@@ -1,7 +1,8 @@
-package com.group07.buildabackend.gui;
+package com.group07.buildabackend.gui.pages.claim;
 
-import com.group07.buildabackend.gui.header.HeaderPage;
-import com.group07.buildabackend.gui.nav.NavPage;
+import com.group07.buildabackend.gui.header.HeaderDecorator;
+import com.group07.buildabackend.gui.nav.NavDecorator;
+import com.group07.buildabackend.gui.pages.Page;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -18,8 +19,8 @@ public class CreateClaimPage extends Page {
     public Node getRoot() throws IOException {
         Parent root = FXMLLoader.load(CreateClaimPage.class.getResource("CreateClaimForm.fxml"));
 
-        Page page = new HeaderPage(new Page(root), "Create a Claim");
-        page = new NavPage(page);
+        Page page = new HeaderDecorator(new Page(root), "Create a Claim");
+        page = new NavDecorator(page);
 
         return page.getRoot();
     }

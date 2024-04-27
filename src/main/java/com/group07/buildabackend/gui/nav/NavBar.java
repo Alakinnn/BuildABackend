@@ -9,13 +9,11 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 public class NavBar extends VBox {
+    // TODO: should create a Component class that has root and getRoot
     private Parent root;
     public NavBar() {
         try {
             FXMLLoader loader = new FXMLLoader(NavBar.class.getResource("NavBar.fxml"));
-//            loader.setRoot(this);
-//            loader.setController(new NavBarController());
-
             root = loader.load();
         } catch (Exception e) {
             e.printStackTrace();

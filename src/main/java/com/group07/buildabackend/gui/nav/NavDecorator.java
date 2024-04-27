@@ -22,7 +22,6 @@ public class NavDecorator extends Page {
     @Override
     public Node getRoot() {
         // Load FXML
-//        Node navBarRoot = FXMLLoader.load(NavBar.class.getResource("NavBar.fxml"));
         NavBar navBar = new NavBar();
 
         Node pageRoot = page.getRoot();

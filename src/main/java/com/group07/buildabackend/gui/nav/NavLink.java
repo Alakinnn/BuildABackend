@@ -16,7 +16,6 @@ public class NavLink extends AnchorPane {
         try {
             FXMLLoader loader = new FXMLLoader(NavLink.class.getResource("NavLink.fxml"));
 
-//            loader.setRoot(this);
             root = loader.load();
             NavLinkController controller = loader.getController();
             controller.setPage(page);

@@ -17,9 +17,9 @@ import java.util.ResourceBundle;
 
 public class NavLinkController {
 
-    private Page page;
     @FXML
     private Button navButton;
+    private Page page;
 
     public NavLinkController() {
     }

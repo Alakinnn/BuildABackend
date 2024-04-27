@@ -29,6 +29,7 @@ public class SceneManager {
     }
 
     public void switchToScene(Scene scene) {
+        // FIXME: screen size changes when switching scene??
         currentScene = scene;
 
         currentStage.setScene(currentScene);

@@ -17,7 +17,7 @@ public class Page {
         this.root = root;
     }
 
-    public Node getRoot() throws IOException {
+    public Node getRoot() {
         return root;
     }
 }

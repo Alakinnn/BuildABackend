@@ -1,39 +1,31 @@
 package com.group07.buildabackend.gui.nav;
 
-import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.pages.Page;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.beans.NamedArg;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class NavLink {
-    @FXML
-    private Button navButton;
+public class NavLink extends AnchorPane {
+    private Parent root;
     private Page page;
 
-    public NavLink() {
+    public NavLink(@NamedArg("page") Page page) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("NavLink.fxml"));
-            loader.setController(this);
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(NavLink.class.getResource("NavLink.fxml"));
+
+//            loader.setRoot(this);
+            root = loader.load();
+            NavLinkController controller = loader.getController();
+            controller.setPage(page);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public NavLink(Page page) {
-        this.page = page;
-    }
-
-    public void onNavButtonClick(ActionEvent event) throws IOException {
-        SceneManager sceneManager = SceneManager.getInstance();
-        sceneManager.switchRoot((Parent) page.getRoot());
-    }
-
-    public Button getNavButton() {
-        return navButton;
+    public Parent getRoot() {
+        return root;
     }
 }

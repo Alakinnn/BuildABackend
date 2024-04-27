@@ -1,37 +1,28 @@
 package com.group07.buildabackend.gui.nav;
 
-import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
-import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import com.group07.buildabackend.gui.pages.Page;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class NavBar implements Initializable {
-    @FXML
-    private VBox navBox;
+public class NavBar extends VBox {
+    private Parent root;
+    public NavBar() {
+        try {
+            FXMLLoader loader = new FXMLLoader(NavBar.class.getResource("NavBar.fxml"));
+//            loader.setRoot(this);
+//            loader.setController(new NavBarController());
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-        // TODO: add actual navigation
-        List<Node> sampleNodes = new ArrayList<>();
+            root = loader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        sampleNodes.add((new NavLink(new CreateClaimPage())).getNavButton());
-        sampleNodes.add((new NavLink(new RequestClaimInfoPage())).getNavButton());
-
-        navBox.getChildren().addAll(sampleNodes);
+    public Parent getRoot() {
+        return root;
     }
 }

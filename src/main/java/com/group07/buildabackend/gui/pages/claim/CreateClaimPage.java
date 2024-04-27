@@ -16,12 +16,18 @@ public class CreateClaimPage extends Page {
 
 
     @Override
-    public Node getRoot() throws IOException {
-        Parent root = FXMLLoader.load(CreateClaimPage.class.getResource("CreateClaimForm.fxml"));
+    public Node getRoot() {
+        try {
+            FXMLLoader loader = new FXMLLoader(CreateClaimPage.class.getResource("CreateClaimForm.fxml"));
+            Parent root = loader.load();
 
-        Page page = new HeaderDecorator(new Page(root), "Create a Claim");
-        page = new NavDecorator(page);
+            Page page = new HeaderDecorator(new Page(root), "Create a Claim");
+            page = new NavDecorator(page);
 
-        return page.getRoot();
+            return page.getRoot();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

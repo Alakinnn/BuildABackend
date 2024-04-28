@@ -68,8 +68,6 @@ public class CreateClaimForm implements Initializable {
 
     public void onUploadDocument() {
         uploadedDocs = docUploader.onUpload();
-
-        System.out.println(uploadedDocs);
     }
 
     public void onSubmit(ActionEvent event) {

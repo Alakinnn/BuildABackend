@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long documentId;
+    private int documentId;
 
     @Column(nullable = false)
     private String title;
@@ -22,11 +22,11 @@ public class Document {
     public Document() {
     }
 
-    public Long getDocumentId() {
+    public int getDocumentId() {
         return documentId;
     }
 
-    public void setDocumentId(Long documentId) {
+    public int setDocumentId(int documentId) {
         this.documentId = documentId;
     }
 

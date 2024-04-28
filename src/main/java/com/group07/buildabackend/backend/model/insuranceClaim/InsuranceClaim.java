@@ -10,7 +10,7 @@ import java.util.List;
 public class InsuranceClaim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long claimId;
+    private String claimId;
 
     @Column(nullable = false)
     private double amount;
@@ -57,11 +57,11 @@ public class InsuranceClaim {
     public InsuranceClaim() {
     }
 
-    public Long getClaimId() {
+    public String getClaimId() {
         return claimId;
     }
 
-    public void setClaimId(Long claimId) {
+    public void setClaimId(String claimId) {
         this.claimId = claimId;
     }
 

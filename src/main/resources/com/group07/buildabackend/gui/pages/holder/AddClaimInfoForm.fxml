@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.holder.AddClaimInfoForm">
+    <children>
+        <TextArea fx:id="notes" disable="true" layoutX="62.0" layoutY="125.0" prefHeight="70.0" prefWidth="476.0" />
+        <Label layoutX="62.0" layoutY="53.0" text="Claim ID:">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="62.0" layoutY="95.0" text="Notes">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Line endX="321.4000244140625" endY="7.62939453125E-6" layoutX="210.0" layoutY="106.0" startX="-100.0" />
+
+        <Text fx:id="claimId" layoutX="125.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+      <Label layoutX="63.0" layoutY="208.0" text="Documents">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Line endX="278.79998779296875" endY="3.0517578125E-5" layoutX="248.0" layoutY="219.0" startX="-100.0" />
+      <Button layoutX="64.0" layoutY="279.0" mnemonicParsing="false" text="Upload Document" />
+      <Button layoutX="478.0" layoutY="337.0" mnemonicParsing="false" text="Submit" />
+    </children>
+</AnchorPane>

@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoForm">
    <children>
-      <TextArea layoutX="62.0" layoutY="125.0" prefHeight="200.0" prefWidth="476.0" />
+      <TextArea fx:id="notes" layoutX="62.0" layoutY="125.0" prefHeight="200.0" prefWidth="476.0" />
       <Label layoutX="62.0" layoutY="53.0" text="Claim ID:">
          <font>
             <Font size="14.0" />

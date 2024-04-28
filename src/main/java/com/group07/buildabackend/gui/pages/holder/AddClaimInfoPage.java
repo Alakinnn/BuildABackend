@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui.pages.claim;
+package com.group07.buildabackend.gui.pages.holder;
 
 import com.group07.buildabackend.gui.header.HeaderDecorator;
 import com.group07.buildabackend.gui.nav.NavDecorator;
@@ -9,24 +9,20 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
-public class CreateClaimPage extends Page {
-    public CreateClaimPage() {
-        super();
-    }
+public class AddClaimInfoPage extends Page {
 
     @Override
     public Node getRoot() {
         try {
-            FXMLLoader loader = new FXMLLoader(CreateClaimForm.class.getResource("CreateClaimForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(AddClaimInfoForm.class.getResource("AddClaimInfoForm.fxml"));
             Parent root = loader.load();
 
-            Page page = new HeaderDecorator(new Page(root), "Create a Claim");
+            Page page = new HeaderDecorator(new Page(root), "Add Claim Information");
             page = new NavDecorator(page);
-
             return page.getRoot();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

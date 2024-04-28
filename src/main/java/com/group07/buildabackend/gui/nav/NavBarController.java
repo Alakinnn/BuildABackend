@@ -1,6 +1,8 @@
 package com.group07.buildabackend.gui.nav;
 
+import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
+import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
 import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +26,10 @@ public class NavBarController implements Initializable {
     @FXML
     private VBox navBox;
 
+    private void addNavLink(List<Node> nodes, Page page) {
+        nodes.add(new NavLink(page).getRoot());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -32,8 +38,9 @@ public class NavBarController implements Initializable {
 
         // TODO: generalize adding links & add labels to links
 
-        sampleNodes.add((new NavLink(new CreateClaimPage())).getRoot());
-        sampleNodes.add(new NavLink(new RequestClaimInfoPage()).getRoot());
+        addNavLink(sampleNodes, new CreateClaimPage());
+        addNavLink(sampleNodes, new RequestClaimInfoPage());
+        addNavLink(sampleNodes, new AddClaimInfoPage());
 
         navBox.getChildren().addAll(sampleNodes);
     }

@@ -30,6 +30,8 @@ public class NavBarController implements Initializable {
         // TODO: add actual navigation
         List<Node> sampleNodes = new ArrayList<>();
 
+        // TODO: generalize adding links & add labels to links
+
         sampleNodes.add((new NavLink(new CreateClaimPage())).getRoot());
         sampleNodes.add(new NavLink(new RequestClaimInfoPage()).getRoot());
 

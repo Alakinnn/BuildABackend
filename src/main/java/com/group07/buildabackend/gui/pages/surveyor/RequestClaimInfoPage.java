@@ -11,12 +11,17 @@ import java.io.IOException;
 
 public class RequestClaimInfoPage extends Page {
     @Override
-    public Node getRoot() throws IOException {
-        Parent root = FXMLLoader.load(RequestClaimInfoForm.class.getResource("RequestClaimInfoForm.fxml"));
+    public Node getRoot() {
+        try {
+            FXMLLoader loader = new FXMLLoader(RequestClaimInfoForm.class.getResource("RequestClaimInfoForm.fxml"));
+            Parent root = loader.load();
 
-        Page page = new HeaderDecorator(new Page(root), "Request Claim Information");
-        page = new NavDecorator(page);
+            Page page = new HeaderDecorator(new Page(root), "Request Claim Information");
+            page = new NavDecorator(page);
 
-        return page.getRoot();
+            return page.getRoot();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

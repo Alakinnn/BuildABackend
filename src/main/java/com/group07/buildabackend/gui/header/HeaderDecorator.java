@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 public class HeaderDecorator extends Page {
-    // Renders a page with a Header (NavBar)
+    // Renders a page with a Header
     // Decorator for Page
 
     private Page page;
@@ -24,21 +24,27 @@ public class HeaderDecorator extends Page {
     }
 
     @Override
-    public Node getRoot() throws IOException {
-        // Load FXML
-        FXMLLoader headerLoader = new FXMLLoader(Header.class.getResource("Header.fxml"));
-        Node headerRoot = headerLoader.load();
+    public Node getRoot() {
+        try {
+            // Load FXML
+            FXMLLoader headerLoader = new FXMLLoader(Header.class.getResource("Header.fxml"));
+            Node headerRoot = headerLoader.load();
 
-        // Set header Title
-        Header header = headerLoader.getController();
-        header.setTitle(title);
+            // Set header Title
+            Header header = headerLoader.getController();
+            header.setTitle(title);
 
 
-        // Add the roots to the layout
-        VBox headerContainer = new VBox();
-        headerContainer.getChildren().add(headerRoot);
-        headerContainer.getChildren().add(page.getRoot());
+            // Add the roots to the layout
+            VBox headerContainer = new VBox();
+            headerContainer.getChildren().add(headerRoot);
+            headerContainer.getChildren().add(page.getRoot());
 
-        return headerContainer;
+            return headerContainer;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }

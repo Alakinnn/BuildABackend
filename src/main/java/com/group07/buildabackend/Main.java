@@ -1,5 +1,6 @@
 package com.group07.buildabackend;
 
+import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
@@ -15,11 +16,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Page page = new RequestClaimInfoPage();
-        Parent root = (Parent)(page).getRoot();
-        Scene scene = new Scene(root);
+        Stage currentStage = SceneManager.getInstance().getCurrentStage();
 
-        stage.setScene(scene);
-        stage.show();
+        currentStage.show();
     }
 }

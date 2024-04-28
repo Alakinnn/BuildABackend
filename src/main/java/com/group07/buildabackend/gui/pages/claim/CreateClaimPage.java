@@ -6,6 +6,7 @@ import com.group07.buildabackend.gui.pages.Page;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
@@ -18,14 +19,14 @@ public class CreateClaimPage extends Page {
     public Node getRoot() {
         try {
             FXMLLoader loader = new FXMLLoader(CreateClaimForm.class.getResource("CreateClaimForm.fxml"));
-            Parent root = loader.load();
-
+            root = loader.load();
             Page page = new HeaderDecorator(new Page(root), "Create a Claim");
             page = new NavDecorator(page);
 
             return page.getRoot();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return null;
         }
 
     }

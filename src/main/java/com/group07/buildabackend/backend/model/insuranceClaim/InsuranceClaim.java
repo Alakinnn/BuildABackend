@@ -3,6 +3,7 @@ package com.group07.buildabackend.backend.model.insuranceClaim;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class InsuranceClaim {
     private double amount;
 
     @Column(nullable = false)
-    private Date claimDate;
+    private LocalDate claimDate;
 
-    private Date examDate;
+    private LocalDate examDate;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -73,19 +74,19 @@ public class InsuranceClaim {
         this.amount = amount;
     }
 
-    public Date getClaimDate() {
+    public LocalDate getClaimDate() {
         return claimDate;
     }
 
-    public void setClaimDate(Date claimDate) {
+    public void setClaimDate(LocalDate claimDate) {
         this.claimDate = claimDate;
     }
 
-    public Date getExamDate() {
+    public LocalDate getExamDate() {
         return examDate;
     }
 
-    public void setExamDate(Date examDate) {
+    public void setExamDate(LocalDate examDate) {
         this.examDate = examDate;
     }
 

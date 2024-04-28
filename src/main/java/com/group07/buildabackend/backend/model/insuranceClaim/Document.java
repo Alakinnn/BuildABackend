@@ -12,8 +12,10 @@ public class Document {
     @Column(nullable = false)
     private String title;
 
+    @Lob
     @Column(nullable = false)
-    private String url;
+    private byte[] url;
+
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "CLAIM_ID")
@@ -38,11 +40,20 @@ public class Document {
         this.title = title;
     }
 
-    public String getUrl() {
+    public byte[] getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(byte[] url) {
         this.url = url;
     }
+
+    public InsuranceClaim getInsuranceClaim() {
+        return insuranceClaim;
+    }
+
+    public void setInsuranceClaim(InsuranceClaim insuranceClaim) {
+        this.insuranceClaim = insuranceClaim;
+    }
+
 }

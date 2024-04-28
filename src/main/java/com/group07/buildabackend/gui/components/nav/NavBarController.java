@@ -24,22 +24,26 @@ public class NavBarController implements Initializable, ComponentController {
     @FXML
     private VBox navBox;
 
-    private void addNavLink(List<Node> nodes, Page page, String label) {
-        nodes.add(new NavLink(page, label).getRoot());
+    private List<Node> navLinks;
+
+    public NavBarController() {
+        navLinks = new ArrayList<>();
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-        List<Node> sampleNodes = new ArrayList<>();
+        
+        addNavLink(new CreateClaimPage(), "Create Claim");
+        addNavLink(new RequestClaimInfoPage("123456"), "Request Claim Info");
+        addNavLink(new AddClaimInfoPage("123456"), "Add Claim Info");
 
-        // TODO: generalize adding links
+        navBox.getChildren().addAll(navLinks);
+    }
 
-        addNavLink(sampleNodes, new CreateClaimPage(), "Create Claim");
-        addNavLink(sampleNodes, new RequestClaimInfoPage("123456"), "Request Claim Info");
-        addNavLink(sampleNodes, new AddClaimInfoPage("123456"), "Add Claim Info");
-
-        navBox.getChildren().addAll(sampleNodes);
+    private void addNavLink(Page page, String label) {
+        navLinks.add(new NavLink(page, label).getRoot());
     }
 
 }

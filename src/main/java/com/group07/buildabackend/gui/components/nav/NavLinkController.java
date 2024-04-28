@@ -29,4 +29,8 @@ public class NavLinkController implements ComponentController {
     public void setPage(Page page) {
         this.page = page;
     }
+
+    public void setLabel(String label) {
+        navButton.setText(label);
+    }
 }

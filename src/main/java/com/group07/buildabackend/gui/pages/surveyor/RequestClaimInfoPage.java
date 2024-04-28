@@ -10,18 +10,19 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class RequestClaimInfoPage extends Page {
+    private String claimId;
+
+    public RequestClaimInfoPage(String claimId) {
+        this.claimId = claimId;
+    }
+
     @Override
     public Node getRoot() {
-        try {
-            FXMLLoader loader = new FXMLLoader(RequestClaimInfoForm.class.getResource("RequestClaimInfoForm.fxml"));
-            Parent root = loader.load();
+        root = new RequestClaimInfoForm(claimId).getRoot();
 
-            Page page = new HeaderDecorator(new Page(root), "Request Claim Information");
-            page = new NavDecorator(page);
+        Page page = new HeaderDecorator(new Page(root), "Request Claim Information");
+        page = new NavDecorator(page);
 
-            return page.getRoot();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return page.getRoot();
     }
 }

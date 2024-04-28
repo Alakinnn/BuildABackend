@@ -9,10 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class NavLink extends Component {
-    private Page page;
 
-    public NavLink(Page page) {
+    public NavLink(Page page, String label) {
         super(NavLink.class.getResource("NavLink.fxml"));
         ((NavLinkController) controller).setPage(page);
+        ((NavLinkController) controller).setLabel(label);
     }
 }

@@ -1,13 +1,10 @@
 package com.group07.buildabackend.gui.pages.surveyor;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
+import com.group07.buildabackend.gui.components.Component;
 
-public class RequestClaimInfoForm {
-    public TextArea notes;
-    @FXML
-    private Text claimId;
-
-
+public class RequestClaimInfoForm extends Component {
+    public RequestClaimInfoForm(String claimId) {
+        super(RequestClaimInfoForm.class.getResource("RequestClaimInfoForm.fxml"));
+        ((RequestClaimInfoFormController) controller).setClaimId(claimId);
+    }
 }

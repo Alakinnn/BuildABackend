@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui;
+package com.group07.buildabackend.gui.utils;
 
 public class ChoiceField<T> {
     // Helper class for ChoiceBox to separate label from value

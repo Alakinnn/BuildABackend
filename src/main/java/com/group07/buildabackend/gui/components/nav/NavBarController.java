@@ -24,8 +24,8 @@ public class NavBarController implements Initializable, ComponentController {
     @FXML
     private VBox navBox;
 
-    private void addNavLink(List<Node> nodes, Page page) {
-        nodes.add(new NavLink(page).getRoot());
+    private void addNavLink(List<Node> nodes, Page page, String label) {
+        nodes.add(new NavLink(page, label).getRoot());
     }
 
     @Override
@@ -33,11 +33,11 @@ public class NavBarController implements Initializable, ComponentController {
         navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         List<Node> sampleNodes = new ArrayList<>();
 
-        // TODO: generalize adding links & add labels to links
+        // TODO: generalize adding links
 
-        addNavLink(sampleNodes, new CreateClaimPage());
-        addNavLink(sampleNodes, new RequestClaimInfoPage());
-        addNavLink(sampleNodes, new AddClaimInfoPage());
+        addNavLink(sampleNodes, new CreateClaimPage(), "Create Claim");
+        addNavLink(sampleNodes, new RequestClaimInfoPage("123456"), "Request Claim Info");
+        addNavLink(sampleNodes, new AddClaimInfoPage("123456"), "Add Claim Info");
 
         navBox.getChildren().addAll(sampleNodes);
     }

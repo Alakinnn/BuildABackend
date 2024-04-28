@@ -1,10 +1,8 @@
-package com.group07.buildabackend.gui.nav;
+package com.group07.buildabackend.gui.components.nav;
 
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
-
-import java.io.IOException;
 
 public class NavDecorator extends Page {
     // Renders a page with a Navigation Bar (NavBar)
@@ -32,7 +30,7 @@ public class NavDecorator extends Page {
         navContainer.getChildren().add(pageRoot);
 
         // Make the page responsive
-        HBox.setHgrow(navBar, Priority.NEVER);
+        HBox.setHgrow(navBar.getRoot(), Priority.NEVER);
         HBox.setHgrow(pageRoot, Priority.ALWAYS);
 
         return navContainer;

@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class Page {
     // Each Page contains a root Node, which specifies how the page should be drawn.
+    // This class is mainly used for layouts. If you want to add functionality, consider using Component instead.
     // Override the getRoot() method to customize layout for each Page
 
     protected Node root;

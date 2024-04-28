@@ -7,10 +7,10 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend;
     exports com.group07.buildabackend.gui;
     opens com.group07.buildabackend.gui to javafx.fxml;
-    exports com.group07.buildabackend.gui.nav;
-    opens com.group07.buildabackend.gui.nav to javafx.fxml;
-    exports com.group07.buildabackend.gui.header;
-    opens com.group07.buildabackend.gui.header to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.nav;
+    opens com.group07.buildabackend.gui.components.nav to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.header;
+    opens com.group07.buildabackend.gui.components.header to javafx.fxml;
     exports com.group07.buildabackend.gui.pages;
     opens com.group07.buildabackend.gui.pages to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.claim;
@@ -19,5 +19,9 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.gui.pages.surveyor;
     opens com.group07.buildabackend.gui.pages.holder to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.holder;
+    opens com.group07.buildabackend.gui.components.upload to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.upload;
+    exports com.group07.buildabackend.gui.components;
+    opens com.group07.buildabackend.gui.components to javafx.fxml;
 
 }

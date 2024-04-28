@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui.header;
+package com.group07.buildabackend.gui.components.header;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

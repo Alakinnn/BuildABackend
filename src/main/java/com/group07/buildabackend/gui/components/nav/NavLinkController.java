@@ -1,21 +1,15 @@
-package com.group07.buildabackend.gui.nav;
+package com.group07.buildabackend.gui.components.nav;
 
 import com.group07.buildabackend.gui.SceneManager;
+import com.group07.buildabackend.gui.components.upload.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
-import javafx.beans.NamedArg;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class NavLinkController {
+public class NavLinkController implements ComponentController {
 
     @FXML
     private Button navButton;

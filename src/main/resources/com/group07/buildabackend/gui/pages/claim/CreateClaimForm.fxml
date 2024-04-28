@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="487.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.claim.CreateClaimForm">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="534.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.claim.CreateClaimForm">
    <children>
       <ChoiceBox fx:id="insuredCustomerChoice" layoutX="150.0" layoutY="36.0" prefWidth="150.0" />
       <Label layoutX="21.0" layoutY="39.0" text="Insured Customer:">
@@ -55,7 +55,13 @@
          </font>
       </Label>
       <TextField fx:id="accountNumberField" layoutX="151.0" layoutY="284.0" />
-      <Button fx:id="uploadDocument" layoutX="20.0" layoutY="357.0" mnemonicParsing="false" onAction="#onUploadDocument" text="Upload Document" />
-      <Button fx:id="submit" layoutX="547.0" layoutY="414.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+      <Button fx:id="uploadDocumentBtn" layoutX="18.0" layoutY="447.0" mnemonicParsing="false" onAction="#onUploadDocument" text="Upload Document" />
+      <Button fx:id="submitBtn" layoutX="551.0" layoutY="460.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+      <Label layoutX="21.0" layoutY="337.0" text="(Only PDF files allowed)" textFill="#999797">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="uploadedDocsContainer" layoutX="34.0" layoutY="366.0" />
    </children>
 </AnchorPane>

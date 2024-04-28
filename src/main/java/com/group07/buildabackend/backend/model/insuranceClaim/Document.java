@@ -26,7 +26,7 @@ public class Document {
         return documentId;
     }
 
-    public int setDocumentId(int documentId) {
+    public void setDocumentId(int documentId) {
         this.documentId = documentId;
     }
 

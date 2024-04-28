@@ -1,6 +1,5 @@
 package com.group07.buildabackend.gui.components;
 
-import com.group07.buildabackend.gui.components.upload.ComponentController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 

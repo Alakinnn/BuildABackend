@@ -1,7 +1,7 @@
 package com.group07.buildabackend.gui.components.nav;
 
 import com.group07.buildabackend.gui.SceneManager;
-import com.group07.buildabackend.gui.components.upload.ComponentController;
+import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

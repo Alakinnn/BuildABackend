@@ -1,6 +1,6 @@
 package com.group07.buildabackend.gui.components.nav;
 
-import com.group07.buildabackend.gui.components.upload.ComponentController;
+import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;

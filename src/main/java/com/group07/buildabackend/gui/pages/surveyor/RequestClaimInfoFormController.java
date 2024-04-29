@@ -21,6 +21,6 @@ public class RequestClaimInfoFormController implements ComponentController {
         request.setClaimId(claimId.getText());
         request.setNotes(notes.getText());
 
-        //TODO: pass to backend
+        // TODO: pass to backend
     }
 }

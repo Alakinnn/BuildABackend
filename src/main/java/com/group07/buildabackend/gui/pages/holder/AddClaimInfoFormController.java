@@ -4,7 +4,7 @@ import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
-import com.group07.buildabackend.gui.sample.ClaimAddInfoDTO;
+import com.group07.buildabackend.gui.sample.ClaimAddInfoRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,9 +41,9 @@ public class AddClaimInfoFormController implements Initializable, ComponentContr
     }
 
     public void onSubmit(ActionEvent event) {
-        ClaimAddInfoDTO dto = new ClaimAddInfoDTO();
-        dto.setClaimId(claimId.getText());
-        dto.setNotes(notes.getText());
+        ClaimAddInfoRequest request = new ClaimAddInfoRequest();
+        request.setClaimId(claimId.getText());
+        request.setDocuments(uploadedDocs);
 
         // TODO: pass to controller
     }

@@ -1,10 +1,10 @@
 package com.group07.buildabackend.gui.sample;
 
-public class ClaimAddInfoDTO {
+public class ClaimRequestInfoRequest {
     private String claimId;
     private String notes;
 
-    public ClaimAddInfoDTO() {
+    public ClaimRequestInfoRequest() {
     }
 
     public String getClaimId() {

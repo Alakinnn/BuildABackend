@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.pages.claim;
 
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.sample.ClaimCreationRequest;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
@@ -15,7 +16,6 @@ import javafx.scene.layout.*;
 
 import java.io.File;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,13 +37,6 @@ public class CreateClaimFormController implements Initializable, ComponentContro
     private AnchorPane uploadedDocsContainer;
 
     private FileUpload docUploader;
-
-    private String insuredCustomer;
-    private double claimAmount;
-    private LocalDate examDate;
-    private String bankName;
-    private String receiverName;
-    private String accountNumber;
     private List<File> uploadedDocs;
 
     public CreateClaimFormController() {
@@ -68,19 +61,16 @@ public class CreateClaimFormController implements Initializable, ComponentContro
 
     public void onSubmit(ActionEvent event) {
         try {
-            insuredCustomer = insuredCustomerChoice.getValue().getValue();
-            claimAmount = Double.parseDouble(claimAmountField.getText());
-            examDate = examDatePicker.getValue();
-            bankName = bankNameField.getText();
-            receiverName = receiverNameField.getText();
-            accountNumber = accountNumberField.getText();
+            ClaimCreationRequest request = new ClaimCreationRequest();
+            request.setCustomerId(insuredCustomerChoice.getValue().getValue());
+            request.setClaimAmount(Double.parseDouble(claimAmountField.getText()));
+            request.setExamDate(examDatePicker.getValue());
+            request.setBankName(bankNameField.getText());
+            request.setReceiverName(receiverNameField.getText());
+            request.setAccountNumber(accountNumberField.getText());
+            request.setDocuments(uploadedDocs);
 
-            System.out.println(insuredCustomer);
-            System.out.println(claimAmount);
-            System.out.println(examDate);
-            System.out.println(bankName);
-            System.out.println(receiverName);
-            System.out.println(accountNumber);
+            // TODO: pass request to backend controller
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

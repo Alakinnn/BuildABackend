@@ -5,11 +5,11 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="Customer")
+@DiscriminatorValue("CUSTOMER")
+
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "CUSTOMER_TYPE")
 public abstract class Customer extends User {
-
-    @Id
-    private String id;
-
     @Column(name = "firstName", nullable = false)
     private String firstName;
 

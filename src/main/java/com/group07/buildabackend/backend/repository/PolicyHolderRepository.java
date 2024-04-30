@@ -20,7 +20,7 @@ public class PolicyHolderRepository<T extends PolicyHolder> extends Repository<T
     @Override
     public T retrieveById(String id) {
         try {
-            Query query = EM.createQuery("FROM PolicyHolder ph WHERE ph.id=:id");
+            Query query = EM.createQuery("FROM Beneficiary ph WHERE ph.id=:id");
             query.setParameter("id", id);
             return (T) query.getSingleResult();
         } finally {

@@ -1,6 +1,6 @@
 package com.group07.buildabackend.backend.repository;
 
-import com.group07.buildabackend.backend.connectionManager.DatabaseConnectionManager;
+import com.group07.buildabackend.backend.connectionManager.DatabaseFactoryManager;
 import com.group07.buildabackend.backend.repository.operations.Addable;
 import com.group07.buildabackend.backend.repository.operations.Deletable;
 import com.group07.buildabackend.backend.repository.operations.Retrievable;
@@ -8,7 +8,7 @@ import com.group07.buildabackend.backend.repository.operations.Updatable;
 import jakarta.persistence.EntityManager;
 
 public abstract class Repository<T> implements Addable<T>, Deletable<T>, Retrievable<T>, Updatable<T> {
-    static EntityManager EM = DatabaseConnectionManager.EMF.createEntityManager();
+    static EntityManager EM = DatabaseFactoryManager.getEmf().createEntityManager();
     @Override
     public void add(T item) {
         try {

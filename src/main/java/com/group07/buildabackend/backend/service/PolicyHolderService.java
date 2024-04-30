@@ -9,13 +9,15 @@ import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
+import com.group07.buildabackend.backend.validation.PolicyHolderValidator;
+import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class PolicyHolderService {
     private final PolicyHolderRepository<PolicyHolder> holderRepository = new PolicyHolderRepository<>();
@@ -24,38 +26,56 @@ public class PolicyHolderService {
     public PolicyHolderService() {
     }
 
-    public InsuranceClaim createClaim(String customerId, String receiverBankName, String receiverBankNumber, String receiverName, double claimAmount, String examDate, List<File> documents) {
-        PolicyHolder customer = holderRepository.retrieveById(customerId);
-        if (customer == null) {
-//            EXCEPTION HERE
+    public Map<InsuranceClaim, String> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
+        Map<InsuranceClaim, String> serviceResponse = new HashMap<>();
+
+        try {
+            PolicyHolder customer = holderRepository.retrieveById(insuranceClaimDTO.getCustomerId());
+
+            if (customer == null) {
+                throw new InvalidInputException("Customer not found", 400);
+            }
+
+            PolicyHolderValidator.validateInput(insuranceClaimDTO);
+
+            List<Document> documentEntityList = mapToDocumentList(insuranceClaimDTO.getDocuments());
+            insuranceClaimDTO.setMappedDocumentList(documentEntityList);
+
+            InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
+
+            serviceResponse.put(insuranceClaim, "Success");
+            insuranceClaimClaimRepository.add(insuranceClaim);
+        } catch (InvalidInputException e) {
+            serviceResponse.put(null, e.getMessage());
         }
 
-        List<Document> documentEntityList = mapToDocumentList(documents);
-
-        InsuranceClaimDTO insuranceClaimDTO = new InsuranceClaimDTO(claimAmount, LocalDate.parse(examDate), receiverBankName, receiverBankNumber, receiverName, customer);
-
-        insuranceClaimDTO.setDocuments(documentEntityList);
-
-        InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
-
-
-        insuranceClaimClaimRepository.add(insuranceClaim);
-        return insuranceClaim;
+        return serviceResponse;
     }
 
-    public InsuranceClaim addClaimInfo(String claimId, List<File> documents) {
-        InsuranceClaim insuranceClaim = insuranceClaimClaimRepository.retrieveById(claimId);
-        if (insuranceClaim == null) {
-//            EXCEPTION HERE
-        }
+    public  Map<InsuranceClaim, String> addClaimInfo(String claimId, List<File> documents) {
+        Map<InsuranceClaim, String> serviceResponse = new HashMap<>();
+        try {
+            InsuranceClaim insuranceClaim = insuranceClaimClaimRepository.retrieveById(claimId);
 
-        List<Document> documentEntityList = mapToDocumentList(documents);
-        for (Document document : documentEntityList) {
-            insuranceClaim.addDocument(document);
-        }
+            if (insuranceClaim == null) {
+                throw new InvalidInputException("Claim not found", 400);
+            }
 
-        insuranceClaimClaimRepository.update(insuranceClaim);
-        return insuranceClaim;
+            if (documents.isEmpty()) {
+                throw new InvalidInputException("No new document found", 400);
+            }
+
+            List<Document> documentEntityList = mapToDocumentList(documents);
+            for (Document document : documentEntityList) {
+                insuranceClaim.addDocument(document);
+            }
+
+            insuranceClaimClaimRepository.update(insuranceClaim);
+            return serviceResponse;
+        } catch (InvalidInputException e) {
+            serviceResponse.put(null, e.getMessage());
+        }
+        return serviceResponse;
     }
 
     private byte[] readFileToByteArray(File file) {

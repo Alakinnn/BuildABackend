@@ -25,10 +25,4 @@ public class ClaimRepository<T extends InsuranceClaim> extends Repository<T>{
             EM.close();
         }
     }
-
-
-    @Override
-    public void update(T item) {
-
-    }
 }

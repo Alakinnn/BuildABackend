@@ -23,6 +23,8 @@ public class InsuranceClaimDTO {
 
     private String receiverName;
 
+    private String notes;
+
     private Customer customer;
 
     private List<Document> documents;
@@ -95,6 +97,10 @@ public class InsuranceClaimDTO {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+    public String getNotes() {return notes;}
+
+    public void setNotes(String notes) {this.notes = notes;}
 
     public Customer getCustomer() {
         return customer;

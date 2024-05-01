@@ -34,6 +34,9 @@ public class InsuranceClaim {
     @Column(nullable = false)
     private String receiverName;
 
+    @Column
+    private String notes;
+
     @OneToMany(mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
         name="CLAIM_DOCUMENT",
@@ -121,6 +124,10 @@ public class InsuranceClaim {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+    public String getNotes() {return notes;}
+
+    public void setNotes(String notes) {this.notes = notes;}
 
     public List<Document> getDocuments() {
         return documents;

@@ -2,12 +2,25 @@ package com.group07.buildabackend.backend.model.customer;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+
+import java.util.Set;
 
 @Entity
-@Table(name = "policyHolder")
-@DiscriminatorValue("HOLDER")
+@Table(name = "policy_holder", schema = "public")
 public class PolicyHolder extends Beneficiary {
-    @OneToMany(mappedBy = "holder", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Dependent> dependents;
+
+    public PolicyHolder() {
+    }
+
+    @OneToMany(orphanRemoval = true, mappedBy = "policyHolder",cascade = CascadeType.ALL)
+    private Set<Dependent> dependents;
+
+    public Set<Dependent> getDependents() {
+        return dependents;
+    }
+
+    public void setDependents(Set<Dependent> dependents) {
+        this.dependents = dependents;
+    }
+
 }

@@ -3,10 +3,10 @@ package com.group07.buildabackend.backend.model.insuranceClaim;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Document")
+@Table(name = "document", schema = "public")
 public class Document {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int documentId;
 
     @Column(nullable = false)
@@ -18,7 +18,7 @@ public class Document {
 
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "CLAIM_ID")
+    @JoinColumn(name = "claim_id", referencedColumnName = "claim_id")
     private InsuranceClaim insuranceClaim;
 
     public Document() {

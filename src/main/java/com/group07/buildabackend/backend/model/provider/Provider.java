@@ -1,13 +1,10 @@
 package com.group07.buildabackend.backend.model.provider;
 
-import com.group07.buildabackend.backend.model.User;
+import com.group07.buildabackend.backend.model.SysUser;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "provider")
-@DiscriminatorValue("PROVIDER")
-
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "PROVIDER_TYPE")
-public abstract class Provider extends User {
+public abstract class Provider extends SysUser {
 }

@@ -12,7 +12,7 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.gui.nav to javafx.fxml;
     exports com.group07.buildabackend.gui.header;
     opens com.group07.buildabackend.gui.header to javafx.fxml;
-
+    opens com.group07.buildabackend.backend.model;
 //    opens com.group07.buildabackend.gui to javafx.fxml;
 //    exports com.group07.buildabackend.gui;
 }

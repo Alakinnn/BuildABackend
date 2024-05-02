@@ -8,7 +8,7 @@ public class DatabaseFactoryManager {
 
     public static EntityManagerFactory getEmf() {
         if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("group-07");
+            emf = Persistence.createEntityManagerFactory("com.group07");
             return emf;
         }
         return emf;

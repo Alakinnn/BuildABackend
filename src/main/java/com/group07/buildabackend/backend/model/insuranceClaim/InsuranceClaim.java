@@ -8,51 +8,40 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "insurance_claim", schema = "public")
 public class InsuranceClaim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "claim_id", nullable = false)
     private String claimId;
 
-    @Column(nullable = false)
+    @Column(name = "amount", nullable = false)
     private double amount;
 
-    @Column(nullable = false)
+    @Column(name = "claim_date", nullable = false)
     private LocalDate claimDate;
 
+    @Column(name = "exam_date", nullable = false)
     private LocalDate examDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     private InsuranceClaimStatus status = InsuranceClaimStatus.NEW;
 
-    @Column(nullable = false)
+    @Column(name = "receiver_bank_name", nullable = false)
     private String receiverBankName;
 
-    @Column(nullable = false)
+    @Column(name = "receiver_bank_number", nullable = false)
     private String receiverBankNumber;
 
-    @Column(nullable = false)
+    @Column(name = "receiver_name", nullable = false)
     private String receiverName;
 
-    @OneToMany(mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-        name="CLAIM_DOCUMENT",
-        joinColumns = {
-                @JoinColumn(
-                        name = "CLAIM_ID"
-                )
-        },
-        inverseJoinColumns = {
-                @JoinColumn(
-                        name = "DOCUMENT_ID"
-                )
-        }
-
-    )
+    @OneToMany(orphanRemoval = true, mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Document> documents;
 
-    @OneToOne
-    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "customerId")
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "userId")
     private Customer customer;
 
     public InsuranceClaim() {

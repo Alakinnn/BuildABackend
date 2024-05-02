@@ -3,10 +3,18 @@ package com.group07.buildabackend.backend.model.customer;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "dependent")
-@DiscriminatorValue("DEPENDENT")
+@Table(name = "dependent", schema = "public")
 public class Dependent extends Beneficiary {
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "HOLDER_ID")
+
+    @ManyToOne
+    @JoinColumn(name = "policy_holder_id", referencedColumnName = "user_id")
     private PolicyHolder policyHolder;
+
+    public PolicyHolder getPolicyHolder() {
+        return policyHolder;
+    }
+
+    public void setPolicyHolder(PolicyHolder policyHolder) {
+        this.policyHolder = policyHolder;
+    }
 }

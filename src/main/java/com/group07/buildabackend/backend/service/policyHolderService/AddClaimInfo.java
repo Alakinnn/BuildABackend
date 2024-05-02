@@ -1,26 +1,27 @@
-package com.group07.buildabackend.backend.service.PolicyHolderService;
+package com.group07.buildabackend.backend.service.policyHolderService;
 
+import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AddClaimInfo extends PolicyHolderService {
-    private static final ClaimRepository<InsuranceClaim> insuranceClaimClaimRepository = getInsuranceClaimClaimRepository();
+    private static final ClaimRepository<InsuranceClaim> insuranceClaimClaimRepository = getInsuranceClaimRepository();
 
-    public static Map<InsuranceClaim, String> addClaimInfo(String claimId, List<File> documents) {
-        Map<InsuranceClaim, String> serviceResponse = new HashMap<>();
+    public static Response<InsuranceClaim> addClaimInfo(String claimId, List<File> documents) {
+        Response<InsuranceClaim> response = new Response<>(null);
         try {
             InsuranceClaim insuranceClaim = insuranceClaimClaimRepository.retrieveById(claimId);
 
             if (insuranceClaim == null) {
                 throw new InvalidInputException("Claim not found", 400);
             }
+
+            response.setData(insuranceClaim);
 
             if (documents.isEmpty()) {
                 throw new InvalidInputException("No new document found", 400);
@@ -32,10 +33,12 @@ public class AddClaimInfo extends PolicyHolderService {
             }
 
             insuranceClaimClaimRepository.update(insuranceClaim);
-            return serviceResponse;
+            return response;
         } catch (InvalidInputException e) {
-            serviceResponse.put(null, e.getMessage());
+            response.setData(null);
+            response.setResponseMsg(e.getMessage());
+            response.setStatusCode(e.getErrorCode());
         }
-        return serviceResponse;
+        return response;
     }
 }

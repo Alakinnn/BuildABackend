@@ -8,6 +8,7 @@ public class InsuranceClaimMapper {
 
     public static InsuranceClaim toEntity(InsuranceClaimDTO dto) {
         InsuranceClaim entity = new InsuranceClaim();
+        entity.setClaimId(dto.getId());
         entity.setAmount(dto.getAmount());
         entity.setClaimDate(LocalDate.now());
         entity.setExamDate(LocalDate.parse(dto.getExamDate()));
@@ -15,6 +16,7 @@ public class InsuranceClaimMapper {
         entity.setReceiverBankNumber(dto.getReceiverBankNumber());
         entity.setReceiverName(dto.getReceiverName());
         entity.setDocuments(dto.getMappedDocumentList());
+
 
         return entity;
     }

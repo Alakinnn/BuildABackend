@@ -1,4 +1,4 @@
-package com.group07.buildabackend.backend.service.PolicyHolderService;
+package com.group07.buildabackend.backend.service.policyHolderService;
 
 import com.group07.buildabackend.backend.dto.documentDTO.DocumentDTO;
 import com.group07.buildabackend.backend.dto.documentDTO.DocumentMapper;
@@ -15,18 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PolicyHolderService {
-    private final PolicyHolderRepository<PolicyHolder> holderRepository = new PolicyHolderRepository<>();
-    private final ClaimRepository<InsuranceClaim> insuranceClaimClaimRepository = new ClaimRepository<>();
+    private static final PolicyHolderRepository<PolicyHolder> holderRepository = new PolicyHolderRepository<>();
+    private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = new ClaimRepository<>();
 
     public static PolicyHolderRepository<PolicyHolder> getHolderRepository() {
         return holderRepository;
     }
 
-    public static ClaimRepository<InsuranceClaim> getInsuranceClaimClaimRepository() {
-        return insuranceClaimClaimRepository;
+    public static ClaimRepository<InsuranceClaim> getInsuranceClaimRepository() {
+        return insuranceClaimRepository;
     }
 
-     byte[] readFileToByteArray(File file) {
+     static byte[] readFileToByteArray(File file) {
         try (FileInputStream fis = new FileInputStream(file)) {
             byte[] data = new byte[(int) file.length()];
             fis.read(data);
@@ -38,15 +38,20 @@ public abstract class PolicyHolderService {
 
      static List<Document> mapToDocumentList(List<File> documents) {
         List<Document> documentEntityList = new ArrayList<>();
-        for (File document : documents) {
-            String documentPath = document.getPath();
-            String documentTitle = documentPath.substring(documentPath.lastIndexOf(File.separator) + 1);
-            byte[] documentByteData = readFileToByteArray(document);
+         for (int i = 0; i < documents.toArray().length; i++) {
+             File document = documents.get(i);
+             String documentPath = document.getPath();
+             String documentTitle = documentPath.substring(documentPath.lastIndexOf(File.separator) + 1);
+             byte[] documentByteData = readFileToByteArray(document);
 
-            DocumentDTO documentDTO = new DocumentDTO(documentTitle, documentByteData);
-            Document documentEntity = DocumentMapper.toEntity(documentDTO);
-            documentEntityList.add(documentEntity);
-        }
+             DocumentDTO documentDTO = new DocumentDTO();
+             documentDTO.setId(i + 1);
+             documentDTO.setTitle(documentTitle);
+             documentDTO.setUrl(documentByteData);
+
+             Document documentEntity = DocumentMapper.toEntity(documentDTO);
+             documentEntityList.add(documentEntity);
+         }
 
         return documentEntityList;
     }

@@ -7,29 +7,22 @@
         <description>
             Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
         </description>
+
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-<<<<<<< HEAD
 
-=======
->>>>>>> dev
-        <!--                    Add more Entity class here!-->
-        <!--        Example: <class>com.group07.buildabackend.backend.CLASS_NAME_HERE</class>-->
-<!--        <class>com.group07.buildabackend.backend.connectionManager.DatabaseConnectionManager</class>-->
-
-                <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
 
         <properties>
             <!-- Database connection settings -->
-            <!--            TODO: Change datasource property        -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ep-sparkling-sun-a1cc6hvv.ap-southeast-1.aws.neon.tech/mainDB?user=dev&amp;password=Styj5rivlX0R&amp;sslmode=require" />
-            <property name="jakarta.persistence.jdbc.sysUser" value="dev" />
+            <property name="jakarta.persistence.jdbc.user" value="dev" />
             <property name="jakarta.persistence.jdbc.password" value="Styj5rivlX0R" />
 
             <!-- Automatically export the schema -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/> <!-- DB Dialect -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
 
             <!-- Echo all executed SQL to console -->
             <property name="hibernate.show_sql" value="true" />

@@ -1,5 +1,6 @@
-package com.group07.buildabackend.backend.service.PolicyHolderService;
+package com.group07.buildabackend.backend.service.policyHolderService;
 
+import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMapper;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
@@ -10,18 +11,15 @@ import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.backend.validation.PolicyHolderValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CreateClaimService extends PolicyHolderService{
     private static final PolicyHolderRepository holderRepository = getHolderRepository();
-    private static final ClaimRepository<InsuranceClaim> insuranceClaimClaimRepository = getInsuranceClaimClaimRepository();
+    private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = getInsuranceClaimRepository();
 
 
-    public static Map<InsuranceClaim, String> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
-        Map<InsuranceClaim, String> serviceResponse = new HashMap<>();
-
+    public static Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
+        Response<InsuranceClaim> response = new Response<>(null);
         try {
             PolicyHolder customer = holderRepository.retrieveById(insuranceClaimDTO.getCustomerId());
 
@@ -32,16 +30,28 @@ public class CreateClaimService extends PolicyHolderService{
             PolicyHolderValidator.validateInput(insuranceClaimDTO);
 
             List<Document> documentEntityList = mapToDocumentList(insuranceClaimDTO.getDocuments());
-            insuranceClaimDTO.setMappedDocumentList(documentEntityList);
+
 
             InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
+            insuranceClaim.setCustomer(customer);
 
-            serviceResponse.put(insuranceClaim, "Success");
-            insuranceClaimClaimRepository.add(insuranceClaim);
+            for (Document document : documentEntityList) {
+                insuranceClaim.addDocument(document);
+            }
+
+            insuranceClaimRepository.add(insuranceClaim);
+
+            response.setData(insuranceClaim);
+            response.setResponseMsg("Success");
+            response.setStatusCode(200);
+
+
         } catch (InvalidInputException e) {
-            serviceResponse.put(null, e.getMessage());
+            response.setResponseMsg(e.getMessage());
+            response.setStatusCode(e.getErrorCode());
+            response.setData(null);
         }
 
-        return serviceResponse;
+        return response;
     }
 }

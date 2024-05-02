@@ -1,12 +1,16 @@
 package com.group07.buildabackend.backend.model.insuranceClaim;
 
+import com.group07.buildabackend.backend.model.customer.Customer;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
-@Table(name = "document", schema = "public")
+@Table(name = "claim_document", schema = "public")
 public class Document {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "document_id", nullable = false)
     private int documentId;
 
     @Column(nullable = false)
@@ -52,8 +56,20 @@ public class Document {
         return insuranceClaim;
     }
 
+    //    Reference for bidirectional, "Many" side's setter: https://github.com/SomMeri/org.meri.jpa.tutorial/blob/master/src/main/java/org/meri/jpa/relationships/entities/bestpractice/SafePerson.java
     public void setInsuranceClaim(InsuranceClaim insuranceClaim) {
+        if (sameAsFormer(insuranceClaim))
+            return ;
+        InsuranceClaim oldInsuranceClaim = this.insuranceClaim;
         this.insuranceClaim = insuranceClaim;
+        if (oldInsuranceClaim!=null)
+            oldInsuranceClaim.removeDocument(this);
+        if (insuranceClaim!=null)
+            insuranceClaim.addDocument(this);
+    }
+
+    private boolean sameAsFormer(InsuranceClaim newInsuranceClaim) {
+        return Objects.equals(insuranceClaim, newInsuranceClaim);
     }
 
 }

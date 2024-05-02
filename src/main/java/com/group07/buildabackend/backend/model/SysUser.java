@@ -4,7 +4,7 @@ package com.group07.buildabackend.backend.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "SysUser", schema = "public")
+@Table(name = "sys_user", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class SysUser {
     @Id

@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 public class InsuranceClaimDTO {
+
+    private String id;
     private double amount;
 
     private String claimDate;
@@ -27,6 +29,10 @@ public class InsuranceClaimDTO {
     private String customerId;
 
     private List<File> documents;
+
+
+
+    private Customer customer;
     private List<Document> mappedDocumentList;
 
     public InsuranceClaimDTO() {
@@ -115,4 +121,20 @@ public class InsuranceClaimDTO {
     public void setMappedDocumentList(List<Document> mappedDocumentList) {
         this.mappedDocumentList = mappedDocumentList;
     }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
 }

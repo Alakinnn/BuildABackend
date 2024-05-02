@@ -8,7 +8,10 @@
             Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
         </description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
         <!--                    Add more Entity class here!-->
         <!--        Example: <class>com.group07.buildabackend.backend.CLASS_NAME_HERE</class>-->
 <!--        <class>com.group07.buildabackend.backend.connectionManager.DatabaseConnectionManager</class>-->

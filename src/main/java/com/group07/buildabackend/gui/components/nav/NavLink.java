@@ -8,11 +8,11 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class NavLink extends Component {
+public class NavLink extends Component<NavLinkController> {
 
     public NavLink(Page page, String label) {
         super(NavLink.class.getResource("NavLink.fxml"));
-        ((NavLinkController) controller).setPage(page);
-        ((NavLinkController) controller).setLabel(label);
+        controller.setPage(page);
+        controller.setLabel(label);
     }
 }

@@ -6,15 +6,16 @@ import javafx.scene.Node;
 import java.io.IOException;
 import java.net.URL;
 
-public abstract class Component {
+public abstract class Component<T extends ComponentController> {
     // A Component is any component in the UI with a controller (e.g. buttons, file uploads, navbar).
+    // T is the type of the controller
     // Note that although this class also has a reference to root, it is distinctly different from page in that it has a corresponding controller.
     // Child classes need to provide an FXML URL to the constructor to load in the corresponding FXML resource.
     // Alternatively, use the empty constructor and create your own component programmatically (without FXML)
 
     protected Node root;
     protected URL fxmlURL;
-    protected ComponentController controller;
+    protected T controller;
 
     public Component() {
     }

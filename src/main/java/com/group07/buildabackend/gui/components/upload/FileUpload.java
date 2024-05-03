@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class FileUpload extends Component {
+public class FileUpload extends Component<FileUploadController> {
 
     public FileUpload() {
         super(FileUpload.class.getResource("FileUpload.fxml"));
@@ -17,11 +17,11 @@ public class FileUpload extends Component {
 
     public FileUpload(FileFilter filter) {
         this();
-        ((FileUploadController) controller).setFileFilter(filter);
+        controller.setFileFilter(filter);
     }
 
     public List<File> onUpload() {
-        return ((FileUploadController) controller).onUpload();
+        return controller.onUpload();
     }
 
 }

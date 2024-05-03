@@ -13,6 +13,7 @@ import java.util.Objects;
 @Table(name = "insurance_claim", schema = "public")
 public class InsuranceClaim {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "claim_id", nullable = false)
     private String claimId;
 

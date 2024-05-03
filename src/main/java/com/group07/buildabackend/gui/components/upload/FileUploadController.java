@@ -19,11 +19,11 @@ public class FileUploadController implements Initializable, ComponentController 
 
     @FXML
     public FlowPane uploadedFileContainer;
-    private List<File> uploadedFile;
+    private List<File> uploadedFiles;
     private FileFilter fileFilter;
 
     public FileUploadController() {
-        this.uploadedFile = new ArrayList<>();
+        this.uploadedFiles = new ArrayList<>();
     }
 
     public List<File> onUpload() {
@@ -33,10 +33,10 @@ public class FileUploadController implements Initializable, ComponentController 
             FileChooser fileChooser = fileFilter.getChooser();
             File file = fileChooser.showOpenDialog(null);
 
-            uploadedFile.add(file);
+            uploadedFiles.add(file);
             uploadedFileContainer.getChildren().add(new Text(file.getName()));
 
-            return uploadedFile;
+            return uploadedFiles;
         } catch (Exception e) {
             return null;
         }
@@ -45,6 +45,10 @@ public class FileUploadController implements Initializable, ComponentController 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         uploadedFileContainer.setHgap(10);
+    }
+
+    public List<File> getUploadedFiles() {
+        return uploadedFiles;
     }
 
     public void setFileFilter(FileFilter fileFilter) {

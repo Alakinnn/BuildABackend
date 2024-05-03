@@ -39,11 +39,9 @@ public class CreateClaimFormController extends FormController implements Initial
     private AnchorPane uploadedDocsContainer;
 
     private FileUpload docUploader;
-    private List<File> uploadedDocs;
 
     public CreateClaimFormController() {
         super();
-        uploadedDocs = new ArrayList<>();
         docUploader = new FileUpload(new PDFFilterDecorator(new FileFilter()));
     }
 
@@ -59,6 +57,7 @@ public class CreateClaimFormController extends FormController implements Initial
         addRequiredField(new FormTextField(bankNameField, "Bank Name"));
         addRequiredField(new FormTextField(receiverNameField, "Receiver Name"));
         addRequiredField(new FormTextField(accountNumberField, "Account Number"));
+        addRequiredField(new FormFileUpload(docUploader, "Documents"));
     }
 
     private void populateCustomerChoices() {
@@ -70,7 +69,7 @@ public class CreateClaimFormController extends FormController implements Initial
 
 
     public void onUploadDocument() {
-        uploadedDocs = docUploader.onUpload();
+        docUploader.onUpload();
     }
 
     public void onSubmit(ActionEvent event) {
@@ -84,7 +83,7 @@ public class CreateClaimFormController extends FormController implements Initial
             request.setBankName(bankNameField.getText());
             request.setReceiverName(receiverNameField.getText());
             request.setAccountNumber(accountNumberField.getText());
-            request.setDocuments(uploadedDocs);
+            request.setDocuments(docUploader.getUploadedFiles());
 
             // TODO: pass request to backend controller
         } catch (MissingRequiredFieldException requiredFieldException) {

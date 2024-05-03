@@ -24,4 +24,8 @@ public class FileUpload extends Component<FileUploadController> {
         return controller.onUpload();
     }
 
+    public List<File> getUploadedFiles() {
+        return controller.getUploadedFiles();
+    }
+
 }

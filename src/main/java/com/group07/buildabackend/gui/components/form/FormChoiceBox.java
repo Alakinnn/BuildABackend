@@ -20,8 +20,4 @@ public class FormChoiceBox<T> extends FormField<ChoiceBox<ChoiceField<T>>, T> {
     public boolean isEmpty() {
         return control.getValue() == null;
     }
-
-    public List<ChoiceField<T>> getItems() {
-        return control.getItems();
-    }
 }

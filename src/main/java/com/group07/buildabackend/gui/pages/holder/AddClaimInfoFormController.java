@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.pages.holder;
 
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddClaimInfoFormController implements Initializable, ComponentController {
+public class AddClaimInfoFormController extends FormController implements Initializable, ComponentController {
     @FXML
     public Text claimId;
     @FXML

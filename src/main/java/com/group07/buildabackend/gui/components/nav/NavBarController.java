@@ -4,7 +4,9 @@ import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
+import com.group07.buildabackend.gui.pages.manager.ManagerInsuranceClaimViewPage;
 import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
+import com.group07.buildabackend.gui.pages.surveyor.SurveyorInsuranceClaimPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -38,6 +40,8 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new CreateClaimPage(), "Create Claim");
         addNavLink(new RequestClaimInfoPage("123456"), "Request Claim Info");
         addNavLink(new AddClaimInfoPage("123456"), "Add Claim Info");
+        addNavLink(new ManagerInsuranceClaimViewPage(), "Manager: View Claim");
+        addNavLink(new SurveyorInsuranceClaimPage(), "Surveyor: View Claim");
 
         navBox.getChildren().addAll(navLinks);
     }

@@ -34,6 +34,7 @@ public class CreateClaimService extends PolicyHolderService{
 
             InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
             insuranceClaim.setCustomer(customer);
+            insuranceClaim.setClaimId("69420");
 
             for (Document document : documentEntityList) {
                 insuranceClaim.addDocument(document);

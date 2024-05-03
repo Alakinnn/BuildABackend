@@ -45,7 +45,7 @@ public abstract class PolicyHolderService {
              byte[] documentByteData = readFileToByteArray(document);
 
              DocumentDTO documentDTO = new DocumentDTO();
-             documentDTO.setId(i + 1);
+             documentDTO.setId(i + 3);
              documentDTO.setTitle(documentTitle);
              documentDTO.setUrl(documentByteData);
 

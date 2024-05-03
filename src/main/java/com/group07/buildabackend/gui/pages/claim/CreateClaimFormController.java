@@ -96,7 +96,7 @@ public class CreateClaimFormController extends FormController implements Initial
             PolicyHolderController controller = new PolicyHolderController();
             Response<InsuranceClaim> res = controller.createClaim(dto);
 
-            if (res.getData() != null) {
+            if (res.getData() == null) {
                 AlertManager.showError(res.getResponseMsg());
             }
 

@@ -9,7 +9,7 @@ import java.util.Objects;
 @Table(name = "claim_document", schema = "public")
 public class Document {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "document_id", nullable = false)
     private int documentId;
 

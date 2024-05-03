@@ -1,0 +1,33 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="com.group07">
+        <description>
+            Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
+        </description>
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+
+        <properties>
+            <!-- Database connection settings -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ep-sparkling-sun-a1cc6hvv.ap-southeast-1.aws.neon.tech/mainDB?user=dev&amp;password=Styj5rivlX0R&amp;sslmode=require" />
+            <property name="jakarta.persistence.jdbc.user" value="dev" />
+            <property name="jakarta.persistence.jdbc.password" value="Styj5rivlX0R" />
+
+            <!-- Automatically export the schema -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/> <!-- DB Dialect -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
+
+            <!-- Echo all executed SQL to console -->
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.highlight_sql" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>

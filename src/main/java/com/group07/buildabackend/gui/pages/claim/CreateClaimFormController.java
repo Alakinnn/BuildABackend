@@ -8,6 +8,7 @@ import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 import com.group07.buildabackend.gui.sample.ClaimCreationRequest;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
@@ -15,6 +16,7 @@ import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -87,10 +89,11 @@ public class CreateClaimFormController extends FormController implements Initial
             request.setDocuments(docUploader.getUploadedFiles());
 
             // TODO: pass request to backend controller
-        } catch (MissingRequiredFieldException requiredFieldException) {
-            System.out.println(requiredFieldException.getMessage());
+
+
+            AlertManager.showInfo("Claim created successfully!");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            AlertManager.showError(e.getMessage());
         }
     }
 

@@ -33,12 +33,14 @@ public class FileUploadController implements Initializable, ComponentController 
             FileChooser fileChooser = fileFilter.getChooser();
             File file = fileChooser.showOpenDialog(null);
 
+            if (file == null) return uploadedFiles;
+
             uploadedFiles.add(file);
             uploadedFileContainer.getChildren().add(new Text(file.getName()));
 
             return uploadedFiles;
         } catch (Exception e) {
-            return null;
+            return uploadedFiles;
         }
     }
 

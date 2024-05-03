@@ -6,6 +6,7 @@ import com.group07.buildabackend.gui.components.form.fields.FormTextArea;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 import com.group07.buildabackend.gui.sample.ClaimRequestInfoRequest;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,8 +39,9 @@ public class RequestClaimInfoFormController extends FormController implements Co
             request.setNotes(notes.getText());
 
             // TODO: pass to backend
-        } catch (MissingRequiredFieldException e) {
-            System.out.println(e.getMessage());
+            AlertManager.showInfo("Requested claim information!");
+        } catch (Exception e) {
+            AlertManager.showInfo(e.getMessage());
         }
     }
 }

@@ -8,6 +8,7 @@ import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 import com.group07.buildabackend.gui.sample.ClaimAddInfoRequest;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,8 +47,10 @@ public class AddClaimInfoFormController extends FormController implements Initia
             request.setDocuments(docUploader.getUploadedFiles());
             // TODO: pass to controller
 
-        } catch (MissingRequiredFieldException e) {
-            System.out.println(e.getMessage());
+            AlertManager.showInfo("Added new claim information!");
+
+        } catch (Exception e) {
+            AlertManager.showError(e.getMessage());
         }
 
 

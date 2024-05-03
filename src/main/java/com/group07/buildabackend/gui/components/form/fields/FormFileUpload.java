@@ -18,6 +18,6 @@ public class FormFileUpload extends FormField<FileUpload, List<File>> {
 
     @Override
     public boolean isEmpty() {
-        return control.getUploadedFiles().isEmpty();
+        return control.getUploadedFiles().size() == 0;
     }
 }

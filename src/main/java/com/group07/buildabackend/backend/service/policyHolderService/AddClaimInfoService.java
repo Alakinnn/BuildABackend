@@ -9,13 +9,13 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 import java.io.File;
 import java.util.List;
 
-public class AddClaimInfo extends PolicyHolderService {
-    private static final ClaimRepository<InsuranceClaim> insuranceClaimClaimRepository = getInsuranceClaimRepository();
+public class AddClaimInfoService extends PolicyHolderService {
+    private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = getInsuranceClaimRepository();
 
-    public static Response<InsuranceClaim> addClaimInfo(String claimId, List<File> documents) {
+    public static Response<InsuranceClaim> addClaimInfoService(String claimId, List<File> documents) {
         Response<InsuranceClaim> response = new Response<>(null);
         try {
-            InsuranceClaim insuranceClaim = insuranceClaimClaimRepository.retrieveById(claimId);
+            InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveById(claimId);
 
             if (insuranceClaim == null) {
                 throw new InvalidInputException("Claim not found", 400);
@@ -32,7 +32,7 @@ public class AddClaimInfo extends PolicyHolderService {
                 insuranceClaim.addDocument(document);
             }
 
-            insuranceClaimClaimRepository.update(insuranceClaim);
+            insuranceClaimRepository.update(insuranceClaim);
             return response;
         } catch (InvalidInputException e) {
             response.setData(null);

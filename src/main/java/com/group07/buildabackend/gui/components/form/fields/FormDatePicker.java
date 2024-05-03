@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui.components.form;
+package com.group07.buildabackend.gui.components.form.fields;
 
 import javafx.scene.control.DatePicker;
 

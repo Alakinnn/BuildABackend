@@ -2,6 +2,10 @@ package com.group07.buildabackend.gui.pages.claim;
 
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.*;
+import com.group07.buildabackend.gui.components.form.fields.FormChoiceBox;
+import com.group07.buildabackend.gui.components.form.fields.FormDatePicker;
+import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
+import com.group07.buildabackend.gui.components.form.fields.FormTextField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 import com.group07.buildabackend.gui.sample.ClaimCreationRequest;
 import com.group07.buildabackend.gui.utils.ChoiceField;
@@ -16,10 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
-import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class CreateClaimFormController extends FormController implements Initializable, ComponentController {

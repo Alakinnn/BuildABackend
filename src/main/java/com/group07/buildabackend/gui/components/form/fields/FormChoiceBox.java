@@ -1,9 +1,7 @@
-package com.group07.buildabackend.gui.components.form;
+package com.group07.buildabackend.gui.components.form.fields;
 
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.scene.control.ChoiceBox;
-
-import java.util.List;
 
 public class FormChoiceBox<T> extends FormField<ChoiceBox<ChoiceField<T>>, T> {
 

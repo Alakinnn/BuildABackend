@@ -1,6 +1,6 @@
 package com.group07.buildabackend.gui.exceptions;
 
-import com.group07.buildabackend.gui.components.form.FormField;
+import com.group07.buildabackend.gui.components.form.fields.FormField;
 
 import java.util.List;
 

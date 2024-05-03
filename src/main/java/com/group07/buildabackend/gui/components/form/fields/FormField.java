@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui.components.form;
+package com.group07.buildabackend.gui.components.form.fields;
 
 public abstract class FormField<T, K> {
     // T is the javafx control used for the field

@@ -1,9 +1,9 @@
-package com.group07.buildabackend.gui.components.form;
+package com.group07.buildabackend.gui.components.form.fields;
 
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
-public class FormTextField extends FormField<TextField, String> {
-    public FormTextField(TextField control, String label) {
+public class FormTextArea extends FormField<TextArea, String> {
+    public FormTextArea(TextArea control, String label) {
         super(control, label);
     }
 

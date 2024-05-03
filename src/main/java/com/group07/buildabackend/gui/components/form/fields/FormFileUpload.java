@@ -1,4 +1,4 @@
-package com.group07.buildabackend.gui.components.form;
+package com.group07.buildabackend.gui.components.form.fields;
 
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 

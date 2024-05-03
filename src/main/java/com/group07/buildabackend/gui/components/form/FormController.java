@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.form;
 
+import com.group07.buildabackend.gui.components.form.fields.FormField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 
 import java.util.ArrayList;

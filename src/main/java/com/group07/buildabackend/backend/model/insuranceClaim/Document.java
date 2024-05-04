@@ -21,9 +21,8 @@ public class Document {
     @Column(nullable = false)
     private String title;
 
-    @Lob
     @Column(nullable = false)
-    private byte[] url;
+    private String url;
 
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -49,11 +48,11 @@ public class Document {
         this.title = title;
     }
 
-    public byte[] getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(byte[] url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 

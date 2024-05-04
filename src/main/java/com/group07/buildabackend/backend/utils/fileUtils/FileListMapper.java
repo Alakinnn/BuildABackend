@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.utils.fileUtils;
 
+import com.group07.buildabackend.backend.cloudinary.uploadController.PdfUploadController;
+import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.documentDTO.DocumentDTO;
 import com.group07.buildabackend.backend.dto.documentDTO.DocumentMapper;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
@@ -9,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FileListMapper {
     static byte[] readFileToByteArray(File file) {
@@ -25,13 +28,13 @@ public class FileListMapper {
         List<Document> documentEntityList = new ArrayList<>();
         for (int i = 0; i < documents.toArray().length; i++) {
             File document = documents.get(i);
-            String documentPath = document.getPath();
-            String documentTitle = documentPath.substring(documentPath.lastIndexOf(File.separator) + 1);
-            byte[] documentByteData = readFileToByteArray(document);
+            String documentAbsPath = document.getAbsolutePath();
+
+            Response<Map> response = PdfUploadController.uploadPdf(documentAbsPath);
 
             DocumentDTO documentDTO = new DocumentDTO();
-            documentDTO.setTitle(documentTitle);
-            documentDTO.setUrl(documentByteData);
+            documentDTO.setTitle((String) response.getData().get("original_filename"));
+            documentDTO.setUrl((String) response.getData().get("url"));
 
             Document documentEntity = DocumentMapper.toEntity(documentDTO);
             documentEntityList.add(documentEntity);

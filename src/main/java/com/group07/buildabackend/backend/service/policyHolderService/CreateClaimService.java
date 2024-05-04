@@ -13,8 +13,10 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import java.util.List;
 
+import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
+
 public class CreateClaimService extends PolicyHolderService{
-    private static final PolicyHolderRepository holderRepository = getHolderRepository();
+    private static final PolicyHolderRepository<PolicyHolder> holderRepository = getHolderRepository();
     private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = getInsuranceClaimRepository();
 
 

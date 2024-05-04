@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.claim;
 
+import com.group07.buildabackend.backend.controller.PolicyHolderController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.*;
 import com.group07.buildabackend.gui.components.form.fields.FormChoiceBox;
@@ -79,20 +83,26 @@ public class CreateClaimFormController extends FormController implements Initial
         try {
             checkRequiredFields();
 
-            ClaimCreationRequest request = new ClaimCreationRequest();
-            request.setCustomerId(insuredCustomerChoice.getValue().getValue());
-            request.setClaimAmount(Double.parseDouble(claimAmountField.getText()));
-            request.setExamDate(examDatePicker.getValue());
-            request.setBankName(bankNameField.getText());
-            request.setReceiverName(receiverNameField.getText());
-            request.setAccountNumber(accountNumberField.getText());
-            request.setDocuments(docUploader.getUploadedFiles());
+            InsuranceClaimDTO dto = new InsuranceClaimDTO();
+            dto.setCustomerId(insuredCustomerChoice.getValue().getValue());
+            dto.setAmount(Double.parseDouble(claimAmountField.getText()));
+            dto.setExamDate(examDatePicker.getValue().toString());
+            dto.setReceiverBankName(bankNameField.getText());
+            dto.setReceiverName(receiverNameField.getText());
+            dto.setReceiverBankNumber(accountNumberField.getText());
+            dto.setDocuments(docUploader.getUploadedFiles());
 
             // TODO: pass request to backend controller
+            PolicyHolderController controller = new PolicyHolderController();
+            Response<InsuranceClaim> res = controller.createClaim(dto);
 
+            if (res.getData() == null) {
+                AlertManager.showError(res.getResponseMsg());
+            }
 
-            AlertManager.showInfo("Claim created successfully!");
+            AlertManager.showInfo(res.getResponseMsg());
         } catch (Exception e) {
+            e.printStackTrace();
             AlertManager.showError(e.getMessage());
         }
     }

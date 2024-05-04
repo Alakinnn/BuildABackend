@@ -1,11 +1,12 @@
 package com.group07.buildabackend.backend.model.insuranceClaim;
 
 import com.group07.buildabackend.backend.model.customer.Customer;
+import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,6 +14,11 @@ import java.util.Objects;
 @Table(name = "insurance_claim", schema = "public")
 public class InsuranceClaim {
     @Id
+    @GenericGenerator(
+            name = CustomIDGenerator.GENERATOR_NAME,
+            strategy = "com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator",
+            parameters = {@org.hibernate.annotations.Parameter(name = CustomIDGenerator.PREFIX_PARAM, value = "c_")})
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = CustomIDGenerator.GENERATOR_NAME)
     @Column(name = "claim_id", nullable = false)
     private String claimId;
 

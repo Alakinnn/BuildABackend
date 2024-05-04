@@ -32,4 +32,6 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.gui.components to javafx.fxml;
     exports com.group07.buildabackend.gui.utils;
     opens com.group07.buildabackend.gui.utils to javafx.fxml;
+    exports com.group07.buildabackend.backend.utils.idGenerator to org.hibernate.orm.core;
+
 }

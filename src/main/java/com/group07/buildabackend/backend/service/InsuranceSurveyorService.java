@@ -27,4 +27,16 @@ public class InsuranceSurveyorService {
         insuranceClaimClaimRepository.update(claim);
         return claim;
     }
+
+    public InsuranceClaim proposeClaim(String surveyorId, String claimId){
+        InsuranceClaim claim = insuranceClaimClaimRepository.retrieveById(claimId);
+
+        if(claim == null){
+            //EXCEPTION HERE
+        }
+
+        claim.setStatus(InsuranceClaimStatus.PROPOSED);
+        insuranceClaimClaimRepository.update(claim);
+        return claim;
+    }
 }

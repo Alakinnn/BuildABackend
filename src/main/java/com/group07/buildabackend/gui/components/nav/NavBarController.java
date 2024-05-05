@@ -39,7 +39,7 @@ public class NavBarController implements Initializable, ComponentController {
         
         addNavLink(new CreateClaimPage(), "Create Claim");
         addNavLink(new RequestClaimInfoPage("c_9abc9b50"), "Request Claim Info");
-        addNavLink(new AddClaimInfoPage("123456"), "Add Claim Info");
+        addNavLink(new AddClaimInfoPage("c_9abc9b50"), "Add Claim Info");
         addNavLink(new ManagerInsuranceClaimViewPage(), "Manager: View Claim");
         addNavLink(new SurveyorInsuranceClaimPage(), "Surveyor: View Claim");
 

@@ -1,6 +1,7 @@
 package com.group07.buildabackend.backend.service.policyHolderService;
 
 import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
@@ -11,8 +12,11 @@ import java.util.List;
 import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
 public class AddClaimInfoService extends PolicyHolderService {
-    public static Response<InsuranceClaim> addClaimInfoService(String claimId, List<File> documents) {
+    public static Response<InsuranceClaim> addClaimInfoService(AddClaimInfoDTO dto) {
         Response<InsuranceClaim> response = new Response<>(null);
+        String claimId = dto.getClaimId();
+        List<File> documents = dto.getDocuments();
+
         try {
             InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveById(claimId);
 
@@ -32,13 +36,14 @@ public class AddClaimInfoService extends PolicyHolderService {
             }
 
             insuranceClaimRepository.update(insuranceClaim);
+
+            response.setResponseMsg("Successfully added new document(s)");
+
             return response;
         } catch (InvalidInputException e) {
-            response.setData(null);
             response.setResponseMsg(e.getMessage());
             response.setStatusCode(e.getErrorCode());
         } catch (Exception e) {
-            response.setData(null);
             response.setResponseMsg(e.getMessage());
         }
         return response;

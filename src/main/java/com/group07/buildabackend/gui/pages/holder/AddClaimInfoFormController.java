@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+import com.group07.buildabackend.backend.controller.PolicyHolderController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
@@ -42,12 +46,19 @@ public class AddClaimInfoFormController extends FormController implements Initia
     public void onSubmit(ActionEvent event) {
         try {
             checkRequiredFields();
-            ClaimAddInfoRequest request = new ClaimAddInfoRequest();
+            AddClaimInfoDTO request = new AddClaimInfoDTO();
             request.setClaimId(claimId.getText());
             request.setDocuments(docUploader.getUploadedFiles());
-            // TODO: pass to controller
 
-            AlertManager.showInfo("Added new claim information!");
+            PolicyHolderController controller = new PolicyHolderController();
+            Response<InsuranceClaim> res = controller.addClaimInfo(request);
+
+            if (res.getData() == null) {
+                AlertManager.showError(res.getResponseMsg());
+                return;
+            }
+
+            AlertManager.showInfo(res.getResponseMsg());
 
         } catch (Exception e) {
             AlertManager.showError(e.getMessage());

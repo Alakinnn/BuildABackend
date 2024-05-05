@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.controller;
 
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInfoService;
@@ -14,8 +15,8 @@ public class PolicyHolderController {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }
 
-    public Response<InsuranceClaim> addClaimInfo(String claimId, List<File> documents) {
-        return AddClaimInfoService.addClaimInfoService(claimId, documents);
+    public Response<InsuranceClaim> addClaimInfo(AddClaimInfoDTO dto) {
+        return AddClaimInfoService.addClaimInfoService(dto);
     }
 
 }

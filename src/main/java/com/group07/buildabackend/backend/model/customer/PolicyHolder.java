@@ -1,10 +1,5 @@
 package com.group07.buildabackend.backend.model.customer;
-
-import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import jakarta.persistence.*;
-
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 

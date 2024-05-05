@@ -10,9 +10,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "provider")
 public abstract class Provider extends SysUser {
-    @Id
-    private String id;
-
     @Column(name = "provider_type")
     private String provider_type;
 }

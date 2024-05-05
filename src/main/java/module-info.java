@@ -36,5 +36,7 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.gui.utils;
     opens com.group07.buildabackend.gui.utils to javafx.fxml;
     exports com.group07.buildabackend.backend.utils.idGenerator to org.hibernate.orm.core;
+    opens com.group07.buildabackend.backend.model.provider to org.hibernate.orm.core;
+    opens com.group07.buildabackend.backend.model.insuranceCard to org.hibernate.orm.core;
 
 }

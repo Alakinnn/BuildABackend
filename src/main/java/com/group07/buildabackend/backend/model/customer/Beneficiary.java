@@ -18,19 +18,19 @@ public abstract class Beneficiary extends Customer {
     private InsuranceCard insuranceCard;
 
     @Column(name = "beneficiary_type")
-    private String beneficiary_type;
+    private String beneficiaryType;
 
     // Other properties, getters, setters, etc.
 
     public PolicyOwner getPolicyOwner() {
         return policyOwner;
     }
-    public String getBeneficiary_type() {
-        return beneficiary_type;
+    public String getBeneficiaryType() {
+        return beneficiaryType;
     }
 
-    public void setBeneficiary_type(String beneficiary_type) {
-        this.beneficiary_type = beneficiary_type;
+    public void setBeneficiaryType(String beneficiary_type) {
+        this.beneficiaryType = beneficiary_type;
     }
 
     public InsuranceCard getInsuranceCard() {

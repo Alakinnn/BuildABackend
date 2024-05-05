@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.model.insuranceCard;
 
+import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
@@ -19,7 +20,7 @@ public class InsuranceCard {
     private String cardNumber;
 
     @OneToOne(mappedBy = "insuranceCard")
-    private Customer customer;
+    private Beneficiary beneficiary;
 
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
@@ -32,12 +33,12 @@ public class InsuranceCard {
         return cardNumber;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Beneficiary getBeneficiary() {
+        return beneficiary;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
     }
 
     public LocalDate getExpiryDate() {

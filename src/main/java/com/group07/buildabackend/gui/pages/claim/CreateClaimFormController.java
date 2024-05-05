@@ -98,6 +98,7 @@ public class CreateClaimFormController extends FormController implements Initial
 
             if (res.getData() == null) {
                 AlertManager.showError(res.getResponseMsg());
+                return;
             }
 
             AlertManager.showInfo(res.getResponseMsg());

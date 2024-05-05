@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.surveyor;
 
+import com.group07.buildabackend.backend.controller.InsuranceSurveyorController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.RequestClaimInfoDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormTextArea;
@@ -34,14 +38,21 @@ public class RequestClaimInfoFormController extends FormController implements Co
         try {
             checkRequiredFields();
 
-            ClaimRequestInfoRequest request = new ClaimRequestInfoRequest();
-            request.setClaimId(claimId.getText());
-            request.setNotes(notes.getText());
+            RequestClaimInfoDTO dto = new RequestClaimInfoDTO();
+            dto.setClaimId(claimId.getText());
+            dto.setNotes(notes.getText());
 
-            // TODO: pass to backend
-            AlertManager.showInfo("Requested claim information!");
+            InsuranceSurveyorController controller = new InsuranceSurveyorController();
+            Response<InsuranceClaim> res = controller.requestClaimInfo(dto);
+
+            if (res.getData() == null) {
+                AlertManager.showError(res.getResponseMsg());
+                return;
+            }
+
+            AlertManager.showInfo(res.getResponseMsg());
         } catch (Exception e) {
-            AlertManager.showInfo(e.getMessage());
+            AlertManager.showError(e.getMessage());
         }
     }
 }

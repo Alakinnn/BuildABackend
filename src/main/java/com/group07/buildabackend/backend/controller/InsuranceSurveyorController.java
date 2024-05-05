@@ -1,8 +1,8 @@
 package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.service.insuranceSuveyorService.ProposeClaimService;
-import com.group07.buildabackend.backend.service.insuranceSuveyorService.RequestClaimInfoService;
+import com.group07.buildabackend.backend.service.insuranceSurveyorService.ProposeClaimService;
+import com.group07.buildabackend.backend.service.insuranceSurveyorService.RequestClaimInfoService;
 
 public class InsuranceSurveyorController {
     public Response<InsuranceClaim> proposeClaim(String claimId) {

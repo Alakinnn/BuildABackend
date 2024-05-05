@@ -1,4 +1,4 @@
-package com.group07.buildabackend.backend.service.insuranceSuveyorService;
+package com.group07.buildabackend.backend.service.insuranceSurveyorService;
 
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;

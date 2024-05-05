@@ -1,7 +1,6 @@
 
 package com.group07.buildabackend.backend.model.provider;
 
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import jakarta.persistence.*;
 
 @Entity

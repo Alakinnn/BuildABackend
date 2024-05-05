@@ -4,7 +4,6 @@ import com.group07.buildabackend.backend.cloudinary.CloudinaryUploader;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.validation.customExceptions.BadFormatException;
 
-import java.io.File;
 import java.util.Map;
 
 public class PdfUploadController extends CloudinaryUploader {

@@ -19,6 +19,7 @@ public class InsuranceClaimDTO {
     private String examDate;
 
     private InsuranceClaimStatus status = InsuranceClaimStatus.NEW;
+    private String note;
 
     private String receiverBankName;
 
@@ -92,9 +93,9 @@ public class InsuranceClaimDTO {
         this.receiverName = receiverName;
     }
 
-    public String getNotes() {return notes;}
+    public String getNote() {return note;}
 
-    public void setNotes(String notes) {this.notes = notes;}
+    public void setNote(String note) {this.note = note;}
 
     public List<File> getDocuments() {
         return documents;

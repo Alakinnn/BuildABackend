@@ -24,13 +24,20 @@ public class FileListMapper {
         }
     }
 
-    public static List<Document> mapToDocumentList(List<File> documents) {
+    public static List<Document> mapToDocumentList(List<File> documents) throws Exception {
+        // Uploads a List of Files to cloud provider and return a List of Documents
+
         List<Document> documentEntityList = new ArrayList<>();
         for (int i = 0; i < documents.toArray().length; i++) {
             File document = documents.get(i);
             String documentAbsPath = document.getAbsolutePath();
 
             Response<Map> response = PdfUploadController.uploadPdf(documentAbsPath);
+
+            if (response.getData() == null) {
+                // Something went wrong with the upload process
+                throw new Exception(response.getResponseMsg());
+            }
 
             DocumentDTO documentDTO = new DocumentDTO();
             documentDTO.setTitle((String) response.getData().get("original_filename"));

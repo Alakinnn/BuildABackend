@@ -16,35 +16,44 @@ import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.m
 public class CreateClaimService extends PolicyHolderService{
     public static Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         Response<InsuranceClaim> response = new Response<>(null);
+
         try {
+            // Find the customer
             PolicyHolder customer = holderRepository.retrieveById(insuranceClaimDTO.getCustomerId());
 
             if (customer == null) {
                 throw new InvalidInputException("Customer not found", 400);
             }
 
+            // Validate inputs
             PolicyHolderValidator.validateInput(insuranceClaimDTO);
 
+            // Upload documents
             List<Document> documentEntityList = mapToDocumentList(insuranceClaimDTO.getDocuments());
 
-
+            // Map to entity
             InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
             insuranceClaim.setCustomer(customer);
 
+            // Add documents to entity
             for (Document document : documentEntityList) {
                 insuranceClaim.addDocument(document);
             }
 
+            // Add new claim to DB
             insuranceClaimRepository.add(insuranceClaim);
 
+            // Return response
             response.setData(insuranceClaim);
             response.setResponseMsg("Success");
             response.setStatusCode(200);
 
-
         } catch (InvalidInputException e) {
             response.setResponseMsg(e.getMessage());
             response.setStatusCode(e.getErrorCode());
+            response.setData(null);
+        } catch (Exception e) {
+            response.setResponseMsg(e.getMessage());
             response.setData(null);
         }
 

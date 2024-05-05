@@ -37,6 +37,9 @@ public class AddClaimInfoService extends PolicyHolderService {
             response.setData(null);
             response.setResponseMsg(e.getMessage());
             response.setStatusCode(e.getErrorCode());
+        } catch (Exception e) {
+            response.setData(null);
+            response.setResponseMsg(e.getMessage());
         }
         return response;
     }

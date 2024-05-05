@@ -44,6 +44,7 @@ public class InsuranceClaim {
     @Column(name = "receiver_name", nullable = false)
     private String receiverName;
 
+
     @OneToMany(orphanRemoval = true, mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Document> documents = new ArrayList<>();
 
@@ -117,6 +118,10 @@ public class InsuranceClaim {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+    public String getNotes() {return notes;}
+
+    public void setNotes(String notes) {this.notes = notes;}
 
     public List<Document> getDocuments() {
         return documents;

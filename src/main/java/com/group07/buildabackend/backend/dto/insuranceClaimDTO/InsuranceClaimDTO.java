@@ -30,8 +30,6 @@ public class InsuranceClaimDTO {
 
     private List<File> documents;
 
-
-
     private Customer customer;
     private List<Document> mappedDocumentList;
 
@@ -93,6 +91,10 @@ public class InsuranceClaimDTO {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+    public String getNotes() {return notes;}
+
+    public void setNotes(String notes) {this.notes = notes;}
 
     public List<File> getDocuments() {
         return documents;

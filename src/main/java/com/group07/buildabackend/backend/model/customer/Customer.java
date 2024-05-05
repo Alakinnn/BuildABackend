@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.model.customer;
 import com.group07.buildabackend.backend.model.SysUser;
+import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import jakarta.persistence.*;
 

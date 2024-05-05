@@ -19,7 +19,7 @@ public class ClaimRepository<T extends InsuranceClaim> extends Repository<T>{
 
     @Override
     public T retrieveById(String id) {
-            Query query = entityManager.createQuery("FROM insurance_claim ic WHERE ic.id=:id");
+            Query query = entityManager.createQuery("FROM InsuranceClaim ic WHERE ic.id=:id");
             query.setParameter("id", id);
             return (T) query.getSingleResult();
     }

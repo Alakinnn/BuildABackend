@@ -16,9 +16,6 @@ import java.util.List;
 import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
 public class CreateClaimService extends PolicyHolderService{
-    private static final PolicyHolderRepository<PolicyHolder> holderRepository = getHolderRepository();
-    private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = getInsuranceClaimRepository();
-
 
     public static Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         Response<InsuranceClaim> response = new Response<>(null);

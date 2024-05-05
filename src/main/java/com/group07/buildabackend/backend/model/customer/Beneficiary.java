@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.model.customer;
 
+import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,6 +10,10 @@ public abstract class Beneficiary extends Customer {
     @ManyToOne
     @JoinColumn(name = "policy_owner_id", referencedColumnName = "user_id")
     private PolicyOwner policyOwner;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_number", referencedColumnName = "card_number")
+    private InsuranceCard insuranceCard;
 
     @Column(name = "beneficiary_type")
     private String beneficiary_type;
@@ -29,5 +34,13 @@ public abstract class Beneficiary extends Customer {
 
     public void setBeneficiary_type(String beneficiary_type) {
         this.beneficiary_type = beneficiary_type;
+    }
+
+    public InsuranceCard getInsuranceCard() {
+        return insuranceCard;
+    }
+
+    public void setInsuranceCard(InsuranceCard insuranceCard) {
+        this.insuranceCard = insuranceCard;
     }
 }

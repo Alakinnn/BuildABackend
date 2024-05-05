@@ -12,8 +12,6 @@ import java.util.List;
 import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
 public class AddClaimInfoService extends PolicyHolderService {
-    private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = getInsuranceClaimRepository();
-
     public static Response<InsuranceClaim> addClaimInfoService(String claimId, List<File> documents) {
         Response<InsuranceClaim> response = new Response<>(null);
         try {

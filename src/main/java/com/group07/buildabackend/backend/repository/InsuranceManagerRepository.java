@@ -9,15 +9,15 @@ public class InsuranceManagerRepository <T extends InsuranceManager> extends Rep
 
     public void add(InsuranceClaim proposedClaim, String id){
         try{
-            EM.getTransaction().begin();
-            InsuranceManager im = EM.find(InsuranceManager.class, id);
+            entityManager.getTransaction().begin();
+            InsuranceManager im = entityManager.find(InsuranceManager.class, id);
             if(im != null){
                 im.getProposedClaims().add(proposedClaim);
             }
-            EM.persist(proposedClaim);
-            EM.getTransaction().commit();
+            entityManager.persist(proposedClaim);
+            entityManager.getTransaction().commit();
         } finally {
-            EM.close();
+            entityManager.close();
         }
     }
 

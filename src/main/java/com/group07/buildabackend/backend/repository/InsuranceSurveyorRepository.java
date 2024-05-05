@@ -15,11 +15,11 @@ public class InsuranceSurveyorRepository<T extends InsuranceSurveyor> extends Re
     @Override
     public T retrieveById(String id) {
         try{
-            Query query = EM.createNamedQuery("find surveyor by id");
+            Query query = entityManager.createNamedQuery("find surveyor by id");
             query.setParameter("id", id);
             return (T) query.getSingleResult();
         } finally{
-            EM.close();
+            entityManager.close();
         }
     }
 }

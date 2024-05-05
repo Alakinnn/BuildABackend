@@ -6,8 +6,6 @@ import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMap
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.repository.ClaimRepository;
-import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.backend.validation.PolicyHolderValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
@@ -16,7 +14,6 @@ import java.util.List;
 import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
 public class CreateClaimService extends PolicyHolderService{
-
     public static Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         Response<InsuranceClaim> response = new Response<>(null);
         try {

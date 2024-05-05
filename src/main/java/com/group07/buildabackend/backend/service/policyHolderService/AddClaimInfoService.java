@@ -3,7 +3,6 @@ package com.group07.buildabackend.backend.service.policyHolderService;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.io.File;

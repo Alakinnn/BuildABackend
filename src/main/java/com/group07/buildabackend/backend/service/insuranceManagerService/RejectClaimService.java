@@ -1,12 +1,12 @@
-package com.group07.buildabackend.backend.service.insuranceSuveyorService;
+package com.group07.buildabackend.backend.service.insuranceManagerService;
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class ProposeClaim extends InsuranceSurveyorService {
-    public Response<InsuranceClaim> proposeClaim(String surveyorId, String claimId){
+public class RejectClaimService extends InsuranceManagerService {
+    public static Response<InsuranceClaim> rejectClaim(String claimId) {
         Response<InsuranceClaim> response = new Response<>(null);
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveById(claimId);
@@ -15,10 +15,10 @@ public class ProposeClaim extends InsuranceSurveyorService {
                 throw new InvalidInputException("Claim not found", 400);
             }
 
-            claim.setStatus(InsuranceClaimStatus.PROPOSED);
+            claim.setStatus(InsuranceClaimStatus.REJECTED);
             insuranceClaimRepository.update(claim);
             response.setData(claim);
-            response.setResponseMsg("Successfully proposed claim!");
+            response.setResponseMsg("Successfully rejected claim!");
             response.setStatusCode(200);
         } catch (InvalidInputException e) {
             response.setStatusCode(e.getErrorCode());
@@ -26,6 +26,5 @@ public class ProposeClaim extends InsuranceSurveyorService {
         }
 
         return response;
-
     }
 }

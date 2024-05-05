@@ -7,8 +7,8 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import static com.group07.buildabackend.backend.service.insuranceSuveyorService.InsuranceSurveyorService.insuranceClaimRepository;
 
-public class RequestClaimInfo {
-    public Response<InsuranceClaim> requestClaimInfo(String claimId, String notes) {
+public class RequestClaimInfoService {
+    public static Response<InsuranceClaim> requestClaimInfo(String claimId, String note) {
         Response<InsuranceClaim> response = new Response<>(null);
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveById(claimId);
@@ -16,7 +16,7 @@ public class RequestClaimInfo {
             if (claim == null) {
                 throw new InvalidInputException("Claim not found", 400);
             }
-            claim.setNotes(notes);
+            claim.setNote(note);
             claim.setStatus(InsuranceClaimStatus.INFO_MISSING);
             insuranceClaimRepository.update(claim);
             response.setData(claim);

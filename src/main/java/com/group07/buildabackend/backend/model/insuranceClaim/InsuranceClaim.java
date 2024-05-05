@@ -124,7 +124,7 @@ public class InsuranceClaim {
 
     public String getNote() {return note;}
 
-    public void setNotes(String notes) {this.note = note;}
+    public void setNote(String note) {this.note = note;}
 
     public List<Document> getDocuments() {
         return documents;

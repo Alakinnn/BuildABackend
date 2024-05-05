@@ -11,13 +11,11 @@ import java.util.List;
 public class PolicyHolderController {
 
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
-        Response<InsuranceClaim> serviceResponse = CreateClaimService.createClaim(insuranceClaimDTO);
-        return serviceResponse;
+        return CreateClaimService.createClaim(insuranceClaimDTO);
     }
 
     public Response<InsuranceClaim> addClaimInfo(String claimId, List<File> documents) {
-        Response<InsuranceClaim> serviceResponse = AddClaimInfoService.addClaimInfoService(claimId, documents);
-        return serviceResponse;
+        return AddClaimInfoService.addClaimInfoService(claimId, documents);
     }
 
 }

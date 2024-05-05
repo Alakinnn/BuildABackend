@@ -1,9 +1,6 @@
 package com.group07.buildabackend.backend.repository;
 
-import com.group07.buildabackend.backend.connectionManager.DatabaseFactoryManager;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
-import com.group07.buildabackend.backend.model.insuranceClaim.Document;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
 import java.util.List;

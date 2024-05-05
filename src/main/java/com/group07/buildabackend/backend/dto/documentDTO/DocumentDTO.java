@@ -2,11 +2,12 @@ package com.group07.buildabackend.backend.dto.documentDTO;
 
 
 public class DocumentDTO {
+    private String id;
     private String title;
 
-    private byte[] url;
+    private String url;
 
-    public DocumentDTO(String title, byte[] url) {
+    public DocumentDTO(String title, String url) {
         this.title = title;
         this.url = url;
     }
@@ -23,11 +24,19 @@ public class DocumentDTO {
         this.title = title;
     }
 
-    public byte[] getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(byte[] url) {
+    public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

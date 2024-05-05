@@ -1,10 +1,10 @@
 package com.group07.buildabackend;
 
-import com.group07.buildabackend.gui.CreateClaimPage;
-import com.group07.buildabackend.gui.Page;
+import com.group07.buildabackend.gui.SceneManager;
+import com.group07.buildabackend.gui.pages.Page;
+import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
+import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,12 +15,9 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("gui/CreateClaimForm.fxml"));
-        Parent root = (Parent) (new CreateClaimPage()).getRoot();
-        Scene scene = new Scene(root);
+    public void start(Stage stage) {
+        Stage currentStage = SceneManager.getInstance().getCurrentStage();
 
-        stage.setScene(scene);
-        stage.show();
+        currentStage.show();
     }
 }

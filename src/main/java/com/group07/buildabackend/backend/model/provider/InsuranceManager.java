@@ -1,3 +1,4 @@
+
 package com.group07.buildabackend.backend.model.provider;
 
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -25,3 +26,4 @@ public class InsuranceManager extends Provider {
         this.proposedClaims = proposedClaims;
     }
 }
+

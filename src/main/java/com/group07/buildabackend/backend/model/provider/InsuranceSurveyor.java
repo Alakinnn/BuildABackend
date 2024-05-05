@@ -1,3 +1,4 @@
+
 package com.group07.buildabackend.backend.model.provider;
 
 import jakarta.persistence.Entity;

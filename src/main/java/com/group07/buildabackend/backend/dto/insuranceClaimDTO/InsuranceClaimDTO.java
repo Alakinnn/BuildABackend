@@ -4,16 +4,19 @@ import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class InsuranceClaimDTO {
+
+    private String id;
     private double amount;
 
-    private LocalDate claimDate;
+    private String claimDate;
 
-    private LocalDate examDate;
+    private String examDate;
 
     private InsuranceClaimStatus status = InsuranceClaimStatus.NEW;
 
@@ -23,21 +26,12 @@ public class InsuranceClaimDTO {
 
     private String receiverName;
 
-    private String notes;
+    private String customerId;
+
+    private List<File> documents;
 
     private Customer customer;
-
-    private List<Document> documents;
-
-    public InsuranceClaimDTO(double amount, LocalDate examDate, String receiverBankName, String receiverBankNumber, String receiverName, Customer customer) {
-        this.amount = amount;
-        this.examDate = examDate;
-        this.claimDate = claimDateGenerator();
-        this.receiverBankName = receiverBankName;
-        this.receiverBankNumber = receiverBankNumber;
-        this.receiverName = receiverName;
-        this.customer = customer;
-    }
+    private List<Document> mappedDocumentList;
 
     public InsuranceClaimDTO() {
     }
@@ -50,19 +44,19 @@ public class InsuranceClaimDTO {
         this.amount = amount;
     }
 
-    public LocalDate getClaimDate() {
+    public String getClaimDate() {
         return claimDate;
     }
 
-    public void setClaimDate(LocalDate claimDate) {
+    public void setClaimDate(String claimDate) {
         this.claimDate = claimDate;
     }
 
-    public LocalDate getExamDate() {
+    public String getExamDate() {
         return examDate;
     }
 
-    public void setExamDate(LocalDate examDate) {
+    public void setExamDate(String examDate) {
         this.examDate = examDate;
     }
 
@@ -102,6 +96,41 @@ public class InsuranceClaimDTO {
 
     public void setNotes(String notes) {this.notes = notes;}
 
+    public List<File> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<File> documents) {
+        this.documents = documents;
+    }
+
+    private LocalDate claimDateGenerator() {
+        return LocalDate.now();
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public List<Document> getMappedDocumentList() {
+        return mappedDocumentList;
+    }
+
+    public void setMappedDocumentList(List<Document> mappedDocumentList) {
+        this.mappedDocumentList = mappedDocumentList;
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -110,15 +139,4 @@ public class InsuranceClaimDTO {
         this.customer = customer;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
-
-    private LocalDate claimDateGenerator() {
-        return LocalDate.now();
-    }
 }

@@ -1,22 +1,23 @@
 package com.group07.buildabackend.backend.controller;
 
-import com.group07.buildabackend.backend.model.insuranceClaim.Document;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.service.PolicyHolderService;
+import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInfoService;
+import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
 
 import java.io.File;
 import java.util.List;
 
 public class PolicyHolderController {
-    private final PolicyHolderService policyHolderService = new PolicyHolderService();
 
-    public InsuranceClaim createClaim(String customerId, String receiverBankName, String receiverBankNumber, String receiverName, double claimAmount, String examDate, List<File> documents) {
-        InsuranceClaim insuranceClaim = policyHolderService.createClaim(customerId, receiverBankName, receiverBankNumber, receiverName, claimAmount, examDate, documents);
-        return insuranceClaim;
+    public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
+        Response<InsuranceClaim> serviceResponse = CreateClaimService.createClaim(insuranceClaimDTO);
+        return serviceResponse;
     }
 
-    public InsuranceClaim addClaimInfo(String claimId, List<File> documents) {
-        InsuranceClaim insuranceClaim = policyHolderService.addClaimInfo(claimId, documents);
-        return insuranceClaim;
+    public Response<InsuranceClaim> addClaimInfo(String claimId, List<File> documents) {
+        Response<InsuranceClaim> serviceResponse = AddClaimInfoService.addClaimInfoService(claimId, documents);
+        return serviceResponse;
     }
+
 }

@@ -1,61 +1,55 @@
 package com.group07.buildabackend.backend.model.insuranceClaim;
 
 import com.group07.buildabackend.backend.model.customer.Customer;
+import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Table(name = "insurance_claim", schema = "public")
 public class InsuranceClaim {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(
+            name = CustomIDGenerator.GENERATOR_NAME,
+            strategy = "com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator",
+            parameters = {@org.hibernate.annotations.Parameter(name = CustomIDGenerator.PREFIX_PARAM, value = "c_")})
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = CustomIDGenerator.GENERATOR_NAME)
+    @Column(name = "claim_id", nullable = false)
     private String claimId;
 
-    @Column(nullable = false)
+    @Column(name = "amount", nullable = false)
     private double amount;
 
-    @Column(nullable = false)
+    @Column(name = "claim_date", nullable = false)
     private LocalDate claimDate;
 
+    @Column(name = "exam_date", nullable = false)
     private LocalDate examDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     private InsuranceClaimStatus status = InsuranceClaimStatus.NEW;
 
-    @Column(nullable = false)
+    @Column(name = "receiver_bank_name", nullable = false)
     private String receiverBankName;
 
-    @Column(nullable = false)
+    @Column(name = "receiver_bank_number", nullable = false)
     private String receiverBankNumber;
 
-    @Column(nullable = false)
+    @Column(name = "receiver_name", nullable = false)
     private String receiverName;
 
-    @Column
-    private String notes;
 
-    @OneToMany(mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-        name="CLAIM_DOCUMENT",
-        joinColumns = {
-                @JoinColumn(
-                        name = "CLAIM_ID"
-                )
-        },
-        inverseJoinColumns = {
-                @JoinColumn(
-                        name = "DOCUMENT_ID"
-                )
-        }
+    @OneToMany(orphanRemoval = true, mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Document> documents = new ArrayList<>();
 
-    )
-    private List<Document> documents;
-
-    @OneToOne
-    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "customerId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", referencedColumnName = "user_Id")
     private Customer customer;
 
     public InsuranceClaim() {
@@ -138,6 +132,40 @@ public class InsuranceClaim {
     }
 
     public void addDocument(Document document) {
-        this.documents.add(document);
+        if (this.documents == null) {
+            this.documents = new ArrayList<>();
+        }
+        if (this.documents.contains(document)) {
+            return;
+        }
+        documents.add(document);
+        document.setInsuranceClaim(this);
+    }
+
+    public void removeDocument(Document document) {
+        if (!documents.contains(document))
+            return ;
+        documents.remove(document);
+        document.setInsuranceClaim(null);
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    //    Reference for bidirectional, "Many" side's setter: https://github.com/SomMeri/org.meri.jpa.tutorial/blob/master/src/main/java/org/meri/jpa/relationships/entities/bestpractice/SafePerson.java
+    public void setCustomer(Customer customer) {
+        if (sameAsFormer(customer))
+            return ;
+        Customer oldCustomer = this.customer;
+        this.customer = customer;
+        if (oldCustomer!=null)
+            oldCustomer.removeInsuranceClaim(this);
+        if (customer!=null)
+            customer.addInsuranceClaim(this);
+    }
+
+    private boolean sameAsFormer(Customer newCustomer) {
+        return Objects.equals(customer, newCustomer);
     }
 }

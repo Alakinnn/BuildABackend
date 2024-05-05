@@ -75,5 +75,4 @@ public class Document {
     private boolean sameAsFormer(InsuranceClaim newInsuranceClaim) {
         return Objects.equals(insuranceClaim, newInsuranceClaim);
     }
-
 }

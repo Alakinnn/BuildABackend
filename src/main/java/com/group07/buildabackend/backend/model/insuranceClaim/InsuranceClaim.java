@@ -134,6 +134,8 @@ public class InsuranceClaim {
         this.documents = documents;
     }
 
+    //    Reference for bidirectional, "One" side's setter: https://github.com/SomMeri/org.meri.jpa.tutorial/blob/master/src/main/java/org/meri/jpa/relationships/entities/bestpractice/SafePerson.java
+
     public void addDocument(Document document) {
         if (this.documents == null) {
             this.documents = new ArrayList<>();

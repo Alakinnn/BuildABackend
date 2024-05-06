@@ -13,4 +13,8 @@ public class DatabaseFactoryManager {
         }
         return emf;
     }
+
+    public static void connectDB() {
+        emf = Persistence.createEntityManagerFactory("com.group07");
+    }
 }

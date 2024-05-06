@@ -21,12 +21,12 @@ public class AddClaimInfoService extends PolicyHolderService {
         try {
             InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveById(claimId);
 
-            if (insuranceClaim.getStatus() != InsuranceClaimStatus.INFO_MISSING) {
-                throw new InvalidInputException("Can not add information to this claim", 400);
-            }
-
             if (insuranceClaim == null) {
                 throw new InvalidInputException("Claim not found", 400);
+            }
+
+            if (insuranceClaim.getStatus() != InsuranceClaimStatus.INFO_MISSING) {
+                throw new InvalidInputException("Can not add information to this claim", 400);
             }
 
             response.setData(insuranceClaim);

@@ -15,6 +15,10 @@ public class ApproveClaimService extends InsuranceManagerService {
                 throw new InvalidInputException("Claim not found", 400);
             }
 
+            if (claim.getStatus() != InsuranceClaimStatus.PROPOSED) {
+                throw new InvalidInputException("Can not approve this claim.", 400);
+            }
+
             claim.setStatus(InsuranceClaimStatus.APPROVED);
             insuranceClaimRepository.update(claim);
             response.setData(claim);

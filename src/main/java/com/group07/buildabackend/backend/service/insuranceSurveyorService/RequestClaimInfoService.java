@@ -17,12 +17,12 @@ public class RequestClaimInfoService {
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveById(claimId);
 
-            if (claim.getStatus() != InsuranceClaimStatus.NEW) {
-                throw new InvalidInputException("Can not request this claim.", 400);
-            }
-
             if (claim == null) {
                 throw new InvalidInputException("Claim not found", 404);
+            }
+
+            if (claim.getStatus() != InsuranceClaimStatus.NEW) {
+                throw new InvalidInputException("Can not request this claim.", 400);
             }
 
             claim.setNote(notes);

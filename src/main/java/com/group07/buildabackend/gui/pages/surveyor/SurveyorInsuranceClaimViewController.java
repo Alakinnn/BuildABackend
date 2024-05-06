@@ -4,12 +4,15 @@ import com.group07.buildabackend.backend.controller.InsuranceSurveyorController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.ProposeClaimDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
+import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -20,34 +23,27 @@ import java.util.ResourceBundle;
 public class SurveyorInsuranceClaimViewController implements Initializable, ComponentController {
 
     @FXML
-    public Text claimId;
+    private Text claimId;
     @FXML
-    public TextField statusField;
+    private TextField statusField;
     @FXML
-    public TextField claimAmountField;
+    private TextField claimAmountField;
     @FXML
-    public TextField examDateField;
+    private TextField examDateField;
     @FXML
-    public TextField claimDateField;
+    private TextField claimDateField;
     @FXML
-    public TextField receiverNameField;
+    private TextField receiverNameField;
     @FXML
-    public TextField accountNumberField;
+    private TextField accountNumberField;
     @FXML
-    public TextField bankNameField;
-    @FXML
-    public ChoiceBox<ChoiceField<String>> documentChoice;
-
+    private TextField bankNameField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-
-    public void handleDocumentSelection(ActionEvent actionEvent) {
-        // TODO: Backend method to retrieve document
-    }
 
     public void handleProposeClaim(ActionEvent actionEvent) {
         InsuranceSurveyorController controller = new InsuranceSurveyorController();
@@ -66,7 +62,8 @@ public class SurveyorInsuranceClaimViewController implements Initializable, Comp
     }
 
     public void handleRequestInfo(ActionEvent actionEvent) {
-
+        RequestClaimInfoPage page = new RequestClaimInfoPage(claimId.getText());
+        SceneManager.getInstance().switchToPage(page);
     }
 
     public void setClaimId(String claimId) {

@@ -92,7 +92,6 @@ public class CreateClaimFormController extends FormController implements Initial
             dto.setReceiverBankNumber(accountNumberField.getText());
             dto.setDocuments(docUploader.getUploadedFiles());
 
-            // TODO: pass request to backend controller
             PolicyHolderController controller = new PolicyHolderController();
             Response<InsuranceClaim> res = controller.createClaim(dto);
 

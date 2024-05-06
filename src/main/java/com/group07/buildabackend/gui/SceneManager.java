@@ -36,6 +36,13 @@ public class SceneManager {
         currentStage.show();
     }
 
+    public void switchToPage(Page page) {
+        currentScene = new Scene((Parent) page.getRoot());
+
+        currentStage.setScene(currentScene);
+        currentStage.show();
+    }
+
     public Scene getCurrentScene() {
         return currentScene;
     }

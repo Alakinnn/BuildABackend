@@ -15,6 +15,10 @@ public class RejectClaimService extends InsuranceManagerService {
                 throw new InvalidInputException("Claim not found", 400);
             }
 
+            if (claim.getStatus() != InsuranceClaimStatus.PROPOSED) {
+                throw new InvalidInputException("Can not reject this claim.", 400);
+            }
+
             claim.setStatus(InsuranceClaimStatus.REJECTED);
             insuranceClaimRepository.update(claim);
             response.setData(claim);

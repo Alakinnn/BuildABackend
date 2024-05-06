@@ -25,9 +25,9 @@ import java.util.ResourceBundle;
 
 public class AddClaimInfoFormController extends FormController implements Initializable, ComponentController {
     @FXML
-    public Text claimId;
+    private Text claimId;
     @FXML
-    public TextArea notes;
+    private TextArea notes;
     @FXML
     private AnchorPane uploadedDocContainer;
     private FileUpload docUploader;

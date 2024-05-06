@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RequestClaimInfoFormController extends FormController implements ComponentController, Initializable {
-    public TextArea notes;
+    private TextArea notes;
     @FXML
     private Text claimId;
 

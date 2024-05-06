@@ -7,14 +7,15 @@ import com.group07.buildabackend.gui.pages.claim.CreateClaimForm;
 import javafx.scene.Node;
 
 public class ManagerInsuranceClaimViewPage extends Page {
-    public ManagerInsuranceClaimViewPage() {
+    private String claimId;
+    public ManagerInsuranceClaimViewPage(String claimId) {
         super();
+        this.claimId = claimId;
     }
 
     @Override
     public Node getRoot() {
-
-        root = new ManagerInsuranceClaimView().getRoot();
+        root = new ManagerInsuranceClaimView(claimId).getRoot();
         Page page = new HeaderDecorator(new Page(root), "Manager: View a claim");
         page = new NavDecorator(page);
 

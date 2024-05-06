@@ -14,6 +14,9 @@ public abstract class Customer extends SysUser {
     @OneToMany(orphanRemoval = true, mappedBy = "customer", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<InsuranceClaim> insuranceClaims = new HashSet<>();
 
+    @Column(name = "customer_type")
+    private String customerType;
+
     public Set<InsuranceClaim> getInsuranceClaim() {
         return insuranceClaims;
     }
@@ -34,4 +37,11 @@ public abstract class Customer extends SysUser {
         insuranceClaim.setCustomer(null);
     }
 
+    public String getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
+    }
 }

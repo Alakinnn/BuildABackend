@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+import com.group07.buildabackend.backend.controller.PolicyHolderController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
@@ -22,9 +26,9 @@ import java.util.ResourceBundle;
 
 public class AddClaimInfoFormController extends FormController<InsuranceClaim> implements Initializable, ComponentController {
     @FXML
-    public Text claimId;
+    private Text claimId;
     @FXML
-    public TextArea notes;
+    private TextArea notes;
     @FXML
     private AnchorPane uploadedDocContainer;
     private FileUpload docUploader;

@@ -3,7 +3,6 @@ package com.group07.buildabackend.backend.model.customer;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,9 +20,22 @@ public class PolicyOwner extends Customer{
         return beneficiaries;
     }
 
-    public void addBeneficiaries(Beneficiary beneficiary) {
-        this.beneficiaries.add(beneficiary);
+    public void addBeneficiary(Beneficiary beneficiary) {
+        if (this.beneficiaries == null) {
+            this.beneficiaries = new HashSet<>();
+        }
+        if (this.beneficiaries.contains(beneficiary)) {
+            return;
+        }
+        beneficiaries.add(beneficiary);
         beneficiary.setPolicyOwner(this);
+    }
+
+    public void removeBeneficiary(Beneficiary beneficiary) {
+        if (!beneficiaries.contains(beneficiary))
+            return ;
+        beneficiaries.remove(beneficiary);
+        beneficiary.setPolicyOwner(null);
     }
 
     public double getYearlyRate() {

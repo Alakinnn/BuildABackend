@@ -1,64 +1,71 @@
 package com.group07.buildabackend.gui.pages.manager;
 
+import com.group07.buildabackend.backend.controller.InsuranceManagerController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ManagerInsuranceClaimViewController implements Initializable, ComponentController {
     @FXML
-    public ChoiceBox<ChoiceField<String>> claimChoice;
+    private Text claimId;
     @FXML
-    public TextField statusField;
+    private TextField statusField;
     @FXML
-    public TextField claimAmountField;
+    private TextField claimAmountField;
     @FXML
-    public TextField examDateField;
+    private TextField examDateField;
     @FXML
-    public TextField claimDateField;
+    private TextField claimDateField;
     @FXML
-    public TextField receiverNameField;
+    private TextField receiverNameField;
     @FXML
-    public TextField accountNumberField;
+    private TextField accountNumberField;
     @FXML
-    public TextField bankNameField;
-    @FXML
-    public ChoiceBox<ChoiceField<String>> documentChoice;
+    private TextField bankNameField;
 
-//    TODO: I think there should be a field to hold the claim being viewed
-
-//    private ClaimDTO claim;
     public void rejectClaim(ActionEvent actionEvent) {
+        InsuranceManagerController controller = new InsuranceManagerController();
+        String id = claimId.getText();
+        Response<InsuranceClaim> res = controller.rejectClaim(id);
+
+        if (res.getData() == null) {
+            AlertManager.showError(res.getResponseMsg());
+            return;
+        }
+
+        AlertManager.showInfo(res.getResponseMsg());
     }
 
     public void approveClaim(ActionEvent actionEvent) {
+        InsuranceManagerController controller = new InsuranceManagerController();
+        String id = claimId.getText();
+        Response<InsuranceClaim> res = controller.approveClaim(id);
+
+        if (res.getData() == null) {
+            AlertManager.showError(res.getResponseMsg());
+            return;
+        }
+
+        AlertManager.showInfo(res.getResponseMsg());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        claimChoice.getItems().add(new ChoiceField<>("f123", "123"));
-        claimChoice.getItems().add(new ChoiceField<>("f234", "234"));
-        claimChoice.getItems().add(new ChoiceField<>("f567", "567"));
+
     }
 
-    public void handleClaimSelection(ActionEvent actionEvent) {
-        String selectedClaimId = claimChoice.getValue().getValue();
-
-//        ClaimInfoResponse claim = _beController_.find(selectedClaimId);
-
-        // Populate text fields with claim data
-//        statusField.setText(claim.getStatus());
-//        claimAmountField.setText(String.valueOf(claim.getClaimAmount()));
-        // others
-    }
-
-    public void handleDocumentSelection(ActionEvent actionEvent) {
-        // TODO: Backend method to retrieve document
+    public void setClaimId(String claimId) {
+        this.claimId.setText(claimId);
     }
 }

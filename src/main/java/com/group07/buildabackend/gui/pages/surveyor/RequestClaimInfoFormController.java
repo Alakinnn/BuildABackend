@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.surveyor;
 
+import com.group07.buildabackend.backend.controller.InsuranceSurveyorController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.RequestClaimInfoDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormTextArea;

@@ -1,65 +1,72 @@
 package com.group07.buildabackend.gui.pages.surveyor;
 
+import com.group07.buildabackend.backend.controller.InsuranceSurveyorController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.ProposeClaimDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
+import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SurveyorInsuranceClaimViewController implements Initializable, ComponentController {
-    @FXML
-    public ChoiceBox<ChoiceField<String>> claimChoice;
-    @FXML
-    public TextField statusField;
-    @FXML
-    public TextField claimAmountField;
-    @FXML
-    public TextField examDateField;
-    @FXML
-    public TextField claimDateField;
-    @FXML
-    public TextField receiverNameField;
-    @FXML
-    public TextField accountNumberField;
-    @FXML
-    public TextField bankNameField;
-    @FXML
-    public ChoiceBox<ChoiceField<String>> documentChoice;
 
-//    TODO: I think there should be a field to hold the claim being viewed
-
-    //    private ClaimDTO claim;
+    @FXML
+    private Text claimId;
+    @FXML
+    private TextField statusField;
+    @FXML
+    private TextField claimAmountField;
+    @FXML
+    private TextField examDateField;
+    @FXML
+    private TextField claimDateField;
+    @FXML
+    private TextField receiverNameField;
+    @FXML
+    private TextField accountNumberField;
+    @FXML
+    private TextField bankNameField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        claimChoice.getItems().add(new ChoiceField<>("f123", "123"));
-        claimChoice.getItems().add(new ChoiceField<>("f234", "234"));
-        claimChoice.getItems().add(new ChoiceField<>("f567", "567"));
+
     }
 
-    public void handleClaimSelection(ActionEvent actionEvent) {
-        String selectedClaimId = claimChoice.getValue().getValue();
-
-//        ClaimInfoResponse claim = _beController_.find(selectedClaimId);
-
-        // Populate text fields with claim data
-//        statusField.setText(claim.getStatus());
-//        claimAmountField.setText(String.valueOf(claim.getClaimAmount()));
-        // others
-    }
-
-    public void handleDocumentSelection(ActionEvent actionEvent) {
-        // TODO: Backend method to retrieve document
-    }
 
     public void handleProposeClaim(ActionEvent actionEvent) {
+        InsuranceSurveyorController controller = new InsuranceSurveyorController();
+
+        ProposeClaimDTO dto = new ProposeClaimDTO();
+        dto.setClaimId(claimId.getText());
+
+        Response<InsuranceClaim> res = controller.proposeClaim(dto);
+
+        if (res.getData() == null) {
+            AlertManager.showError(res.getResponseMsg());
+            return;
+        }
+
+        AlertManager.showInfo(res.getResponseMsg());
     }
 
     public void handleRequestInfo(ActionEvent actionEvent) {
+        RequestClaimInfoPage page = new RequestClaimInfoPage(claimId.getText());
+        SceneManager.getInstance().switchToPage(page);
+    }
+
+    public void setClaimId(String claimId) {
+        this.claimId.setText(claimId);
     }
 }

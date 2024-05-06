@@ -1,6 +1,9 @@
 package com.group07.buildabackend.backend.model.customer;
 
+import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import jakarta.persistence.*;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "beneficiary", schema = "public")
@@ -10,24 +13,46 @@ public abstract class Beneficiary extends Customer {
     @JoinColumn(name = "policy_owner_id", referencedColumnName = "user_id")
     private PolicyOwner policyOwner;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_number", referencedColumnName = "card_number")
+    private InsuranceCard insuranceCard;
+
     @Column(name = "beneficiary_type")
-    private String beneficiary_type;
+    private String beneficiaryType;
 
     // Other properties, getters, setters, etc.
 
     public PolicyOwner getPolicyOwner() {
         return policyOwner;
     }
+    public String getBeneficiaryType() {
+        return beneficiaryType;
+    }
+
+    public void setBeneficiaryType(String beneficiary_type) {
+        this.beneficiaryType = beneficiary_type;
+    }
+
+    public InsuranceCard getInsuranceCard() {
+        return insuranceCard;
+    }
+
+    public void setInsuranceCard(InsuranceCard insuranceCard) {
+        this.insuranceCard = insuranceCard;
+    }
 
     public void setPolicyOwner(PolicyOwner policyOwner) {
+        if (sameAsFormer(policyOwner))
+            return ;
+        PolicyOwner oldPolicyOwner = this.policyOwner;
         this.policyOwner = policyOwner;
+        if (oldPolicyOwner!=null)
+            oldPolicyOwner.removeBeneficiary(this);
+        if (policyOwner!=null)
+            policyOwner.addBeneficiary(this);
     }
 
-    public String getBeneficiary_type() {
-        return beneficiary_type;
-    }
-
-    public void setBeneficiary_type(String beneficiary_type) {
-        this.beneficiary_type = beneficiary_type;
+    private boolean sameAsFormer(PolicyOwner newPolicyOwner) {
+        return Objects.equals(policyOwner, newPolicyOwner);
     }
 }

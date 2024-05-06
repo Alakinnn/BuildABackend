@@ -19,6 +19,7 @@ public class InsuranceClaimDTO {
     private String examDate;
 
     private InsuranceClaimStatus status = InsuranceClaimStatus.NEW;
+    private String note;
 
     private String receiverBankName;
 
@@ -29,8 +30,6 @@ public class InsuranceClaimDTO {
     private String customerId;
 
     private List<File> documents;
-
-
 
     private Customer customer;
     private List<Document> mappedDocumentList;
@@ -93,6 +92,10 @@ public class InsuranceClaimDTO {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+    public String getNote() {return note;}
+
+    public void setNote(String note) {this.note = note;}
 
     public List<File> getDocuments() {
         return documents;

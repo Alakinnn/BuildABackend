@@ -16,7 +16,11 @@
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <ChoiceBox fx:id="claimChoice" prefWidth="150.0" onAction="#handleClaimSelection" />
+                  <Text fx:id="claimId" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="514.0">
@@ -116,26 +120,16 @@
                             </font>
                         </Label>
                     </children></HBox>
-                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="514.0">
-                    <children>
-                        <Label prefHeight="20.0" prefWidth="81.0" text="Documents:" textFill="#000000b2">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                        <ChoiceBox fx:id="documentChoice" prefWidth="150.0" onAction="#handleDocumentSelection"/>
-                    </children>
-                </HBox>
                 <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="514.0">
                     <children>
-                        <Button fx:id="rejectBtn" mnemonicParsing="false" prefHeight="69.0" prefWidth="121.0" style="-fx-background-color: rgba(252, 68, 68);" text="Reject" onAction="#rejectClaim">
+                        <Button fx:id="rejectBtn" mnemonicParsing="false" onAction="#rejectClaim" prefHeight="69.0" prefWidth="121.0" style="-fx-background-color: rgba(252, 68, 68);" text="Reject">
                             <HBox.margin>
                                 <Insets bottom="10.0" right="50.0" />
                             </HBox.margin>
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font></Button>
-                        <Button fx:id="approveBtn" mnemonicParsing="false" prefHeight="69.0" prefWidth="121.0" style="-fx-background-color: rgba(86, 185, 56);" text="Approve" onAction="#approveClaim">
+                        <Button fx:id="approveBtn" mnemonicParsing="false" onAction="#approveClaim" prefHeight="69.0" prefWidth="121.0" style="-fx-background-color: rgba(86, 185, 56);" text="Approve">
                             <HBox.margin>
                                 <Insets bottom="10.0" />
                             </HBox.margin>

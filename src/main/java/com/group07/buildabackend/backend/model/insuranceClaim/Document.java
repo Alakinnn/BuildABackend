@@ -1,7 +1,8 @@
 package com.group07.buildabackend.backend.model.insuranceClaim;
 
-import com.group07.buildabackend.backend.model.customer.Customer;
+import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
 
@@ -9,16 +10,19 @@ import java.util.Objects;
 @Table(name = "claim_document", schema = "public")
 public class Document {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(
+            name = CustomIDGenerator.GENERATOR_NAME,
+            strategy = "com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator",
+            parameters = {@org.hibernate.annotations.Parameter(name = CustomIDGenerator.PREFIX_PARAM, value = "d_")})
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = CustomIDGenerator.GENERATOR_NAME)
     @Column(name = "document_id", nullable = false)
-    private int documentId;
+    private String documentId;
 
     @Column(nullable = false)
     private String title;
 
-    @Lob
     @Column(nullable = false)
-    private byte[] url;
+    private String url;
 
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -28,11 +32,11 @@ public class Document {
     public Document() {
     }
 
-    public int getDocumentId() {
+    public String getDocumentId() {
         return documentId;
     }
 
-    public void setDocumentId(int documentId) {
+    public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
 
@@ -44,11 +48,11 @@ public class Document {
         this.title = title;
     }
 
-    public byte[] getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(byte[] url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
@@ -71,5 +75,4 @@ public class Document {
     private boolean sameAsFormer(InsuranceClaim newInsuranceClaim) {
         return Objects.equals(insuranceClaim, newInsuranceClaim);
     }
-
 }

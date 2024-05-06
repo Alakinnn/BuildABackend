@@ -1,24 +1,32 @@
 package com.group07.buildabackend.backend.service.policyHolderService;
 
 import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.repository.ClaimRepository;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.io.File;
 import java.util.List;
 
-public class AddClaimInfoService extends PolicyHolderService {
-    private static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = getInsuranceClaimRepository();
+import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
-    public static Response<InsuranceClaim> addClaimInfoService(String claimId, List<File> documents) {
+public class AddClaimInfoService extends PolicyHolderService {
+    public static Response<InsuranceClaim> addClaimInfoService(AddClaimInfoDTO dto) {
         Response<InsuranceClaim> response = new Response<>(null);
+        String claimId = dto.getClaimId();
+        List<File> documents = dto.getDocuments();
+
         try {
             InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveById(claimId);
 
             if (insuranceClaim == null) {
                 throw new InvalidInputException("Claim not found", 400);
+            }
+
+            if (insuranceClaim.getStatus() != InsuranceClaimStatus.INFO_MISSING) {
+                throw new InvalidInputException("Can not add information to this claim", 400);
             }
 
             response.setData(insuranceClaim);
@@ -32,12 +40,18 @@ public class AddClaimInfoService extends PolicyHolderService {
                 insuranceClaim.addDocument(document);
             }
 
+            insuranceClaim.setStatus(InsuranceClaimStatus.NEW);
+
             insuranceClaimRepository.update(insuranceClaim);
+
+            response.setResponseMsg("Successfully added new document(s)");
+
             return response;
         } catch (InvalidInputException e) {
-            response.setData(null);
             response.setResponseMsg(e.getMessage());
             response.setStatusCode(e.getErrorCode());
+        } catch (Exception e) {
+            response.setResponseMsg(e.getMessage());
         }
         return response;
     }

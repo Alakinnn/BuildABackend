@@ -1,18 +1,20 @@
 package com.group07.buildabackend.backend.model;
 
 
+import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "sys_user", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class SysUser {
     @Id
-//    @GeneratedValue(generator = "randomStringIdGenerator")
-//    @GenericGenerator(
-//            name = "randomStringIdGenerator",
-//            strategy = "UserIdGenerator"
-//    )
+    @GenericGenerator(
+            name = CustomIDGenerator.GENERATOR_NAME,
+            strategy = "com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator",
+            parameters = {@org.hibernate.annotations.Parameter(name = CustomIDGenerator.PREFIX_PARAM, value = "u_")})
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = CustomIDGenerator.GENERATOR_NAME)
     @Column(name = "user_id")
     private String userId;
 

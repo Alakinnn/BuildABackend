@@ -16,7 +16,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="claimChoice" prefWidth="150.0" />
+                  <Text fx:id="claimId" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="514.0">
@@ -116,16 +116,6 @@
                      </font>
                   </Label>
                </children></HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="514.0">
-               <children>
-                  <Label prefHeight="20.0" prefWidth="81.0" text="Documents:" textFill="#000000b2">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="documentChoice" prefWidth="150.0" />
-               </children>
-            </HBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="514.0">
                <children>
                   <Button fx:id="requestBtn" mnemonicParsing="false" onAction="#handleRequestInfo" prefHeight="69.0" prefWidth="121.0" style="-fx-background-color: rgba(252, 68, 68);" text="Request Info">

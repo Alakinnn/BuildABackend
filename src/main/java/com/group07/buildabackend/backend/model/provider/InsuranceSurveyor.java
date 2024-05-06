@@ -1,11 +1,13 @@
-//package com.group07.buildabackend.backend.model.provider;
-//
-//import jakarta.persistence.DiscriminatorValue;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Table;
-//
-//@Entity
-//@Table(name = "insuranceSurveyor")
-//@DiscriminatorValue("SURVEYOR")
-//public class InsuranceSurveyor extends Provider{
-//}
+
+package com.group07.buildabackend.backend.model.provider;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "insurance_surveyor")
+@NamedQuery(name = "find surveyor by id", query = "SELECT is FROM InsuranceSurveyor is WHERE is.id=:id")
+public class InsuranceSurveyor extends Provider{
+    @ManyToOne
+    @JoinColumn(name = "insurance_manager_id", referencedColumnName = "user_id")
+    private InsuranceManager insuranceManager;
+}

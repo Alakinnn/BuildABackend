@@ -2,7 +2,15 @@ module com.group07.buildabackend {
     requires javafx.controls;
     requires javafx.fxml;
     requires jakarta.persistence;
-    
+    requires org.hibernate.orm.core;
+//    requires cloudinary.taglib;
+    requires cloudinary.core;
+    requires dotenv.java;
+
+    opens com.group07.buildabackend.backend.model to org.hibernate.orm.core;
+    opens com.group07.buildabackend.backend.model.customer;
+    opens com.group07.buildabackend.backend.model.insuranceClaim;
+
     opens com.group07.buildabackend to javafx.fxml;
     exports com.group07.buildabackend;
     exports com.group07.buildabackend.gui;

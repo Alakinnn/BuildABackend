@@ -1,11 +1,12 @@
 package com.group07.buildabackend.backend.model.insuranceClaim;
 
 import com.group07.buildabackend.backend.model.customer.Customer;
+import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,6 +14,11 @@ import java.util.Objects;
 @Table(name = "insurance_claim", schema = "public")
 public class InsuranceClaim {
     @Id
+    @GenericGenerator(
+            name = CustomIDGenerator.GENERATOR_NAME,
+            strategy = "com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator",
+            parameters = {@org.hibernate.annotations.Parameter(name = CustomIDGenerator.PREFIX_PARAM, value = "c_")})
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = CustomIDGenerator.GENERATOR_NAME)
     @Column(name = "claim_id", nullable = false)
     private String claimId;
 
@@ -37,6 +43,10 @@ public class InsuranceClaim {
 
     @Column(name = "receiver_name", nullable = false)
     private String receiverName;
+
+    @Column(name = "note", nullable = true)
+    private String note;
+
 
     @OneToMany(orphanRemoval = true, mappedBy = "insuranceClaim", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Document> documents = new ArrayList<>();
@@ -112,6 +122,10 @@ public class InsuranceClaim {
         this.receiverName = receiverName;
     }
 
+    public String getNote() {return note;}
+
+    public void setNote(String note) {this.note = note;}
+
     public List<Document> getDocuments() {
         return documents;
     }
@@ -119,6 +133,8 @@ public class InsuranceClaim {
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
     }
+
+    //    Reference for bidirectional, "One" side's setter: https://github.com/SomMeri/org.meri.jpa.tutorial/blob/master/src/main/java/org/meri/jpa/relationships/entities/bestpractice/SafePerson.java
 
     public void addDocument(Document document) {
         if (this.documents == null) {

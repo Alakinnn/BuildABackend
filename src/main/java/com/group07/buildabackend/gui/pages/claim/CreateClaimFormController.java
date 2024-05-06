@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.claim;
 
+import com.group07.buildabackend.backend.controller.PolicyHolderController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.*;
 import com.group07.buildabackend.gui.components.form.fields.FormChoiceBox;
@@ -74,7 +78,7 @@ public class CreateClaimFormController extends FormController<InsuranceClaim> im
     private void populateCustomerChoices() {
         // TODO: Add actual users
         insuredCustomerChoice.getItems().add(new ChoiceField<>("John - 123", "123"));
-        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - 456", "456"));
+        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - u_dfeaa167", "u_dfeaa167"));
         insuredCustomerChoice.getItems().add(new ChoiceField<>("Bob - 789", "789"));
     }
 

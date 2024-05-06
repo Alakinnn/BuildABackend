@@ -6,13 +6,15 @@ import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 
 public class SurveyorInsuranceClaimPage extends Page {
-    public SurveyorInsuranceClaimPage() {
+    private String claimId;
+    public SurveyorInsuranceClaimPage(String claimId) {
         super();
+        this.claimId = claimId;
     }
 
     @Override
     public Node getRoot() {
-            root = new SurveyorInsuranceClaimView().getRoot();
+        root = new SurveyorInsuranceClaimView(claimId).getRoot();
 
         Page page = new HeaderDecorator(new Page(root), "Surveyor: View claim");
         page = new NavDecorator(page);

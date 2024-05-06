@@ -1,12 +1,20 @@
 package com.group07.buildabackend.gui.components.form;
 
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.form.fields.FormField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
+import com.group07.buildabackend.gui.utils.AlertManager;
+import com.group07.buildabackend.gui.utils.FormSubmitter;
+import javafx.event.ActionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class FormController {
+public abstract class FormController<T> {
+    // T is the type that is returned after the form is successfully submitted
+
     protected List<FormField> requiredFields;
 
     public FormController() {
@@ -40,5 +48,18 @@ public class FormController {
         if (missingFields.size() > 0) {
             throw new MissingRequiredFieldException(missingFields);
         };
+    }
+
+    public abstract Response<T> sendRequest();
+
+    public void onSubmit(ActionEvent event) {
+        try {
+            checkRequiredFields();
+            FormSubmitter submitter = new FormSubmitter();
+            submitter.onSubmit(this::sendRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertManager.showError(e.getMessage());
+        }
     }
 }

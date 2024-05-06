@@ -16,8 +16,9 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RequestClaimInfoFormController extends FormController implements ComponentController, Initializable {
-    public TextArea notes;
+public class RequestClaimInfoFormController extends FormController<InsuranceClaim> implements ComponentController, Initializable {
+    @FXML
+    private TextArea notes;
     @FXML
     private Text claimId;
 
@@ -30,18 +31,13 @@ public class RequestClaimInfoFormController extends FormController implements Co
         addRequiredField(new FormTextArea(notes, "Notes"));
     }
 
-    public void onSubmit(ActionEvent event) {
-        try {
-            checkRequiredFields();
+    @Override
+    public Response<InsuranceClaim> sendRequest() {
+        RequestClaimInfoDTO dto = new RequestClaimInfoDTO();
+        dto.setClaimId(claimId.getText());
+        dto.setNotes(notes.getText());
 
-            ClaimRequestInfoRequest request = new ClaimRequestInfoRequest();
-            request.setClaimId(claimId.getText());
-            request.setNotes(notes.getText());
-
-            // TODO: pass to backend
-            AlertManager.showInfo("Requested claim information!");
-        } catch (Exception e) {
-            AlertManager.showInfo(e.getMessage());
-        }
+        InsuranceSurveyorController controller = new InsuranceSurveyorController();
+        return controller.requestClaimInfo(dto);
     }
 }

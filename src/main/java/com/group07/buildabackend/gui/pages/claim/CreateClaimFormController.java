@@ -6,26 +6,19 @@ import com.group07.buildabackend.gui.components.form.fields.FormChoiceBox;
 import com.group07.buildabackend.gui.components.form.fields.FormDatePicker;
 import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
-import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
-import com.group07.buildabackend.gui.sample.ClaimCreationRequest;
-import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateClaimFormController extends FormController implements Initializable, ComponentController {
+public class CreateClaimFormController extends FormController<InsuranceClaim> implements Initializable, ComponentController {
     @FXML
     private ChoiceBox<ChoiceField<String>> insuredCustomerChoice;
     @FXML
@@ -46,6 +39,21 @@ public class CreateClaimFormController extends FormController implements Initial
     public CreateClaimFormController() {
         super();
         docUploader = new FileUpload(new PDFFilterDecorator(new FileFilter()));
+    }
+
+    @Override
+    public Response<InsuranceClaim> sendRequest() {
+        InsuranceClaimDTO dto = new InsuranceClaimDTO();
+        dto.setCustomerId(insuredCustomerChoice.getValue().getValue());
+        dto.setAmount(Double.parseDouble(claimAmountField.getText()));
+        dto.setExamDate(examDatePicker.getValue().toString());
+        dto.setReceiverBankName(bankNameField.getText());
+        dto.setReceiverName(receiverNameField.getText());
+        dto.setReceiverBankNumber(accountNumberField.getText());
+        dto.setDocuments(docUploader.getUploadedFiles());
+
+        PolicyHolderController controller = new PolicyHolderController();
+        return controller.createClaim(dto);
     }
 
     @Override
@@ -74,28 +82,4 @@ public class CreateClaimFormController extends FormController implements Initial
     public void onUploadDocument() {
         docUploader.onUpload();
     }
-
-    public void onSubmit(ActionEvent event) {
-        try {
-            checkRequiredFields();
-
-            ClaimCreationRequest request = new ClaimCreationRequest();
-            request.setCustomerId(insuredCustomerChoice.getValue().getValue());
-            request.setClaimAmount(Double.parseDouble(claimAmountField.getText()));
-            request.setExamDate(examDatePicker.getValue());
-            request.setBankName(bankNameField.getText());
-            request.setReceiverName(receiverNameField.getText());
-            request.setAccountNumber(accountNumberField.getText());
-            request.setDocuments(docUploader.getUploadedFiles());
-
-            // TODO: pass request to backend controller
-
-
-            AlertManager.showInfo("Claim created successfully!");
-        } catch (Exception e) {
-            AlertManager.showError(e.getMessage());
-        }
-    }
-
-
 }

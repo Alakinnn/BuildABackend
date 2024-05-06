@@ -38,10 +38,10 @@ public class NavBarController implements Initializable, ComponentController {
         navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         
         addNavLink(new CreateClaimPage(), "Create Claim");
-        addNavLink(new RequestClaimInfoPage("123456"), "Request Claim Info");
-        addNavLink(new AddClaimInfoPage("123456"), "Add Claim Info");
-        addNavLink(new ManagerInsuranceClaimViewPage(), "Manager: View Claim");
-        addNavLink(new SurveyorInsuranceClaimPage(), "Surveyor: View Claim");
+        addNavLink(new RequestClaimInfoPage("c_e0258238"), "Request Claim Info");
+        addNavLink(new AddClaimInfoPage("c_e0258238"), "Add Claim Info");
+        addNavLink(new ManagerInsuranceClaimViewPage("c_4ae427d2"), "Manager: View Claim");
+        addNavLink(new SurveyorInsuranceClaimPage("c_ec347776"), "Surveyor: View Claim");
 
         navBox.getChildren().addAll(navLinks);
     }

@@ -20,10 +20,7 @@ public class NavLinkController implements ComponentController {
 
 
     public void onNavButtonClick(ActionEvent event) {
-        Scene scene = new Scene((Parent) page.getRoot());
-
-        SceneManager sceneManager = SceneManager.getInstance();
-        sceneManager.switchToScene(scene);
+        SceneManager.getInstance().switchToPage(page);
     }
 
     public void setPage(Page page) {

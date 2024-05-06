@@ -4,6 +4,7 @@ import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.io.File;
@@ -20,6 +21,10 @@ public class AddClaimInfoService extends PolicyHolderService {
         try {
             InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveById(claimId);
 
+            if (insuranceClaim.getStatus() != InsuranceClaimStatus.INFO_MISSING) {
+                throw new InvalidInputException("Can not add information to this claim", 400);
+            }
+
             if (insuranceClaim == null) {
                 throw new InvalidInputException("Claim not found", 400);
             }
@@ -34,6 +39,8 @@ public class AddClaimInfoService extends PolicyHolderService {
             for (Document document : documentEntityList) {
                 insuranceClaim.addDocument(document);
             }
+
+            insuranceClaim.setStatus(InsuranceClaimStatus.NEW);
 
             insuranceClaimRepository.update(insuranceClaim);
 

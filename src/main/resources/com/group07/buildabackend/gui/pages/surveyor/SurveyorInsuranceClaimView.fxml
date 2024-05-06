@@ -16,7 +16,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="claimChoice" prefWidth="150.0" />
+                  <Text fx:id="claimId" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="514.0">

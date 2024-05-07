@@ -34,7 +34,7 @@ public class InsuranceManagerRepository <T extends InsuranceManager> extends Rep
     }
 
     @Override
-    public List<T> retrieveClaimById(String id) {
+    public List<T> retrieveClaimsByUserId(String id) {
         return null;
     }
 }

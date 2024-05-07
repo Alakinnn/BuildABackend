@@ -1,24 +1,33 @@
 package com.group07.buildabackend.backend.validation;
 
-import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
+import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 public class PolicyHolderValidator {
-    public static void validateInput(InsuranceClaimDTO insuranceClaimDTO) throws InvalidInputException {
-        if (insuranceClaimDTO.getAmount() <= 0) {
-            throw new InvalidInputException("Amount must be greater than 0", 400);
+    public static void validateInput(PolicyHolderDTO policyHolderDTO) throws InvalidInputException {
+        if (policyHolderDTO.getAddress() == null) {
+            throw new InvalidInputException("Address is required", 400);
         }
-        if (insuranceClaimDTO.getExamDate() == null) {
-            throw new InvalidInputException("Exam date is required", 400);
+
+        if (policyHolderDTO.getEmail() == null) {
+            throw new InvalidInputException("Email is required", 400);
         }
-        if (insuranceClaimDTO.getReceiverBankName() == null) {
-            throw new InvalidInputException("Receiver bank name is required", 400);
+
+        if (policyHolderDTO.getFirstName() == null) {
+            throw new InvalidInputException("First name is required", 400);
         }
-        if (insuranceClaimDTO.getReceiverName() == null) {
-            throw new InvalidInputException("Receiver name is required", 400);
+
+        if (policyHolderDTO.getLastName() == null) {
+            throw new InvalidInputException("Last name is required", 400);
         }
-        if (insuranceClaimDTO.getReceiverBankNumber() == null) {
-            throw new InvalidInputException("Receiver bank number is required", 400);
+
+        if (policyHolderDTO.getPhone() == null) {
+            throw new InvalidInputException("Phone number is required", 400);
         }
+
+        if (policyHolderDTO.getPwd() == null) {
+            throw new InvalidInputException("Password is required", 400);
+        }
+
     }
 }

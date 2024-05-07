@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.dto.insuranceClaimDTO;
 
+import com.group07.buildabackend.backend.dto.DTO;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-public class InsuranceClaimDTO {
+public class InsuranceClaimDTO implements DTO {
 
     private String id;
     private double amount;

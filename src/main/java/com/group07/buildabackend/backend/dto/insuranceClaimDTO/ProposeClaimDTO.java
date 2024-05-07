@@ -1,16 +1,18 @@
 package com.group07.buildabackend.backend.dto.insuranceClaimDTO;
 
-public class ProposeClaimDTO {
-    private String claimId;
+import com.group07.buildabackend.backend.dto.DTO;
+
+public class ProposeClaimDTO implements DTO {
+    private String id;
 
     public ProposeClaimDTO() {
     }
 
-    public String getClaimId() {
-        return claimId;
+    public String getId() {
+        return id;
     }
 
-    public void setClaimId(String claimId) {
-        this.claimId = claimId;
+    public void setId(String id) {
+        this.id = id;
     }
 }

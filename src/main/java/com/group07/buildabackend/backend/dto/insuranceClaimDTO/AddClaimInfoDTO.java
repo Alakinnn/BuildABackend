@@ -1,21 +1,23 @@
 package com.group07.buildabackend.backend.dto.insuranceClaimDTO;
 
+import com.group07.buildabackend.backend.dto.DTO;
+
 import java.io.File;
 import java.util.List;
 
-public class AddClaimInfoDTO {
-    private String claimId;
+public class AddClaimInfoDTO implements DTO {
+    private String id;
     private List<File> documents;
 
     public AddClaimInfoDTO() {
     }
 
-    public String getClaimId() {
-        return claimId;
+    public String getId() {
+        return id;
     }
 
-    public void setClaimId(String claimId) {
-        this.claimId = claimId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public List<File> getDocuments() {

@@ -1,4 +1,6 @@
 package com.group07.buildabackend.backend.dto.beneficiaryDTO;
 
-public class DependentDTO {
+import com.group07.buildabackend.backend.dto.DTO;
+
+public class DependentDTO implements DTO {
 }

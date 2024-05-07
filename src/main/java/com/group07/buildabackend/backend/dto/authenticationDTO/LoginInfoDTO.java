@@ -1,6 +1,8 @@
 package com.group07.buildabackend.backend.dto.authenticationDTO;
 
-public class LoginInfoDTO {
+import com.group07.buildabackend.backend.dto.DTO;
+
+public class LoginInfoDTO implements DTO {
     private String email;
     private String pwd;
 

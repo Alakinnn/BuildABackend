@@ -1,6 +1,8 @@
 package com.group07.buildabackend.backend.dto.insuranceClaimDTO;
 
-public class RequestClaimInfoDTO {
+import com.group07.buildabackend.backend.dto.DTO;
+
+public class RequestClaimInfoDTO implements DTO {
     private String claimId;
     private String notes;
 

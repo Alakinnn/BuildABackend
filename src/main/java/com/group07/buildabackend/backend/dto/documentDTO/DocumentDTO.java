@@ -1,7 +1,9 @@
 package com.group07.buildabackend.backend.dto.documentDTO;
 
 
-public class DocumentDTO {
+import com.group07.buildabackend.backend.dto.DTO;
+
+public class DocumentDTO implements DTO {
     private String id;
     private String title;
 

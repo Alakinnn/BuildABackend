@@ -1,6 +1,8 @@
 package com.group07.buildabackend.backend.dto.beneficiaryDTO;
 
-public class PolicyHolderDTO {
+import com.group07.buildabackend.backend.dto.DTO;
+
+public class PolicyHolderDTO implements DTO {
     private String phone;
     private String address;
     private String firstName;

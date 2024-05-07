@@ -21,9 +21,10 @@ public class PasswordVerification {
         byte[] generatedHashBytes = keyFactory.generateSecret(spec).getEncoded();
 
         int diff = storedHashBytes.length ^ generatedHashBytes.length;
-        for(int i = 0; i < storedHashBytes.length && i < generatedHashBytes.length; i++) {
+        for (int i = 0; i < storedHashBytes.length && i < generatedHashBytes.length; i++) {
             diff |= storedHashBytes[i] ^ generatedHashBytes[i];
         }
 
         return diff == 0;
     }
+}

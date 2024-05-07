@@ -22,8 +22,9 @@ public class InsuranceCard {
     @OneToOne(mappedBy = "insuranceCard")
     private Beneficiary beneficiary;
 
+//    Default expiry date is plus 6 years, may want to add a user with bad expiry date for testing
     @Column(name = "expiry_date")
-    private LocalDate expiryDate;
+    private LocalDate expiryDate = LocalDate.now().plusYears(6);
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;

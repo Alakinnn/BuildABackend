@@ -11,5 +11,13 @@ import jakarta.persistence.Table;
 @Table(name = "provider")
 public abstract class Provider extends SysUser {
     @Column(name = "provider_type")
-    private String provider_type;
+    private String providerType;
+
+    public String getProviderType() {
+        return providerType;
+    }
+
+    public void setProviderType(String providerType) {
+        this.providerType = providerType;
+    }
 }

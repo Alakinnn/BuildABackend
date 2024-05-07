@@ -6,10 +6,8 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInfoService;
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
 
-import java.io.File;
-import java.util.List;
 
-public class PolicyHolderController {
+public class PolicyHolderController extends Controller{
 
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);

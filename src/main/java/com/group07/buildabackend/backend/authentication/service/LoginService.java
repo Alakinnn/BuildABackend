@@ -4,41 +4,36 @@ import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.authentication.PasswordVerification;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
-import com.group07.buildabackend.backend.model.SysUser;
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 
 public class LoginService extends Authentication {
-    public static Response<SysUser> login(LoginInfoDTO loginInfoDTO) {
-        Response<SysUser> response = new Response<>(null);
+    public static Response<SystemUser> login(LoginInfoDTO loginInfoDTO) {
+        Response<SystemUser> response = new Response<>(null);
         try {
             String email = loginInfoDTO.getEmail();
             String pwd = loginInfoDTO.getPwd();
 
-            SysUser sysUser = sysUserRepository.retrieveActorByEmail(email);
+            SystemUser systemUser = SYSTEM_USER_REPOSITORY.retrieveActorByEmail(email);
 
-            if (sysUser == null) {
+            if (systemUser == null) {
                 throw new InvalidCredentialsException("Email not found", 400);
             }
 
             boolean isCorrectPwd;
-            String hashedPwd = sysUserRepository.retrieveHashedPwdById(sysUser.getUserId());
-            String salt = sysUserRepository.retrieveSaltById(sysUser.getUserId());
+            String hashedPwd = SYSTEM_USER_REPOSITORY.retrieveHashedPwdById(systemUser.getUserId());
+            String salt = SYSTEM_USER_REPOSITORY.retrieveSaltById(systemUser.getUserId());
             isCorrectPwd = PasswordVerification.verifyPassword(pwd, hashedPwd, salt);
 
             if (!isCorrectPwd) {
                 throw new InvalidCredentialsException("Invalid password", 400);
             }
 
-            response.setData(sysUser);
-            response.setResponseMsg("Successfully logged in!");
-            response.setStatusCode(200);
-
-            CurrentUserManager.setCurrentUser(sysUser);
+            handleSuccess(response, "Successfully logged in!", 200, systemUser);
+            CurrentUserManager.setCurrentUser(systemUser);
 
         } catch (InvalidCredentialsException e) {
-            response.setData(null);
-            response.setResponseMsg(e.getMessage());
-            response.setStatusCode(e.getErrorCode());
+            handleException(response, e.getMessage(), e.getErrorCode());
         }
         return response;
     }

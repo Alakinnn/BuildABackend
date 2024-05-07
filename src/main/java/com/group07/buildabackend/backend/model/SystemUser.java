@@ -8,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "sys_user", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class SysUser {
+public abstract class SystemUser {
     @Id
     @GenericGenerator(
             name = CustomIDGenerator.GENERATOR_NAME,
@@ -27,18 +27,18 @@ public abstract class SysUser {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "pwd")
-    private String password;
-
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_Name")
     private String lastName;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Credentials credentials;
+
     // Getters and setters, constructors, other methods
 
-    public SysUser() {
+    public SystemUser() {
     }
 
     public String getUserId() {
@@ -74,14 +74,6 @@ public abstract class SysUser {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -96,6 +88,14 @@ public abstract class SysUser {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Credentials getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
     }
 }
 

@@ -17,20 +17,10 @@ public abstract class Beneficiary extends Customer {
     @JoinColumn(name = "card_number", referencedColumnName = "card_number")
     private InsuranceCard insuranceCard;
 
-    @Column(name = "beneficiary_type")
-    private String beneficiaryType;
-
     // Other properties, getters, setters, etc.
 
     public PolicyOwner getPolicyOwner() {
         return policyOwner;
-    }
-    public String getBeneficiaryType() {
-        return beneficiaryType;
-    }
-
-    public void setBeneficiaryType(String beneficiary_type) {
-        this.beneficiaryType = beneficiary_type;
     }
 
     public InsuranceCard getInsuranceCard() {

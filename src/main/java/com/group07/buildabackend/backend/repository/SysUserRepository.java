@@ -1,6 +1,8 @@
 package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.model.SysUser;
+import com.group07.buildabackend.backend.query.user.SortName;
+import com.group07.buildabackend.backend.query.user.UserQuery;
 import jakarta.persistence.Query;
 
 import java.util.List;
@@ -38,5 +40,19 @@ public class SysUserRepository extends Repository<SysUser> {
         Query query = entityManager.createQuery("SELECT c.salt FROM Credentials c WHERE c.userId = :id");
         query.setParameter("id", id);
         return (String) query.getSingleResult();
+    }
+
+    public List<SysUser> sortName(){
+        UserQuery userQuery = new UserQuery();
+        String sortNameQuery = new SortName(userQuery).toString();
+        Query query = entityManager.createQuery(sortNameQuery);
+        return query.getResultList();
+    }
+
+    public List<SysUser> sortNameDesc(){
+        UserQuery userQuery = new UserQuery();
+        String sortNameDescQuery = new SortName(userQuery).toString();
+        Query query = entityManager.createQuery(sortNameDescQuery);
+        return query.getResultList();
     }
 }

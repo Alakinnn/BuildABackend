@@ -2,6 +2,7 @@ package com.group07.buildabackend.gui.components.nav;
 
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
+import com.group07.buildabackend.gui.pages.claim.ClaimListPage;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
 import com.group07.buildabackend.gui.pages.manager.ManagerInsuranceClaimViewPage;
@@ -42,7 +43,7 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new AddClaimInfoPage("c_ec347776"), "Add Claim Info");
         addNavLink(new ManagerInsuranceClaimViewPage("c_4ae427d2"), "Manager: View Claim");
         addNavLink(new SurveyorInsuranceClaimPage("c_ec347776"), "Surveyor: View Claim");
-
+        addNavLink(new ClaimListPage(), "Claims");
         navBox.getChildren().addAll(navLinks);
     }
 

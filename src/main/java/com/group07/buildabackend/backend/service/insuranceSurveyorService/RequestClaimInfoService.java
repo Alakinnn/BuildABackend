@@ -6,6 +6,8 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
+import static com.group07.buildabackend.backend.service.Service.handleException;
+import static com.group07.buildabackend.backend.service.Service.handleSuccess;
 import static com.group07.buildabackend.backend.service.insuranceSurveyorService.InsuranceSurveyorService.insuranceClaimRepository;
 
 public class RequestClaimInfoService {
@@ -30,15 +32,13 @@ public class RequestClaimInfoService {
 
             insuranceClaimRepository.update(claim);
 
-            response.setData(claim);
-            response.setResponseMsg("Successfully requested claim info!");
-            response.setStatusCode(200);
+            handleSuccess(response, "Successfully requested info", 200, claim);
+
 
         } catch(InvalidInputException e) {
-            response.setStatusCode(e.getErrorCode());
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), 400);
         }
 
         return response;

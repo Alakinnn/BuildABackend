@@ -18,43 +18,31 @@ public class CreateClaimService extends PolicyHolderService{
         Response<InsuranceClaim> response = new Response<>(null);
 
         try {
-            // Find the customer
             PolicyHolder customer = holderRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
 
             if (customer == null) {
                 throw new InvalidInputException("Customer not found", 400);
             }
 
-            // Validate inputs
             InsuranceClaimValidator.validateInput(insuranceClaimDTO);
 
-            // Upload documents
             List<Document> documentEntityList = mapToDocumentList(insuranceClaimDTO.getDocuments());
 
-            // Map to entity
             InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
             insuranceClaim.setCustomer(customer);
 
-            // Add documents to entity
             for (Document document : documentEntityList) {
                 insuranceClaim.addDocument(document);
             }
 
-            // Add new claim to DB
             insuranceClaimRepository.add(insuranceClaim);
 
-            // Return response
-            response.setData(insuranceClaim);
-            response.setResponseMsg("Success");
-            response.setStatusCode(200);
+            handleSuccess(response, "Successfully created claim", 200, insuranceClaim);
 
         } catch (InvalidInputException e) {
-            response.setResponseMsg(e.getMessage());
-            response.setStatusCode(e.getErrorCode());
-            response.setData(null);
+            handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
-            response.setResponseMsg(e.getMessage());
-            response.setData(null);
+            handleException(response, e.getMessage(), 400);
         }
 
         return response;

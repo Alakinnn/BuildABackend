@@ -15,7 +15,7 @@ import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.m
 public class AddClaimInfoService extends PolicyHolderService {
     public static Response<InsuranceClaim> addClaimInfoService(AddClaimInfoDTO dto) {
         Response<InsuranceClaim> response = new Response<>(null);
-        String claimId = dto.getClaimId();
+        String claimId = dto.getId();
         List<File> documents = dto.getDocuments();
 
         try {
@@ -44,14 +44,11 @@ public class AddClaimInfoService extends PolicyHolderService {
 
             insuranceClaimRepository.update(insuranceClaim);
 
-            response.setResponseMsg("Successfully added new document(s)");
-
-            return response;
+            handleSuccess(response, "Successfully added new document(s)", 200, insuranceClaim);
         } catch (InvalidInputException e) {
-            response.setResponseMsg(e.getMessage());
-            response.setStatusCode(e.getErrorCode());
+            handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), 400);
         }
         return response;
     }

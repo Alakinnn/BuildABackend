@@ -21,12 +21,10 @@ public class ApproveClaimService extends InsuranceManagerService {
 
             claim.setStatus(InsuranceClaimStatus.APPROVED);
             insuranceClaimRepository.update(claim);
-            response.setData(claim);
-            response.setResponseMsg("Successfully approved claim!");
-            response.setStatusCode(200);
+            handleSuccess(response, "Successfully approved claim", 200, claim);
+
         } catch (InvalidInputException e) {
-            response.setStatusCode(e.getErrorCode());
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), e.getErrorCode());
         }
 
         return response;

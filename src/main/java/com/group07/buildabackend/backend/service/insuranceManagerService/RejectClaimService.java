@@ -21,12 +21,11 @@ public class RejectClaimService extends InsuranceManagerService {
 
             claim.setStatus(InsuranceClaimStatus.REJECTED);
             insuranceClaimRepository.update(claim);
-            response.setData(claim);
-            response.setResponseMsg("Successfully rejected claim!");
-            response.setStatusCode(200);
+
+            handleSuccess(response, "Successfully rejected claim", 200, claim);
+
         } catch (InvalidInputException e) {
-            response.setStatusCode(e.getErrorCode());
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), e.getErrorCode());
         }
 
         return response;

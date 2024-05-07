@@ -9,7 +9,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 public class ProposeClaimService extends InsuranceSurveyorService {
     public static Response<InsuranceClaim> proposeClaim(ProposeClaimDTO dto){
         Response<InsuranceClaim> response = new Response<>(null);
-        String claimId = dto.getClaimId();
+        String claimId = dto.getId();
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 
@@ -24,13 +24,10 @@ public class ProposeClaimService extends InsuranceSurveyorService {
             claim.setStatus(InsuranceClaimStatus.PROPOSED);
             insuranceClaimRepository.update(claim);
 
-            response.setData(claim);
-            response.setResponseMsg("Successfully proposed claim!");
-            response.setStatusCode(200);
+            handleSuccess(response, "Successfully proposed claim", 200, claim);
 
         } catch (InvalidInputException e) {
-            response.setStatusCode(e.getErrorCode());
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), e.getErrorCode());
         }
 
         return response;

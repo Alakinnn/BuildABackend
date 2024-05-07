@@ -1,31 +1,31 @@
 package com.group07.buildabackend.backend.validation;
 
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
+import com.group07.buildabackend.backend.dto.authenticationDTO.RegisterInfoDTO;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class PolicyHolderValidator {
-    public static void validateInput(PolicyHolderDTO policyHolderDTO) throws InvalidInputException {
-        if (policyHolderDTO.getAddress() == null) {
+public class SysUserValidator {
+    public static void validateInput(RegisterInfoDTO registerInfoDTO) throws InvalidInputException {
+        if (registerInfoDTO.getAddress() == null) {
             throw new InvalidInputException("Address is required", 400);
         }
 
-        if (policyHolderDTO.getEmail() == null) {
+        if (registerInfoDTO.getEmail() == null) {
             throw new InvalidInputException("Email is required", 400);
         }
 
-        if (policyHolderDTO.getFirstName() == null) {
+        if (registerInfoDTO.getFirstName() == null) {
             throw new InvalidInputException("First name is required", 400);
         }
 
-        if (policyHolderDTO.getLastName() == null) {
+        if (registerInfoDTO.getLastName() == null) {
             throw new InvalidInputException("Last name is required", 400);
         }
 
-        if (policyHolderDTO.getPhone() == null) {
+        if (registerInfoDTO.getPhone() == null) {
             throw new InvalidInputException("Phone number is required", 400);
         }
 
-        if (policyHolderDTO.getPwd() == null) {
+        if (registerInfoDTO.getPwd() == null) {
             throw new InvalidInputException("Password is required", 400);
         }
 

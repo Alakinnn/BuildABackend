@@ -10,10 +10,6 @@ import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
-import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
-import com.group07.buildabackend.gui.sample.ClaimAddInfoRequest;
-import com.group07.buildabackend.gui.utils.AlertManager;
-import com.group07.buildabackend.gui.utils.FormSubmitter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,7 +37,7 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
     @Override
     public Response<InsuranceClaim> sendRequest() {
         AddClaimInfoDTO request = new AddClaimInfoDTO();
-        request.setClaimId(claimId.getText());
+        request.setId(claimId.getText());
         request.setDocuments(docUploader.getUploadedFiles());
 
         PolicyHolderController controller = new PolicyHolderController();

@@ -7,13 +7,9 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.utils.AlertManager;
-import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -49,7 +45,7 @@ public class SurveyorInsuranceClaimViewController implements Initializable, Comp
         InsuranceSurveyorController controller = new InsuranceSurveyorController();
 
         ProposeClaimDTO dto = new ProposeClaimDTO();
-        dto.setClaimId(claimId.getText());
+        dto.setId(claimId.getText());
 
         Response<InsuranceClaim> res = controller.proposeClaim(dto);
 

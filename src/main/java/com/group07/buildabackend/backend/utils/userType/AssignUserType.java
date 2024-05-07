@@ -27,7 +27,7 @@ public class AssignUserType {
                 provider.setProviderType("insurance_manager");
             } else if (childTableName.equals("insurance_surveyor")) {
                 provider.setProviderType("insurance_surveyor");
-            } 
+            }
         }
     }
 }

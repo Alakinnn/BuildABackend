@@ -9,7 +9,7 @@ public class ApproveClaimService extends InsuranceManagerService {
     public static Response<InsuranceClaim> approveClaim(String claimId) {
         Response<InsuranceClaim> response = new Response<>(null);
         try {
-            InsuranceClaim claim = insuranceClaimRepository.retrieveById(claimId);
+            InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 
             if(claim == null){
                 throw new InvalidInputException("Claim not found", 400);

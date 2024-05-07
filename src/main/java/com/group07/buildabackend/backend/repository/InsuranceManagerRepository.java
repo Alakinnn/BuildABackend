@@ -3,6 +3,8 @@ package com.group07.buildabackend.backend.repository;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 
+import java.util.List;
+
 public class InsuranceManagerRepository <T extends InsuranceManager> extends Repository<T>{
     public InsuranceManagerRepository() {
     }
@@ -27,7 +29,12 @@ public class InsuranceManagerRepository <T extends InsuranceManager> extends Rep
     }
 
     @Override
-    public T retrieveById(String id) {
+    public T retrieveActorById(String id) {
+        return null;
+    }
+
+    @Override
+    public List<T> retrieveClaimById(String id) {
         return null;
     }
 }

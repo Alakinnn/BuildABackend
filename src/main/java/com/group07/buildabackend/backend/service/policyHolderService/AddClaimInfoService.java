@@ -19,7 +19,7 @@ public class AddClaimInfoService extends PolicyHolderService {
         List<File> documents = dto.getDocuments();
 
         try {
-            InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveById(claimId);
+            InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveActorById(claimId);
 
             if (insuranceClaim == null) {
                 throw new InvalidInputException("Claim not found", 400);

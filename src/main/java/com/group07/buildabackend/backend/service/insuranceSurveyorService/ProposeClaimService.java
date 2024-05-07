@@ -11,7 +11,7 @@ public class ProposeClaimService extends InsuranceSurveyorService {
         Response<InsuranceClaim> response = new Response<>(null);
         String claimId = dto.getClaimId();
         try {
-            InsuranceClaim claim = insuranceClaimRepository.retrieveById(claimId);
+            InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 
             if(claim == null){
                 throw new InvalidInputException("Claim not found", 404);

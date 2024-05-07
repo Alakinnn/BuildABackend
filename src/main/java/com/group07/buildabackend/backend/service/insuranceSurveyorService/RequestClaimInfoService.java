@@ -15,7 +15,7 @@ public class RequestClaimInfoService {
         String notes = dto.getNotes();
 
         try {
-            InsuranceClaim claim = insuranceClaimRepository.retrieveById(claimId);
+            InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 
             if (claim == null) {
                 throw new InvalidInputException("Claim not found", 404);

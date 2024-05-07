@@ -19,7 +19,7 @@ public class CreateClaimService extends PolicyHolderService{
 
         try {
             // Find the customer
-            PolicyHolder customer = holderRepository.retrieveById(insuranceClaimDTO.getCustomerId());
+            PolicyHolder customer = holderRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
 
             if (customer == null) {
                 throw new InvalidInputException("Customer not found", 400);

@@ -8,19 +8,24 @@ import javax.crypto.spec.PBEKeySpec;
 import java.util.Base64;
 
 public class PasswordHashing {
-
     private static final int ITERATIONS = 10000;
     private static final int KEY_LENGTH = 256; // in bits
 
-    public static String hashPassword(String password, String salt) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        char[] passwordChars = password.toCharArray();
-        byte[] saltBytes = Base64.getDecoder().decode(salt);
+    public static String hashPassword(String password, String salt)  {
+        try {
+            char[] passwordChars = password.toCharArray();
+            byte[] saltBytes = Base64.getDecoder().decode(salt);
 
-        PBEKeySpec spec = new PBEKeySpec(passwordChars, saltBytes, ITERATIONS, KEY_LENGTH);
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-        byte[] hashedBytes = keyFactory.generateSecret(spec).getEncoded();
+            PBEKeySpec spec = new PBEKeySpec(passwordChars, saltBytes, ITERATIONS, KEY_LENGTH);
+            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            byte[] hashedBytes = keyFactory.generateSecret(spec).getEncoded();
 
-        return Base64.getEncoder().encodeToString(hashedBytes);
+            return Base64.getEncoder().encodeToString(hashedBytes);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static String generateSalt() {

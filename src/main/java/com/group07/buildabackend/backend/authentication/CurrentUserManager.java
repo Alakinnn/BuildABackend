@@ -5,11 +5,11 @@ import com.group07.buildabackend.backend.model.SysUser;
 public class CurrentUserManager {
     protected static SysUser currentUser;
 
-    public SysUser getCurrentUser() {
+    public static SysUser getCurrentUser() {
         return currentUser;
     }
 
-    public void setCurrentUser(SysUser currentUser) {
-        this.currentUser = currentUser;
+    public static void setCurrentUser(SysUser currentUser) {
+        CurrentUserManager.currentUser = currentUser;
     }
 }

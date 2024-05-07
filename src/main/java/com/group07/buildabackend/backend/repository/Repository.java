@@ -37,4 +37,10 @@ public abstract class Repository<T> implements Addable<T>, Deletable<T>, Retriev
             throw e;
         }
     }
+
+    @Override
+    public T retrieveActorByEmail(String email) {
+
+        return null;
+    }
 }

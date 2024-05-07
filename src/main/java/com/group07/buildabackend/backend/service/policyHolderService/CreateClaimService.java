@@ -6,7 +6,7 @@ import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMap
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.validation.PolicyHolderValidator;
+import com.group07.buildabackend.backend.validation.InsuranceClaimValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class CreateClaimService extends PolicyHolderService{
             }
 
             // Validate inputs
-            PolicyHolderValidator.validateInput(insuranceClaimDTO);
+            InsuranceClaimValidator.validateInput(insuranceClaimDTO);
 
             // Upload documents
             List<Document> documentEntityList = mapToDocumentList(insuranceClaimDTO.getDocuments());

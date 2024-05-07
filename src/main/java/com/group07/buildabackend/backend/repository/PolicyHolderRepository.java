@@ -24,7 +24,7 @@ public class PolicyHolderRepository<T extends PolicyHolder> extends Repository<T
     }
 
     @Override
-    public List<T> retrieveClaimById(String id) {
+    public List<T> retrieveClaimsByUserId(String id) {
         Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN PolicyHolder ph on ic.customer.id = ph.id WHERE ph.id = :phId");
         query.setParameter("phId", id);
 

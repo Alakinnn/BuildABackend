@@ -17,7 +17,7 @@ public class SysUserRepository extends Repository<SysUser> {
     }
 
     @Override
-    public List<SysUser> retrieveClaimById(String id) {
+    public List<SysUser> retrieveClaimsByUserId(String id) {
         return null;
     }
 
@@ -26,5 +26,17 @@ public class SysUserRepository extends Repository<SysUser> {
         Query query = entityManager.createQuery("FROM SysUser su WHERE su.email=:email");
         query.setParameter("email", email);
         return (SysUser) query.getSingleResult();
+    }
+
+    public String retrieveHashedPwdById(String id) {
+        Query query = entityManager.createQuery("SELECT c.hashedPwd FROM Credentials c WHERE c.userId = :id");
+        query.setParameter("id", id);
+        return (String) query.getSingleResult();
+    }
+
+    public String retrieveSaltById(String id) {
+        Query query = entityManager.createQuery("SELECT c.salt FROM Credentials c WHERE c.userId = :id");
+        query.setParameter("id", id);
+        return (String) query.getSingleResult();
     }
 }

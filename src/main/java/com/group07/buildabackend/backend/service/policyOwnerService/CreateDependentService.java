@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
+import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import org.hibernate.HibernateException;
 
 import com.group07.buildabackend.backend.controller.Response;
@@ -35,6 +36,11 @@ public class CreateDependentService extends CreatePolicyHolderService {
             InsuranceCard insuranceCard = new InsuranceCard();
             Credentials credentials = createCredentials(dependentDTO.getPwd(), dependent);
 
+            if (credentials == null) {
+                throw new InvalidCredentialsException("Password is required!", 400);
+            }
+
+
             dependent.setPolicyOwner(policyOwner);
             dependent.setCustomerType("dependent");
             dependent.setInsuranceCard(insuranceCard);
@@ -48,6 +54,8 @@ public class CreateDependentService extends CreatePolicyHolderService {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (HibernateException e) {
             handleException(response, e.getMessage(), 409);
+        } catch (InvalidCredentialsException e) {
+            handleException(response, e.getMessage(), e.getErrorCode());
         }
         return response;
     }

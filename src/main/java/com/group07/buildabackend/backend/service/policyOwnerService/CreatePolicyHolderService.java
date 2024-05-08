@@ -9,6 +9,7 @@ import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
+import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 import org.hibernate.HibernateException;
 
@@ -28,6 +29,10 @@ public class CreatePolicyHolderService extends SystemUserService {
             InsuranceCard insuranceCard = new InsuranceCard();
             Credentials credentials = createCredentials(policyHolderDTO.getPwd(), policyHolder);
 
+            if (credentials == null) {
+                throw new InvalidCredentialsException("Password is required!", 400);
+            }
+
             policyHolder.setPolicyOwner(policyOwner);
             policyHolder.setCustomerType("policy_holder");
             policyHolder.setInsuranceCard(insuranceCard);
@@ -41,20 +46,11 @@ public class CreatePolicyHolderService extends SystemUserService {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (HibernateException e) {
             handleException(response, e.getMessage(), 409);
+        } catch (InvalidCredentialsException e) {
+            handleException(response, e.getMessage(), e.getErrorCode());
         }
         return response;
     }
 
-    public static void main(String[] args) {
-        PolicyHolderDTO policyHolderDTO = new PolicyHolderDTO();
-        policyHolderDTO.setEmail("john.doe@example.com");
-        policyHolderDTO.setPhone("1234567890");
-        policyHolderDTO.setLastName("Doe");
-        policyHolderDTO.setFirstName("John");
-        policyHolderDTO.setAddress("123 Main St");
-        policyHolderDTO.setPolicyOwnerId("u1");
 
-        createNewPolicyHolder(policyHolderDTO);
-
-    }
 }

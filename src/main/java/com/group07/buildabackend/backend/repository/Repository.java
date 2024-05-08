@@ -12,16 +12,9 @@ public abstract class Repository<T> implements Addable<T>, Deletable<T>, Retriev
 
     @Override
     public void add(T item) {
-        try {
             entityManager.getTransaction().begin();
             entityManager.persist(item);
             entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        }
     }
 
     @Override

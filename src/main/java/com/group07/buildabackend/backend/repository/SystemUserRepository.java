@@ -4,7 +4,6 @@ import com.group07.buildabackend.backend.model.SystemUser;
 
 import jakarta.persistence.Query;
 
-import java.util.List;
 
 public class SystemUserRepository extends Repository<SystemUser> {
     @Override
@@ -17,10 +16,6 @@ public class SystemUserRepository extends Repository<SystemUser> {
         return null;
     }
 
-    @Override
-    public List<SystemUser> retrieveClaimsByUserId(String id) {
-        return null;
-    }
 
     @Override
     public SystemUser retrieveActorByEmail(String email) {

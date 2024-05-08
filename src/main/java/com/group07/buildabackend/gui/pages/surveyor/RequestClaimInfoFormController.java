@@ -9,7 +9,6 @@ import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormTextArea;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
-import com.group07.buildabackend.gui.sample.ClaimRequestInfoRequest;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

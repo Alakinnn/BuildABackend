@@ -5,6 +5,7 @@ import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.operations.ClaimRetrievable;
 import com.group07.buildabackend.backend.repository.operations.DependentRetrievable;
+
 import jakarta.persistence.Query;
 
 import java.util.List;

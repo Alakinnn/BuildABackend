@@ -1,6 +1,5 @@
 package com.group07.buildabackend.gui.components.claim;
 
-import com.group07.buildabackend.backend.model.SysUser;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;

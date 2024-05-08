@@ -40,4 +40,9 @@ public class SystemUserRepository extends Repository<SystemUser> {
         query.setParameter("id", id);
         return (String) query.getSingleResult();
     }
+
+    public List<SystemUser> excecuteQuery(String userQuery){
+        Query query = entityManager.createQuery(userQuery);
+        return query.getResultList();
+    }
 }

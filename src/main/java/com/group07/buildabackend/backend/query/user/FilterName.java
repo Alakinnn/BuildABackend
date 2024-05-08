@@ -11,6 +11,6 @@ public class FilterName extends UserQuery {
 
     @Override
     public String toString() {
-        return query + " WHERE su.first_name LIKE '%" + nameVal + "%;'";
+        return query + " WHERE su.firstName LIKE '%" + nameVal + "%'";
     }
 }

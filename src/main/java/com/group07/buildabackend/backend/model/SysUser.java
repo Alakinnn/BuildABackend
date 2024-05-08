@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "sys_user", schema = "public")
+@Table(name = "system_user", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class SysUser {
     @Id

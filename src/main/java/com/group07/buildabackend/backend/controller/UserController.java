@@ -25,7 +25,7 @@ public class UserController {
             userQuery = new SortNameDesc(userQuery);
         }
 
-        Response response = new Response(null);
+        Response<List<SysUser>> response = new Response(null);
         try{
             List<SysUser> data = sysUserRepository.executeQuery(userQuery.toString());
             response.setData(data);
@@ -37,10 +37,21 @@ public class UserController {
     }
 
     public static void main(String[] args) {
-        UserController controller = new UserController();
-        UserQueryDTO dto = new UserQueryDTO();
-        dto.setAsc(true);
+//        UserController controller = new UserController();
+//        UserQueryDTO dto = new UserQueryDTO();
+//        dto.setAsc(true);
+//
+//        Response<List<SysUser>> response = controller.queryUsers(dto);
+//        List<SysUser> data = response.getData();
+//        System.out.println(data);
+//        data.forEach(System.out::println);
+//        controller.queryUsers(dto).getData().forEach(System.out::println);
 
-        controller.queryUsers(dto).getData().forEach(System.out::println);
+        UserQuery userQuery = new UserQuery();
+        userQuery = new SortName(userQuery);
+        SysUserRepository repository = new SysUserRepository();
+        System.out.println(userQuery);
+        List<SysUser> sysUsers = repository.executeQuery(userQuery.toString());
+        System.out.println(sysUsers);
     }
 }

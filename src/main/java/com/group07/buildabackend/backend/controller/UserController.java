@@ -27,7 +27,7 @@ public class UserController {
 
         Response<List<SystemUser>> response = new Response(null);
         try{
-            List<SystemUser> data = sysUserRepository.executeQuery(userQuery.toString());
+            List<SystemUser> data = sysUserRepository.excecuteQuery(userQuery.toString());
             response.setData(data);
         } catch(Exception e){
             response.setResponseMsg(e.getMessage());
@@ -51,7 +51,7 @@ public class UserController {
         userQuery = new SortName(userQuery);
         SystemUserRepository repository = new SystemUserRepository();
         System.out.println(userQuery);
-        List<SystemUser> sysUsers = repository.executeQuery(userQuery.toString());
+        List<SystemUser> sysUsers = repository.excecuteQuery(userQuery.toString());
         System.out.println(sysUsers);
     }
 }

@@ -1,9 +1,6 @@
-package com.group07.buildabackend.backend.repository.operations;
+package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.model.Credentials;
-import com.group07.buildabackend.backend.repository.Repository;
-
-import java.util.List;
 
 public class CredentialsRepository extends Repository<Credentials> {
     @Override
@@ -16,8 +13,4 @@ public class CredentialsRepository extends Repository<Credentials> {
         return null;
     }
 
-    @Override
-    public List<Credentials> retrieveClaimsByUserId(String id) {
-        return null;
-    }
 }

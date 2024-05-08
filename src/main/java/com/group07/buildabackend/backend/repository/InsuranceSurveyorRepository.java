@@ -5,28 +5,23 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class InsuranceSurveyorRepository<T extends InsuranceSurveyor> extends Repository<T>{
+public class InsuranceSurveyorRepository extends Repository<InsuranceSurveyor>{
     public InsuranceSurveyorRepository() {
     }
 
     @Override
-    public void delete(T item) {
+    public void delete(InsuranceSurveyor item) {
 
     }
 
     @Override
-    public T retrieveActorById(String id) {
+    public InsuranceSurveyor retrieveActorById(String id) {
         try{
             Query query = entityManager.createNamedQuery("find surveyor by id");
             query.setParameter("id", id);
-            return (T) query.getSingleResult();
+            return (InsuranceSurveyor) query.getSingleResult();
         } finally{
             entityManager.close();
         }
-    }
-
-    @Override
-    public List<T> retrieveClaimsByUserId(String id) {
-        return null;
     }
 }

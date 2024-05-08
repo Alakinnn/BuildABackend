@@ -7,6 +7,6 @@ import com.group07.buildabackend.backend.repository.InsuranceSurveyorRepository;
 import com.group07.buildabackend.backend.service.Service;
 
 public abstract class InsuranceSurveyorService extends Service {
-    static final InsuranceSurveyorRepository<InsuranceSurveyor> insuranceSurveyorRepository = new InsuranceSurveyorRepository<>();
-    static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = new ClaimRepository<>();
+    static final InsuranceSurveyorRepository insuranceSurveyorRepository = new InsuranceSurveyorRepository();
+    static final ClaimRepository insuranceClaimRepository = new ClaimRepository();
 }

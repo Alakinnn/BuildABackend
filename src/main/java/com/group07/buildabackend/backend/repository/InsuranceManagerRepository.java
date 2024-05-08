@@ -5,7 +5,7 @@ import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 
 import java.util.List;
 
-public class InsuranceManagerRepository <T extends InsuranceManager> extends Repository<T>{
+public class InsuranceManagerRepository extends Repository<InsuranceManager>{
     public InsuranceManagerRepository() {
     }
 
@@ -24,17 +24,12 @@ public class InsuranceManagerRepository <T extends InsuranceManager> extends Rep
     }
 
     @Override
-    public void delete(T item) {
+    public void delete(InsuranceManager item) {
 
     }
 
     @Override
-    public T retrieveActorById(String id) {
-        return null;
-    }
-
-    @Override
-    public List<T> retrieveClaimsByUserId(String id) {
+    public InsuranceManager retrieveActorById(String id) {
         return null;
     }
 }

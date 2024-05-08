@@ -7,8 +7,8 @@ import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.backend.service.Service;
 
 public abstract class PolicyHolderService extends Service {
-    static final PolicyHolderRepository<PolicyHolder> holderRepository = new PolicyHolderRepository<>();
-    static final ClaimRepository<InsuranceClaim> insuranceClaimRepository = new ClaimRepository<>();
+    static final PolicyHolderRepository holderRepository = new PolicyHolderRepository();
+    static final ClaimRepository insuranceClaimRepository = new ClaimRepository();
 
 
 

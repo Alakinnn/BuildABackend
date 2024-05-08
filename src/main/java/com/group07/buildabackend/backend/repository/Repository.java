@@ -43,4 +43,9 @@ public abstract class Repository<T> implements Addable<T>, Deletable<T>, Retriev
 
         return null;
     }
+
+    @Override
+    public void delete(T item) {
+
+    }
 }

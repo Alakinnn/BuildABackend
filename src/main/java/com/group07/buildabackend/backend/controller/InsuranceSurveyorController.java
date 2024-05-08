@@ -6,7 +6,7 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.insuranceSurveyorService.ProposeClaimService;
 import com.group07.buildabackend.backend.service.insuranceSurveyorService.RequestClaimInfoService;
 
-public class InsuranceSurveyorController {
+public class InsuranceSurveyorController extends Controller{
     public Response<InsuranceClaim> proposeClaim(ProposeClaimDTO dto) {
         return ProposeClaimService.proposeClaim(dto);
     }
@@ -14,4 +14,5 @@ public class InsuranceSurveyorController {
     public Response<InsuranceClaim> requestClaimInfo(RequestClaimInfoDTO dto) {
         return RequestClaimInfoService.requestClaimInfo(dto);
     }
+
 }

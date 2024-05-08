@@ -11,7 +11,7 @@ public class Credentials {
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
-    private SysUser user;
+    private SystemUser user;
 
     @Column(name = "salt")
     private String salt;
@@ -30,11 +30,11 @@ public class Credentials {
         this.userId = userId;
     }
 
-    public SysUser getUser() {
+    public SystemUser getUser() {
         return user;
     }
 
-    public void setUser(SysUser user) {
+    public void setUser(SystemUser user) {
         this.user = user;
     }
 
@@ -53,4 +53,6 @@ public class Credentials {
     public void setHashedPwd(String hashedPwd) {
         this.hashedPwd = hashedPwd;
     }
+
+
 }

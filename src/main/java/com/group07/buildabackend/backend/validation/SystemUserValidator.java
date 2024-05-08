@@ -3,7 +3,7 @@ package com.group07.buildabackend.backend.validation;
 import com.group07.buildabackend.backend.dto.authenticationDTO.RegisterInfoDTO;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class SysUserValidator {
+public class SystemUserValidator {
     public static void validateInput(RegisterInfoDTO registerInfoDTO) throws InvalidInputException {
         if (registerInfoDTO.getAddress() == null) {
             throw new InvalidInputException("Address is required", 400);

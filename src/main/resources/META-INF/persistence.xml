@@ -16,12 +16,13 @@
         <properties>
             <!-- Database connection settings -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres?user=postgres.jxppssutktjqzjbzpfzt&amp;password=Cuminme4365@&amp;sslmode=require" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?user=postgres.jxppssutktjqzjbzpfzt&amp;password=Cuminme4365" />
+
             <property name="jakarta.persistence.jdbc.user" value="postgres.jxppssutktjqzjbzpfzt" />
-            <property name="jakarta.persistence.jdbc.password" value="Cuminme4365@" />
+            <property name="jakarta.persistence.jdbc.password" value="Cuminme4365" />
 
             <!-- Automatically export the schema -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/> <!-- DB Dialect -->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect" />-->
             <property name="jakarta.persistence.schema-generation.database.action" value="none" />
 
             <!-- Echo all executed SQL to console -->

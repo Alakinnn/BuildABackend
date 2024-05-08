@@ -6,6 +6,6 @@ public class UserQuery {
 
     @Override
     public String toString() {
-        return "SELECT * FROM sys_user";
+        return "SELECT * FROM system_user su";
     }
 }

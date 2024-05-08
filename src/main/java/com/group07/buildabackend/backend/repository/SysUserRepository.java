@@ -42,17 +42,8 @@ public class SysUserRepository extends Repository<SysUser> {
         return (String) query.getSingleResult();
     }
 
-    public List<SysUser> sortName(){
-        UserQuery userQuery = new UserQuery();
-        String sortNameQuery = new SortName(userQuery).toString();
-        Query query = entityManager.createQuery(sortNameQuery);
-        return query.getResultList();
-    }
-
-    public List<SysUser> sortNameDesc(){
-        UserQuery userQuery = new UserQuery();
-        String sortNameDescQuery = new SortName(userQuery).toString();
-        Query query = entityManager.createQuery(sortNameDescQuery);
+    public List<SysUser> executeQuery(String queryString){
+        Query query = entityManager.createQuery(queryString);
         return query.getResultList();
     }
 }

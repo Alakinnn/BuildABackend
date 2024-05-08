@@ -9,6 +9,6 @@ public class SortName extends UserQuery{
 
     @Override
     public String toString() {
-        return query + " ORDER BY first_name";
+        return query + " ORDER BY su.first_name;";
     }
 }

@@ -5,6 +5,7 @@ import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
+import com.group07.buildabackend.gui.pages.dependent.DependentClaimsPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
 import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
 import com.group07.buildabackend.gui.pages.manager.ManagerInsuranceClaimViewPage;
@@ -39,13 +40,14 @@ public class NavBarController implements Initializable, ComponentController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-        
+
         addNavLink(new CreateClaimPage(), "Create Claim");
         addNavLink(new RequestClaimInfoPage("c_ec347776"), "Request Claim Info");
         addNavLink(new AddClaimInfoPage("c_ec347776"), "Add Claim Info");
         addNavLink(new ManagerInsuranceClaimViewPage("c_4ae427d2"), "Manager: View Claim");
         addNavLink(new SurveyorInsuranceClaimPage("c_ec347776"), "Surveyor: View Claim");
-        addNavLink(new PolicyHolderClaimsPage("12345678"), "claims");
+        addNavLink(new PolicyHolderClaimsPage("12345678"), "Claims (PH)");
+        addNavLink(new DependentClaimsPage("12345678"), "Claims (Dep)");
         navBox.getChildren().addAll(navLinks);
     }
 

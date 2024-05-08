@@ -4,6 +4,8 @@ import com.group07.buildabackend.backend.model.SystemUser;
 
 import jakarta.persistence.Query;
 
+import java.util.List;
+
 
 public class SystemUserRepository extends Repository<SystemUser> {
     @Override

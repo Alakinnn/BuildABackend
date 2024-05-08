@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PolicyHolderClaimListViewController implements Initializable, ComponentController {
+public class PolicyHolderClaimListController implements Initializable, ComponentController {
     @FXML
     private HBox myDependentClaimsContainer;
     @FXML
@@ -22,29 +22,30 @@ public class PolicyHolderClaimListViewController implements Initializable, Compo
     ClaimList myClaims;
     ClaimList myDependentClaims;
 
-    public PolicyHolderClaimListViewController() {
+    public PolicyHolderClaimListController() {
         myClaims = new ClaimList();
         myDependentClaims = new ClaimList();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myDependentClaimsContainer.getChildren().add(myClaims.getRoot());
-        myClaimsContainer.getChildren().add(myDependentClaims.getRoot());
+        myDependentClaimsContainer.getChildren().add(myDependentClaims.getRoot());
+        myClaimsContainer.getChildren().add(myClaims.getRoot());
     }
 
     public void innitPage(String phId) {
-        PolicyHolderRepository<PolicyHolder> repo = new PolicyHolderRepository<>();
-        // FIXME: Implement fetching when BE is finished
-//        List<InsuranceClaim> holderClaims = repo.retrieveClaimsByUserId(phId);
-//        List<InsuranceClaim> dependentClaims = repo.retrieveDepedentClaim(phId);
-//
-//        for (InsuranceClaim claim: holderClaims) {
-//            myClaims.addClaim(claim);
-//        }
-//
-//        for (InsuranceClaim claim: dependentClaims) {
-//            myDependentClaims.addClaim(claim);
-//        }
+        // TODO: Change this to controller instead of Repository
+
+        PolicyHolderRepository repo = new PolicyHolderRepository();
+        List<InsuranceClaim> holderClaims = repo.retrieveAllClaimsByActorId(phId);
+        List<InsuranceClaim> dependentClaims = repo.retrieveAllDependentClaim(phId);
+
+        for (InsuranceClaim claim: holderClaims) {
+            myClaims.addClaim(claim);
+        }
+
+        for (InsuranceClaim claim: dependentClaims) {
+            myDependentClaims.addClaim(claim);
+        }
     }
 }

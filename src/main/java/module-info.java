@@ -30,6 +30,8 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.gui.pages.manager to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.manager;
     opens com.group07.buildabackend.gui.components.upload to javafx.fxml;
+    exports com.group07.buildabackend.gui.pages.dependent;
+    opens com.group07.buildabackend.gui.pages.dependent to javafx.fxml;
     exports com.group07.buildabackend.gui.components.upload;
     exports com.group07.buildabackend.gui.components;
     opens com.group07.buildabackend.gui.components to javafx.fxml;

@@ -4,11 +4,13 @@ import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.components.user.UserHyperlink;
 import jakarta.persistence.Table;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,9 +26,9 @@ public class ClaimListController implements Initializable, ComponentController {
     @FXML
     private TableView<InsuranceClaim> table;
     @FXML
-    private TableColumn<InsuranceClaim, String> claimIdCol;
+    private TableColumn<InsuranceClaim, Hyperlink> claimIdCol;
     @FXML
-    public TableColumn<InsuranceClaim, String> customerCol;
+    public TableColumn<InsuranceClaim, Hyperlink> customerCol;
     @FXML
     public TableColumn<InsuranceClaim, Double> amountCol;
     @FXML
@@ -42,16 +44,25 @@ public class ClaimListController implements Initializable, ComponentController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        claimIdCol.setCellValueFactory(new PropertyValueFactory<>("claimId"));
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         claimDateCol.setCellValueFactory(new PropertyValueFactory<>("claimDate"));
 
+        claimIdCol.setCellValueFactory(cellData -> {
+            // Get the current InsuranceClaim
+            InsuranceClaim claim = cellData.getValue();
+            Hyperlink link = (Hyperlink) new ClaimHyperlink(claim).getRoot();
+            // Return the hyperlink to the claim as the cell value
+            return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
+        });
+
+
         customerCol.setCellValueFactory(cellData -> {
             // Get the customer object from the current InsuranceClaim
             Customer customer = cellData.getValue().getCustomer();
-            // Return the name of the customer as the cell value
-            return new SimpleStringProperty(customer != null ? customer.getFullName() : "");
+            Hyperlink link = (Hyperlink) new UserHyperlink(customer).getRoot();
+            // Return the hyperlink to the customer as the cell value
+            return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
         });
     }
 

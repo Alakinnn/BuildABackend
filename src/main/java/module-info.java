@@ -6,6 +6,7 @@ module com.group07.buildabackend {
 //    requires cloudinary.taglib;
     requires cloudinary.core;
     requires dotenv.java;
+    requires java.desktop;
 
     opens com.group07.buildabackend.backend.model to org.hibernate.orm.core;
     opens com.group07.buildabackend.backend.model.customer;
@@ -46,4 +47,6 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.backend.model.provider to org.hibernate.orm.core;
     opens com.group07.buildabackend.backend.model.insuranceCard to org.hibernate.orm.core;
     exports com.group07.buildabackend.backend.utils.userType to org.hibernate.orm.core;
+    exports com.group07.buildabackend.gui.components.claim.btn;
+    opens com.group07.buildabackend.gui.components.claim.btn to javafx.fxml;
 }

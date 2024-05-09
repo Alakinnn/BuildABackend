@@ -44,8 +44,8 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new CreateClaimPage(), "Create Claim");
         addNavLink(new RequestClaimInfoPage("c_ec347776"), "Request Claim Info");
         addNavLink(new AddClaimInfoPage("c_ec347776"), "Add Claim Info");
-        addNavLink(new ManagerInsuranceClaimViewPage("c_4ae427d2"), "Manager: View Claim");
-        addNavLink(new SurveyorInsuranceClaimPage("c_ec347776"), "Surveyor: View Claim");
+        addNavLink(new ManagerInsuranceClaimViewPage("c_8e597dc2"), "Manager: View Claim");
+        addNavLink(new SurveyorInsuranceClaimPage("c_8e597dc2"), "Surveyor: View Claim");
         addNavLink(new PolicyHolderClaimsPage("12345678"), "Claims (PH)");
         addNavLink(new DependentClaimsPage("12345678"), "Claims (Dep)");
         navBox.getChildren().addAll(navLinks);

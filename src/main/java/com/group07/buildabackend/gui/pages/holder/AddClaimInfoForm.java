@@ -1,8 +1,8 @@
 package com.group07.buildabackend.gui.pages.holder;
 
-import com.group07.buildabackend.gui.components.Component;
+import com.group07.buildabackend.gui.components.ControlledComponent;
 
-public class AddClaimInfoForm extends Component<AddClaimInfoFormController> {
+public class AddClaimInfoForm extends ControlledComponent<AddClaimInfoFormController> {
     public AddClaimInfoForm(String claimId) {
         super(AddClaimInfoForm.class.getResource("AddClaimInfoForm.fxml"));
         controller.setClaimId(claimId);

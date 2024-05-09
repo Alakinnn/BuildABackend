@@ -97,6 +97,19 @@ public abstract class SystemUser {
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
     }
+
+    @Override
+    public String toString() {
+        return "\nSystemUser{" +
+                "userId='" + userId + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", credentials=" + credentials +
+                "}\n";
+    }
 }
 
 

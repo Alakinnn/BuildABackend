@@ -1,19 +1,19 @@
 package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
-import com.group07.buildabackend.backend.model.SysUser;
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.query.user.FilterName;
 import com.group07.buildabackend.backend.query.user.SortName;
 import com.group07.buildabackend.backend.query.user.SortNameDesc;
 import com.group07.buildabackend.backend.query.user.UserQuery;
-import com.group07.buildabackend.backend.repository.SysUserRepository;
+import com.group07.buildabackend.backend.repository.SystemUserRepository;
 
 import java.util.List;
 
 public class UserController {
-    public Response<List<SysUser>> queryUsers(UserQueryDTO dto){
+    public Response<List<SystemUser>> queryUsers(UserQueryDTO dto){
         UserQuery userQuery = new UserQuery();
-        SysUserRepository sysUserRepository = new SysUserRepository();
+        SystemUserRepository sysUserRepository = new SystemUserRepository();
 
         if(dto.getNameVal() != null){
             userQuery = new FilterName(userQuery, dto.getNameVal());
@@ -25,9 +25,9 @@ public class UserController {
             userQuery = new SortNameDesc(userQuery);
         }
 
-        Response<List<SysUser>> response = new Response(null);
+        Response<List<SystemUser>> response = new Response(null);
         try{
-            List<SysUser> data = sysUserRepository.executeQuery(userQuery.toString());
+            List<SystemUser> data = sysUserRepository.excecuteQuery(userQuery.toString());
             response.setData(data);
         } catch(Exception e){
             response.setResponseMsg(e.getMessage());
@@ -49,9 +49,9 @@ public class UserController {
 
         UserQuery userQuery = new UserQuery();
         userQuery = new SortName(userQuery);
-        SysUserRepository repository = new SysUserRepository();
+        SystemUserRepository repository = new SystemUserRepository();
         System.out.println(userQuery);
-        List<SysUser> sysUsers = repository.executeQuery(userQuery.toString());
+        List<SystemUser> sysUsers = repository.excecuteQuery(userQuery.toString());
         System.out.println(sysUsers);
     }
 }

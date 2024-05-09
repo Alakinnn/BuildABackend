@@ -4,6 +4,8 @@ import com.group07.buildabackend.backend.model.SystemUser;
 
 import jakarta.persistence.Query;
 
+import java.util.List;
+
 
 public class SystemUserRepository extends Repository<SystemUser> {
     @Override
@@ -34,5 +36,10 @@ public class SystemUserRepository extends Repository<SystemUser> {
         Query query = entityManager.createQuery("SELECT c.salt FROM Credentials c WHERE c.userId = :id");
         query.setParameter("id", id);
         return (String) query.getSingleResult();
+    }
+
+    public List<SystemUser> excecuteQuery(String userQuery){
+        Query query = entityManager.createQuery(userQuery);
+        return query.getResultList();
     }
 }

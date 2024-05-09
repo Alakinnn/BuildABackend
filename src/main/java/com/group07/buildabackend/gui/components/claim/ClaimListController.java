@@ -51,7 +51,7 @@ public class ClaimListController implements Initializable, ComponentController {
             // Get the customer object from the current InsuranceClaim
             Customer customer = cellData.getValue().getCustomer();
             // Return the name of the customer as the cell value
-            return new SimpleStringProperty(customer != null ? customer.getFirstName() + " " + customer.getLastName() : "");
+            return new SimpleStringProperty(customer != null ? customer.getFullName() : "");
         });
     }
 

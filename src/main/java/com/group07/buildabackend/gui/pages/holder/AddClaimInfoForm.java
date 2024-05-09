@@ -5,6 +5,6 @@ import com.group07.buildabackend.gui.components.ControlledComponent;
 public class AddClaimInfoForm extends ControlledComponent<AddClaimInfoFormController> {
     public AddClaimInfoForm(String claimId) {
         super(AddClaimInfoForm.class.getResource("AddClaimInfoForm.fxml"));
-        controller.setClaimId(claimId);
+        controller.initPage(claimId);
     }
 }

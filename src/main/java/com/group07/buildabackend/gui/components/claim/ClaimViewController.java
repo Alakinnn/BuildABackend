@@ -4,6 +4,7 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.upload.UploadedDocs;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -37,21 +38,27 @@ public class ClaimViewController implements ComponentController {
     private HBox actionFieldContainer;
 
     public void initPage(String claimId) {
-        ClaimRepository repo = new ClaimRepository();
-        InsuranceClaim claim = repo.retrieveActorById(claimId);
+        // TODO: controller instead of repo
+        try {
+            ClaimRepository repo = new ClaimRepository();
+            InsuranceClaim claim = repo.retrieveActorById(claimId);
 
-        if (claim == null) return;
+            if (claim == null) return;
 
-        id.setText(claim.getClaimId());
-        status.setText(claim.getStatus().toString());
-        amount.setText(Double.toString(claim.getAmount()));
-        examDate.setText(claim.getExamDate().toString());
-        claimDate.setText(claim.getClaimDate().toString());
-        bankName.setText(claim.getReceiverBankName());
-        receiverName.setText(claim.getReceiverName());
-        accountNumber.setText(claim.getReceiverBankNumber());
+            id.setText(claim.getClaimId());
+            status.setText(claim.getStatus().toString());
+            amount.setText(Double.toString(claim.getAmount()));
+            examDate.setText(claim.getExamDate().toString());
+            claimDate.setText(claim.getClaimDate().toString());
+            bankName.setText(claim.getReceiverBankName());
+            receiverName.setText(claim.getReceiverName());
+            accountNumber.setText(claim.getReceiverBankNumber());
 
-        uploadedDocsContainer.getChildren().add(new UploadedDocs(claim.getDocuments()).getRoot());
+            uploadedDocsContainer.getChildren().add(new UploadedDocs(claim.getDocuments()).getRoot());
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertManager.showError(e.getMessage());
+        }
     }
 
     public void setActionField(Node actionField) {

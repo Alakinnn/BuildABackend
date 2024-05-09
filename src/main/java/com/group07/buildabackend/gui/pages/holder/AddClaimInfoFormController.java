@@ -4,12 +4,14 @@ import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
+import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
+import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,7 +56,21 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
         docUploader.onUpload();
     }
 
-    public void setClaimId(String newId) {
-        claimId.setText(newId);
+    public void initPage(String newId) {
+        try {
+            // TODO: controllers instead of repo
+            claimId.setText(newId);
+
+            ClaimRepository repo = new ClaimRepository();
+            InsuranceClaim claim = repo.retrieveActorById(newId);
+
+            if (claim == null) return;
+
+            notes.setText(claim.getNote());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            AlertManager.showError(e.getMessage());
+        }
     }
 }

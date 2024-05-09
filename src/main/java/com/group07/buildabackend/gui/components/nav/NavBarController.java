@@ -11,6 +11,7 @@ import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
 import com.group07.buildabackend.gui.pages.manager.ManagerInsuranceClaimViewPage;
 import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
 import com.group07.buildabackend.gui.pages.surveyor.SurveyorInsuranceClaimPage;
+import com.group07.buildabackend.gui.pages.user.UserProfilePage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -48,6 +49,7 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new SurveyorInsuranceClaimPage("c_8e597dc2"), "Surveyor: View Claim");
         addNavLink(new PolicyHolderClaimsPage("u3"), "Claims (PH)");
         addNavLink(new DependentClaimsPage("u6"), "Claims (Dep)");
+        addNavLink(new UserProfilePage("u3"), "Profile (PH)");
         navBox.getChildren().addAll(navLinks);
     }
 

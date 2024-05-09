@@ -11,6 +11,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import java.util.List;
 
+import static com.group07.buildabackend.backend.service.SystemUserService.policyHolderRepository;
 import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
 public class CreateClaimService extends PolicyHolderService{
@@ -18,7 +19,7 @@ public class CreateClaimService extends PolicyHolderService{
         Response<InsuranceClaim> response = new Response<>(null);
 
         try {
-            PolicyHolder customer = holderRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
+            PolicyHolder customer = policyHolderRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
 
             if (customer == null) {
                 throw new InvalidInputException("Customer not found", 400);

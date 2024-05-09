@@ -78,7 +78,7 @@ public class CreateClaimFormController extends FormController<InsuranceClaim> im
     private void populateCustomerChoices() {
         // TODO: Add actual users
         insuredCustomerChoice.getItems().add(new ChoiceField<>("John - 123", "123"));
-        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - u_dfeaa167", "u_dfeaa167"));
+        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - u3", "u3"));
         insuredCustomerChoice.getItems().add(new ChoiceField<>("Bob - 789", "789"));
     }
 

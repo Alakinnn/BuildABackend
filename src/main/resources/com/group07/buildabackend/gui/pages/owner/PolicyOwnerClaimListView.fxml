@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.owner.PolicyOwnerClaimListController">
+   <children>
+      <VBox prefHeight="274.0" prefWidth="441.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="442.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="66.0" text="Customer:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="customerChoice" prefWidth="150.0" />
+                  <Button mnemonicParsing="false" onAction="#onFind" text="Find" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="442.0" style="-fx-background-color: rgba(194, 223, 237);">
+               <children>
+                  <Label text=" Customer Claims">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="customerClaimsContainer" />
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" prefHeight="20.0" prefWidth="442.0" style="-fx-background-color: rgba(194, 223, 237);">
+               <children>
+                  <Label text="Dependent Claims">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="dependentClaimsContainer" layoutX="10.0" layoutY="51.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

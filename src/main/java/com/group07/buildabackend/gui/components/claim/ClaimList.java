@@ -11,4 +11,8 @@ public class ClaimList extends ControlledComponent<ClaimListController> {
     public void addClaim(InsuranceClaim claim) {
         controller.addClaim(claim);
     }
+
+    public void resetClaims() {
+        controller.resetClaims();
+    }
 }

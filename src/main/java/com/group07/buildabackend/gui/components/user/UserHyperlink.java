@@ -11,7 +11,6 @@ public class UserHyperlink extends Component {
     public UserHyperlink(SystemUser user) {
         Hyperlink link = new Hyperlink(user.getFullName() + " (" + user.getUserId() + ")");
         link.setOnAction(event -> {
-            // TODO: redirect to profile page
             Page page = new UserProfilePage(user.getUserId());
             SceneManager.getInstance().switchToPage(page);
         });

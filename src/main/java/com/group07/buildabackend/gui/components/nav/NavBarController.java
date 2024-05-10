@@ -1,7 +1,5 @@
 package com.group07.buildabackend.gui.components.nav;
 
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
-import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.auth.LoginPage;
@@ -10,6 +8,7 @@ import com.group07.buildabackend.gui.pages.dependent.DependentClaimsPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
 import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
 import com.group07.buildabackend.gui.pages.manager.ManagerInsuranceClaimViewPage;
+import com.group07.buildabackend.gui.pages.owner.PolicyOwnerClaimsPage;
 import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
 import com.group07.buildabackend.gui.pages.surveyor.SurveyorInsuranceClaimPage;
 import com.group07.buildabackend.gui.pages.user.UserProfilePage;
@@ -50,6 +49,7 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new SurveyorInsuranceClaimPage("c_8e597dc2"), "Surveyor: View Claim");
         addNavLink(new PolicyHolderClaimsPage("u3"), "Claims (PH)");
         addNavLink(new DependentClaimsPage("u6"), "Claims (Dep)");
+        addNavLink(new PolicyOwnerClaimsPage(), "Claims(PO)");
         addNavLink(new UserProfilePage("u3"), "Profile (PH)");
         addNavLink(new LoginPage(), "Login");
         navBox.getChildren().addAll(navLinks);

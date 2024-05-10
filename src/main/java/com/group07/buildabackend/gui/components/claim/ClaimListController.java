@@ -94,4 +94,8 @@ public class ClaimListController implements Initializable, ComponentController {
         table.getItems().add(claim);
     }
 
+    public void resetClaims() {
+        table.getItems().clear();
+    }
+
 }

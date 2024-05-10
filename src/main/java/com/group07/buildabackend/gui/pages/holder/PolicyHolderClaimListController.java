@@ -19,8 +19,8 @@ public class PolicyHolderClaimListController implements Initializable, Component
     @FXML
     private HBox myClaimsContainer;
 
-    ClaimList myClaims;
-    ClaimList myDependentClaims;
+    private ClaimList myClaims;
+    private ClaimList myDependentClaims;
 
     public PolicyHolderClaimListController() {
         myClaims = new ClaimList();

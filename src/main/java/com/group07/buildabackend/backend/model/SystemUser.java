@@ -30,7 +30,7 @@ public abstract class SystemUser {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_Name")
+    @Column(name = "last_name")
     private String lastName;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

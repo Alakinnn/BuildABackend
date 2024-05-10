@@ -2,17 +2,15 @@ package com.group07.buildabackend.gui.utils;
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.gui.SceneManager;
-import com.group07.buildabackend.gui.components.form.FormController;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 
 public class FormSubmitter {
 
     public <T> void onSubmit(TaskSupplier<Response<T>> taskSupplier) {
         try {
 
-            // Set cursor to waiting
-            SceneManager.getInstance().setCursorLoading();
+            // Start loading
+            SceneManager.getInstance().startLoading();
 
             // Create a background task for sending the request
             Task<Response<T>> task = new Task<>() {
@@ -24,8 +22,8 @@ public class FormSubmitter {
 
             // Set up event handler for task completion
             task.setOnSucceeded(success -> {
-                // Reset cursor to default
-                SceneManager.getInstance().setCursorDefault();
+                // End loading
+                SceneManager.getInstance().endLoading();
 
                 Response<T> res = task.getValue();
 
@@ -38,8 +36,8 @@ public class FormSubmitter {
             });
 
             task.setOnFailed(fail -> {
-                // Reset cursor to default
-                SceneManager.getInstance().setCursorDefault();
+                // End loading
+                SceneManager.getInstance().endLoading();
 
                 Throwable exception = task.getException();
                 exception.printStackTrace();
@@ -50,8 +48,8 @@ public class FormSubmitter {
             new Thread(task).start();
 
         } catch (Exception e) {
-            // Reset cursor to default
-            SceneManager.getInstance().setCursorDefault();
+            // End loading
+            SceneManager.getInstance().endLoading();
 
             e.printStackTrace();
             AlertManager.showError(e.getMessage());

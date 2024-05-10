@@ -24,6 +24,8 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.gui.pages to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.claim;
     opens com.group07.buildabackend.gui.pages.claim to javafx.fxml;
+    exports com.group07.buildabackend.gui.pages.auth;
+    opens com.group07.buildabackend.gui.pages.auth to javafx.fxml;
     opens com.group07.buildabackend.gui.pages.surveyor to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.surveyor;
     opens com.group07.buildabackend.gui.pages.holder to javafx.fxml;

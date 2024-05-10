@@ -4,6 +4,7 @@ import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
+import com.group07.buildabackend.gui.pages.auth.LoginPage;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import com.group07.buildabackend.gui.pages.dependent.DependentClaimsPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
@@ -50,6 +51,7 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new PolicyHolderClaimsPage("u3"), "Claims (PH)");
         addNavLink(new DependentClaimsPage("u6"), "Claims (Dep)");
         addNavLink(new UserProfilePage("u3"), "Profile (PH)");
+        addNavLink(new LoginPage(), "Login");
         navBox.getChildren().addAll(navLinks);
     }
 

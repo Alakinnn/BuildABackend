@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.auth.LoginFormController">
+   <children>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="402.0" prefWidth="516.0" spacing="10.0">
+         <children>
+            <Label text="Welcome!">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Login using your credentials" />
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="233.0">
+               <children>
+                  <TextField fx:id="emailField" prefHeight="26.0" prefWidth="158.0" promptText="Email" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <PasswordField fx:id="passwordField" prefHeight="26.0" prefWidth="157.0" promptText="Password" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#onSubmit" prefHeight="26.0" prefWidth="66.0" text="Login" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

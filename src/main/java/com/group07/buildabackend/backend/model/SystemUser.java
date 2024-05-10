@@ -36,6 +36,9 @@ public abstract class SystemUser {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Credentials credentials;
 
+    @Column(name = "user_type")
+    private String userType;
+
     // Getters and setters, constructors, other methods
 
     public SystemUser() {
@@ -96,6 +99,14 @@ public abstract class SystemUser {
 
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     @Override

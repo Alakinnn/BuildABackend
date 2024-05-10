@@ -10,9 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
@@ -28,15 +26,24 @@ public class ClaimListController implements Initializable, ComponentController {
     @FXML
     private TableColumn<InsuranceClaim, Hyperlink> claimIdCol;
     @FXML
-    public TableColumn<InsuranceClaim, Hyperlink> customerCol;
+    private TableColumn<InsuranceClaim, Hyperlink> customerCol;
     @FXML
-    public TableColumn<InsuranceClaim, Double> amountCol;
+    private TableColumn<InsuranceClaim, Double> amountCol;
     @FXML
-    public TableColumn<InsuranceClaim, InsuranceClaimStatus> statusCol;
+    private TableColumn<InsuranceClaim, InsuranceClaimStatus> statusCol;
     @FXML
-    public TableColumn<InsuranceClaim, LocalDate> claimDateCol;
+    private TableColumn<InsuranceClaim, LocalDate> claimDateCol;
+    @FXML
+    private TextField filterValField;
+    @FXML
+    private ChoiceBox<ClaimFilterOption> filterChoice;
 
     private List<InsuranceClaim> claims;
+
+    private enum ClaimFilterOption {
+        STATUS,
+        AMOUNT
+    }
 
     public ClaimListController() {
         claims = new ArrayList<>();
@@ -44,6 +51,17 @@ public class ClaimListController implements Initializable, ComponentController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initTable();
+        initFilter();
+    }
+
+
+    private void initFilter() {
+        filterChoice.getItems().add(ClaimFilterOption.STATUS);
+        filterChoice.getItems().add(ClaimFilterOption.AMOUNT);
+    }
+
+    private void initTable() {
         amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         claimDateCol.setCellValueFactory(new PropertyValueFactory<>("claimDate"));
@@ -64,6 +82,12 @@ public class ClaimListController implements Initializable, ComponentController {
             // Return the hyperlink to the customer as the cell value
             return new javafx.beans.property.ReadOnlyObjectWrapper<>(link);
         });
+    }
+
+    public void onFilter() {
+        // TODO: implement backend
+        System.out.println(filterValField.getText());
+        System.out.println(filterChoice.getValue());
     }
 
     public void addClaim(InsuranceClaim claim) {

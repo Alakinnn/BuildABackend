@@ -1,7 +1,7 @@
 package com.group07.buildabackend.backend.model.customer;
 import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.utils.userType.AssignUserType;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -11,7 +11,6 @@ import java.util.Set;
 @Entity
 @Table(name = "customer", schema = "public")
 @PrimaryKeyJoinColumn(referencedColumnName = "user_id")
-@EntityListeners(AssignUserType.class)
 public abstract class Customer extends SystemUser {
     @OneToMany(orphanRemoval = true, mappedBy = "customer", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<InsuranceClaim> insuranceClaims = new HashSet<>();

@@ -1,6 +1,7 @@
 package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
+import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
@@ -23,9 +24,9 @@ public class PolicyOwnerController extends Controller{
 
         List<Beneficiary> beneficiaries = repository.retrieveAllBeneficiary(dto.getId());
         for(Customer customer: beneficiaries){
-            String customerType = customer.getUserType();
-            if(customerType.equals("holder")){holderCount ++;}
-            if(customerType.equals("dependent")){dependentCount ++;}
+            SystemUserType customerType = customer.getUserType();
+            if(customerType == SystemUserType.policy_holder){holderCount ++;}
+            if(customerType == SystemUserType.dependent){dependentCount ++;}
         }
 
         return holderCount * yearlyRate + dependentCount * yearlyRate * dependentCost;

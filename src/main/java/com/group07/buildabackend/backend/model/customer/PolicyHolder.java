@@ -1,4 +1,5 @@
 package com.group07.buildabackend.backend.model.customer;
+import com.group07.buildabackend.backend.model.SystemUserType;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,5 +42,9 @@ public class PolicyHolder extends Beneficiary {
         dependent.setPolicyHolder(null);
     }
 
+    @Override
+    public SystemUserType getDefaultUserType() {
+        return SystemUserType.policy_holder;
+    }
 
 }

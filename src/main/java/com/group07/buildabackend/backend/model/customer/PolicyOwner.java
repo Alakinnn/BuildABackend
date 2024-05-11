@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.model.customer;
 
+import com.group07.buildabackend.backend.model.SystemUserType;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -46,5 +47,8 @@ public class PolicyOwner extends Customer{
         this.yearlyRate = yearlyRate;
     }
 
-
+    @Override
+    public SystemUserType getDefaultUserType() {
+        return SystemUserType.policy_owner;
+    }
 }

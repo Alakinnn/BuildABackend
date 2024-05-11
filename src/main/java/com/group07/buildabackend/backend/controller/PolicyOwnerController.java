@@ -8,6 +8,8 @@ import com.group07.buildabackend.backend.repository.PolicyOwnerRepository;
 
 import java.util.List;
 
+
+// TODO: MOVE THIS CODE BLOCK CONTENT TO A SERVICE CLASS
 public class PolicyOwnerController extends Controller{
     public double calculateAnnualCost(InsuranceCostDTO dto){
         final double dependentCost = 0.6;
@@ -21,7 +23,7 @@ public class PolicyOwnerController extends Controller{
 
         List<Beneficiary> beneficiaries = repository.retrieveAllBeneficiary(dto.getId());
         for(Customer customer: beneficiaries){
-            String customerType = customer.getCustomerType();
+            String customerType = customer.getUserType();
             if(customerType.equals("holder")){holderCount ++;}
             if(customerType.equals("dependent")){dependentCount ++;}
         }

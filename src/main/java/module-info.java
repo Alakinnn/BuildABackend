@@ -52,7 +52,6 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.backend.utils.idGenerator to org.hibernate.orm.core;
     opens com.group07.buildabackend.backend.model.provider to org.hibernate.orm.core;
     opens com.group07.buildabackend.backend.model.insuranceCard to org.hibernate.orm.core;
-    exports com.group07.buildabackend.backend.utils.userType to org.hibernate.orm.core;
     exports com.group07.buildabackend.gui.components.claim.btn;
     opens com.group07.buildabackend.gui.components.claim.btn to javafx.fxml;
 }

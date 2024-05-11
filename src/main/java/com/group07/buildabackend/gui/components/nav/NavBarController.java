@@ -4,13 +4,16 @@ import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.auth.LoginPage;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
+import com.group07.buildabackend.gui.pages.dependent.CreateDependentPage;
 import com.group07.buildabackend.gui.pages.dependent.DependentClaimsPage;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;
+import com.group07.buildabackend.gui.pages.holder.CreatePolicyHolderPage;
 import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
 import com.group07.buildabackend.gui.pages.manager.ManagerInsuranceClaimViewPage;
 import com.group07.buildabackend.gui.pages.owner.PolicyOwnerClaimsPage;
 import com.group07.buildabackend.gui.pages.surveyor.RequestClaimInfoPage;
 import com.group07.buildabackend.gui.pages.surveyor.SurveyorInsuranceClaimPage;
+import com.group07.buildabackend.gui.pages.user.CreateRoleBasedUserPage;
 import com.group07.buildabackend.gui.pages.user.UserProfilePage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,6 +55,9 @@ public class NavBarController implements Initializable, ComponentController {
         addNavLink(new PolicyOwnerClaimsPage(), "Claims(PO)");
         addNavLink(new UserProfilePage("u3"), "Profile (PH)");
         addNavLink(new LoginPage(), "Login");
+        addNavLink(new CreateDependentPage(), "Create Dependent");
+        addNavLink(new CreatePolicyHolderPage(), "Create Policy Holder");
+        addNavLink(new CreateRoleBasedUserPage(), "Create User");
         navBox.getChildren().addAll(navLinks);
     }
 

@@ -24,7 +24,7 @@ public class CreateDependentService extends CreatePolicyHolderService {
     public static Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         Response<Dependent> response = new Response<>(null);
 
-        OperationType userAction = new UserAction(new CreateOperation(), Dependent.getUserType());
+        OperationType userAction = new UserAction(new CreateOperation());
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);
 

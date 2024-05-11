@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class LogActionService extends Service {
     public static void logUserAction(String userId, String actionType, int statusCode) {
         UserAction userAction = new UserAction();
-        userAction.setTimeStamp(LocalDateTime.now());
+        userAction.setTimeStamp(LocalDateTime.now().withNano(0));
         userAction.setUserId(userId);
         userAction.setStatusCode(statusCode);
         userAction.setActionType(actionType);

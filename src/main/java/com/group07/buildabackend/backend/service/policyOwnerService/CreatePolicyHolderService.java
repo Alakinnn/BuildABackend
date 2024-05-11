@@ -20,7 +20,7 @@ import org.hibernate.HibernateException;
 public class CreatePolicyHolderService extends SystemUserService {
     public static Response<PolicyHolder> createNewPolicyHolder(PolicyHolderDTO policyHolderDTO) {
         Response<PolicyHolder> response = new Response<>(null);
-        OperationType userAction = new UserAction(new CreateOperation(), PolicyHolder.getUserType());
+        OperationType userAction = new UserAction(new CreateOperation());
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);
 

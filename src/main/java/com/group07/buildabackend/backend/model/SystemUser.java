@@ -1,10 +1,5 @@
 package com.group07.buildabackend.backend.model;
 
-
-import com.group07.buildabackend.backend.connectionManager.DatabaseFactoryManager;
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
-import com.group07.buildabackend.backend.model.customer.PolicyOwner;
-import com.group07.buildabackend.backend.service.policyOwnerService.CreatePolicyHolderService;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -41,8 +36,8 @@ public abstract class SystemUser {
     private Credentials credentials;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_type")
-    private static SystemUserType userType;
+    @Column(name = "user_type", nullable = false)
+    private SystemUserType userType;
 
     // Getters and setters, constructors, other methods
 
@@ -106,7 +101,7 @@ public abstract class SystemUser {
         this.credentials = credentials;
     }
 
-    public static SystemUserType getUserType() {
+    public SystemUserType getUserType() {
         return userType;
     }
 

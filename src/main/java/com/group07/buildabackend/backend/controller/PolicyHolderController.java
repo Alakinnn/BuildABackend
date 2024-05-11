@@ -18,18 +18,11 @@ public class PolicyHolderController extends Controller{
     }
 
     public Response<InsuranceClaim> addClaimInfo(AddClaimInfoDTO addClaimInfoDTO) {
-        Response<InsuranceClaim> response = AddClaimInfoService.addClaimInfoService(addClaimInfoDTO);
-
-        LogActionService.logUserAction(response.getData().getCustomer().getUserId(), response.getAction(), response.getStatusCode());
-        return response;
+        return AddClaimInfoService.addClaimInfoService(addClaimInfoDTO);
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
-        Response<Dependent> response = CreateDependentService.createNewDependent(dependentDTO);
-
-        LogActionService.logUserAction(response.getData().getPolicyHolder().getUserId(), response.getAction(), response.getStatusCode());
-
-        return response;
+        return CreateDependentService.createNewDependent(dependentDTO);
     }
 
 }

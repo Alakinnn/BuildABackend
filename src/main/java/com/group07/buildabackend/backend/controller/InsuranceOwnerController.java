@@ -13,27 +13,15 @@ import com.group07.buildabackend.backend.service.userActionService.LogActionServ
 
 public class InsuranceOwnerController extends Controller{
     public Response<PolicyHolder> createNewPolicyHolder(PolicyHolderDTO policyHolderDTO) {
-        Response<PolicyHolder> response = CreatePolicyHolderService.createNewPolicyHolder(policyHolderDTO);
-
-        LogActionService.logUserAction(response.getData().getUserId(), response.getAction(), response.getStatusCode());
-
-        return response;
+         return CreatePolicyHolderService.createNewPolicyHolder(policyHolderDTO);
     }
 
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
-        Response<InsuranceClaim> response = CreateClaimService.createClaim(insuranceClaimDTO);
-
-        LogActionService.logUserAction(response.getData().getCustomer().getUserId(), response.getAction(), response.getStatusCode());
-
-        return response;
+        return CreateClaimService.createClaim(insuranceClaimDTO);
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
-        Response<Dependent> response = CreateDependentService.createNewDependent(dependentDTO);
-
-        LogActionService.logUserAction(response.getData().getPolicyOwner().getUserId(), response.getAction(), response.getStatusCode());
-
-        return response;
+        return CreateDependentService.createNewDependent(dependentDTO);
     }
 
 }

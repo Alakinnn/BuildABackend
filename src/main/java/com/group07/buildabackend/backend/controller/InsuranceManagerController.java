@@ -8,18 +8,10 @@ import com.group07.buildabackend.backend.service.userActionService.LogActionServ
 
 public class InsuranceManagerController extends Controller{
     public Response<InsuranceClaim> approveClaim(String claimId) {
-        Response<InsuranceClaim> response = ApproveClaimService.approveClaim(claimId);
-
-        LogActionService.logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
-
-        return response;
+        return ApproveClaimService.approveClaim(claimId);
     }
 
     public Response<InsuranceClaim> rejectClaim(String claimId) {
-        Response<InsuranceClaim> response = RejectClaimService.rejectClaim(claimId);
-
-        LogActionService.logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
-
-        return response;
+        return RejectClaimService.rejectClaim(claimId);
     }
 }

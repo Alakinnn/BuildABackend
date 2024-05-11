@@ -42,7 +42,7 @@ public class CreateDependentService extends CreatePolicyHolderService {
 
 
             dependent.setPolicyOwner(policyOwner);
-            dependent.setCustomerType("dependent");
+            dependent.setUserType("dependent");
             dependent.setInsuranceCard(insuranceCard);
             dependent.setPolicyHolder(policyHolder);
             dependent.setCredentials(credentials);

@@ -34,7 +34,6 @@ public class CreatePolicyHolderService extends SystemUserService {
             }
 
             policyHolder.setPolicyOwner(policyOwner);
-            policyHolder.setUserType("policy_holder");
             policyHolder.setInsuranceCard(insuranceCard);
             policyHolder.setCredentials(credentials);
 

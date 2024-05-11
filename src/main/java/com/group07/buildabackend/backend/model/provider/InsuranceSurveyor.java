@@ -1,6 +1,7 @@
 
 package com.group07.buildabackend.backend.model.provider;
 
+import com.group07.buildabackend.backend.model.SystemUserType;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,4 +11,9 @@ public class InsuranceSurveyor extends Provider{
     @ManyToOne
     @JoinColumn(name = "insurance_manager_id", referencedColumnName = "user_id")
     private InsuranceManager insuranceManager;
+
+    @Override
+    public SystemUserType getDefaultUserType() {
+        return SystemUserType.insurance_surveyor;
+    }
 }

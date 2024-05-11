@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.model.customer;
 
+import com.group07.buildabackend.backend.model.SystemUserType;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -31,5 +32,10 @@ public class Dependent extends Beneficiary {
 
     private boolean sameAsFormer(PolicyHolder newPolicyHolder) {
         return Objects.equals(policyHolder, newPolicyHolder);
+    }
+
+    @Override
+    public SystemUserType getDefaultUserType() {
+        return SystemUserType.dependent;
     }
 }

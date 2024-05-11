@@ -1,6 +1,7 @@
 
 package com.group07.buildabackend.backend.model.provider;
 
+import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Where;
@@ -27,6 +28,11 @@ public class InsuranceManager extends Provider {
 
     public void setProposedClaims(Set<InsuranceClaim> proposedClaims) {
         this.proposedClaims = proposedClaims;
+    }
+
+    @Override
+    public SystemUserType getDefaultUserType() {
+        return SystemUserType.insurance_manager;
     }
 }
 

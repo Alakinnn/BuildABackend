@@ -1,6 +1,10 @@
 package com.group07.buildabackend.backend.model;
 
 
+import com.group07.buildabackend.backend.connectionManager.DatabaseFactoryManager;
+import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
+import com.group07.buildabackend.backend.model.customer.PolicyOwner;
+import com.group07.buildabackend.backend.service.policyOwnerService.CreatePolicyHolderService;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -36,8 +40,9 @@ public abstract class SystemUser {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Credentials credentials;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
-    private String userType;
+    private SystemUserType userType;
 
     // Getters and setters, constructors, other methods
 
@@ -105,13 +110,22 @@ public abstract class SystemUser {
         this.credentials = credentials;
     }
 
-    public String getUserType() {
+    public SystemUserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(SystemUserType userType) {
         this.userType = userType;
     }
+
+    @PrePersist
+    public void prePersist() {
+        if (this.userType == null) {
+            this.userType = getDefaultUserType();
+        }
+    }
+
+    protected abstract SystemUserType getDefaultUserType();
 
     @Override
     public String toString() {

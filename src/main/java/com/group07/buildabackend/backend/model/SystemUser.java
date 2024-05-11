@@ -42,7 +42,7 @@ public abstract class SystemUser {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
-    private SystemUserType userType;
+    private static SystemUserType userType;
 
     // Getters and setters, constructors, other methods
 

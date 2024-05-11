@@ -9,9 +9,7 @@ import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInf
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
 import com.group07.buildabackend.backend.service.policyOwnerService.CreateDependentService;
 
-
 public class PolicyHolderController extends Controller{
-
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }
@@ -23,4 +21,5 @@ public class PolicyHolderController extends Controller{
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         return CreateDependentService.createNewDependent(dependentDTO);
     }
+
 }

@@ -11,7 +11,7 @@ import com.group07.buildabackend.backend.service.userActionService.LogActionServ
 
 public class InsuranceSurveyorController extends Controller{
     public Response<InsuranceClaim> proposeClaim(ProposeClaimDTO proposeClaimDTO) {
-        Response<InsuranceClaim> response = ApproveClaimService.approveClaim(proposeClaimDTO.getId());
+        Response<InsuranceClaim> response = ApproveClaimService.approveClaim(proposeClaimDTO.getClaimId());
 
         LogActionService.logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
 

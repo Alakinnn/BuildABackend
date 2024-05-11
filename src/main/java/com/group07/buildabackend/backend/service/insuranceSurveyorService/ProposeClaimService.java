@@ -13,7 +13,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 public class ProposeClaimService extends InsuranceSurveyorService {
     public static Response<InsuranceClaim> proposeClaim(ProposeClaimDTO dto){
         Response<InsuranceClaim> response = new Response<>(null);
-        String claimId = dto.getId();
+        String claimId = dto.getClaimId();
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 

@@ -3,6 +3,10 @@ package com.group07.buildabackend.backend.service.insuranceManagerService;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
+import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
+import com.group07.buildabackend.backend.model.userAction.operations.ApproveOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.model.userAction.operations.RejectOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 public class RejectClaimService extends InsuranceManagerService {
@@ -20,6 +24,11 @@ public class RejectClaimService extends InsuranceManagerService {
             }
 
             claim.setStatus(InsuranceClaimStatus.REJECTED);
+
+            OperationType userAction = new ClaimAction(new RejectOperation());
+            String actionDescription = userAction.getDescription();
+            response.setAction(actionDescription);
+
             insuranceClaimRepository.update(claim);
 
             handleSuccess(response, "Successfully rejected claim", 200, claim);

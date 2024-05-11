@@ -6,6 +6,10 @@ import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMap
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
+import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.model.userAction.operations.UpdateOperation;
 import com.group07.buildabackend.backend.validation.InsuranceClaimValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
@@ -35,6 +39,10 @@ public class CreateClaimService extends PolicyHolderService{
             for (Document document : documentEntityList) {
                 insuranceClaim.addDocument(document);
             }
+
+            OperationType userAction = new ClaimAction(new CreateOperation());
+            String actionDescription = userAction.getDescription();
+            response.setAction(actionDescription);
 
             insuranceClaimRepository.add(insuranceClaim);
 

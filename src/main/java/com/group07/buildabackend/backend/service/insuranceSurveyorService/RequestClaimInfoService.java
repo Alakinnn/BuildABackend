@@ -4,6 +4,10 @@ import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.RequestClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
+import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.model.userAction.operations.ProposeOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.RequestOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import static com.group07.buildabackend.backend.service.Service.handleException;
@@ -29,6 +33,10 @@ public class RequestClaimInfoService {
 
             claim.setNote(notes);
             claim.setStatus(InsuranceClaimStatus.INFO_MISSING);
+
+            OperationType userAction = new ClaimAction(new RequestOperation());
+            String actionDescription = userAction.getDescription();
+            response.setAction(actionDescription);
 
             insuranceClaimRepository.update(claim);
 

@@ -1,5 +1,10 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
+import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
+import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.model.userAction.operations.RejectOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import org.hibernate.HibernateException;
 
@@ -45,6 +50,10 @@ public class CreateDependentService extends CreatePolicyHolderService {
             dependent.setInsuranceCard(insuranceCard);
             dependent.setPolicyHolder(policyHolder);
             dependent.setCredentials(credentials);
+
+            OperationType userAction = new UserAction(new CreateOperation(), dependent.getUserType());
+            String actionDescription = userAction.getDescription();
+            response.setAction(actionDescription);
 
             systemUserRepository.add(dependent);
 

@@ -10,7 +10,7 @@ public abstract class Service {
     public static final PolicyHolderRepository policyHolderRepository = new PolicyHolderRepository();
     public static final ClaimRepository insuranceClaimRepository = new ClaimRepository();
     public static final InsuranceSurveyorRepository insuranceSurveyorRepository = new InsuranceSurveyorRepository();
-
+    public static final UserActionRepository userActionRepository = new UserActionRepository();
     public static <T> void handleException(Response<T> response, String message, int statusCode) {
         response.setResponseMsg(message);
         response.setStatusCode(statusCode);

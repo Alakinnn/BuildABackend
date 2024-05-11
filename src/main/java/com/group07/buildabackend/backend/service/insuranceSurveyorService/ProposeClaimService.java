@@ -4,6 +4,10 @@ import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.ProposeClaimDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
+import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.model.userAction.operations.ProposeOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 public class ProposeClaimService extends InsuranceSurveyorService {
@@ -22,6 +26,11 @@ public class ProposeClaimService extends InsuranceSurveyorService {
             }
 
             claim.setStatus(InsuranceClaimStatus.PROPOSED);
+
+            OperationType userAction = new ClaimAction(new ProposeOperation());
+            String actionDescription = userAction.getDescription();
+            response.setAction(actionDescription);
+
             insuranceClaimRepository.update(claim);
 
             handleSuccess(response, "Successfully proposed claim", 200, claim);

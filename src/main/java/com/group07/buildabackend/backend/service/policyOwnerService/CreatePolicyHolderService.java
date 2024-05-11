@@ -7,6 +7,9 @@ import com.group07.buildabackend.backend.model.Credentials;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
+import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
@@ -36,6 +39,10 @@ public class CreatePolicyHolderService extends SystemUserService {
             policyHolder.setPolicyOwner(policyOwner);
             policyHolder.setInsuranceCard(insuranceCard);
             policyHolder.setCredentials(credentials);
+
+            OperationType userAction = new UserAction(new CreateOperation(), policyHolder.getUserType());
+            String actionDescription = userAction.getDescription();
+            response.setAction(actionDescription);
 
             systemUserRepository.add(policyHolder);
 

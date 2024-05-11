@@ -9,4 +9,6 @@ public class InsuranceOwnerController extends Controller{
         return CreatePolicyHolderService.createNewPolicyHolder(policyHolderDTO);
     }
 
+
+
 }

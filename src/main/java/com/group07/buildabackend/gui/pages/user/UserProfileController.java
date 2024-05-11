@@ -33,9 +33,7 @@ public class UserProfileController implements ComponentController {
             email.setText(user.getEmail());
             address.setText(user.getAddress());
             phone.setText(user.getPhone());
-
-            // TODO: BE need to implement a role for each user
-//            role.setText(user.getRole());
+            role.setText(user.getUserType().toString());
 
 
         } catch (Exception e) {

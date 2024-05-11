@@ -106,7 +106,7 @@ public abstract class SystemUser {
         this.credentials = credentials;
     }
 
-    public SystemUserType getUserType() {
+    public static SystemUserType getUserType() {
         return userType;
     }
 

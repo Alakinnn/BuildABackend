@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
@@ -22,6 +23,11 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 public class CreateDependentService extends CreatePolicyHolderService {
     public static Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         Response<Dependent> response = new Response<>(null);
+
+        OperationType userAction = new UserAction(new CreateOperation(), Dependent.getUserType());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
+
         try {
             SystemUserValidator.validateInput(dependentDTO);
 
@@ -51,10 +57,6 @@ public class CreateDependentService extends CreatePolicyHolderService {
             dependent.setPolicyHolder(policyHolder);
             dependent.setCredentials(credentials);
 
-            OperationType userAction = new UserAction(new CreateOperation(), dependent.getUserType());
-            String actionDescription = userAction.getDescription();
-            response.setAction(actionDescription);
-
             systemUserRepository.add(dependent);
 
             handleSuccess(response, "Successfully created new policy holder", 200, dependent);
@@ -64,6 +66,8 @@ public class CreateDependentService extends CreatePolicyHolderService {
             handleException(response, e.getMessage(), 409);
         } catch (InvalidCredentialsException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
         return response;
     }

@@ -14,10 +14,7 @@ import com.group07.buildabackend.backend.service.userActionService.LogActionServ
 
 public class PolicyHolderController extends Controller{
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
-        Response<InsuranceClaim> response = CreateClaimService.createClaim(insuranceClaimDTO);
-
-        LogActionService.logUserAction(response.getData().getCustomer().getUserId(), response.getAction(), response.getStatusCode());
-        return response;
+        return CreateClaimService.createClaim(insuranceClaimDTO);
     }
 
     public Response<InsuranceClaim> addClaimInfo(AddClaimInfoDTO addClaimInfoDTO) {

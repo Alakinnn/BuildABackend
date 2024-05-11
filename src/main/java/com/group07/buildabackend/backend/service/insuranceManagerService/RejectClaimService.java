@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.insuranceManagerService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
@@ -12,6 +13,10 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 public class RejectClaimService extends InsuranceManagerService {
     public static Response<InsuranceClaim> rejectClaim(String claimId) {
         Response<InsuranceClaim> response = new Response<>(null);
+        OperationType userAction = new ClaimAction(new RejectOperation());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
+
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 
@@ -25,16 +30,14 @@ public class RejectClaimService extends InsuranceManagerService {
 
             claim.setStatus(InsuranceClaimStatus.REJECTED);
 
-            OperationType userAction = new ClaimAction(new RejectOperation());
-            String actionDescription = userAction.getDescription();
-            response.setAction(actionDescription);
-
             insuranceClaimRepository.update(claim);
 
             handleSuccess(response, "Successfully rejected claim", 200, claim);
 
         } catch (InvalidInputException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
 
         return response;

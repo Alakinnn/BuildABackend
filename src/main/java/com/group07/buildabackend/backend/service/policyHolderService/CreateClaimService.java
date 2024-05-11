@@ -21,6 +21,9 @@ import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.m
 public class CreateClaimService extends PolicyHolderService{
     public static Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         Response<InsuranceClaim> response = new Response<>(null);
+        OperationType userAction = new ClaimAction(new CreateOperation());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
 
         try {
             PolicyHolder customer = policyHolderRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
@@ -40,18 +43,15 @@ public class CreateClaimService extends PolicyHolderService{
                 insuranceClaim.addDocument(document);
             }
 
-            OperationType userAction = new ClaimAction(new CreateOperation());
-            String actionDescription = userAction.getDescription();
-            response.setAction(actionDescription);
-
             insuranceClaimRepository.add(insuranceClaim);
-
             handleSuccess(response, "Successfully created claim", 200, insuranceClaim);
 
         } catch (InvalidInputException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
+        } finally {
+            logUserAction(insuranceClaimDTO.getCustomerId(), response.getAction(), response.getStatusCode());
         }
 
         return response;

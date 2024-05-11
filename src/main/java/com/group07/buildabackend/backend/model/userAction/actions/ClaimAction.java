@@ -9,6 +9,6 @@ public class ClaimAction extends OperationDecorator{
 
     @Override
     public String getDescription() {
-        return super.getDescription() + " a claim";
+        return super.getDescription() + "a claim";
     }
 }

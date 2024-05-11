@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_action")
@@ -28,7 +29,7 @@ public class UserAction {
     private int statusCode;
 
     @Column(name = "timestamp")
-    private LocalDate timeStamp;
+    private LocalDateTime timeStamp;
     public UserAction() {
     }
 
@@ -56,11 +57,11 @@ public class UserAction {
         this.statusCode = statusCode;
     }
 
-    public LocalDate getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(LocalDate timeStamp) {
+    public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
 }

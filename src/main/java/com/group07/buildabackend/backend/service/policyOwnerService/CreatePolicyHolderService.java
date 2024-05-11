@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderMapper;
@@ -19,6 +20,10 @@ import org.hibernate.HibernateException;
 public class CreatePolicyHolderService extends SystemUserService {
     public static Response<PolicyHolder> createNewPolicyHolder(PolicyHolderDTO policyHolderDTO) {
         Response<PolicyHolder> response = new Response<>(null);
+        OperationType userAction = new UserAction(new CreateOperation(), PolicyHolder.getUserType());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
+
         try {
             SystemUserValidator.validateInput(policyHolderDTO);
 
@@ -40,10 +45,6 @@ public class CreatePolicyHolderService extends SystemUserService {
             policyHolder.setInsuranceCard(insuranceCard);
             policyHolder.setCredentials(credentials);
 
-            OperationType userAction = new UserAction(new CreateOperation(), policyHolder.getUserType());
-            String actionDescription = userAction.getDescription();
-            response.setAction(actionDescription);
-
             systemUserRepository.add(policyHolder);
 
 
@@ -54,6 +55,8 @@ public class CreatePolicyHolderService extends SystemUserService {
             handleException(response, e.getMessage(), 409);
         } catch (InvalidCredentialsException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
         return response;
     }

@@ -2,6 +2,7 @@ package com.group07.buildabackend.backend.service;
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.repository.*;
+import com.group07.buildabackend.backend.service.userActionService.LogActionService;
 
 public abstract class Service {
     public static final SystemUserRepository systemUserRepository = new SystemUserRepository();
@@ -21,5 +22,9 @@ public abstract class Service {
         response.setResponseMsg(message);
         response.setStatusCode(statusCode);
         response.setData(data);
+    }
+
+    public static void logUserAction(String customerId, String action, int statusCode) {
+        LogActionService.logUserAction(customerId, action, statusCode);
     }
 }

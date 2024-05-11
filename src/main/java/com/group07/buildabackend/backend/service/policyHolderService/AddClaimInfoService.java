@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyHolderService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
@@ -21,6 +22,9 @@ public class AddClaimInfoService extends PolicyHolderService {
         Response<InsuranceClaim> response = new Response<>(null);
         String claimId = dto.getId();
         List<File> documents = dto.getDocuments();
+        OperationType userAction = new ClaimAction(new UpdateOperation());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
 
         try {
             InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveActorById(claimId);
@@ -46,10 +50,6 @@ public class AddClaimInfoService extends PolicyHolderService {
 
             insuranceClaim.setStatus(InsuranceClaimStatus.NEW);
 
-            OperationType userAction = new ClaimAction(new UpdateOperation());
-            String actionDescription = userAction.getDescription();
-            response.setAction(actionDescription);
-
             insuranceClaimRepository.update(insuranceClaim);
 
             handleSuccess(response, "Successfully added new document(s)", 200, insuranceClaim);
@@ -57,6 +57,8 @@ public class AddClaimInfoService extends PolicyHolderService {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
         return response;
     }

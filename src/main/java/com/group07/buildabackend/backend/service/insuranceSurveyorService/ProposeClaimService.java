@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.insuranceSurveyorService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.ProposeClaimDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -14,6 +15,10 @@ public class ProposeClaimService extends InsuranceSurveyorService {
     public static Response<InsuranceClaim> proposeClaim(ProposeClaimDTO dto){
         Response<InsuranceClaim> response = new Response<>(null);
         String claimId = dto.getClaimId();
+        OperationType userAction = new ClaimAction(new ProposeOperation());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
+
         try {
             InsuranceClaim claim = insuranceClaimRepository.retrieveActorById(claimId);
 
@@ -26,17 +31,14 @@ public class ProposeClaimService extends InsuranceSurveyorService {
             }
 
             claim.setStatus(InsuranceClaimStatus.PROPOSED);
-
-            OperationType userAction = new ClaimAction(new ProposeOperation());
-            String actionDescription = userAction.getDescription();
-            response.setAction(actionDescription);
-
             insuranceClaimRepository.update(claim);
 
             handleSuccess(response, "Successfully proposed claim", 200, claim);
 
         } catch (InvalidInputException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
 
         return response;

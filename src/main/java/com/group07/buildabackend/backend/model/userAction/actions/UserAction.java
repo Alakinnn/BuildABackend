@@ -12,6 +12,6 @@ public class UserAction extends OperationDecorator{
 
     @Override
     public String getDescription() {
-        return super.getDescription() + " a " + userRole + " user";
+        return super.getDescription() + "a " + userRole + " user";
     }
 }

@@ -1,9 +1,11 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
+import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import org.hibernate.HibernateException;
 
@@ -18,11 +20,13 @@ import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateDependentService extends CreatePolicyHolderService {
+import static com.group07.buildabackend.backend.service.SystemUserService.createCredentials;
+
+public class CreateDependentService extends Service {
     public static Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         Response<Dependent> response = new Response<>(null);
 
-        OperationType userAction = new UserAction(new CreateOperation());
+        OperationType userAction = new UserAction(new CreateOperation(), SystemUserType.dependent);
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);
 

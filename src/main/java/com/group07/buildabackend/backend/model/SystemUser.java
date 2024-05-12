@@ -1,8 +1,14 @@
 package com.group07.buildabackend.backend.model;
 
+import com.group07.buildabackend.backend.model.customer.Dependent;
+import com.group07.buildabackend.backend.model.userAction.UserAction;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 @Entity
 @Table(name = "system_user", schema = "public")
@@ -38,6 +44,8 @@ public abstract class SystemUser {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type", nullable = false)
     private SystemUserType userType;
+
+    @OneToMany(mappedBy = "systemUser", cascade = CascadeType.ALL, orphanRemoval = true) private List<UserAction> userActions = new ArrayList<>();
 
     // Getters and setters, constructors, other methods
 
@@ -129,6 +137,27 @@ public abstract class SystemUser {
                 ", lastName='" + lastName + '\'' +
                 ", credentials=" + credentials +
                 "}\n";
+    }
+
+    //    Reference for bidirectional, "One" side's setter: https://github.com/SomMeri/org.meri.jpa.tutorial/blob/master/src/main/java/org/meri/jpa/relationships/entities/bestpractice/SafePerson.java
+
+    public void addAction(UserAction userAction) {
+        if (this.userActions == null) {
+            this.userActions = new ArrayList<>();
+        }
+        if (this.userActions.contains(userAction)) {
+            return;
+        }
+        userActions.add(userAction);
+        userAction.setSystemUser(this);
+    }
+
+    public void removeAction(UserAction userAction) {
+        if (!userActions.contains(userAction)) {
+            return;
+        }
+        userActions.remove(userAction);
+        userAction.setSystemUser(null);
     }
 }
 

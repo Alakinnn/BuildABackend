@@ -11,11 +11,12 @@ import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.service.Service;
+import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.util.List;
 
-public class CalculateService extends Service {
+public class CalculateService extends SystemUserService {
     public static Response<Double> calculateAnnualCost(InsuranceCostDTO dto){
         final double dependentCost = 0.6;
         Response<Double> response = new Response(null);

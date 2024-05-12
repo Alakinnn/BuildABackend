@@ -5,6 +5,7 @@ import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderMapper;
 import com.group07.buildabackend.backend.model.Credentials;
+import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
@@ -20,7 +21,7 @@ import org.hibernate.HibernateException;
 public class CreatePolicyHolderService extends SystemUserService {
     public static Response<PolicyHolder> createNewPolicyHolder(PolicyHolderDTO policyHolderDTO) {
         Response<PolicyHolder> response = new Response<>(null);
-        OperationType userAction = new UserAction(new CreateOperation());
+        OperationType userAction = new UserAction(new CreateOperation(), SystemUserType.policy_holder);
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);
 

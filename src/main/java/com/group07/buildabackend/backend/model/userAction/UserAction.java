@@ -1,11 +1,14 @@
 package com.group07.buildabackend.backend.model.userAction;
 
+import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_action")
@@ -19,9 +22,6 @@ public class UserAction {
     @Column(name = "action_id")
     private String actionId;
 
-    @Column(name = "user_id")
-    private String userId;
-
     @Column(name = "action_type")
     private String actionType;
 
@@ -30,15 +30,12 @@ public class UserAction {
 
     @Column(name = "timestamp")
     private LocalDateTime timeStamp;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private SystemUser systemUser;
+
     public UserAction() {
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getActionType() {
@@ -64,4 +61,24 @@ public class UserAction {
     public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
+
+    //    Reference for bidirectional, "Many" side's setter: https://github.com/SomMeri/org.meri.jpa.tutorial/blob/master/src/main/java/org/meri/jpa/relationships/entities/bestpractice/SafePerson.java
+    public void setSystemUser(SystemUser systemUser) {
+        if (sameAsFormer(systemUser))
+            return ;
+        SystemUser oldSystemUser = this.systemUser;
+        this.systemUser = systemUser;
+        if (oldSystemUser!=null) {
+            oldSystemUser.removeAction(this);
+        }
+        if (systemUser!=null) {
+            systemUser.addAction(this);
+        }
+
+    }
+
+    private boolean sameAsFormer(SystemUser newSystemUser) {
+        return Objects.equals(systemUser, newSystemUser);
+    }
+
 }

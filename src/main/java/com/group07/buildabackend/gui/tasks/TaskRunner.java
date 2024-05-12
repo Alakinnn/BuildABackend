@@ -4,16 +4,27 @@ import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.concurrent.Task;
 
-public class TaskRunner {
+import java.util.function.Consumer;
+
+public class TaskRunner<T> {
     // Class to run asynchronous operations.
     // Will render a loading spinner while running.
     // Will render a loading spinner while running.
 
-    public <T> void run(TaskSupplier<T> taskSupplier) {
+    private T result;
+
+    public TaskRunner() {
+    }
+
+    public T getResult() {
+        return result;
+    }
+
+    public void run(TaskSupplier<T> taskSupplier) {
         try {
 
             // Start loading
-            SceneManager.getInstance().startLoading();
+//            SceneManager.getInstance().startLoading();
 
             // Create a background task for sending the request
             Task<T> task = new Task<>() {
@@ -26,14 +37,14 @@ public class TaskRunner {
             // Set up event handler for task completion
             task.setOnSucceeded(success -> {
                 // End loading
-                SceneManager.getInstance().endLoading();
+//                SceneManager.getInstance().endLoading();
 
-                T res = task.getValue();
+                result = task.getValue();
             });
 
             task.setOnFailed(fail -> {
                 // End loading
-                SceneManager.getInstance().endLoading();
+//                SceneManager.getInstance().endLoading();
 
                 Throwable exception = task.getException();
                 exception.printStackTrace();
@@ -45,7 +56,43 @@ public class TaskRunner {
 
         } catch (Exception e) {
             // End loading
-            SceneManager.getInstance().endLoading();
+//            SceneManager.getInstance().endLoading();
+
+            e.printStackTrace();
+//            AlertManager.showError(e.getMessage());
+        }
+    }
+
+    public void run(TaskSupplier<T> taskSupplier, Consumer<T> onSuccess) {
+        try {
+
+
+            // Create a background task for sending the request
+            Task<T> task = new Task<>() {
+                @Override
+                protected T call() throws Exception {
+                    return taskSupplier.get();
+                }
+            };
+
+            // Set up event handler for task completion
+            task.setOnSucceeded(success -> {
+
+                result = task.getValue();
+                onSuccess.accept(result);
+            });
+
+            task.setOnFailed(fail -> {
+
+                Throwable exception = task.getException();
+                exception.printStackTrace();
+                AlertManager.showError(exception.getMessage());
+            });
+
+            // Start the task
+            new Thread(task).start();
+
+        } catch (Exception e) {
 
             e.printStackTrace();
             AlertManager.showError(e.getMessage());

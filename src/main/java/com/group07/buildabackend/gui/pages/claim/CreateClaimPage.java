@@ -9,8 +9,14 @@ import javafx.scene.Node;
 import java.io.IOException;
 
 public class CreateClaimPage extends Page {
+    private String phId;
     public CreateClaimPage() {
         super();
+    }
+
+    public CreateClaimPage(String phId) {
+        this();
+        this.phId = phId;
     }
 
     @Override

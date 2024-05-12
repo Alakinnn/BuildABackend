@@ -40,7 +40,7 @@ public class PolicyOwnerClaimListController implements Initializable, ComponentC
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TaskRunner runner = new TaskRunner();
+        TaskRunner<List<SystemUser>> runner = new TaskRunner();
         runner.run(this::populateCustomerChoices);
 
         customerClaimsContainer.getChildren().add(customerClaims.getRoot());

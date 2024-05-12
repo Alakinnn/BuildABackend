@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.nav;
 
+import com.group07.buildabackend.gui.components.nav.factories.NavBarFactoryManager;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
@@ -20,7 +21,7 @@ public class NavDecorator extends Page {
     @Override
     public Node getRoot() {
         // Load FXML
-        NavBar navBar = new NavBar();
+        NavBar navBar = NavBarFactoryManager.getFactory().createNavBar();
 
         Node pageRoot = page.getRoot();
 

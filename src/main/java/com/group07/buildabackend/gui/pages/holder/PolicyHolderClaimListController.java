@@ -5,11 +5,13 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.claim.ClaimList;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -21,6 +23,8 @@ public class PolicyHolderClaimListController implements Initializable, Component
 
     private ClaimList myClaims;
     private ClaimList myDependentClaims;
+
+    private String phId;
 
     public PolicyHolderClaimListController() {
         myClaims = new ClaimList();

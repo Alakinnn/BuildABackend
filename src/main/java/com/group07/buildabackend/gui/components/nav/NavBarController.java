@@ -34,35 +34,35 @@ public class NavBarController implements Initializable, ComponentController {
     @FXML
     private VBox navBox;
 
-    private List<Node> navLinks;
+//    private List<Node> navLinks;
 
-    public NavBarController() {
-        navLinks = new ArrayList<>();
-    }
+//    public NavBarController() {
+//        navLinks = new ArrayList<>();
+//    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         navBox.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        addNavLink(new CreateClaimPage(), "Create Claim");
-        addNavLink(new RequestClaimInfoPage("c_8e597dc2"), "Request Claim Info");
-        addNavLink(new AddClaimInfoPage("c_8e597dc2"), "Add Claim Info");
-        addNavLink(new ManagerInsuranceClaimViewPage("c_8e597dc2"), "Manager: View Claim");
-        addNavLink(new SurveyorInsuranceClaimPage("c_8e597dc2"), "Surveyor: View Claim");
-        addNavLink(new PolicyHolderClaimsPage("u_7b85436d"), "Claims (PH)");
-        addNavLink(new DependentClaimsPage("u6"), "Claims (Dep)");
-        addNavLink(new PolicyOwnerClaimsPage(), "Claims(PO)");
-        addNavLink(new UserProfilePage("u_7b85436d"), "Profile (PH)");
-        addNavLink(new LoginPage(), "Login");
-        addNavLink(new CreateDependentPage(), "Create Dependent");
-        addNavLink(new CreatePolicyHolderPage(), "Create Policy Holder");
-        addNavLink(new CreateRoleBasedUserPage(), "Create User");
-        navBox.getChildren().addAll(navLinks);
+//        addNavLink(new CreateClaimPage(), "Create Claim");
+//        addNavLink(new RequestClaimInfoPage("c_8e597dc2"), "Request Claim Info");
+//        addNavLink(new AddClaimInfoPage("c_8e597dc2"), "Add Claim Info");
+//        addNavLink(new ManagerInsuranceClaimViewPage("c_8e597dc2"), "Manager: View Claim");
+//        addNavLink(new SurveyorInsuranceClaimPage("c_8e597dc2"), "Surveyor: View Claim");
+//        addNavLink(new PolicyHolderClaimsPage("u_7b85436d"), "Claims (PH)");
+//        addNavLink(new DependentClaimsPage("u6"), "Claims (Dep)");
+//        addNavLink(new PolicyOwnerClaimsPage(), "Claims(PO)");
+//        addNavLink(new UserProfilePage("u_7b85436d"), "Profile (PH)");
+//        addNavLink(new LoginPage(), "Login");
+//        addNavLink(new CreateDependentPage(), "Create Dependent");
+//        addNavLink(new CreatePolicyHolderPage(), "Create Policy Holder");
+//        addNavLink(new CreateRoleBasedUserPage(), "Create User");
+//        navBox.getChildren().addAll(navLinks);
     }
 
-    private void addNavLink(Page page, String label) {
-        navLinks.add(new NavLink(page, label).getRoot());
+    public void addNavLink(Page page, String label) {
+        navBox.getChildren().add(new NavLink(page, label).getRoot());
     }
 
 }

@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CreateClaimFormController extends FormController<InsuranceClaim> implements Initializable, ComponentController {
@@ -78,12 +79,16 @@ public class CreateClaimFormController extends FormController<InsuranceClaim> im
     private void populateCustomerChoices() {
         // TODO: Add actual users
         insuredCustomerChoice.getItems().add(new ChoiceField<>("John - 123", "123"));
-        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - u3", "u3"));
+        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - u3", "u_930cfca9"));
         insuredCustomerChoice.getItems().add(new ChoiceField<>("Bob - 789", "789"));
     }
 
 
     public void onUploadDocument() {
         docUploader.onUpload();
+    }
+
+    public void setCustomerChoices(List<ChoiceField<String>> choices) {
+        insuredCustomerChoice.getItems().setAll(choices);
     }
 }

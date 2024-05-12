@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui;
 
 import com.group07.buildabackend.gui.pages.Page;
+import com.group07.buildabackend.gui.pages.auth.LoginPage;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
@@ -13,9 +14,8 @@ public class SceneManager {
     private Scene currentScene;
     private Stage currentStage;
 
-    public SceneManager() {
-        Page defaultPage = new CreateClaimPage();
-//        currentRoot = new BorderPane(defaultPage.getRoot());
+    private SceneManager() {
+        Page defaultPage = new LoginPage();
         currentRoot = new StackPane();
         currentRoot.getChildren().add(defaultPage.getRoot());
 
@@ -41,7 +41,6 @@ public class SceneManager {
     }
 
     public void startLoading() {
-//        currentScene.setCursor(Cursor.WAIT);
         ProgressIndicator indicator = new ProgressIndicator();
         currentRoot.getChildren().add(indicator);
     }

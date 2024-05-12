@@ -35,11 +35,13 @@ public class CreatePolicyHolderService extends SystemUserService {
             }
 
             InsuranceCard insuranceCard = new InsuranceCard();
-            Credentials credentials = createCredentials(policyHolderDTO.getPwd(), policyHolder);
 
-            if (credentials == null) {
+            String password = policyHolderDTO.getPwd();
+            if (password == null) {
                 throw new InvalidCredentialsException("Password is required!", 400);
             }
+
+            Credentials credentials = createCredentials(policyHolderDTO.getPwd(), policyHolder);
 
             policyHolder.setPolicyOwner(policyOwner);
             policyHolder.setInsuranceCard(insuranceCard);
@@ -50,6 +52,8 @@ public class CreatePolicyHolderService extends SystemUserService {
 
             handleSuccess(response, "Successfully created new policy holder", 200, policyHolder);
         } catch (InvalidInputException e) {
+            handleException(response, e.getMessage(), e.getErrorCode());
+        } catch (InvalidCredentialsException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (HibernateException e) {
             handleException(response, e.getMessage(), 409);

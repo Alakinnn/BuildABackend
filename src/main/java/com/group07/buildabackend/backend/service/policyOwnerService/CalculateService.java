@@ -6,6 +6,10 @@ import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
+import com.group07.buildabackend.backend.model.userAction.actions.AnnualCostAction;
+import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
@@ -13,8 +17,11 @@ import java.util.List;
 
 public class CalculateService extends Service {
     public static Response<Double> calculateAnnualCost(InsuranceCostDTO dto){
-        Response<Double> response = new Response(null);
         final double dependentCost = 0.6;
+        Response<Double> response = new Response(null);
+        OperationType userAction = new AnnualCostAction(new CreateOperation());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
 
         try{
             PolicyOwner po = policyOwnerRepository.retrieveActorById(dto.getId());

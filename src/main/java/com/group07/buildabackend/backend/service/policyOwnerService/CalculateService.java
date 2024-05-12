@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
 import com.group07.buildabackend.backend.model.SystemUserType;
@@ -37,6 +38,8 @@ public class CalculateService extends SystemUserService {
             handleSuccess(response, "Successfully calculated annual cost", 200, annualCost);
         } catch(InvalidInputException e){
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
         return response;
     }

@@ -7,13 +7,14 @@ import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.service.Service;
+import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.util.List;
 
-public class CalculateService extends Service {
+public class CalculateService extends SystemUserService {
     public static Response<Double> calculateAnnualCost(InsuranceCostDTO dto){
-        Response<Double> response = new Response(null);
+        Response<Double> response = new Response<>(null);
         final double dependentCost = 0.6;
 
         try{

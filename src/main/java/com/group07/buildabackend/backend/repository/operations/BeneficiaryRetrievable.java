@@ -8,6 +8,6 @@ import java.util.List;
 public interface BeneficiaryRetrievable<T extends Beneficiary> {
     T retrieveOneBeneficiary(String beneficiaryId, String ownerId);
     List<T> retrieveAllBeneficiary(String ownerId);
-    InsuranceClaim retrieveOneBeneficiaryClaim(String claimId, String ownerId);
-    List<InsuranceClaim> retrieveAllBeneficiaryClaim(String ownerId);
+    InsuranceClaim retrieveOneBeneficiaryClaim(String claimId, String ownerId, String beneficiaryId);
+    List<InsuranceClaim> retrieveAllBeneficiaryClaim(String ownerId, String beneficiaryId);
 }

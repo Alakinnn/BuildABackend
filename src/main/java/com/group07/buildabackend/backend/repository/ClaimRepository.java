@@ -11,7 +11,16 @@ public class ClaimRepository extends Repository<InsuranceClaim>{
 
     @Override
     public void delete(InsuranceClaim item) {
-
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.remove(item);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+        }
     }
 
     @Override

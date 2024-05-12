@@ -1,11 +1,9 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
-import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
-import com.group07.buildabackend.backend.model.userAction.operations.RejectOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import org.hibernate.HibernateException;
 
@@ -45,22 +43,20 @@ public class CreateDependentService extends CreatePolicyHolderService {
             }
 
             InsuranceCard insuranceCard = new InsuranceCard();
+
             Credentials credentials = createCredentials(dependentDTO.getPwd(), dependent);
 
-            if (credentials == null) {
-                throw new InvalidCredentialsException("Password is required!", 400);
-            }
-
-
             dependent.setPolicyOwner(policyOwner);
-            dependent.setInsuranceCard(insuranceCard);
             dependent.setPolicyHolder(policyHolder);
+            dependent.setInsuranceCard(insuranceCard);
             dependent.setCredentials(credentials);
 
             systemUserRepository.add(dependent);
 
             handleSuccess(response, "Successfully created new policy holder", 200, dependent);
         } catch (InvalidInputException e) {
+            handleException(response, e.getMessage(), e.getErrorCode());
+        } catch (InvalidCredentialsException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (HibernateException e) {
             handleException(response, e.getMessage(), 409);

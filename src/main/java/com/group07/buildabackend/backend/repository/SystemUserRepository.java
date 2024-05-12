@@ -15,7 +15,9 @@ public class SystemUserRepository extends Repository<SystemUser> {
 
     @Override
     public SystemUser retrieveActorById(String id) {
-        return null;
+        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.id=:id");
+        query.setParameter("id", id);
+        return (SystemUser) query.getSingleResult();
     }
 
 

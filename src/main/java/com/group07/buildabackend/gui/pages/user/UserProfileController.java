@@ -4,6 +4,7 @@ import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.repository.SystemUserRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.user.UserActionList;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,11 +30,20 @@ public class UserProfileController implements ComponentController {
     @FXML
     private HBox actionListContainer;
 
+    private String userId;
+
+    private SystemUser fetchUser() {
+        // TODO: Use controller
+        SystemUserRepository repo = new SystemUserRepository();
+        return repo.retrieveActorById(userId);
+    }
+
     public void initPage(String userId) {
-        try {
-            // TODO: Use controller
-            SystemUserRepository repo = new SystemUserRepository();
-            SystemUser user = repo.retrieveActorById(userId);
+        this.userId = userId;
+
+        TaskRunner<SystemUser> runner = new TaskRunner<>();
+        runner.run(this::fetchUser, success -> {
+            SystemUser user = runner.getResult();
 
             if (user == null) return;
 
@@ -45,11 +55,8 @@ public class UserProfileController implements ComponentController {
             role.setText(user.getUserType().toString());
 
             actionListContainer.getChildren().add(new UserActionList(userId).getRoot());
+        });
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertManager.showError(e.getMessage());
-        }
     }
 
 }

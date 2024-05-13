@@ -37,19 +37,28 @@ public class PolicyHolderClaimListController implements Initializable, Component
         myClaimsContainer.getChildren().add(myClaims.getRoot());
     }
 
-    public void innitPage(String phId) {
+    private List<List<InsuranceClaim>> fetchClaims() {
         // TODO: Change this to controller instead of Repository
-
         PolicyHolderRepository repo = new PolicyHolderRepository();
         List<InsuranceClaim> holderClaims = repo.retrieveAllClaimsByActorId(phId);
         List<InsuranceClaim> dependentClaims = repo.retrieveAllDependentClaim(phId);
 
-        for (InsuranceClaim claim: holderClaims) {
-            myClaims.addClaim(claim);
-        }
+        List<List<InsuranceClaim>> res = new ArrayList<>(2);
+        res.add(holderClaims);
+        res.add(dependentClaims);
 
-        for (InsuranceClaim claim: dependentClaims) {
-            myDependentClaims.addClaim(claim);
-        }
+        return res;
+    }
+
+    public void innitPage(String phId) {
+        this.phId = phId;
+
+        TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>();
+        runner.run(this::fetchClaims, success -> {
+            List<List<InsuranceClaim>> claims = runner.getResult();
+
+            myClaims.addAllClaims(claims.get(0));
+            myDependentClaims.addAllClaims(claims.get(1));
+        });
     }
 }

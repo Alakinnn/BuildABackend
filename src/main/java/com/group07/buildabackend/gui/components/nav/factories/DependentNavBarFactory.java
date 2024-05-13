@@ -15,8 +15,8 @@ public class DependentNavBarFactory implements NavBarFactory{
         SystemUser user = CurrentUserManager.getCurrentUser();
         NavBar navBar = new NavBar();
 
-        navBar.addNavLink(new DependentClaimsPage(user.getUserId()), "Claims");
-        navBar.addNavLink(new UserProfilePage(user.getUserId()), "Profile");
+        navBar.addNavLink(new DependentClaimsPage(user.getUserId()), "My Claims");
+        navBar.addNavLink(new UserProfilePage(user.getUserId()), "My Profile");
         return navBar;
     }
 }

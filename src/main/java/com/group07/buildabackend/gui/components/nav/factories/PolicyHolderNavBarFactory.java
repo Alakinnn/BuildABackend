@@ -21,7 +21,7 @@ public class PolicyHolderNavBarFactory implements NavBarFactory{
         navBar.addNavLink(new PolicyHolderCreateClaimPage(userId), "File New Claim");
         navBar.addNavLink(new PolicyHolderDependentsPage(userId), "My Dependents");
         navBar.addNavLink(new CreateDependentPage(userId), "Add Dependent");
-        navBar.addNavLink(new UserProfilePage(userId), "Profile");
+        navBar.addNavLink(new UserProfilePage(userId), "My Profile");
         return navBar;
     }
 }

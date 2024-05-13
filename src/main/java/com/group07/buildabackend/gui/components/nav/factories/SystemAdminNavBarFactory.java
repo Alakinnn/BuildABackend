@@ -12,7 +12,7 @@ public class SystemAdminNavBarFactory implements NavBarFactory{
         SystemUser user = CurrentUserManager.getCurrentUser();
         NavBar navBar = new NavBar();
 
-        navBar.addNavLink(new UserProfilePage(user.getUserId()), "Profile");
+        navBar.addNavLink(new UserProfilePage(user.getUserId()), "My Profile");
         return navBar;
 
     }

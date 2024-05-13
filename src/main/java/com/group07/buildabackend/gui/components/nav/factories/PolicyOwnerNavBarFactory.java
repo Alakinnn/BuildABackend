@@ -15,10 +15,10 @@ public class PolicyOwnerNavBarFactory implements NavBarFactory {
         SystemUser user = CurrentUserManager.getCurrentUser();
         NavBar navBar = new NavBar();
 
-        navBar.addNavLink(new PolicyOwnerClaimsPage(user.getUserId()), "Claims");
+        navBar.addNavLink(new PolicyOwnerClaimsPage(user.getUserId()), "My Claims");
         navBar.addNavLink(new PolicyHolderCreateClaimPage(user.getUserId()), "File New Claim");
         navBar.addNavLink(new CreateDependentPage(user.getUserId()), "Add Dependent");
-        navBar.addNavLink(new UserProfilePage(user.getUserId()), "Profile");
+        navBar.addNavLink(new UserProfilePage(user.getUserId()), "My Profile");
         return navBar;
     }
 }

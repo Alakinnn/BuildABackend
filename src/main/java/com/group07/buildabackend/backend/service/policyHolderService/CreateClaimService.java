@@ -9,13 +9,11 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
-import com.group07.buildabackend.backend.model.userAction.operations.UpdateOperation;
 import com.group07.buildabackend.backend.validation.InsuranceClaimValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.util.List;
 
-import static com.group07.buildabackend.backend.service.SystemUserService.policyHolderRepository;
 import static com.group07.buildabackend.backend.utils.fileUtils.FileListMapper.mapToDocumentList;
 
 public class CreateClaimService extends PolicyHolderService{

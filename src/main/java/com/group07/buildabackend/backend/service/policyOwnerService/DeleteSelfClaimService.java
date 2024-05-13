@@ -6,10 +6,9 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.DeleteOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
-import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class DeleteSelfClaimService extends Service {
+public class DeleteSelfClaimService extends PolicyOwnerService {
 //    ownerId is retrieved from CurrentUserManager, so the value is expected to be NOT-NULL
     public static Response<InsuranceClaim> deleteSelfClaim(String claimId) {
         Response<InsuranceClaim> response = new Response<>(null);

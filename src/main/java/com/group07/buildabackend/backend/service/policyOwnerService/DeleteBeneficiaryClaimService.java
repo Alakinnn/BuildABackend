@@ -6,13 +6,12 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.DeleteOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-import java.util.List;
 
-import static com.group07.buildabackend.backend.service.Service.*;
 
-public class DeleteBeneficiaryClaimService {
+public class DeleteBeneficiaryClaimService extends PolicyOwnerService {
     public static Response<InsuranceClaim> deleteBeneficiaryClaim(String claimId, String beneficiaryId) {
         Response<InsuranceClaim> response = new Response<>(null);
         OperationType userAction = new ClaimAction(new DeleteOperation());

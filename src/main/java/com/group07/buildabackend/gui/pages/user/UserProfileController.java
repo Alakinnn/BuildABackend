@@ -4,6 +4,7 @@ import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.repository.SystemUserRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.components.card.InsuranceCardView;
 import com.group07.buildabackend.gui.components.user.UserActionList;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
@@ -63,6 +64,15 @@ public class UserProfileController implements ComponentController {
             role.setText(user.getUserType().toString());
 
             actionListContainer.getChildren().add(new UserActionList(userId).getRoot());
+
+            TaskRunner<InsuranceCard> cardRunner = new TaskRunner<>();
+            cardRunner.run(this::fetchCard, cardSuccess -> {
+                InsuranceCard card = cardRunner.getResult();
+
+                if (card == null) return;
+
+                insuranceCardContainer.getChildren().add(new InsuranceCardView(card).getRoot());
+            });
         });
 
     }

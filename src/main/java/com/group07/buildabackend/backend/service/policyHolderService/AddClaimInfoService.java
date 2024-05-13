@@ -1,10 +1,15 @@
 package com.group07.buildabackend.backend.service.policyHolderService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
+import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
+import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.model.userAction.operations.UpdateOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.io.File;
@@ -17,6 +22,9 @@ public class AddClaimInfoService extends PolicyHolderService {
         Response<InsuranceClaim> response = new Response<>(null);
         String claimId = dto.getId();
         List<File> documents = dto.getDocuments();
+        OperationType userAction = new ClaimAction(new UpdateOperation());
+        String actionDescription = userAction.getDescription();
+        response.setAction(actionDescription);
 
         try {
             InsuranceClaim insuranceClaim = insuranceClaimRepository.retrieveActorById(claimId);
@@ -49,6 +57,8 @@ public class AddClaimInfoService extends PolicyHolderService {
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
         return response;
     }

@@ -45,7 +45,7 @@ public class SurveyorInsuranceClaimViewController implements Initializable, Comp
         InsuranceSurveyorController controller = new InsuranceSurveyorController();
 
         ProposeClaimDTO dto = new ProposeClaimDTO();
-        dto.setId(claimId.getText());
+        dto.setClaimId(claimId.getText());
 
         Response<InsuranceClaim> res = controller.proposeClaim(dto);
 

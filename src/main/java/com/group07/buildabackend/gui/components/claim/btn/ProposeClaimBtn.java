@@ -17,7 +17,7 @@ public class ProposeClaimBtn extends Component {
             InsuranceSurveyorController controller = new InsuranceSurveyorController();
 
             ProposeClaimDTO dto = new ProposeClaimDTO();
-            dto.setId(claimId);
+            dto.setClaimId(claimId);
 
             Response<InsuranceClaim> res = controller.proposeClaim(dto);
 

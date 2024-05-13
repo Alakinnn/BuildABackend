@@ -11,7 +11,7 @@
                <children>
                   <TextField fx:id="filterValField" prefHeight="26.0" prefWidth="216.0" promptText="Filter" />
                   <ChoiceBox fx:id="filterChoice" prefHeight="26.0" prefWidth="91.0" />
-                  <Button mnemonicParsing="false" onAction="#onFilter" prefHeight="26.0" prefWidth="70.0" text="Find" />
+                  <Button mnemonicParsing="false" onAction="#onFilter" prefHeight="26.0" prefWidth="70.0" text="Filter" />
                </children>
             </HBox>
             <TableView fx:id="table" prefHeight="200.0" prefWidth="377.0">

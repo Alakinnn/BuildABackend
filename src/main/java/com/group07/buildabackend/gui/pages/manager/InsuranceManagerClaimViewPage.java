@@ -5,12 +5,11 @@ import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.manager.ManagerClaimViewActionField;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
-import com.group07.buildabackend.gui.pages.claim.CreateClaimForm;
 import javafx.scene.Node;
 
-public class ManagerInsuranceClaimViewPage extends Page {
+public class InsuranceManagerClaimViewPage extends Page {
     private String claimId;
-    public ManagerInsuranceClaimViewPage(String claimId) {
+    public InsuranceManagerClaimViewPage(String claimId) {
         super();
         this.claimId = claimId;
     }

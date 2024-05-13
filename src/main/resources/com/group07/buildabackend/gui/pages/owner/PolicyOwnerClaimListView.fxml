@@ -16,7 +16,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="customerChoice" prefWidth="150.0" />
+                  <ChoiceBox fx:id="beneficiaryChoice" prefWidth="150.0" />
                   <Button mnemonicParsing="false" onAction="#onFind" text="Find" />
                </children>
             </HBox>

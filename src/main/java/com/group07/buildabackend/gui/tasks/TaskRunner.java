@@ -24,7 +24,7 @@ public class TaskRunner<T> {
         try {
 
             // Start loading
-//            SceneManager.getInstance().startLoading();
+            SceneManager.getInstance().startLoading();
 
             // Create a background task for sending the request
             Task<T> task = new Task<>() {
@@ -37,14 +37,14 @@ public class TaskRunner<T> {
             // Set up event handler for task completion
             task.setOnSucceeded(success -> {
                 // End loading
-//                SceneManager.getInstance().endLoading();
+                SceneManager.getInstance().endLoading();
 
                 result = task.getValue();
             });
 
             task.setOnFailed(fail -> {
                 // End loading
-//                SceneManager.getInstance().endLoading();
+                SceneManager.getInstance().endLoading();
 
                 Throwable exception = task.getException();
                 exception.printStackTrace();
@@ -56,16 +56,18 @@ public class TaskRunner<T> {
 
         } catch (Exception e) {
             // End loading
-//            SceneManager.getInstance().endLoading();
+            SceneManager.getInstance().endLoading();
 
             e.printStackTrace();
-//            AlertManager.showError(e.getMessage());
+            AlertManager.showError(e.getMessage());
         }
     }
 
     public void run(TaskSupplier<T> taskSupplier, Consumer<T> onSuccess) {
         try {
 
+            // Start loading
+            SceneManager.getInstance().startLoading();
 
             // Create a background task for sending the request
             Task<T> task = new Task<>() {
@@ -78,12 +80,15 @@ public class TaskRunner<T> {
             // Set up event handler for task completion
             task.setOnSucceeded(success -> {
 
+                // End loading
+                SceneManager.getInstance().endLoading();
                 result = task.getValue();
                 onSuccess.accept(result);
             });
 
             task.setOnFailed(fail -> {
-
+                // End loading
+                SceneManager.getInstance().endLoading();
                 Throwable exception = task.getException();
                 exception.printStackTrace();
                 AlertManager.showError(exception.getMessage());
@@ -93,7 +98,8 @@ public class TaskRunner<T> {
             new Thread(task).start();
 
         } catch (Exception e) {
-
+            // End loading
+            SceneManager.getInstance().endLoading();
             e.printStackTrace();
             AlertManager.showError(e.getMessage());
         }

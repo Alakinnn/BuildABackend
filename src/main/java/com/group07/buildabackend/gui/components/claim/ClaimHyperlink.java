@@ -3,15 +3,19 @@ package com.group07.buildabackend.gui.components.claim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.components.Component;
-import com.group07.buildabackend.gui.pages.surveyor.SurveyorInsuranceClaimPage;
+import com.group07.buildabackend.gui.pages.Page;
+import com.group07.buildabackend.gui.pages.factories.PageFactory;
+import com.group07.buildabackend.gui.pages.factories.PageFactoryManager;
+import com.group07.buildabackend.gui.pages.surveyor.InsuranceSurveyorClaimViewPage;
 import javafx.scene.control.Hyperlink;
 
 public class ClaimHyperlink extends Component {
     public ClaimHyperlink(InsuranceClaim claim) {
-        Hyperlink link = new Hyperlink(claim.getClaimId());
+        String claimId = claim.getClaimId();
+        Hyperlink link = new Hyperlink(claimId);
         link.setOnAction(event -> {
-            // TODO: change depending user role
-            SceneManager.getInstance().switchToPage(new SurveyorInsuranceClaimPage(claim.getClaimId()));
+            Page page = PageFactoryManager.getFactory().createClaimViewPage(claimId);
+            SceneManager.getInstance().switchToPage(page);
         });
 
         root = link;

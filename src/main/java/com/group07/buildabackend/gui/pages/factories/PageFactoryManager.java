@@ -1,31 +1,32 @@
-package com.group07.buildabackend.gui.components.nav.factories;
+package com.group07.buildabackend.gui.pages.factories;
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.model.SystemUser;
 
-public class NavBarFactoryManager {
-    private static NavBarFactory factory;
+public class PageFactoryManager {
+    private static PageFactory factory;
 
-    public static NavBarFactory getFactory() {
+    public static PageFactory getFactory() {
         if (factory == null) {
             factory = createFactory();
         }
         return factory;
     }
 
-    private static NavBarFactory createFactory() {
+    private static PageFactory createFactory() {
         SystemUser user = CurrentUserManager.getCurrentUser();
+
         switch (user.getUserType()) {
             case policy_holder:
-                return new PolicyHolderNavBarFactory();
+                return new PolicyHolderPageFactory();
             case dependent:
-                return new DependentNavBarFactory();
+                return new DependentPageFactory();
             case policy_owner:
-                return new PolicyOwnerNavBarFactory();
+                return new PolicyOwnerPageFactory();
             case insurance_surveyor:
-                return new InsuranceSurveyorNavBarFactory();
+                return new InsuranceSurveyorPageFactory();
             case insurance_manager:
-                return new InsuranceManagerNavBarFactory();
+                return new InsuranceManagerPageFactory();
             // TODO: add system admin
             default:
                 return null;

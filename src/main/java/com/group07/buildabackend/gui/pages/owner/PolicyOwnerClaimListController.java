@@ -1,13 +1,12 @@
 package com.group07.buildabackend.gui.pages.owner;
 
-import com.group07.buildabackend.backend.controller.PolicyHolderController;
-import com.group07.buildabackend.backend.controller.UserController;
-import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.SystemUserType;
+import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.DependentRepository;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
-import com.group07.buildabackend.backend.repository.operations.ClaimRetrievable;
+import com.group07.buildabackend.backend.repository.PolicyOwnerRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.claim.ClaimList;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
@@ -21,16 +20,18 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PolicyOwnerClaimListController implements Initializable, ComponentController {
+public class PolicyOwnerClaimListController implements ComponentController {
     @FXML
     private HBox customerClaimsContainer;
     @FXML
     private HBox dependentClaimsContainer;
     @FXML
-    private ChoiceBox<ChoiceField<String>> customerChoice;
+    private ChoiceBox<ChoiceField<String>> beneficiaryChoice;
 
     private ClaimList customerClaims;
     private ClaimList dependentClaims;
+
+    private String policyOwnerId;
 
 
     public PolicyOwnerClaimListController() {
@@ -38,18 +39,20 @@ public class PolicyOwnerClaimListController implements Initializable, ComponentC
         dependentClaims = new ClaimList();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        TaskRunner<List<SystemUser>> runner = new TaskRunner();
-        runner.run(this::populateCustomerChoices);
-
-        customerClaimsContainer.getChildren().add(customerClaims.getRoot());
-        dependentClaimsContainer.getChildren().add(dependentClaims.getRoot());
-    }
-
     public void onFind() {
         TaskRunner runner = new TaskRunner();
         runner.run(this::populateClaims);
+    }
+
+    public void initPage(String policyOwnerId) {
+        this.policyOwnerId = policyOwnerId;
+
+        TaskRunner<List<Beneficiary>> runner = new TaskRunner();
+        runner.run(this::populateBeneficiaryChoices);
+
+        customerClaimsContainer.getChildren().add(customerClaims.getRoot());
+        dependentClaimsContainer.getChildren().add(dependentClaims.getRoot());
+
     }
 
     private Object populateClaims() {
@@ -57,48 +60,44 @@ public class PolicyOwnerClaimListController implements Initializable, ComponentC
         this.customerClaims.resetClaims();
         this.dependentClaims.resetClaims();
 
-        String customerId = customerChoice.getValue().getValue();
+        String beneficiaryId = beneficiaryChoice.getValue().getValue();
 
+        // TODO: Use controllers instead
+        PolicyOwnerRepository repo = new PolicyOwnerRepository();
+        Beneficiary beneficiary = repo.retrieveOneBeneficiary(beneficiaryId, policyOwnerId);
 
-        PolicyHolderRepository repo = new PolicyHolderRepository();
-        List<InsuranceClaim> customerClaims = repo.retrieveAllClaimsByActorId(customerId);
-        List<InsuranceClaim> dependentClaims = repo.retrieveAllDependentClaim(customerId);
+        if (beneficiary.getUserType() == SystemUserType.dependent) {
+            DependentRepository depRepo = new DependentRepository();
+            List<InsuranceClaim> claims = depRepo.retrieveAllClaimsByActorId(beneficiary.getUserId());
 
-        // TODO: Handle based on role, also use controllers
-//        if (customer.role == blabla) {
-//            blabla
-//        }
-        if (customerClaims.size() == 0 && dependentClaims.size() == 0) {
-            customerClaims = new DependentRepository().retrieveAllClaimsByActorId(customerId);
+            this.customerClaims.addAllClaims(claims);
         }
 
-        // FIXME: Currently can only see policy holder claims, BE needs to implement role
-        for (InsuranceClaim claim: customerClaims) {
-            this.customerClaims.addClaim(claim);
-        }
+        if (beneficiary.getUserType() == SystemUserType.policy_holder) {
+            PolicyHolderRepository phRepo = new PolicyHolderRepository();
+            List<InsuranceClaim> phClaims = phRepo.retrieveAllClaimsByActorId(beneficiaryId);
+            List<InsuranceClaim> depClaims = phRepo.retrieveAllDependentClaim(beneficiaryId);
 
-        for (InsuranceClaim claim: dependentClaims) {
-            this.dependentClaims.addClaim(claim);
+            this.customerClaims.addAllClaims(phClaims);
+            this.dependentClaims.addAllClaims(depClaims);
         }
 
         return null;
     }
 
-    private List<SystemUser> populateCustomerChoices() {
-        UserController controller = new UserController();
-        UserQueryDTO dto = new UserQueryDTO();
+    private List<Beneficiary> populateBeneficiaryChoices() {
+        PolicyOwnerRepository repo = new PolicyOwnerRepository();
+        List<Beneficiary> beneficiaries = repo.retrieveAllBeneficiary(policyOwnerId);
 
-        List<SystemUser> users = controller.queryUsers(dto).getData();
+        if (beneficiaries == null) return null;
 
-        if (users == null) return null;
-
-        for (SystemUser user: users) {
+        for (SystemUser user: beneficiaries) {
             String id = user.getUserId();
             String label = user.getFullName() + " (" + id + ")";
-            customerChoice.getItems().add(new ChoiceField<>(label, id));
+            beneficiaryChoice.getItems().add(new ChoiceField<>(label, id));
         }
 
-        return users;
+        return beneficiaries;
     }
 
 }

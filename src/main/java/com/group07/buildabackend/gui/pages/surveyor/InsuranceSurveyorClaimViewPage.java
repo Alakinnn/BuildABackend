@@ -7,10 +7,10 @@ import com.group07.buildabackend.gui.components.surveyor.SurveyorClaimViewAction
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 
-public class SurveyorInsuranceClaimPage extends Page {
+public class InsuranceSurveyorClaimViewPage extends Page {
     private String claimId;
 
-    public SurveyorInsuranceClaimPage(String claimId) {
+    public InsuranceSurveyorClaimViewPage(String claimId) {
         super();
         this.claimId = claimId;
     }

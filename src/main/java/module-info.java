@@ -46,6 +46,8 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.gui.components.form to javafx.fxml;
     exports com.group07.buildabackend.gui.components.claim;
     opens com.group07.buildabackend.gui.components.claim to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.user;
+    opens com.group07.buildabackend.gui.components.user to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.user;
     opens com.group07.buildabackend.gui.pages.user to javafx.fxml;
 

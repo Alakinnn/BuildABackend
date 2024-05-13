@@ -38,15 +38,10 @@ public class ClaimListController implements Initializable, ComponentController {
     @FXML
     private ChoiceBox<ClaimFilterOption> filterChoice;
 
-    private List<InsuranceClaim> claims;
 
     private enum ClaimFilterOption {
         STATUS,
         AMOUNT
-    }
-
-    public ClaimListController() {
-        claims = new ArrayList<>();
     }
 
     @Override
@@ -94,6 +89,9 @@ public class ClaimListController implements Initializable, ComponentController {
         table.getItems().add(claim);
     }
 
+    public void addAllClaims(List<InsuranceClaim> claims) {
+        table.getItems().addAll(claims);
+    }
     public void resetClaims() {
         table.getItems().clear();
     }

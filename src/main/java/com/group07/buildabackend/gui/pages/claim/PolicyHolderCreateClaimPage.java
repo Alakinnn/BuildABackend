@@ -22,20 +22,33 @@ public class PolicyHolderCreateClaimPage extends Page {
         this.phId = phId;
     }
 
+    private List<Dependent> retrieveDependents() {
+        // TODO: Use controllers instead
+        PolicyHolderRepository repo = new PolicyHolderRepository();
+        List<Dependent> dependents = repo.retrieveAllDependent(phId);
+
+        return dependents;
+    }
 
     @Override
     public Node getRoot() {
         CreateClaimForm form = new CreateClaimForm();
 
-        // Use controllers instead
-        PolicyHolderRepository repo = new PolicyHolderRepository();
-        List<Dependent> dependents = repo.retrieveAllDependent(phId);
 
-        TaskRunner<SystemUser> runner = new TaskRunner<>();
-        List<ChoiceField<String>> choices = new ArrayList<>();
+        TaskRunner<List<Dependent>> runner = new TaskRunner<>();
+        runner.run(this::retrieveDependents, success -> {
+            List<Dependent> dependents = runner.getResult();
 
-        choices.add(new ChoiceField<>("Myself", phId));
-        form.setCustomerChoices(choices);
+            List<ChoiceField<String>> choices = new ArrayList<>();
+
+            choices.add(new ChoiceField<>("Myself", phId));
+            for (Dependent dependent: dependents) {
+                String label = dependent.getFullName() + " (" + dependent.getUserId() + ")";
+                choices.add(new ChoiceField<>(label, dependent.getUserId()));
+            }
+            form.setCustomerChoices(choices);
+        });
+
 
         root = form.getRoot();
 

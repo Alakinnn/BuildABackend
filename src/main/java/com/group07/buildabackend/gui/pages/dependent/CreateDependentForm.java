@@ -10,6 +10,8 @@ public class CreateDependentForm extends ControlledComponent<CreateDependentForm
 
     public CreateDependentForm(String phId) {
         super(CreateDependentForm.class.getResource("CreateDependentForm.fxml"));
-        controller.presetPolicyHolderId(phId);
+        if (phId != null) {
+            controller.presetPolicyHolderId(phId);
+        }
     }
 }

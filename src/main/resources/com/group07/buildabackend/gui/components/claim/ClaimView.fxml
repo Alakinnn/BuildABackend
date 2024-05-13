@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.claim.ClaimViewController">
+<AnchorPane prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.claim.ClaimViewController">
     <children>
-        <VBox layoutX="46.0" prefHeight="400.0" prefWidth="514.0">
+        <VBox layoutX="46.0" prefHeight="400.0" prefWidth="514.0" spacing="10.0">
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="514.0">
                     <children>
                         <Label prefHeight="20.0" prefWidth="111.0" text="Claim ID:">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Label>
                         <Text fx:id="id" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId">
@@ -27,7 +27,7 @@
                <children>
                   <Label prefHeight="20.0" prefWidth="112.0" text="Customer:">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font></Label>
                   <AnchorPane fx:id="customer" />
                </children>
@@ -36,7 +36,7 @@
                     <children>
                         <Label prefHeight="20.0" prefWidth="112.0" text="Status:">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Label>
                   <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" text="status">
@@ -49,7 +49,7 @@
                     <children>
                         <Label prefHeight="20.0" prefWidth="112.0" text="Claim Amount:">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Label>
                   <Text fx:id="amount" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
@@ -63,7 +63,7 @@
                     <children>
                         <Label prefHeight="20.0" prefWidth="111.0" text="Exam Date:">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Label>
                   <Text fx:id="examDate" strokeType="OUTSIDE" strokeWidth="0.0" text="examDate">
@@ -77,7 +77,7 @@
                     <children>
                         <Label prefHeight="20.0" prefWidth="111.0" text="Claim Date:">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Label>
                   <Text fx:id="claimDate" strokeType="OUTSIDE" strokeWidth="0.0" text="claimDate">
@@ -87,6 +87,20 @@
                   </Text>
                     </children>
                 </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="168.0" prefHeight="26.0" prefWidth="586.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="111.0" text="Notes:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <TextArea fx:id="notes" editable="false" prefHeight="295.0" prefWidth="515.0" />
+               </children>
+            </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="635.0">
                     <VBox.margin>
                         <Insets />
@@ -107,7 +121,7 @@
                <children>
                   <Label prefHeight="20.0" prefWidth="143.0" text="Bank Name:">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                   <Text fx:id="bankName" strokeType="OUTSIDE" strokeWidth="0.0" text="bankName">
@@ -121,7 +135,7 @@
                <children>
                   <Label prefHeight="20.0" prefWidth="141.0" text="Receiver Name:">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                   <Text fx:id="receiverName" strokeType="OUTSIDE" strokeWidth="0.0" text="receiverName">
@@ -136,7 +150,7 @@
                      <children>
                         <Label prefHeight="20.0" prefWidth="140.0" text="Account Number:">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Text fx:id="accountNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="accountNumber">
@@ -157,8 +171,11 @@
                </children>
             </HBox>
             <HBox fx:id="uploadedDocsContainer" layoutX="10.0" layoutY="332.0" />
-            <HBox fx:id="actionFieldContainer" />
+            <HBox fx:id="actionFieldContainer" alignment="CENTER_LEFT" spacing="20.0" />
             </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
         </VBox>
     </children>
 </AnchorPane>

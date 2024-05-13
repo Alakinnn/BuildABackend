@@ -6,10 +6,12 @@ import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.upload.UploadedDocs;
 import com.group07.buildabackend.gui.components.user.UserHyperlink;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -34,6 +36,8 @@ public class ClaimViewController implements ComponentController {
     @FXML
     private Text bankName;
     @FXML
+    private TextArea notes;
+    @FXML
     private Text receiverName;
     @FXML
     private Text accountNumber;
@@ -42,11 +46,21 @@ public class ClaimViewController implements ComponentController {
     @FXML
     private HBox actionFieldContainer;
 
-    public void initPage(String claimId) {
+    private String claimId;
+
+    private InsuranceClaim fetchClaim() {
         // TODO: controller instead of repo
-        try {
-            ClaimRepository repo = new ClaimRepository();
-            InsuranceClaim claim = repo.retrieveActorById(claimId);
+
+        ClaimRepository repo = new ClaimRepository();
+        return repo.retrieveActorById(claimId);
+    };
+
+    public void initPage(String claimId) {
+        this.claimId = claimId;
+
+        TaskRunner<InsuranceClaim> runner = new TaskRunner<>();
+        runner.run(this::fetchClaim, success -> {
+            InsuranceClaim claim = runner.getResult();
 
             if (claim == null) return;
 
@@ -58,15 +72,14 @@ public class ClaimViewController implements ComponentController {
             amount.setText(Double.toString(claim.getAmount()));
             examDate.setText(claim.getExamDate().toString());
             claimDate.setText(claim.getClaimDate().toString());
+            notes.setText(claim.getNote());
             bankName.setText(claim.getReceiverBankName());
             receiverName.setText(claim.getReceiverName());
             accountNumber.setText(claim.getReceiverBankNumber());
 
             uploadedDocsContainer.getChildren().add(new UploadedDocs(claim.getDocuments()).getRoot());
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertManager.showError(e.getMessage());
-        }
+        });
+
     }
 
     public void setActionField(Node actionField) {

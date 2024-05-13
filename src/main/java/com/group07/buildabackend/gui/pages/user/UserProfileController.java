@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.pages.user;
 
 import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.repository.SystemUserRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.user.UserActionList;
@@ -28,6 +29,8 @@ public class UserProfileController implements ComponentController {
     @FXML
     private Text role;
     @FXML
+    private HBox insuranceCardContainer;
+    @FXML
     private HBox actionListContainer;
 
     private String userId;
@@ -36,6 +39,11 @@ public class UserProfileController implements ComponentController {
         // TODO: Use controller
         SystemUserRepository repo = new SystemUserRepository();
         return repo.retrieveActorById(userId);
+    }
+
+    private InsuranceCard fetchCard() {
+        // TODO: BE implement fetch card;
+        return null;
     }
 
     public void initPage(String userId) {

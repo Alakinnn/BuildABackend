@@ -11,6 +11,7 @@ import com.group07.buildabackend.gui.components.form.fields.FormFileUpload;
 import com.group07.buildabackend.gui.components.upload.FileFilter;
 import com.group07.buildabackend.gui.components.upload.FileUpload;
 import com.group07.buildabackend.gui.components.upload.PDFFilterDecorator;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,14 +25,15 @@ import java.util.ResourceBundle;
 
 public class AddClaimInfoFormController extends FormController<InsuranceClaim> implements Initializable, ComponentController {
     @FXML
-    private Text claimId;
+    private Text claimIdLabel;
     @FXML
     private TextArea notes;
     @FXML
     private AnchorPane uploadedDocContainer;
     private FileUpload docUploader;
+    private String claimId;
 
-    // TODO: add persistence for uploadedDocs when retrieving from DB
+
     public AddClaimInfoFormController() {
         docUploader = new FileUpload(new PDFFilterDecorator(new FileFilter()));
     }
@@ -39,7 +41,7 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
     @Override
     public Response<InsuranceClaim> sendRequest() {
         AddClaimInfoDTO request = new AddClaimInfoDTO();
-        request.setId(claimId.getText());
+        request.setId(claimIdLabel.getText());
         request.setDocuments(docUploader.getUploadedFiles());
 
         PolicyHolderController controller = new PolicyHolderController();
@@ -56,21 +58,21 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
         docUploader.onUpload();
     }
 
-    public void initPage(String newId) {
-        try {
-            // TODO: controllers instead of repo
-            claimId.setText(newId);
+    private InsuranceClaim fetchClaim() {
+        // TODO: controllers instead of repo
+        ClaimRepository repo = new ClaimRepository();
+        return repo.retrieveActorById(claimId);
+    }
 
-            ClaimRepository repo = new ClaimRepository();
-            InsuranceClaim claim = repo.retrieveActorById(newId);
+    public void initPage(String claimId) {
+        this.claimId = claimId;
+        TaskRunner<InsuranceClaim> runner = new TaskRunner<>();
+        runner.run(this::fetchClaim, success -> {
+            InsuranceClaim claim = runner.getResult();
 
             if (claim == null) return;
 
             notes.setText(claim.getNote());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertManager.showError(e.getMessage());
-        }
+        });
     }
 }

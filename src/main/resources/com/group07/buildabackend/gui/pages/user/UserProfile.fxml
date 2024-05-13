@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.user.UserProfileController">
    <children>
-      <VBox prefHeight="351.0" prefWidth="452.0">
+      <VBox prefHeight="351.0" prefWidth="452.0" spacing="5.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="372.0" style="-fx-background-color: rgba(194, 223, 237);">
                <children>
@@ -19,47 +19,74 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="372.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="104.0" text="ID:" />
-                  <Text fx:id="id" strokeType="OUTSIDE" strokeWidth="0.0" text="id" />
+                  <Label prefHeight="20.0" prefWidth="110.0" text="ID:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Text fx:id="id" strokeType="OUTSIDE" strokeWidth="0.0" text="id">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="44.0" prefHeight="20.0" prefWidth="372.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="103.0" text="Full Name:" />
-                  <Text fx:id="fullName" strokeType="OUTSIDE" strokeWidth="0.0" text="fullName" />
+                  <Label prefHeight="20.0" prefWidth="110.0" text="Full Name:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Text fx:id="fullName" strokeType="OUTSIDE" strokeWidth="0.0" text="fullName">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="53.0" prefHeight="20.0" prefWidth="372.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="103.0" text="Email:" />
-                  <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" text="email" />
+                  <Label prefHeight="20.0" prefWidth="110.0" text="Email:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Text fx:id="email" strokeType="OUTSIDE" strokeWidth="0.0" text="email">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="73.0" prefHeight="20.0" prefWidth="372.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="103.0" text="Phone Number:" />
-                  <Text fx:id="phone" strokeType="OUTSIDE" strokeWidth="0.0" text="phone" />
+                  <Label prefHeight="20.0" prefWidth="110.0" text="Phone Number:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Text fx:id="phone" strokeType="OUTSIDE" strokeWidth="0.0" text="phone">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="93.0" prefHeight="20.0" prefWidth="372.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="103.0" text="Address:" />
-                  <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" text="address" />
+                  <Label prefHeight="20.0" prefWidth="110.0" text="Address:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" text="address">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="113.0" prefHeight="20.0" prefWidth="372.0">
                <children>
-                  <Label prefHeight="18.0" prefWidth="103.0" text="User Role:" />
-                  <Text fx:id="role" strokeType="OUTSIDE" strokeWidth="0.0" text="role" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="10.0" prefHeight="23.0" prefWidth="372.0" style="-fx-background-color: rgba(194, 223, 237);">
-               <children>
-                  <Label text="Insurance Card">
+                  <Label prefHeight="20.0" prefWidth="110.0" text="User Role:">
                      <font>
                         <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
+                     </font></Label>
+                  <Text fx:id="role" strokeType="OUTSIDE" strokeWidth="0.0" text="role">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox fx:id="insuranceCardContainer" />

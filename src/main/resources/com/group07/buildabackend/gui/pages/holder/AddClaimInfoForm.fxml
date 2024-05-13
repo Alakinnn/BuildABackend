@@ -17,7 +17,7 @@
                         </font>
                     </Label>
             
-                    <Text fx:id="claimId" fill="#000000b2" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId">
+                    <Text fx:id="claimIdLabel" fill="#000000b2" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId">
                         <font>
                             <Font size="14.0" />
                         </font>

@@ -17,7 +17,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 public class UpdatePolicyHolderService extends SystemUserService {
     public static Response<PolicyHolder> updatePolicyHolder(PolicyHolderDTO dto){
-        Response<PolicyHolder> response = new Response(null);
+        Response<PolicyHolder> response = new Response<>(null);
 
         OperationType userAction = new UserAction(new UpdateOperation(), SystemUserType.policy_holder);
         String actionDescription = userAction.getDescription();

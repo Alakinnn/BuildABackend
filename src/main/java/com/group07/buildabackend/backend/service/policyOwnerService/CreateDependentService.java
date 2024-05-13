@@ -5,7 +5,6 @@ import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
-import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import org.hibernate.HibernateException;
@@ -20,8 +19,6 @@ import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
-
-import static com.group07.buildabackend.backend.service.SystemUserService.createCredentials;
 
 public class CreateDependentService extends SystemUserService {
     public static Response<Dependent> createNewDependent(DependentDTO dependentDTO) {

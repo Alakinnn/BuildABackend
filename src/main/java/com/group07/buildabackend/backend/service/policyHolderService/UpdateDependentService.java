@@ -17,7 +17,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 public class UpdateDependentService extends SystemUserService {
     public static Response<Dependent> updateDependent(DependentDTO dto){
-        Response<Dependent> response = new Response(null);
+        Response<Dependent> response = new Response<>(null);
         OperationType userAction = new UserAction(new UpdateOperation(), SystemUserType.dependent);
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);

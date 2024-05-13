@@ -4,14 +4,11 @@ import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInfoService;
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
-import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentService;
 import com.group07.buildabackend.backend.service.policyOwnerService.CreateDependentService;
-import com.group07.buildabackend.backend.service.policyOwnerService.CreatePolicyHolderService;
-import com.group07.buildabackend.backend.service.userActionService.LogActionService;
+import com.group07.buildabackend.backend.service.policyOwnerService.UpdateDependentService;
 
 public class PolicyHolderController extends Controller{
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
@@ -27,6 +24,6 @@ public class PolicyHolderController extends Controller{
     }
 
     public Response<Dependent> updateDependent(DependentDTO dependentDTO){
-        return UpdateDependentService.updateDependent(dependentDTO);
+        return UpdateDependentService.policyHolderUpdateDependent(dependentDTO);
     }
 }

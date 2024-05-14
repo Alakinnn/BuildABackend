@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ClaimRetrievable<T extends InsuranceClaim> {
     List<T> retrieveAllClaimsByActorId(String id);
+    InsuranceClaim retrieveOneClaimByActorId(String claimId, String systemUserId);
 }

@@ -7,8 +7,9 @@ import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInfoService;
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
+import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentClaimService;
+import com.group07.buildabackend.backend.service.policyHolderService.UpdateSelfClaimService;
 import com.group07.buildabackend.backend.service.policyOwnerService.CreateDependentService;
-import com.group07.buildabackend.backend.service.policyOwnerService.UpdateDependentService;
 
 public class PolicyHolderController extends Controller{
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
@@ -23,7 +24,11 @@ public class PolicyHolderController extends Controller{
         return CreateDependentService.createNewDependent(dependentDTO);
     }
 
-    public Response<Dependent> updateDependent(DependentDTO dependentDTO){
-        return UpdateDependentService.policyHolderUpdateDependent(dependentDTO);
+    public Response<InsuranceClaim> updateSelfClaim(InsuranceClaimDTO insuranceClaimDTO){
+        return UpdateSelfClaimService.updateSelfClaim(insuranceClaimDTO);
+    }
+
+    public Response<InsuranceClaim> updateDependentClaim(InsuranceClaimDTO insuranceClaimDTO){
+        return UpdateDependentClaimService.updateDependentClaim(insuranceClaimDTO);
     }
 }

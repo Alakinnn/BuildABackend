@@ -24,7 +24,8 @@ public class PolicyOwnerController extends Controller{
 
     public Response<Dependent> updateDependent(DependentDTO dependentDTO){
         return UpdateDependentService.policyOwnerUpdateDependent(dependentDTO);
-        
+    }
+
     public Response<InsuranceClaim> deleteSelfClaim(String claimId) {
         return DeleteSelfClaimService.deleteSelfClaim(claimId);
     }

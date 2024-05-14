@@ -30,6 +30,27 @@ public class InsuranceManager extends Provider {
         this.proposedClaims = proposedClaims;
     }
 
+    // Updated method name and references to InsuranceSurveyor
+    public void addInsuranceSurveyor(InsuranceSurveyor insuranceSurveyor) {
+        if (this.insuranceSurveyors == null) {
+            this.insuranceSurveyors = new HashSet<>();
+        }
+        if (this.insuranceSurveyors.contains(insuranceSurveyor)) {
+            return;
+        }
+        insuranceSurveyors.add(insuranceSurveyor);
+        insuranceSurveyor.setInsuranceManager(this);
+    }
+
+    // Updated method name and references to InsuranceSurveyor
+    public void removeInsuranceSurveyor(InsuranceSurveyor insuranceSurveyor) {
+        if (!insuranceSurveyors.contains(insuranceSurveyor))
+            return ;
+        insuranceSurveyors.remove(insuranceSurveyor);
+        insuranceSurveyor.setInsuranceManager(null);
+    }
+
+
     @Override
     public SystemUserType getDefaultUserType() {
         return SystemUserType.insurance_manager;

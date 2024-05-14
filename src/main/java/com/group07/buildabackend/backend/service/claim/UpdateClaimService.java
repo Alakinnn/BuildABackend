@@ -23,7 +23,7 @@ public class UpdateClaimService extends Service {
             InsuranceClaim claim = repo.retrieveActorById(dto.getClaimId());
 
             if(claim == null){
-                throw new InvalidInputException("Insurance claim not found", 400);
+                throw new InvalidInputException("Insurance claim not found", 404);
             }
 
             claim.setAmount(dto.getClaimAmount());

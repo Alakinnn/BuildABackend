@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.pages.user;
 
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
+import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 

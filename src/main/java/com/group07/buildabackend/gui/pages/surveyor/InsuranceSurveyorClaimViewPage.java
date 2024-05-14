@@ -4,6 +4,7 @@ import com.group07.buildabackend.gui.components.claim.ClaimView;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.components.surveyor.SurveyorClaimViewActionField;
+import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 
@@ -17,7 +18,8 @@ public class InsuranceSurveyorClaimViewPage extends Page {
 
     @Override
     public Node getRoot() {
-        ClaimView claimView = new ClaimView(claimId, new SurveyorClaimViewActionField(claimId).getRoot());
+        ActionField actionField = new SurveyorClaimViewActionField(claimId);
+        ClaimView claimView = new ClaimView(claimId, actionField);
 
         Page page = new HeaderDecorator(new Page(claimView.getRoot()), "Surveyor: View claim");
         page = new NavDecorator(page);

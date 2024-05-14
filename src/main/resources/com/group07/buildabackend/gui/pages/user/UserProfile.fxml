@@ -99,7 +99,8 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="actionListContainer" />
+            <HBox fx:id="actionHistoryContainer" />
+            <HBox fx:id="actionFieldContainer" />
          </children>
          <padding>
             <Insets left="40.0" right="40.0" />

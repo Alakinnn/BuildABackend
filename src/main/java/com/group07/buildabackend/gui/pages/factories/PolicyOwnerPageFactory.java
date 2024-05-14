@@ -19,4 +19,9 @@ public class PolicyOwnerPageFactory implements PageFactory{
     public Page createClaimViewPage(String claimId) {
         return new PolicyOwnerClaimViewPage(claimId);
     }
+
+    @Override
+    public Page createMyProfilePage() {
+        return null;
+    }
 }

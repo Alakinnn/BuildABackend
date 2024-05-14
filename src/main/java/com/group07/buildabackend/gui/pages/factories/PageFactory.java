@@ -5,4 +5,5 @@ import com.group07.buildabackend.gui.pages.Page;
 public interface PageFactory {
     Page createDefaultPage();
     Page createClaimViewPage(String claimId);
+    Page createMyProfilePage();
 }

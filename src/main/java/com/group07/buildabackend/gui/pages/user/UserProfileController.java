@@ -6,15 +6,11 @@ import com.group07.buildabackend.backend.repository.SystemUserRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.card.InsuranceCardView;
 import com.group07.buildabackend.gui.components.user.UserActionList;
+import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
-import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class UserProfileController implements ComponentController {
     @FXML
@@ -32,7 +28,9 @@ public class UserProfileController implements ComponentController {
     @FXML
     private HBox insuranceCardContainer;
     @FXML
-    private HBox actionListContainer;
+    private HBox actionHistoryContainer;
+    @FXML
+    private HBox actionFieldContainer;
 
     private String userId;
 
@@ -60,7 +58,7 @@ public class UserProfileController implements ComponentController {
             phone.setText(user.getPhone());
             role.setText(user.getUserType().toString());
 
-            actionListContainer.getChildren().add(new UserActionList(userId).getRoot());
+            actionHistoryContainer.getChildren().add(new UserActionList(userId).getRoot());
 
             TaskRunner<InsuranceCard> cardRunner = new TaskRunner<>(this::fetchCard, card -> {
                 if (card == null) return;
@@ -72,6 +70,10 @@ public class UserProfileController implements ComponentController {
 
         runner.run();
 
+    }
+
+    public void setActionField(ActionField actionField) {
+        actionFieldContainer.getChildren().add(actionField.getRoot());
     }
 
 }

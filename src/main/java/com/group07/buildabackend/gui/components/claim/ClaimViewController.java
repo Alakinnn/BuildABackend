@@ -6,6 +6,7 @@ import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.upload.UploadedDocs;
 import com.group07.buildabackend.gui.components.user.UserHyperlink;
+import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import javafx.fxml.FXML;
@@ -80,8 +81,8 @@ public class ClaimViewController implements ComponentController {
         runner.run();
     }
 
-    public void setActionField(Node actionField) {
-        actionFieldContainer.getChildren().add(actionField);
+    public void setActionField(ActionField actionField) {
+        actionFieldContainer.getChildren().add(actionField.getRoot());
     }
 
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.holder.controllers.CreatePolicyHolderFormController">
+   <children>
+      <VBox prefHeight="190.0" prefWidth="445.0" spacing="10.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="446.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="130.0" text="Policy Owner:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="policyOwnerChoice" prefWidth="150.0" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="createUserFormContainer" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

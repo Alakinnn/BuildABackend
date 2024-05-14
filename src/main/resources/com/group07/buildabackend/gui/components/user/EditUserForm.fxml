@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.user.controllers.EditUserFormController">
+    <children>
+        <VBox prefHeight="380.0" prefWidth="495.0" spacing="10.0">
+            <children>
+            <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="30.0" prefHeight="30.0" prefWidth="483.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="130.0" text="User ID:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="userId" strokeType="OUTSIDE" strokeWidth="0.0" text="userId">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="First Name:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="firstNameField" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="Last Name:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="lastNameField" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="Email:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="emailField" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="70.0" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="Phone Number:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="phoneField" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="100.0" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="Address:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="addressField" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="170.0" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="Password:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="210.0" prefHeight="30.0" prefWidth="483.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="130.0" text="Confirm Password:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="confirmPasswordField" />
+                    </children>
+                </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+               </children>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </HBox>
+            </children>
+            <padding>
+                <Insets left="20.0" right="10.0" top="20.0" />
+            </padding></VBox>
+    </children>
+</AnchorPane>

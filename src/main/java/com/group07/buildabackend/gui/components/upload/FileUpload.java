@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.components.upload;
 
 import com.group07.buildabackend.gui.components.ControlledComponent;
+import com.group07.buildabackend.gui.components.upload.filters.FileFilter;
 
 import java.io.File;
 import java.util.List;

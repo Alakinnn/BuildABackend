@@ -13,6 +13,7 @@ public class SystemAdminNavBarFactory implements NavBarFactory{
         SystemUser user = CurrentUserManager.getCurrentUser();
         NavBar navBar = new NavBar();
 
+        // TODO: Create my profile page for admin
         navBar.addNavLink(new UserProfilePage(user.getUserId()), "My Profile");
         navBar.addNavLink(new LoginPage(), "logout");
         return navBar;

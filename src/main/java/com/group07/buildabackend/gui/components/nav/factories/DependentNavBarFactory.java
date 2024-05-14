@@ -7,6 +7,7 @@ import com.group07.buildabackend.gui.pages.auth.LoginPage;
 import com.group07.buildabackend.gui.pages.claim.PolicyHolderCreateClaimPage;
 import com.group07.buildabackend.gui.pages.dependent.CreateDependentPage;
 import com.group07.buildabackend.gui.pages.dependent.DependentClaimsPage;
+import com.group07.buildabackend.gui.pages.factories.PageFactoryManager;
 import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
 import com.group07.buildabackend.gui.pages.user.UserProfilePage;
 
@@ -17,7 +18,7 @@ public class DependentNavBarFactory implements NavBarFactory{
         NavBar navBar = new NavBar();
 
         navBar.addNavLink(new DependentClaimsPage(user.getUserId()), "My Claims");
-        navBar.addNavLink(new UserProfilePage(user.getUserId()), "My Profile");
+        navBar.addNavLink(PageFactoryManager.getFactory().createMyProfilePage(), "My Profile");
         navBar.addNavLink(new LoginPage(), "Logout");
         return navBar;
     }

@@ -17,4 +17,9 @@ public class InsuranceManagerPageFactory implements PageFactory{
     public Page createClaimViewPage(String claimId) {
         return new InsuranceManagerClaimViewPage(claimId);
     }
+
+    @Override
+    public Page createMyProfilePage() {
+        return null;
+    }
 }

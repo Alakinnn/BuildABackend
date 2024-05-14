@@ -1,13 +1,10 @@
 package com.group07.buildabackend.gui.pages.holder;
 
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
+import com.group07.buildabackend.gui.components.holder.AddClaimInfoForm;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-
-import java.io.IOException;
 
 public class AddClaimInfoPage extends Page {
     private String claimId;

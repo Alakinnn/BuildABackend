@@ -26,7 +26,7 @@ public abstract class Service {
         response.setData(data);
     }
 
-    protected static void logUserAction(String customerId, String action, int statusCode) {
-        LogActionService.logUserAction(customerId, action, statusCode);
+    protected static void logUserAction(String customerId, String action, int statusCode, Response response) {
+        LogActionService.logUserAction(customerId, action, statusCode, response);
     }
 }

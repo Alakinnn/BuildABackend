@@ -11,7 +11,7 @@ import com.group07.buildabackend.backend.service.policyHolderService.UpdateDepen
 import com.group07.buildabackend.backend.service.policyHolderService.UpdateSelfClaimService;
 import com.group07.buildabackend.backend.service.policyOwnerService.CreateDependentService;
 
-public class PolicyHolderController extends Controller{
+public class PolicyHolderController extends SystemControllerService {
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }
@@ -21,14 +21,14 @@ public class PolicyHolderController extends Controller{
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
-        return CreateDependentService.createNewDependent(dependentDTO);
+        return createDependentService.createUser(dependentDTO);
     }
-    
-    public Response<InsuranceClaim> updateSelfClaim(InsuranceClaimDTO insuranceClaimDTO){
+
+    public Response<InsuranceClaim> updateSelfClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return UpdateSelfClaimService.updateSelfClaim(insuranceClaimDTO);
     }
 
-    public Response<InsuranceClaim> updateDependentClaim(InsuranceClaimDTO insuranceClaimDTO){
+    public Response<InsuranceClaim> updateDependentClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return UpdateDependentClaimService.updateDependentClaim(insuranceClaimDTO);
     }
 }

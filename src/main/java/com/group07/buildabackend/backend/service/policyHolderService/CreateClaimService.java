@@ -51,7 +51,7 @@ public class CreateClaimService extends PolicyHolderService{
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
         } finally {
-            logUserAction(insuranceClaimDTO.getCustomerId(), response.getAction(), response.getStatusCode());
+            logUserAction(insuranceClaimDTO.getCustomerId(), response.getAction(), response.getStatusCode(), response);
         }
 
         return response;

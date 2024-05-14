@@ -58,7 +58,7 @@ public class AddClaimInfoService extends PolicyHolderService {
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
         } finally {
-            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode(), response);
         }
         return response;
     }

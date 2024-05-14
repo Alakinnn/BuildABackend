@@ -38,7 +38,7 @@ public class ProposeClaimService extends InsuranceSurveyorService {
         } catch (InvalidInputException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
         } finally {
-            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode(), response);
         }
 
         return response;

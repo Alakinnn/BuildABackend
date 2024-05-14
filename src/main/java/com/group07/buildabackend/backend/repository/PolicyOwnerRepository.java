@@ -23,17 +23,6 @@ public class PolicyOwnerRepository extends Repository<PolicyOwner> implements Cl
     }
 
     @Override
-    public Beneficiary retrieveOneBeneficiary(String beneficiaryId, String ownerId) {
-        Query query = entityManager.createQuery("SELECT b " +
-                "FROM Beneficiary b " +
-                "WHERE b.policyOwner.userId = :ownerId and b.userId = :beneficiaryId");
-        query.setParameter("ownerId", ownerId);
-        query.setParameter("beneficiaryId", beneficiaryId);
-
-        return (Beneficiary) query.getSingleResult();
-    }
-
-    @Override
     public List<Beneficiary> retrieveAllBeneficiary(String ownerId) {
         Query query = entityManager.createQuery("SELECT b " +
                 "FROM Beneficiary b " +
@@ -44,13 +33,14 @@ public class PolicyOwnerRepository extends Repository<PolicyOwner> implements Cl
     }
 
     @Override
-    public InsuranceClaim retrieveOneBeneficiaryClaim(String claimId, String ownerId, String beneficiaryId) {
-        Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN Beneficiary b ON ic.customer.userId = b.id WHERE ic.id = :claimId AND b.id = :beneficiaryId AND b.policyOwner.userId = :ownerId");
-        query.setParameter("claimId", claimId);
-        query.setParameter("beneficiaryId", beneficiaryId);
+    public Beneficiary retrieveOneBeneficiary(String beneficiaryId, String ownerId) {
+        Query query = entityManager.createQuery("SELECT b " +
+                "FROM Beneficiary b " +
+                "WHERE b.policyOwner.userId = :ownerId and b.userId = :beneficiaryId");
         query.setParameter("ownerId", ownerId);
+        query.setParameter("beneficiaryId", beneficiaryId);
 
-        return (InsuranceClaim) query.getSingleResult();
+        return (Beneficiary) query.getSingleResult();
     }
 
     @Override
@@ -63,10 +53,29 @@ public class PolicyOwnerRepository extends Repository<PolicyOwner> implements Cl
     }
 
     @Override
+    public InsuranceClaim retrieveOneBeneficiaryClaim(String claimId, String ownerId, String beneficiaryId) {
+        Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN Beneficiary b ON ic.customer.userId = b.id WHERE ic.id = :claimId AND b.id = :beneficiaryId AND b.policyOwner.userId = :ownerId");
+        query.setParameter("claimId", claimId);
+        query.setParameter("beneficiaryId", beneficiaryId);
+        query.setParameter("ownerId", ownerId);
+
+        return (InsuranceClaim) query.getResultList();
+    }
+
+    @Override
     public List<InsuranceClaim> retrieveAllClaimsByActorId(String id) {
         Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN PolicyOwner po on ic.customer.id = po.id WHERE po.id = :poId");
         query.setParameter("poId", id);
 
         return query.getResultList();
+    }
+
+    @Override
+    public InsuranceClaim retrieveOneClaimByActorId(String claimId, String systemUserId) {
+        Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN PolicyOwner po on ic.customer.id = po.id where po.id = :poId AND ic.id = :claimId");
+        query.setParameter("poId", systemUserId);
+        query.setParameter("claimId", claimId);
+
+        return (InsuranceClaim) query.getResultList();
     }
 }

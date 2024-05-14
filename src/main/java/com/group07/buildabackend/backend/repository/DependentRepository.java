@@ -10,6 +10,13 @@ import java.util.List;
 
 public class DependentRepository extends Repository<Dependent> implements ClaimRetrievable<InsuranceClaim> {
     @Override
+    public Dependent retrieveActorById(String id) {
+        Query query = entityManager.createQuery("FROM Dependent d WHERE d.id=:id");
+        query.setParameter("id", id);
+        return (Dependent) query.getSingleResult();
+    }
+
+    @Override
     public List<InsuranceClaim> retrieveAllClaimsByActorId(String id) {
         Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN Dependent d on ic.customer.id = d.id WHERE d.id = :dId");
         query.setParameter("dId", id);
@@ -18,9 +25,11 @@ public class DependentRepository extends Repository<Dependent> implements ClaimR
     }
 
     @Override
-    public Dependent retrieveActorById(String id) {
-        Query query = entityManager.createQuery("FROM Dependent d WHERE d.id=:id");
-        query.setParameter("id", id);
-        return (Dependent) query.getSingleResult();
+    public InsuranceClaim retrieveOneClaimByActorId(String claimId, String systemUserId) {
+        Query query = entityManager.createQuery("FROM InsuranceClaim ic JOIN Dependent d on ic.customer.id = d.id WHERE d.id = :dependentId AND ic.id = :claimId");
+        query.setParameter("dependentId", systemUserId);
+        query.setParameter("claimId", claimId);
+
+        return (InsuranceClaim) query.getResultList();
     }
 }

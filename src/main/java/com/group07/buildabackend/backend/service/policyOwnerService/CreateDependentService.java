@@ -23,6 +23,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import static com.group07.buildabackend.backend.service.SystemUserService.createCredentials;
 
+
 public class CreateDependentService extends PolicyOwnerService {
     public static Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         Response<Dependent> response = new Response<>(null);
@@ -68,6 +69,7 @@ public class CreateDependentService extends PolicyOwnerService {
         } finally {
             logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
+      
         return response;
     }
 }

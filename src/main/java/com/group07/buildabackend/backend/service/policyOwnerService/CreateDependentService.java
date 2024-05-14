@@ -5,7 +5,6 @@ import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
-import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import org.hibernate.HibernateException;

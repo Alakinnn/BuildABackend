@@ -2,6 +2,8 @@ package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.model.SystemUser;
 
+import com.group07.buildabackend.backend.model.systemAdmin.SystemAdmin;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
 import java.util.List;

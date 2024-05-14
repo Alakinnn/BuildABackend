@@ -30,4 +30,5 @@ public abstract class Service {
     protected static void logUserAction(String customerId, String action, int statusCode, Response response) {
         LogActionService.logUserAction(customerId, action, statusCode, response);
     }
+
 }

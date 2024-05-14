@@ -14,7 +14,7 @@ import com.group07.buildabackend.backend.service.policyOwnerService.DeleteBenefi
 import com.group07.buildabackend.backend.service.policyOwnerService.DeleteSelfClaimService;
 import com.group07.buildabackend.backend.service.policyOwnerService.UpdatePolicyHolderClaimService;
 
-public class PolicyOwnerController extends SystemControllerService {
+public class PolicyOwnerController extends SystemController {
     public Response<Double> calculateAnnualCost(InsuranceCostDTO insuranceCostDTO) {
         return CalculateService.calculateAnnualCost(insuranceCostDTO);
     }

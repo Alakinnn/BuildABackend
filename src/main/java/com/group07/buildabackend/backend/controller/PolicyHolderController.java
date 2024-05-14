@@ -10,7 +10,7 @@ import com.group07.buildabackend.backend.service.policyHolderService.CreateClaim
 import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentClaimService;
 import com.group07.buildabackend.backend.service.policyHolderService.UpdateSelfClaimService;
 
-public class PolicyHolderController extends SystemControllerService {
+public class PolicyHolderController extends SystemController {
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }

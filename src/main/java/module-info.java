@@ -61,4 +61,5 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.backend.model.userAction to org.hibernate.orm.core;
     exports com.group07.buildabackend.gui.components.nav.factories;
     opens com.group07.buildabackend.gui.components.nav.factories to javafx.fxml;
+    opens com.group07.buildabackend.backend.model.systemAdmin to org.hibernate.orm.core;
 }

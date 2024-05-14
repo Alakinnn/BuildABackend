@@ -5,5 +5,6 @@ public enum SystemUserType {
     policy_holder,
     dependent,
     insurance_manager,
-    insurance_surveyor
+    insurance_surveyor,
+    system_admin
 }

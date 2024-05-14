@@ -50,10 +50,7 @@ public class UserProfileController implements ComponentController {
     public void initPage(String userId) {
         this.userId = userId;
 
-        TaskRunner<SystemUser> runner = new TaskRunner<>();
-        runner.run(this::fetchUser, success -> {
-            SystemUser user = runner.getResult();
-
+        TaskRunner<SystemUser> runner = new TaskRunner<>(this::fetchUser, user -> {
             if (user == null) return;
 
             id.setText(user.getUserId());
@@ -65,15 +62,15 @@ public class UserProfileController implements ComponentController {
 
             actionListContainer.getChildren().add(new UserActionList(userId).getRoot());
 
-            TaskRunner<InsuranceCard> cardRunner = new TaskRunner<>();
-            cardRunner.run(this::fetchCard, cardSuccess -> {
-                InsuranceCard card = cardRunner.getResult();
-
+            TaskRunner<InsuranceCard> cardRunner = new TaskRunner<>(this::fetchCard, card -> {
                 if (card == null) return;
-
                 insuranceCardContainer.getChildren().add(new InsuranceCardView(card).getRoot());
             });
+
+            cardRunner.run();
         });
+
+        runner.run();
 
     }
 

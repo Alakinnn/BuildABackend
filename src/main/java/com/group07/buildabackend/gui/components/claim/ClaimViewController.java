@@ -58,10 +58,7 @@ public class ClaimViewController implements ComponentController {
     public void initPage(String claimId) {
         this.claimId = claimId;
 
-        TaskRunner<InsuranceClaim> runner = new TaskRunner<>();
-        runner.run(this::fetchClaim, success -> {
-            InsuranceClaim claim = runner.getResult();
-
+        TaskRunner<InsuranceClaim> runner = new TaskRunner<>(this::fetchClaim, claim -> {
             if (claim == null) return;
 
             SystemUser user = claim.getCustomer();
@@ -80,6 +77,7 @@ public class ClaimViewController implements ComponentController {
             uploadedDocsContainer.getChildren().add(new UploadedDocs(claim.getDocuments()).getRoot());
         });
 
+        runner.run();
     }
 
     public void setActionField(Node actionField) {

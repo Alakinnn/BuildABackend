@@ -65,19 +65,17 @@ public abstract class FormController<T> {
 
         try {
             checkRequiredFields();
-            TaskRunner<Response<T>> runner = new TaskRunner<>();
-            runner.run(this::sendFormRequest, success -> {
-                Response<T> res = runner.getResult();
 
+            TaskRunner<Response<T>> runner = new TaskRunner<>(this::sendFormRequest, res -> {
                 if (!res.isOk()) {
                     AlertManager.showError(res.getResponseMsg());
                     return;
                 };
-
                 AlertManager.showInfo(res.getResponseMsg());
-
                 onSuccessfulSubmit();
             });
+
+            runner.run();
         } catch (MissingRequiredFieldException e) {
             AlertManager.showError(e.getMessage());
         } catch (Exception e) {

@@ -44,8 +44,8 @@ public class PolicyHolderDependentListController implements Initializable, Compo
     public void initPage(String phId) {
         this.phId = phId;
 
-        TaskRunner<List<SystemUser>> runner = new TaskRunner<>();
-        runner.run(this::fetchDependents);
+        TaskRunner<List<SystemUser>> runner = new TaskRunner<>(this::fetchDependents);
+        runner.run();
         List<SystemUser> users = runner.getResult();
 
         myDependents.addAllUsers(users);

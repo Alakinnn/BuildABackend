@@ -43,13 +43,11 @@ public class UserActionListController implements Initializable, ComponentControl
 
     public void initPage(String userId) {
         this.userId = userId;
-        TaskRunner<List<UserAction>> runner = new TaskRunner<>();
-        runner.run(this::fetchActions, success -> {
-            List<UserAction> actions = runner.getResult();
-
+        TaskRunner<List<UserAction>> runner = new TaskRunner<>(this::fetchActions, actions -> {
             if (actions == null) return;
 
             table.getItems().addAll(actions);
         });
+        runner.run();
     }
 }

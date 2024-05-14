@@ -53,12 +53,11 @@ public class PolicyHolderClaimListController implements Initializable, Component
     public void innitPage(String phId) {
         this.phId = phId;
 
-        TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>();
-        runner.run(this::fetchClaims, success -> {
-            List<List<InsuranceClaim>> claims = runner.getResult();
-
+        TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>(this::fetchClaims, claims -> {
             myClaims.addAllClaims(claims.get(0));
             myDependentClaims.addAllClaims(claims.get(1));
         });
+
+        runner.run();
     }
 }

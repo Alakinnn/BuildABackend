@@ -34,11 +34,7 @@ public class PolicyHolderCreateClaimPage extends Page {
     public Node getRoot() {
         CreateClaimForm form = new CreateClaimForm();
 
-
-        TaskRunner<List<Dependent>> runner = new TaskRunner<>();
-        runner.run(this::retrieveDependents, success -> {
-            List<Dependent> dependents = runner.getResult();
-
+        TaskRunner<List<Dependent>> runner = new TaskRunner<>(this::retrieveDependents, dependents -> {
             List<ChoiceField<String>> choices = new ArrayList<>();
 
             choices.add(new ChoiceField<>("Myself", phId));
@@ -49,6 +45,7 @@ public class PolicyHolderCreateClaimPage extends Page {
             form.setCustomerChoices(choices);
         });
 
+        runner.run();
 
         root = form.getRoot();
 

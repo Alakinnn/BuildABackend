@@ -43,30 +43,28 @@ public class PolicyOwnerClaimListController implements ComponentController {
 
         this.policyOwnerId = policyOwnerId;
 
-        TaskRunner<List<Beneficiary>> runner = new TaskRunner<>();
-        runner.run(this::fetchBeneficiaries, success -> {
-            List<Beneficiary> beneficiaries = runner.getResult();
-
-            // Add beneficiary choices
+        // Add beneficiary choices
+        TaskRunner<List<Beneficiary>> runner = new TaskRunner<>(this::fetchBeneficiaries, beneficiaries -> {
             for (SystemUser user: beneficiaries) {
                 String id = user.getUserId();
                 String label = user.getFullName() + " (" + id + ")";
                 beneficiaryChoice.getItems().add(new ChoiceField<>(label, id));
             }
         });
+
+        runner.run();
     }
 
     public void onFind() {
         customerClaims.resetClaims();
         dependentClaims.resetClaims();
 
-        TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>();
-        runner.run(this::fetchClaims, success -> {
-            List<List<InsuranceClaim>> claims = runner.getResult();
-
+        TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>(this::fetchClaims, claims -> {
             customerClaims.addAllClaims(claims.get(0));
             dependentClaims.addAllClaims(claims.get(1));
         });
+
+        runner.run();
     }
 
     private List<List<InsuranceClaim>> fetchClaims() {

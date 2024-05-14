@@ -67,14 +67,13 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
     public void initPage(String claimId) {
         this.claimId = claimId;
 
-        TaskRunner<InsuranceClaim> runner = new TaskRunner<>();
-        runner.run(this::fetchClaim, success -> {
-            InsuranceClaim claim = runner.getResult();
-
+        TaskRunner<InsuranceClaim> runner = new TaskRunner<>(this::fetchClaim, claim -> {
             if (claim == null) return;
 
             claimIdLabel.setText(claimId);
             notes.setText(claim.getNote());
         });
+        
+        runner.run();
     }
 }

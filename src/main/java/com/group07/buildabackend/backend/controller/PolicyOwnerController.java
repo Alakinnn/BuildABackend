@@ -8,9 +8,11 @@ import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
+import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentClaimService;
 import com.group07.buildabackend.backend.service.policyOwnerService.CalculateService;
 import com.group07.buildabackend.backend.service.policyOwnerService.DeleteBeneficiaryClaimService;
 import com.group07.buildabackend.backend.service.policyOwnerService.DeleteSelfClaimService;
+import com.group07.buildabackend.backend.service.policyOwnerService.UpdatePolicyHolderClaimService;
 
 public class PolicyOwnerController extends SystemControllerService {
     public Response<Double> calculateAnnualCost(InsuranceCostDTO insuranceCostDTO) {

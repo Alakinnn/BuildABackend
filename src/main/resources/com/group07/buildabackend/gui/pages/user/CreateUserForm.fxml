@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.pages.user.CreateUserFormController">
    <children>
-      <VBox prefHeight="386.0" prefWidth="483.0" spacing="10.0">
+      <VBox prefHeight="276.0" prefWidth="313.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="483.0">
                <children>

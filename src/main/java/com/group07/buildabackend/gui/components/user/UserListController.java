@@ -53,8 +53,15 @@ public class UserListController implements Initializable, ComponentController {
     }
 
     private void initTable() {
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        roleCol.setCellValueFactory(new PropertyValueFactory<>("userType"));
+        emailCol.setCellValueFactory(cellData -> {
+            SystemUser user = cellData.getValue();
+            return new javafx.beans.property.ReadOnlyObjectWrapper<>(user.getEmail());
+        });
+
+        roleCol.setCellValueFactory(cellData -> {
+            SystemUser user = cellData.getValue();
+            return new javafx.beans.property.ReadOnlyObjectWrapper<>(user.getUserType());
+        });
 
         idCol.setCellValueFactory(cellData -> {
             SystemUser user = cellData.getValue();

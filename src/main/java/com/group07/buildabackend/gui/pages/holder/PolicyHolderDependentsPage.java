@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+import com.group07.buildabackend.gui.components.holder.PolicyHolderDependentList;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;

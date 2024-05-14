@@ -2,7 +2,7 @@ package com.group07.buildabackend.gui.pages.manager;
 
 import com.group07.buildabackend.gui.components.claim.ClaimView;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
-import com.group07.buildabackend.gui.components.manager.ManagerClaimViewActionField;
+import com.group07.buildabackend.gui.components.manager.actionFields.ManagerClaimViewActionField;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.pages.Page;

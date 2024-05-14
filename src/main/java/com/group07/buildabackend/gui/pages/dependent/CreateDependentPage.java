@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.pages.dependent;
 
+import com.group07.buildabackend.gui.components.dependent.CreateDependentForm;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;

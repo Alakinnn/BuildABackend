@@ -1,7 +1,7 @@
 package com.group07.buildabackend.gui.pages.owner;
 
 import com.group07.buildabackend.gui.components.claim.ClaimView;
-import com.group07.buildabackend.gui.components.holder.PolicyHolderClaimViewActionField;
+import com.group07.buildabackend.gui.components.holder.actionFields.PolicyHolderClaimViewActionField;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.pages.Page;

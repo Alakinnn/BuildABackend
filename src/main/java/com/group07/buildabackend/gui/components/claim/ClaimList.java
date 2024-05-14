@@ -2,6 +2,7 @@ package com.group07.buildabackend.gui.components.claim;
 
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ControlledComponent;
+import com.group07.buildabackend.gui.components.claim.controllers.ClaimListController;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package com.group07.buildabackend.gui.pages.surveyor;
 import com.group07.buildabackend.gui.components.claim.ClaimView;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
-import com.group07.buildabackend.gui.components.surveyor.SurveyorClaimViewActionField;
+import com.group07.buildabackend.gui.components.surveyor.actionFields.SurveyorClaimViewActionField;
 import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;

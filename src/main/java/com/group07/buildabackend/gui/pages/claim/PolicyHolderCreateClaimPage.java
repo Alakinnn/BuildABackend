@@ -1,12 +1,10 @@
 package com.group07.buildabackend.gui.pages.claim;
 
-import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentDTO;
-import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
-import com.group07.buildabackend.backend.repository.DependentRepository;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
+import com.group07.buildabackend.gui.components.claim.CreateClaimForm;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.tasks.TaskRunner;

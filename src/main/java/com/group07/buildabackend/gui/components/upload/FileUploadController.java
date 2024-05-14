@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.components.upload;
 
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.components.upload.filters.FileFilter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;

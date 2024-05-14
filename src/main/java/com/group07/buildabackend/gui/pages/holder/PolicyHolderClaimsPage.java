@@ -1,10 +1,10 @@
 package com.group07.buildabackend.gui.pages.holder;
 
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
+import com.group07.buildabackend.gui.components.holder.PolicyHolderClaimListView;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 
 public class PolicyHolderClaimsPage extends Page {
     private String phId;

@@ -1,12 +1,10 @@
 package com.group07.buildabackend.gui.pages.claim;
 
+import com.group07.buildabackend.gui.components.claim.CreateClaimForm;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-
-import java.io.IOException;
 
 public class CreateClaimPage extends Page {
     private String phId;

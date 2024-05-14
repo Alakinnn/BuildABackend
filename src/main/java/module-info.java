@@ -50,6 +50,16 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.gui.components.user to javafx.fxml;
     exports com.group07.buildabackend.gui.components.card;
     opens com.group07.buildabackend.gui.components.card to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.auth;
+    opens com.group07.buildabackend.gui.components.auth to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.dependent;
+    exports com.group07.buildabackend.gui.components.holder;
+    opens com.group07.buildabackend.gui.components.holder to javafx.fxml;
+    opens com.group07.buildabackend.gui.components.dependent to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.owner;
+    opens com.group07.buildabackend.gui.components.owner to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.surveyor;
+    opens com.group07.buildabackend.gui.components.surveyor to javafx.fxml;
     exports com.group07.buildabackend.gui.pages.user;
     opens com.group07.buildabackend.gui.pages.user to javafx.fxml;
 
@@ -61,4 +71,30 @@ module com.group07.buildabackend {
     opens com.group07.buildabackend.backend.model.userAction to org.hibernate.orm.core;
     exports com.group07.buildabackend.gui.components.nav.factories;
     opens com.group07.buildabackend.gui.components.nav.factories to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.user.controllers;
+    opens com.group07.buildabackend.gui.components.user.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.upload.filters;
+    opens com.group07.buildabackend.gui.components.upload.filters to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.surveyor.controllers;
+    opens com.group07.buildabackend.gui.components.surveyor.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.surveyor.actionFields;
+    opens com.group07.buildabackend.gui.components.surveyor.actionFields to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.owner.actionFields;
+    opens com.group07.buildabackend.gui.components.owner.actionFields to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.owner.controllers;
+    opens com.group07.buildabackend.gui.components.owner.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.nav.controllers;
+    opens com.group07.buildabackend.gui.components.nav.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.holder.controllers;
+    opens com.group07.buildabackend.gui.components.holder.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.holder.actionFields;
+    opens com.group07.buildabackend.gui.components.holder.actionFields to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.dependent.controllers;
+    opens com.group07.buildabackend.gui.components.dependent.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.claim.controllers;
+    opens com.group07.buildabackend.gui.components.claim.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.card.controllers;
+    opens com.group07.buildabackend.gui.components.card.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.auth.controllers;
+    opens com.group07.buildabackend.gui.components.auth.controllers to javafx.fxml;
 }

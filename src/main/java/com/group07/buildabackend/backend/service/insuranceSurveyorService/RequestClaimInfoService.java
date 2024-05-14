@@ -9,12 +9,11 @@ import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.model.userAction.operations.ProposeOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.RequestOperation;
+import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-import static com.group07.buildabackend.backend.service.Service.*;
-import static com.group07.buildabackend.backend.service.insuranceSurveyorService.InsuranceSurveyorService.insuranceClaimRepository;
 
-public class RequestClaimInfoService {
+public class RequestClaimInfoService extends InsuranceSurveyorService {
     public static Response<InsuranceClaim> requestClaimInfo(RequestClaimInfoDTO dto) {
         Response<InsuranceClaim> response = new Response<>(null);
         String claimId = dto.getClaimId();

@@ -20,7 +20,9 @@ import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateDependentService extends SystemUserService {
+import static com.group07.buildabackend.backend.service.SystemUserService.createCredentials;
+
+public class CreateDependentService extends PolicyOwnerService {
     public static Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         Response<Dependent> response = new Response<>(null);
 

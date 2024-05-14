@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
 import com.group07.buildabackend.backend.model.SystemUserType;
@@ -14,7 +15,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import java.util.List;
 
-public class CalculateService extends SystemUserService {
+public class CalculateService extends PolicyOwnerService {
     public static Response<Double> calculateAnnualCost(InsuranceCostDTO dto){
         final double dependentCost = 0.6;
         Response<Double> response = new Response<>(null);
@@ -35,6 +36,8 @@ public class CalculateService extends SystemUserService {
             handleSuccess(response, "Successfully calculated annual cost", 200, annualCost);
         } catch(InvalidInputException e){
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
         }
         return response;
     }

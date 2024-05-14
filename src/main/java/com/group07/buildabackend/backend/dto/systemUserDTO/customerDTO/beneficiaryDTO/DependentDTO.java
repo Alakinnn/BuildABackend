@@ -1,4 +1,4 @@
-package com.group07.buildabackend.backend.dto.beneficiaryDTO;
+package com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO;
 
 import com.group07.buildabackend.backend.dto.DTO;
 import com.group07.buildabackend.backend.dto.authenticationDTO.RegisterInfoDTO;

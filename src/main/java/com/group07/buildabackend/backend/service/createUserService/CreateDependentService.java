@@ -1,18 +1,14 @@
 package com.group07.buildabackend.backend.service.createUserService;
 
-import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentDTO;
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentMapper;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentMapper;
 import com.group07.buildabackend.backend.model.Credentials;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
-import com.group07.buildabackend.backend.model.userAction.actions.UserAction;
-import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
-import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
@@ -21,20 +17,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 public class CreateDependentService extends SystemUserService implements SystemUserFactory<DependentDTO, Dependent>, DependentFactory {
     @Override
     public Response<Dependent> createUser(DependentDTO dto) {
-        Response<Dependent> response = new Response<>(null);
-        OperationType userAction = new UserAction(new CreateOperation(), SystemUserType.dependent);
-        String actionDescription = userAction.getDescription();
-        response.setAction(actionDescription);
-        try {
-            validateAndCreate(dto, response);
-        } catch (InvalidInputException e) {
-            handleException(response, e.getMessage(), 400);
-        } catch (InvalidCredentialsException e) {
-            handleException(response, e.getMessage(), 400);
-        } finally {
-            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode(), response);
-        }
-        return response;
+        return execute(dto, SystemUserType.dependent);
     }
 
     @Override

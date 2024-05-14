@@ -2,8 +2,7 @@ package com.group07.buildabackend.gui.pages.dependent;
 
 import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.controller.Response;
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentDTO;
-import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
@@ -14,7 +13,6 @@ import com.group07.buildabackend.gui.pages.user.CreateUserForm;
 import com.group07.buildabackend.gui.pages.user.CreateUserFormController;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;

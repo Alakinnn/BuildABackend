@@ -1,6 +1,6 @@
 package com.group07.buildabackend.backend.controller;
 
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import org.junit.jupiter.api.Test;

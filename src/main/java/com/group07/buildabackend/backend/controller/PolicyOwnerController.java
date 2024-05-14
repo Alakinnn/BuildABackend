@@ -1,8 +1,8 @@
 package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentDTO;
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.PolicyHolderDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;

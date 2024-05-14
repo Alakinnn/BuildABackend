@@ -1,7 +1,6 @@
-package com.group07.buildabackend.backend.dto.beneficiaryDTO;
+package com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO;
 
 import com.group07.buildabackend.backend.model.customer.Dependent;
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 
 public class DependentMapper {
     public static Dependent toEntity(DependentDTO dependentDTO) {

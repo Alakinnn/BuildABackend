@@ -20,13 +20,13 @@ public abstract class Service {
         response.setData(null);
     }
 
-    public static <T> void handleSuccess(Response<T> response, String message, int statusCode, T data) {
+    protected static <T> void handleSuccess(Response<T> response, String message, int statusCode, T data) {
         response.setResponseMsg(message);
         response.setStatusCode(statusCode);
         response.setData(data);
     }
 
-    public static void logUserAction(String customerId, String action, int statusCode) {
+    protected static void logUserAction(String customerId, String action, int statusCode) {
         LogActionService.logUserAction(customerId, action, statusCode);
     }
 }

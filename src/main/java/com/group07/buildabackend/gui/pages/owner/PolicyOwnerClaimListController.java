@@ -12,13 +12,11 @@ import com.group07.buildabackend.gui.components.claim.ClaimList;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
 
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class PolicyOwnerClaimListController implements ComponentController {
     @FXML
@@ -39,28 +37,41 @@ public class PolicyOwnerClaimListController implements ComponentController {
         dependentClaims = new ClaimList();
     }
 
-    public void onFind() {
-        TaskRunner runner = new TaskRunner();
-        runner.run(this::populateClaims);
-    }
-
     public void initPage(String policyOwnerId) {
-        this.policyOwnerId = policyOwnerId;
-
-        TaskRunner<List<Beneficiary>> runner = new TaskRunner();
-        runner.run(this::populateBeneficiaryChoices);
-
         customerClaimsContainer.getChildren().add(customerClaims.getRoot());
         dependentClaimsContainer.getChildren().add(dependentClaims.getRoot());
 
+        this.policyOwnerId = policyOwnerId;
+
+        TaskRunner<List<Beneficiary>> runner = new TaskRunner<>();
+        runner.run(this::fetchBeneficiaries, success -> {
+            List<Beneficiary> beneficiaries = runner.getResult();
+
+            // Add beneficiary choices
+            for (SystemUser user: beneficiaries) {
+                String id = user.getUserId();
+                String label = user.getFullName() + " (" + id + ")";
+                beneficiaryChoice.getItems().add(new ChoiceField<>(label, id));
+            }
+        });
     }
 
-    private Object populateClaims() {
-        // Refresh lists
-        this.customerClaims.resetClaims();
-        this.dependentClaims.resetClaims();
+    public void onFind() {
+        customerClaims.resetClaims();
+        dependentClaims.resetClaims();
 
+        TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>();
+        runner.run(this::fetchClaims, success -> {
+            List<List<InsuranceClaim>> claims = runner.getResult();
+
+            customerClaims.addAllClaims(claims.get(0));
+            dependentClaims.addAllClaims(claims.get(1));
+        });
+    }
+
+    private List<List<InsuranceClaim>> fetchClaims() {
         String beneficiaryId = beneficiaryChoice.getValue().getValue();
+        List<List<InsuranceClaim>> res = new ArrayList<>(2);
 
         // TODO: Use controllers instead
         PolicyOwnerRepository repo = new PolicyOwnerRepository();
@@ -70,7 +81,7 @@ public class PolicyOwnerClaimListController implements ComponentController {
             DependentRepository depRepo = new DependentRepository();
             List<InsuranceClaim> claims = depRepo.retrieveAllClaimsByActorId(beneficiary.getUserId());
 
-            this.customerClaims.addAllClaims(claims);
+            res.add(claims);
         }
 
         if (beneficiary.getUserType() == SystemUserType.policy_holder) {
@@ -78,26 +89,17 @@ public class PolicyOwnerClaimListController implements ComponentController {
             List<InsuranceClaim> phClaims = phRepo.retrieveAllClaimsByActorId(beneficiaryId);
             List<InsuranceClaim> depClaims = phRepo.retrieveAllDependentClaim(beneficiaryId);
 
-            this.customerClaims.addAllClaims(phClaims);
-            this.dependentClaims.addAllClaims(depClaims);
+            res.add(phClaims);
+            res.add(depClaims);
         }
 
-        return null;
+        return res;
     }
 
-    private List<Beneficiary> populateBeneficiaryChoices() {
+    private List<Beneficiary> fetchBeneficiaries() {
+        // TODO: Use controllers instead
         PolicyOwnerRepository repo = new PolicyOwnerRepository();
-        List<Beneficiary> beneficiaries = repo.retrieveAllBeneficiary(policyOwnerId);
-
-        if (beneficiaries == null) return null;
-
-        for (SystemUser user: beneficiaries) {
-            String id = user.getUserId();
-            String label = user.getFullName() + " (" + id + ")";
-            beneficiaryChoice.getItems().add(new ChoiceField<>(label, id));
-        }
-
-        return beneficiaries;
+        return repo.retrieveAllBeneficiary(policyOwnerId);
     }
 
 }

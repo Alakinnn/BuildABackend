@@ -10,7 +10,7 @@ import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormPasswordField;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
-import com.group07.buildabackend.gui.factories.PageFactoryManager;
+import com.group07.buildabackend.gui.pages.factories.PageFactoryManager;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.FormSubmitter;

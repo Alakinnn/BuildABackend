@@ -59,8 +59,6 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.gui.components.claim.btn;
     opens com.group07.buildabackend.gui.components.claim.btn to javafx.fxml;
     opens com.group07.buildabackend.backend.model.userAction to org.hibernate.orm.core;
-    exports com.group07.buildabackend.gui.factories;
-    opens com.group07.buildabackend.gui.factories to javafx.fxml;
     exports com.group07.buildabackend.gui.components.nav.factories;
     opens com.group07.buildabackend.gui.components.nav.factories to javafx.fxml;
 }

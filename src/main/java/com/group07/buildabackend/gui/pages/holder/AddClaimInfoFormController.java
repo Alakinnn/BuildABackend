@@ -39,7 +39,7 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
     }
 
     @Override
-    public Response<InsuranceClaim> sendRequest() {
+    public Response<InsuranceClaim> sendFormRequest() {
         AddClaimInfoDTO request = new AddClaimInfoDTO();
         request.setId(claimIdLabel.getText());
         request.setDocuments(docUploader.getUploadedFiles());

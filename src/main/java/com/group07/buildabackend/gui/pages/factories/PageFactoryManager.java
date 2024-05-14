@@ -16,20 +16,14 @@ public class PageFactoryManager {
     private static PageFactory createFactory() {
         SystemUser user = CurrentUserManager.getCurrentUser();
 
-        switch (user.getUserType()) {
-            case policy_holder:
-                return new PolicyHolderPageFactory();
-            case dependent:
-                return new DependentPageFactory();
-            case policy_owner:
-                return new PolicyOwnerPageFactory();
-            case insurance_surveyor:
-                return new InsuranceSurveyorPageFactory();
-            case insurance_manager:
-                return new InsuranceManagerPageFactory();
+        return switch (user.getUserType()) {
+            case policy_holder -> new PolicyHolderPageFactory();
+            case dependent -> new DependentPageFactory();
+            case policy_owner -> new PolicyOwnerPageFactory();
+            case insurance_surveyor -> new InsuranceSurveyorPageFactory();
+            case insurance_manager -> new InsuranceManagerPageFactory();
             // TODO: add system admin
-            default:
-                return null;
-        }
+            default -> null;
+        };
     }
 }

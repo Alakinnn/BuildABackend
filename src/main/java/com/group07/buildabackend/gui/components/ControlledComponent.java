@@ -27,4 +27,8 @@ public abstract class ControlledComponent<T extends ComponentController> extends
             throw new RuntimeException(e);
         }
     }
+
+    public T getController() {
+        return controller;
+    }
 }

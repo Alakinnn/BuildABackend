@@ -22,6 +22,17 @@
                </padding>
             </HBox>
             <HBox fx:id="createUserFormContainer" />
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </HBox>
          </children>
       </VBox>
    </children>

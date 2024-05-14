@@ -35,7 +35,7 @@ public class RequestClaimInfoFormController extends FormController<InsuranceClai
     }
 
     @Override
-    public Response<InsuranceClaim> sendRequest() {
+    public Response<InsuranceClaim> sendFormRequest() {
         RequestClaimInfoDTO dto = new RequestClaimInfoDTO();
         dto.setClaimId(claimId.getText());
         dto.setNotes(notes.getText());

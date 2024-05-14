@@ -15,20 +15,14 @@ public class NavBarFactoryManager {
 
     private static NavBarFactory createFactory() {
         SystemUser user = CurrentUserManager.getCurrentUser();
-        switch (user.getUserType()) {
-            case policy_holder:
-                return new PolicyHolderNavBarFactory();
-            case dependent:
-                return new DependentNavBarFactory();
-            case policy_owner:
-                return new PolicyOwnerNavBarFactory();
-            case insurance_surveyor:
-                return new InsuranceSurveyorNavBarFactory();
-            case insurance_manager:
-                return new InsuranceManagerNavBarFactory();
+        return switch (user.getUserType()) {
+            case policy_holder -> new PolicyHolderNavBarFactory();
+            case dependent -> new DependentNavBarFactory();
+            case policy_owner -> new PolicyOwnerNavBarFactory();
+            case insurance_surveyor -> new InsuranceSurveyorNavBarFactory();
+            case insurance_manager -> new InsuranceManagerNavBarFactory();
             // TODO: add system admin
-            default:
-                return null;
-        }
+            default -> null;
+        };
     }
 }

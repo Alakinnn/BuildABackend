@@ -47,7 +47,7 @@ public class CreateClaimFormController extends FormController<InsuranceClaim> im
     }
 
     @Override
-    public Response<InsuranceClaim> sendRequest() {
+    public Response<InsuranceClaim> sendFormRequest() {
         InsuranceClaimDTO dto = new InsuranceClaimDTO();
         dto.setCustomerId(insuredCustomerChoice.getValue().getValue());
         dto.setAmount(Double.parseDouble(claimAmountField.getText()));

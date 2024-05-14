@@ -41,4 +41,8 @@ public class Response<T> {
     public void setStatusCode(int statusCode) {
         this.statusCode = statusCode;
     }
+
+    public boolean isOk() {
+        return statusCode >= 200 && statusCode <= 299;
+    }
 }

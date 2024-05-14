@@ -67,10 +67,15 @@ public abstract class FormController<T> {
             checkRequiredFields();
 
             TaskRunner<Response<T>> runner = new TaskRunner<>(this::sendFormRequest, res -> {
+                if (res == null) {
+                    AlertManager.showError("Something went wrong when trying to submit, please try again.");
+                    return;
+                }
                 if (!res.isOk()) {
                     AlertManager.showError(res.getResponseMsg());
                     return;
                 };
+
                 AlertManager.showInfo(res.getResponseMsg());
                 onSuccessfulSubmit();
             });

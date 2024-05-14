@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.pages.auth;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.authentication.service.LoginService;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
@@ -9,6 +10,7 @@ import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormPasswordField;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
+import com.group07.buildabackend.gui.components.nav.factories.NavBarFactoryManager;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 import com.group07.buildabackend.gui.pages.factories.PageFactoryManager;
 import com.group07.buildabackend.gui.pages.Page;
@@ -53,6 +55,8 @@ public class LoginFormController extends FormController<SystemUser> implements C
 
     @Override
     public void onSuccessfulSubmit() {
+        NavBarFactoryManager.refreshFactory();
+        PageFactoryManager.refreshFactory();
         goToDefaultPage();
     }
 }

@@ -13,6 +13,10 @@ public class PageFactoryManager {
         return factory;
     }
 
+    public static void refreshFactory() {
+        factory = createFactory();
+    }
+
     private static PageFactory createFactory() {
         SystemUser user = CurrentUserManager.getCurrentUser();
 
@@ -23,7 +27,7 @@ public class PageFactoryManager {
             case insurance_surveyor -> new InsuranceSurveyorPageFactory();
             case insurance_manager -> new InsuranceManagerPageFactory();
             // TODO: add system admin
-            default -> null;
+            default -> throw new IllegalArgumentException("Invalid User Type");
         };
     }
 }

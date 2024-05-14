@@ -3,6 +3,7 @@ package com.group07.buildabackend.gui.components.nav.factories;
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.gui.components.nav.NavBar;
+import com.group07.buildabackend.gui.pages.auth.LoginPage;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
 import com.group07.buildabackend.gui.pages.claim.PolicyHolderCreateClaimPage;
 import com.group07.buildabackend.gui.pages.dependent.CreateDependentPage;
@@ -22,6 +23,7 @@ public class PolicyHolderNavBarFactory implements NavBarFactory{
         navBar.addNavLink(new PolicyHolderDependentsPage(userId), "My Dependents");
         navBar.addNavLink(new CreateDependentPage(userId), "Add Dependent");
         navBar.addNavLink(new UserProfilePage(userId), "My Profile");
+        navBar.addNavLink(new LoginPage(), "Logout");
         return navBar;
     }
 }

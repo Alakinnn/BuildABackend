@@ -13,6 +13,10 @@ public class NavBarFactoryManager {
         return factory;
     }
 
+    public static void refreshFactory() {
+        factory = createFactory();
+    }
+
     private static NavBarFactory createFactory() {
         SystemUser user = CurrentUserManager.getCurrentUser();
         return switch (user.getUserType()) {
@@ -22,7 +26,7 @@ public class NavBarFactoryManager {
             case insurance_surveyor -> new InsuranceSurveyorNavBarFactory();
             case insurance_manager -> new InsuranceManagerNavBarFactory();
             // TODO: add system admin
-            default -> null;
+            default -> throw new IllegalArgumentException("Invalid User Type");
         };
     }
 }

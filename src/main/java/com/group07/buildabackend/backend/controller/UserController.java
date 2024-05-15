@@ -13,7 +13,7 @@ import java.util.List;
 public class UserController {
     public Response<List<SystemUser>> queryUsers(UserQueryDTO dto){
         UserQuery userQuery = new UserQuery();
-        SystemUserRepository sysUserRepository = new SystemUserRepository();
+        SystemUserRepository systemUserRepository = new SystemUserRepository();
 
         if(dto.getNameVal() != null){
             userQuery = new FilterName(userQuery, dto.getNameVal());
@@ -21,7 +21,7 @@ public class UserController {
 
         Response<List<SystemUser>> response = new Response(null);
         try{
-            List<SystemUser> data = sysUserRepository.executeQueryUsers(userQuery.toString());
+            List<SystemUser> data = systemUserRepository.executeQueryUsers(userQuery.toString());
             response.setData(data);
         } catch(Exception e){
             response.setResponseMsg(e.getMessage());

@@ -3,7 +3,6 @@ package com.group07.buildabackend.backend.service.createUserService;
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.DTO;
-import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.userAction.actions.SystemUserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
@@ -14,8 +13,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 import static com.group07.buildabackend.backend.service.Service.handleException;
 import static com.group07.buildabackend.backend.service.userActionService.LogActionService.logUserAction;
 
-public interface SystemUserFactory<T extends DTO, K extends SystemUser> {
-    Response<K> createUser(T dto);
+public interface SystemUserProduct<T extends DTO, K extends com.group07.buildabackend.backend.model.SystemUser> {
 
     void validateAndCreate(T dto, Response<K> response) throws InvalidInputException, InvalidCredentialsException;
 

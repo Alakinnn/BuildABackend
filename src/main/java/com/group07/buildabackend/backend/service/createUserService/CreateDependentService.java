@@ -9,12 +9,14 @@ import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
-import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateDependentService extends UserCredentialsService implements SystemUserFactory<DependentDTO, Dependent>, DependentFactory {
+import static com.group07.buildabackend.backend.service.user.UserCredentialsService.createCredentials;
+
+public class CreateDependentService extends CreateSystemUserService<DependentDTO, Dependent> implements SystemUserProduct<DependentDTO, Dependent>, DependentRelationRetrievable {
+
     @Override
     public Response<Dependent> createUser(DependentDTO dto) {
         return execute(dto, SystemUserType.dependent);
@@ -41,7 +43,7 @@ public class CreateDependentService extends UserCredentialsService implements Sy
     }
 
     @Override
-    public void setRelations(Dependent user, Object... args) {
+    public void setRelations(com.group07.buildabackend.backend.model.customer.Dependent user, Object... args) {
         PolicyOwner policyOwner = (PolicyOwner) args[0];
         PolicyHolder policyHolder = (PolicyHolder) args[1];
         InsuranceCard insuranceCard = (InsuranceCard) args[2];

@@ -36,7 +36,7 @@ public class PolicyOwnerController extends SystemController {
     }
 
     public Response<PolicyHolder> createNewPolicyHolder(PolicyHolderDTO policyHolderDTO) {
-        return createPolicyHolderService.createUser(policyHolderDTO);
+        return createPolicyHolderService.create(policyHolderDTO);
     }
 
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
@@ -44,6 +44,6 @@ public class PolicyOwnerController extends SystemController {
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
-        return createDependentService.createUser(dependentDTO);
+        return createDependentService.create(dependentDTO);
     }
 }

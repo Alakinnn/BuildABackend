@@ -20,7 +20,7 @@ public class PolicyHolderController extends SystemController {
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
-        return createDependentService.createUser(dependentDTO);
+        return createDependentService.create(dependentDTO);
     }
 
     public Response<InsuranceClaim> updateSelfClaim(InsuranceClaimDTO insuranceClaimDTO) {

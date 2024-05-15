@@ -7,13 +7,13 @@ import com.group07.buildabackend.backend.model.Credentials;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
-import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreatePolicyOwnerService extends UserCredentialsService implements SystemUserFactory<PolicyOwnerDTO, PolicyOwner> {
+import static com.group07.buildabackend.backend.service.user.UserCredentialsService.createCredentials;
 
+public class CreatePolicyOwnerService extends CreateSystemUserService<PolicyOwnerDTO, PolicyOwner> implements SystemUserProduct<PolicyOwnerDTO, PolicyOwner> {
     @Override
     public Response<PolicyOwner> createUser(PolicyOwnerDTO dto) {
         return execute(dto, SystemUserType.policy_owner);

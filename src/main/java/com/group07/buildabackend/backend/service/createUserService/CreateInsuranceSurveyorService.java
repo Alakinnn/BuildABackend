@@ -7,19 +7,20 @@ import com.group07.buildabackend.backend.model.Credentials;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
-import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateInsuranceSurveyorService extends UserCredentialsService implements SystemUserFactory<InsuranceSurveyorDTO, InsuranceSurveyor>, InsuranceSurveyorFactory  {
+import static com.group07.buildabackend.backend.service.user.UserCredentialsService.createCredentials;
+
+public class CreateInsuranceSurveyorService extends CreateSystemUserService<InsuranceSurveyorDTO, InsuranceSurveyor> implements SystemUserProduct<InsuranceSurveyorDTO, InsuranceSurveyor>, InsuranceSurveyorRelationRetrievable {
     @Override
-    public Response<InsuranceSurveyor> createUser(InsuranceSurveyorDTO dto) {
+    public Response<com.group07.buildabackend.backend.model.provider.InsuranceSurveyor> createUser(InsuranceSurveyorDTO dto) {
         return execute(dto, SystemUserType.insurance_surveyor);
     }
 
     @Override
-    public void validateAndCreate(InsuranceSurveyorDTO dto, Response<InsuranceSurveyor> response) throws    InvalidInputException, InvalidCredentialsException {
+    public void validateAndCreate(InsuranceSurveyorDTO dto, Response<InsuranceSurveyor> response) throws InvalidInputException, InvalidCredentialsException {
         InsuranceSurveyor insuranceSurveyor;
         SystemUserValidator.validateInput(dto);
 
@@ -36,7 +37,7 @@ public class CreateInsuranceSurveyorService extends UserCredentialsService imple
     }
 
     @Override
-    public void setRelations(InsuranceSurveyor user, Object... args) {
+    public void setRelations(com.group07.buildabackend.backend.model.provider.InsuranceSurveyor user, Object... args) {
         InsuranceManager insuranceManager = (InsuranceManager) args[0];
         Credentials credentials = (Credentials) args[1];
 

@@ -2,10 +2,12 @@ package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.authentication.service.LoginService;
 import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceManagerDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
+import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
 import org.junit.jupiter.api.Test;
@@ -63,6 +65,35 @@ class AdminControllerTest {
 
         AdminController testAdminController = new AdminController();
         Response<InsuranceSurveyor> response = testAdminController.createInsuranceSurveyor(surveyorDTO);
+
+        assertNotNull(response);
+        assertEquals(200, response.getStatusCode());
+
+        SystemUser createdUser = response.getData();
+        assertNotNull(createdUser);
+    }
+
+    @Test
+        //    ENTER DIFFERENT PHONE, EMAIL VALUES TO TEST
+    void createPolicyHolder() {
+        // Create test data
+        PolicyHolderDTO policyHolderDTO = new PolicyHolderDTO();
+        policyHolderDTO.setPhone("0915231561");
+        policyHolderDTO.setAddress("69 Elm St");
+        policyHolderDTO.setFirstName("Muhammad");
+        policyHolderDTO.setLastName("Alleyway");
+        policyHolderDTO.setEmail("Muhammad.Alleyway@example.com");
+        policyHolderDTO.setPwd("password456");
+        policyHolderDTO.setPolicyOwnerId("u_7b85436d");
+
+        LoginInfoDTO loginInfoDTO = new LoginInfoDTO();
+        loginInfoDTO.setPwd("admin");
+        loginInfoDTO.setEmail("admin@rmit.edu.vn");
+
+        LoginService.login(loginInfoDTO);
+
+        AdminController testAdminController = new AdminController();
+        Response<PolicyHolder> response = testAdminController.createNewPolicyHolder(policyHolderDTO);
 
         assertNotNull(response);
         assertEquals(200, response.getStatusCode());

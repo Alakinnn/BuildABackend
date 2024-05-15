@@ -26,8 +26,7 @@ public class PageFactoryManager {
             case policy_owner -> new PolicyOwnerPageFactory();
             case insurance_surveyor -> new InsuranceSurveyorPageFactory();
             case insurance_manager -> new InsuranceManagerPageFactory();
-            // TODO: add system admin
-            default -> throw new IllegalArgumentException("Invalid User Type");
+            case system_admin -> new SystemAdminPageFactory();
         };
     }
 }

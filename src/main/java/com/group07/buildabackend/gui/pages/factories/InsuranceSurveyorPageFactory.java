@@ -5,14 +5,16 @@ import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
 import com.group07.buildabackend.gui.pages.surveyor.InsuranceSurveyorClaimViewPage;
+import com.group07.buildabackend.gui.pages.surveyor.InsuranceSurveyorClaimsPage;
 import com.group07.buildabackend.gui.pages.user.UserProfilePage;
 
-public class InsuranceSurveyorPageFactory implements PageFactory{
+import java.util.function.Consumer;
+
+public class InsuranceSurveyorPageFactory extends PageFactory{
 
     @Override
     public Page createDefaultPage() {
-        SystemUser user = CurrentUserManager.getCurrentUser();
-        return new UserProfilePage(user.getUserId());
+        return new InsuranceSurveyorClaimsPage();
     }
 
     @Override
@@ -22,6 +24,13 @@ public class InsuranceSurveyorPageFactory implements PageFactory{
 
     @Override
     public Page createMyProfilePage() {
-        return null;
+        SystemUser user = CurrentUserManager.getCurrentUser();
+        return new UserProfilePage(user.getUserId());
+    }
+
+    @Override
+    public void createPublicProfilePage(String targetUserId, Consumer<Page> onSuccess) {
+        Page page = new UserProfilePage(targetUserId);
+        onSuccess.accept(page);
     }
 }

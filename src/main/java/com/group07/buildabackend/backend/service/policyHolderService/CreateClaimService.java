@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.service.policyHolderService;
 
+import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMapper;
@@ -51,7 +52,7 @@ public class CreateClaimService extends PolicyHolderService{
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
         } finally {
-            logUserAction(insuranceClaimDTO.getCustomerId(), response.getAction(), response.getStatusCode(), response);
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode(), response);
         }
 
         return response;

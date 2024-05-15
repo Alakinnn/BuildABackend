@@ -24,14 +24,16 @@ public class InsuranceCardController extends Service {
 
         try{
             InsuranceCard insuranceCard = systemUserRepository.executeQueryInsuranceCard(insuranceCardQuery.toString());
+
             if(insuranceCard == null){
                 throw new InvalidInputException("Insurance card not found", 404);
             }
-            response.setData(insuranceCard);
+
+            handleSuccess(response, "Query Success", 200, insuranceCard);
         } catch (InvalidInputException e){
             handleException(response, e.getMessage(), e.getErrorCode());
         } catch (Exception e){
-            response.setResponseMsg(e.getMessage());
+            handleException(response, e.getMessage(), 400);
         }
 
         return response;

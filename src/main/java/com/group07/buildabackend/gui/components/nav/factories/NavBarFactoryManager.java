@@ -25,8 +25,7 @@ public class NavBarFactoryManager {
             case policy_owner -> new PolicyOwnerNavBarFactory();
             case insurance_surveyor -> new InsuranceSurveyorNavBarFactory();
             case insurance_manager -> new InsuranceManagerNavBarFactory();
-            // TODO: add system admin
-            default -> throw new IllegalArgumentException("Invalid User Type");
+            case system_admin -> new SystemAdminNavBarFactory();
         };
     }
 }

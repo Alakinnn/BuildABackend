@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.pages.user;
 
+import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.components.user.UserProfile;
 import com.group07.buildabackend.gui.pages.Page;
@@ -15,7 +16,8 @@ public class UserProfilePage extends Page {
     @Override
     public Node getRoot() {
         root = new UserProfile(userId).getRoot();
-        Page page = new NavDecorator(new Page(root));
+        Page page = new HeaderDecorator(new Page(root), "Profile");
+        page = new NavDecorator(page);
         return page.getRoot();
     }
 }

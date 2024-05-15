@@ -4,12 +4,13 @@ import com.group07.buildabackend.backend.model.SystemUser;
 
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.model.userAction.UserAction;
+import com.group07.buildabackend.backend.repository.operations.AllRetrievable;
 import jakarta.persistence.Query;
 
 import java.util.List;
 
 
-public class SystemUserRepository extends Repository<SystemUser> {
+public class SystemUserRepository extends Repository<SystemUser> implements AllRetrievable<SystemUser> {
     @Override
     public void delete(SystemUser item) {
 
@@ -55,5 +56,11 @@ public class SystemUserRepository extends Repository<SystemUser> {
     public List<UserAction> fetchUserActionsByUserId (String userActionQuery){
         Query query = entityManager.createQuery(userActionQuery);
         return query.getResultList();
+    }
+
+    @Override
+    public List<SystemUser> retrieveAll() {
+        Query query = entityManager.createQuery("SELECT u FROM SystemUser u", SystemUser.class);
+        return (List<SystemUser>) query.getResultList();
     }
 }

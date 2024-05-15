@@ -1,5 +1,8 @@
 package com.group07.buildabackend.gui.components.user.controllers;
 
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.controller.UserController;
+import com.group07.buildabackend.backend.dto.userActionDTO.UserActionDTO;
 import com.group07.buildabackend.backend.model.userAction.UserAction;
 import com.group07.buildabackend.backend.repository.UserActionRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
@@ -36,9 +39,13 @@ public class UserActionListController implements Initializable, ComponentControl
     }
 
     private List<UserAction> fetchActions() {
-        // TODO: implement BE fetch actions from userID
+        UserActionDTO dto = new UserActionDTO();
+        dto.setSystemUserId(userId);
 
-        return null;
+        UserController controller = new UserController();
+        Response<List<UserAction>> res = controller.fetchUserActionsByActorId(dto);
+
+        return res.getData();
     }
 
     public void initPage(String userId) {

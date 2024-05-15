@@ -1,5 +1,8 @@
 package com.group07.buildabackend.gui.components.user.controllers;
 
+import com.group07.buildabackend.backend.controller.InsuranceCardController;
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.dto.queryDTO.InsuranceCardQueryDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.backend.repository.SystemUserRepository;
@@ -41,8 +44,15 @@ public class UserProfileController implements ComponentController {
     }
 
     private InsuranceCard fetchCard() {
-        // TODO: BE implement fetch card;
-        return null;
+        InsuranceCardQueryDTO dto = new InsuranceCardQueryDTO();
+        dto.setSystemUserId(userId);
+
+        InsuranceCardController controller = new InsuranceCardController();
+        Response<InsuranceCard> res = controller.queryInsuranceCardByActorId(dto);
+
+        if (!res.isOk()) return null;
+
+        return res.getData();
     }
 
     public void initPage(String userId) {
@@ -58,11 +68,11 @@ public class UserProfileController implements ComponentController {
             phone.setText(user.getPhone());
             role.setText(user.getUserType().toString());
 
-            actionHistoryContainer.getChildren().add(new UserActionList(userId).getRoot());
 
             TaskRunner<InsuranceCard> cardRunner = new TaskRunner<>(this::fetchCard, card -> {
                 if (card == null) return;
                 insuranceCardContainer.getChildren().add(new InsuranceCardView(card).getRoot());
+                actionHistoryContainer.getChildren().add(new UserActionList(userId).getRoot());
             });
 
             cardRunner.run();

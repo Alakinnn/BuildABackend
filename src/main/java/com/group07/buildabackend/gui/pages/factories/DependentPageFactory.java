@@ -8,7 +8,9 @@ import com.group07.buildabackend.gui.pages.dependent.DependentClaimsPage;
 import com.group07.buildabackend.gui.pages.dependent.DependentMyProfilePage;
 import com.group07.buildabackend.gui.pages.user.UserProfilePage;
 
-public class DependentPageFactory implements PageFactory{
+import java.util.function.Consumer;
+
+public class DependentPageFactory extends PageFactory{
     @Override
     public Page createDefaultPage() {
         SystemUser user = CurrentUserManager.getCurrentUser();
@@ -23,5 +25,11 @@ public class DependentPageFactory implements PageFactory{
     @Override
     public Page createMyProfilePage() {
         return new DependentMyProfilePage();
+    }
+
+    @Override
+    public void createPublicProfilePage(String targetUserId, Consumer<Page> onSuccess) {
+        Page page = new UserProfilePage(targetUserId);
+        onSuccess.accept(page);
     }
 }

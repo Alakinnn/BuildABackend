@@ -17,6 +17,9 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend;
     exports com.group07.buildabackend.gui;
 
+    opens com.group07.buildabackend.backend.model.userAction to javafx.base, org.hibernate.orm.core;
+    exports com.group07.buildabackend.backend.model.userAction;
+
     opens com.group07.buildabackend.gui to javafx.fxml;
 
     exports com.group07.buildabackend.gui.components.nav;
@@ -115,7 +118,6 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.gui.components.claim.btn;
 
     opens com.group07.buildabackend.gui.components.claim.btn to javafx.fxml;
-    opens com.group07.buildabackend.backend.model.userAction to org.hibernate.orm.core;
 
     exports com.group07.buildabackend.gui.components.nav.factories;
 
@@ -145,6 +147,14 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.gui.components.owner.controllers;
 
     opens com.group07.buildabackend.gui.components.owner.controllers to javafx.fxml;
+
+    opens com.group07.buildabackend.gui.components.manager.controllers to javafx.fxml;
+
+    exports com.group07.buildabackend.gui.components.manager.controllers;
+
+    exports com.group07.buildabackend.gui.components.admin.controllers to javafx.fxml;
+
+    opens com.group07.buildabackend.gui.components.admin.controllers;
 
     exports com.group07.buildabackend.gui.components.nav.controllers;
 

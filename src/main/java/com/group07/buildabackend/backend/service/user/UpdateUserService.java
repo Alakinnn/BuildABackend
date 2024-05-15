@@ -32,7 +32,9 @@ public class UpdateUserService extends SystemUserService {
             user.setAddress(dto.getAddress());
             user.setPhone(dto.getPhone());
 
-            UserCredentialsService.updateCredentials(dto.getPassword(), user);
+            if (dto.getPassword() != null) {
+                UserCredentialsService.updateCredentials(dto.getPassword(), user);
+            }
 
             repo.update(user);
             handleSuccess(response, "Successfully updated user", 200, user);

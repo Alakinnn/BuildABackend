@@ -28,8 +28,8 @@ public class UpdateClaimService extends Service {
 
             claim.setAmount(dto.getClaimAmount());
             claim.setExamDate(dto.getExamDate());
-            claim.setReceiverBankName(dto.getReceiverName());
-            claim.setReceiverBankNumber(dto.getBankName());
+            claim.setReceiverBankName(dto.getBankName());
+            claim.setReceiverBankNumber(dto.getAccountNumber());
             claim.setReceiverName(dto.getReceiverName());
 
             repo.update(claim);

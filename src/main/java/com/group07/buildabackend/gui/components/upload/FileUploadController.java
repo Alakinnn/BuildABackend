@@ -1,6 +1,7 @@
 package com.group07.buildabackend.gui.components.upload;
 
 import com.group07.buildabackend.gui.components.ComponentController;
+import com.group07.buildabackend.gui.components.upload.filters.FileFilter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;
@@ -14,9 +15,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FileUploadController implements Initializable, ComponentController {
-    // TODO: add a remove feature for uploaded files? (be careful with DB persistence tho)
-    // TODO: display file as a hyperlink that can be downloaded?
-
     @FXML
     public FlowPane uploadedFileContainer;
     private List<File> uploadedFiles;

@@ -7,7 +7,6 @@ import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.DeleteOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 
-import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 public class DeleteBeneficiaryClaimService extends PolicyOwnerService {
@@ -28,7 +27,7 @@ public class DeleteBeneficiaryClaimService extends PolicyOwnerService {
         } catch (InvalidInputException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
         } finally {
-            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode());
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode(), response);
         }
         return response;
     }

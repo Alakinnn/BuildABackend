@@ -3,6 +3,8 @@ package com.group07.buildabackend.backend.service.policyHolderService;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMapper;
+import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -24,7 +26,7 @@ public class CreateClaimService extends PolicyHolderService{
         response.setAction(actionDescription);
 
         try {
-            PolicyHolder customer = policyHolderRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
+            SystemUser customer = systemUserRepository.retrieveActorById(insuranceClaimDTO.getCustomerId());
 
             if (customer == null) {
                 throw new InvalidInputException("Customer not found", 400);
@@ -35,7 +37,7 @@ public class CreateClaimService extends PolicyHolderService{
             List<Document> documentEntityList = mapToDocumentList(insuranceClaimDTO.getDocuments());
 
             InsuranceClaim insuranceClaim = InsuranceClaimMapper.toEntity(insuranceClaimDTO);
-            insuranceClaim.setCustomer(customer);
+            insuranceClaim.setCustomer((Customer) customer);
 
             for (Document document : documentEntityList) {
                 insuranceClaim.addDocument(document);
@@ -49,7 +51,7 @@ public class CreateClaimService extends PolicyHolderService{
         } catch (Exception e) {
             handleException(response, e.getMessage(), 400);
         } finally {
-            logUserAction(insuranceClaimDTO.getCustomerId(), response.getAction(), response.getStatusCode());
+            logUserAction(insuranceClaimDTO.getCustomerId(), response.getAction(), response.getStatusCode(), response);
         }
 
         return response;

@@ -2,6 +2,8 @@ package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.model.SystemUser;
 
+import com.group07.buildabackend.backend.model.systemAdmin.SystemAdmin;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
 import java.util.List;
@@ -15,7 +17,7 @@ public class SystemUserRepository extends Repository<SystemUser> {
 
     @Override
     public SystemUser retrieveActorById(String id) {
-        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.id=:id");
+        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.userId=:id");
         query.setParameter("id", id);
         return (SystemUser) query.getSingleResult();
     }

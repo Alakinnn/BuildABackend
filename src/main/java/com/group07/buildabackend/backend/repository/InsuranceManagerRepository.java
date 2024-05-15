@@ -2,6 +2,7 @@ package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
+import jakarta.persistence.Query;
 
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class InsuranceManagerRepository extends Repository<InsuranceManager>{
 
     @Override
     public InsuranceManager retrieveActorById(String id) {
-        return null;
+        Query query = entityManager.createQuery("FROM InsuranceManager im WHERE im.id = :id");
+        query.setParameter("id", id);
+
+        return (InsuranceManager) query.getSingleResult();
     }
 }

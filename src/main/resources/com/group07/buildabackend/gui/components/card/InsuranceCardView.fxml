@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.card.controllers.InsuranceCardViewController">
+   <children>
+      <VBox prefHeight="83.0" prefWidth="372.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="372.0" style="-fx-background-color: rgba(194, 223, 237);">
+               <children>
+                  <Label text=" Insurance Card">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label prefHeight="20.0" prefWidth="110.0" text="Card Number: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="cardNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="cardNumber">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="32.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="110.0" text="Expiry Date:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="expiryDate" strokeType="OUTSIDE" strokeWidth="0.0" text="expiryDate">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

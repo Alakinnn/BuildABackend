@@ -1,23 +1,23 @@
 package com.group07.buildabackend.gui;
 
 import com.group07.buildabackend.gui.pages.Page;
+import com.group07.buildabackend.gui.pages.auth.LoginPage;
 import com.group07.buildabackend.gui.pages.claim.CreateClaimPage;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class SceneManager {
     private static SceneManager instance;
-    private BorderPane currentRoot;
+    private StackPane currentRoot;
     private Scene currentScene;
     private Stage currentStage;
 
-    public SceneManager() {
-        Page defaultPage = new CreateClaimPage();
-        currentRoot = new BorderPane(defaultPage.getRoot());
+    private SceneManager() {
+        Page defaultPage = new LoginPage();
+        currentRoot = new StackPane();
+        currentRoot.getChildren().add(defaultPage.getRoot());
 
         currentScene = new Scene(currentRoot);
         currentStage = new Stage();
@@ -33,19 +33,24 @@ public class SceneManager {
     }
 
     public void switchToPage(Page page) {
-        currentRoot.setCenter(page.getRoot());
+        currentRoot.getChildren().set(0, page.getRoot());
     }
 
     public Stage getCurrentStage() {
         return currentStage;
     }
 
-    public void setCursorLoading() {
-        currentScene.setCursor(Cursor.WAIT);
+    public void startLoading() {
+        ProgressIndicator indicator = new ProgressIndicator();
+        currentRoot.getChildren().add(indicator);
     }
 
-    public void setCursorDefault() {
-        currentScene.setCursor(Cursor.DEFAULT);
+    public void endLoading() {
+        if (currentRoot.getChildren().size() <= 1) {
+            // Avoid deleting root page if called wrongly
+            return;
+        }
+        currentRoot.getChildren().remove(1);
     }
 
 }

@@ -1,34 +1,19 @@
 package com.group07.buildabackend.gui.components;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
-import java.io.IOException;
-import java.net.URL;
-
-public abstract class Component<T extends ComponentController> {
-    // A Component is any component in the UI with a controller (e.g. buttons, file uploads, navbar).
-    // T is the type of the controller
-    // Note that although this class also has a reference to root, it is distinctly different from page in that it has a corresponding controller.
-    // Child classes need to provide an FXML URL to the constructor to load in the corresponding FXML resource.
-    // Alternatively, use the empty constructor and create your own component programmatically (without FXML)
+public class Component {
+    // A Component contains a root reference to the FXML component.
+    // This class is used to define simple components that do not need a separate controller class.
+    // Unlike Page, this class should not be used to define layouts. But instead used to create small/simple components (e.g, buttons, links)
 
     protected Node root;
-    protected URL fxmlURL;
-    protected T controller;
 
     public Component() {
     }
 
-    public Component(URL fxmlURL) {
-        try {
-            this.fxmlURL = fxmlURL;
-            FXMLLoader loader = new FXMLLoader(fxmlURL);
-            root = loader.load();
-            controller = loader.getController();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Component(Node root) {
+        this.root = root;
     }
 
     public Node getRoot() {

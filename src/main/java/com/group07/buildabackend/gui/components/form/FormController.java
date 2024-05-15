@@ -1,16 +1,14 @@
 package com.group07.buildabackend.gui.components.form;
 
 import com.group07.buildabackend.backend.controller.Response;
-import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.form.fields.FormField;
 import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
-import com.group07.buildabackend.gui.utils.FormSubmitter;
 import javafx.event.ActionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class FormController<T> {
     // T is the type that is returned after the form is successfully submitted
@@ -50,13 +48,41 @@ public abstract class FormController<T> {
         };
     }
 
-    public abstract Response<T> sendRequest();
+    public abstract Response<T> sendFormRequest();
+
+    // Override this method to execute code before form submission (e.g. check if password valid)
+    // True means the form will proceed to submit.
+    // False means the form will not submit;
+    public boolean preSubmit() {
+        return true;
+    }
+
+    // Override this to execute code after successful form submission (e.g. redirect pages)
+    public void onSuccessfulSubmit() {};
 
     public void onSubmit(ActionEvent event) {
+        if (!preSubmit()) return;
+
         try {
             checkRequiredFields();
-            FormSubmitter submitter = new FormSubmitter();
-            submitter.onSubmit(this::sendRequest);
+
+            TaskRunner<Response<T>> runner = new TaskRunner<>(this::sendFormRequest, res -> {
+                if (res == null) {
+                    AlertManager.showError("Something went wrong when trying to submit, please try again.");
+                    return;
+                }
+                if (!res.isOk()) {
+                    AlertManager.showError(res.getResponseMsg());
+                    return;
+                };
+
+                AlertManager.showInfo(res.getResponseMsg());
+                onSuccessfulSubmit();
+            });
+
+            runner.run();
+        } catch (MissingRequiredFieldException e) {
+            AlertManager.showError(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             AlertManager.showError(e.getMessage());

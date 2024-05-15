@@ -1,10 +1,12 @@
 package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
+import com.group07.buildabackend.backend.dto.user.UpdateUserDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.query.user.FilterName;
 import com.group07.buildabackend.backend.query.user.UserQuery;
 import com.group07.buildabackend.backend.repository.SystemUserRepository;
+import com.group07.buildabackend.backend.service.user.UpdateUserService;
 
 import java.util.List;
 
@@ -26,5 +28,9 @@ public class UserController {
         }
 
         return response;
+    }
+
+    public Response<SystemUser> updateUser(UpdateUserDTO dto) {
+        return UpdateUserService.updateUser(dto);
     }
 }

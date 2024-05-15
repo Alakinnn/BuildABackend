@@ -1,6 +1,6 @@
 package com.group07.buildabackend.backend.controller;
 
-import com.group07.buildabackend.backend.dto.beneficiaryDTO.DependentDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;
@@ -9,9 +9,8 @@ import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInf
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
 import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentClaimService;
 import com.group07.buildabackend.backend.service.policyHolderService.UpdateSelfClaimService;
-import com.group07.buildabackend.backend.service.policyOwnerService.CreateDependentService;
 
-public class PolicyHolderController extends Controller{
+public class PolicyHolderController extends SystemController {
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }
@@ -21,14 +20,14 @@ public class PolicyHolderController extends Controller{
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
-        return CreateDependentService.createNewDependent(dependentDTO);
+        return createDependentService.createUser(dependentDTO);
     }
 
-    public Response<InsuranceClaim> updateSelfClaim(InsuranceClaimDTO insuranceClaimDTO){
+    public Response<InsuranceClaim> updateSelfClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return UpdateSelfClaimService.updateSelfClaim(insuranceClaimDTO);
     }
 
-    public Response<InsuranceClaim> updateDependentClaim(InsuranceClaimDTO insuranceClaimDTO){
+    public Response<InsuranceClaim> updateDependentClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return UpdateDependentClaimService.updateDependentClaim(insuranceClaimDTO);
     }
 }

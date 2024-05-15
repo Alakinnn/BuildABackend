@@ -64,6 +64,10 @@ public abstract class SystemUser {
         return phone;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }

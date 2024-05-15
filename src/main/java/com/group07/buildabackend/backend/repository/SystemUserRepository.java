@@ -2,8 +2,7 @@ package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.model.SystemUser;
 
-import com.group07.buildabackend.backend.model.systemAdmin.SystemAdmin;
-import jakarta.persistence.EntityManager;
+import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import jakarta.persistence.Query;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class SystemUserRepository extends Repository<SystemUser> {
 
     @Override
     public SystemUser retrieveActorById(String id) {
-        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.userId=:id");
+        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.id=:id");
         query.setParameter("id", id);
         return (SystemUser) query.getSingleResult();
     }
@@ -42,8 +41,13 @@ public class SystemUserRepository extends Repository<SystemUser> {
         return (String) query.getSingleResult();
     }
 
-    public List<SystemUser> excecuteQuery(String userQuery){
+    public List<SystemUser> executeQueryUsers(String userQuery){
         Query query = entityManager.createQuery(userQuery);
         return query.getResultList();
+    }
+
+    public InsuranceCard executeQueryInsuranceCard(String insuranceCardQuery){
+        Query query = entityManager.createQuery(insuranceCardQuery);
+        return (InsuranceCard) query.getSingleResult();
     }
 }

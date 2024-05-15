@@ -21,7 +21,7 @@ public class UserController {
 
         Response<List<SystemUser>> response = new Response(null);
         try{
-            List<SystemUser> data = sysUserRepository.excecuteQuery(userQuery.toString());
+            List<SystemUser> data = sysUserRepository.executeQueryUsers(userQuery.toString());
             response.setData(data);
         } catch(Exception e){
             response.setResponseMsg(e.getMessage());

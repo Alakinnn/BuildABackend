@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AdminControllerTest {
 
     @Test
+    //    ENTER DIFFERENT PHONE, EMAIL VALUES TO TEST
     void createInsuranceManager() {
         // Create test data
         InsuranceManagerDTO managerDTO = new InsuranceManagerDTO();
@@ -42,6 +43,7 @@ class AdminControllerTest {
     }
 
     @Test
+    //    ENTER DIFFERENT PHONE, EMAIL VALUES TO TEST
     void createInsuranceSurveyor() {
         // Create test data
         InsuranceSurveyorDTO surveyorDTO = new InsuranceSurveyorDTO();

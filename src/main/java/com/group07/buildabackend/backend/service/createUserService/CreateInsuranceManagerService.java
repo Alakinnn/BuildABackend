@@ -1,18 +1,17 @@
 package com.group07.buildabackend.backend.service.createUserService;
 
 import com.group07.buildabackend.backend.controller.Response;
-import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderMapper;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceManagerDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceManagerMapper;
 import com.group07.buildabackend.backend.model.Credentials;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
-import com.group07.buildabackend.backend.service.SystemUserService;
+import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateInsuranceManagerService extends SystemUserService implements SystemUserFactory<InsuranceManagerDTO, InsuranceManager>{
+public class CreateInsuranceManagerService extends UserCredentialsService implements SystemUserFactory<InsuranceManagerDTO, InsuranceManager>{
     @Override
     public Response<InsuranceManager> createUser(InsuranceManagerDTO dto) {
         return execute(dto, SystemUserType.insurance_manager);

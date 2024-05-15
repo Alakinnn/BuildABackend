@@ -7,7 +7,6 @@ import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.DeleteOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 
-import com.group07.buildabackend.backend.service.SystemUserService;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 public class DeleteBeneficiaryClaimService extends PolicyOwnerService {

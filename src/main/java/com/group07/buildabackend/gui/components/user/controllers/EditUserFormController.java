@@ -58,7 +58,7 @@ public class EditUserFormController extends FormController<SystemUser> implement
             return true;
         }
 
-        if (passwordField.getText().equals(confirmPasswordField.getText())) {
+        if (!passwordField.getText().equals(confirmPasswordField.getText())) {
             AlertManager.showError("Confirm password does not match");
             return false;
         }

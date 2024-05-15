@@ -9,12 +9,12 @@ import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
-import com.group07.buildabackend.backend.service.SystemUserService;
+import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateDependentService extends SystemUserService implements SystemUserFactory<DependentDTO, Dependent>, DependentFactory {
+public class CreateDependentService extends UserCredentialsService implements SystemUserFactory<DependentDTO, Dependent>, DependentFactory {
     @Override
     public Response<Dependent> createUser(DependentDTO dto) {
         return execute(dto, SystemUserType.dependent);

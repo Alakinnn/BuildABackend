@@ -8,12 +8,12 @@ import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
-import com.group07.buildabackend.backend.service.SystemUserService;
+import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreatePolicyHolderService extends SystemUserService implements SystemUserFactory<PolicyHolderDTO, PolicyHolder>, PolicyHolderFactory {
+public class CreatePolicyHolderService extends UserCredentialsService implements SystemUserFactory<PolicyHolderDTO, PolicyHolder>, PolicyHolderFactory {
 
     public CreatePolicyHolderService() {
     }

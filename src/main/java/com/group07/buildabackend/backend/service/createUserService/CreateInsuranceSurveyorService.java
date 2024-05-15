@@ -1,21 +1,18 @@
 package com.group07.buildabackend.backend.service.createUserService;
 
 import com.group07.buildabackend.backend.controller.Response;
-import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceManagerDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorMapper;
 import com.group07.buildabackend.backend.model.Credentials;
-import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
-import com.group07.buildabackend.backend.repository.InsuranceManagerRepository;
-import com.group07.buildabackend.backend.service.SystemUserService;
+import com.group07.buildabackend.backend.service.user.UserCredentialsService;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class CreateInsuranceSurveyorService extends SystemUserService implements SystemUserFactory<InsuranceSurveyorDTO, InsuranceSurveyor>, InsuranceSurveyorFactory  {
+public class CreateInsuranceSurveyorService extends UserCredentialsService implements SystemUserFactory<InsuranceSurveyorDTO, InsuranceSurveyor>, InsuranceSurveyorFactory  {
     @Override
     public Response<InsuranceSurveyor> createUser(InsuranceSurveyorDTO dto) {
         return execute(dto, SystemUserType.insurance_surveyor);

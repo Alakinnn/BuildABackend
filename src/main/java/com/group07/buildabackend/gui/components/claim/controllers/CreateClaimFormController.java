@@ -65,8 +65,6 @@ public class CreateClaimFormController extends FormController<InsuranceClaim> im
     public void initialize(URL url, ResourceBundle resourceBundle) {
         uploadedDocsContainer.getChildren().add(docUploader.getRoot());
 
-        populateCustomerChoices();
-
         addRequiredField(new FormChoiceBox<>(insuredCustomerChoice, "Insured Customer"));
         addRequiredField(new FormTextField(claimAmountField, "Claim Amount"));
         addRequiredField(new FormDatePicker(examDatePicker, "Exam Date"));
@@ -75,14 +73,6 @@ public class CreateClaimFormController extends FormController<InsuranceClaim> im
         addRequiredField(new FormTextField(accountNumberField, "Account Number"));
         addRequiredField(new FormFileUpload(docUploader, "Documents"));
     }
-
-    private void populateCustomerChoices() {
-        // TODO: Add actual users
-        insuredCustomerChoice.getItems().add(new ChoiceField<>("John - 123", "123"));
-        insuredCustomerChoice.getItems().add(new ChoiceField<>("Mary - u3", "u_bc7abc35"));
-        insuredCustomerChoice.getItems().add(new ChoiceField<>("Bob - 789", "789"));
-    }
-
 
     public void onUploadDocument() {
         docUploader.onUpload();

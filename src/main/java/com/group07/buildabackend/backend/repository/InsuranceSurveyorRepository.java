@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.repository;
 
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
 import jakarta.persistence.Query;
 
@@ -19,4 +20,11 @@ public class InsuranceSurveyorRepository extends SystemUserRepository<InsuranceS
             entityManager.close();
         }
     }
+
+    @Override
+    public List<SystemUser> retrieveAll() {
+        Query query = entityManager.createQuery("FROM SystemUser u WHERE u.userType='insurance_surveyor'");
+        return query.getResultList();
+    }
+
 }

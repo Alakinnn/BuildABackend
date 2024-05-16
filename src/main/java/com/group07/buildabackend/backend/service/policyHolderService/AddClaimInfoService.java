@@ -49,6 +49,7 @@ public class AddClaimInfoService extends PolicyHolderService {
             }
 
             insuranceClaim.setStatus(InsuranceClaimStatus.NEW);
+            insuranceClaim.setNote("");
 
             insuranceClaimRepository.update(insuranceClaim);
 

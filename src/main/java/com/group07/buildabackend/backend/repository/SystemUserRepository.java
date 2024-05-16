@@ -9,13 +9,14 @@ import com.group07.buildabackend.backend.repository.operations.SystemUserRetriev
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class SystemUserRepository<T> extends Repository<SystemUser> implements AllRetrievable<SystemUser>, SystemUserRetrievable<T> {
+public class SystemUserRepository<T extends SystemUser> extends Repository<SystemUser> implements AllRetrievable<SystemUser>, SystemUserRetrievable<T> {
     @Override
     public SystemUser retrieveActorById(String id) {
-        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.id=:id");
+        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.userId=:id");
         query.setParameter("id", id);
         return (SystemUser) query.getSingleResult();
     }
@@ -49,8 +50,8 @@ public class SystemUserRepository<T> extends Repository<SystemUser> implements A
 
     @Override
     public List<SystemUser> retrieveAll() {
-        Query query = entityManager.createQuery("SELECT u FROM SystemUser u", SystemUser.class);
-        return (List<SystemUser>) query.getResultList();
+        Query query = entityManager.createQuery("FROM SystemUser u");
+        return query.getResultList();
     }
 
     @Override

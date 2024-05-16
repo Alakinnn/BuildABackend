@@ -52,17 +52,4 @@ public class PolicyHolderCreateClaimPage extends Page {
 
         return page.getRoot();
     }
-
-    public static void main(String[] args) {
-        PolicyHolderController controller = new PolicyHolderController();
-        DependentDTO dto = new DependentDTO();
-        dto.setPolicyHolderId("u_bc7abc35");
-        dto.setFirstName("Khoa");
-        dto.setLastName("Bui");
-        dto.setEmail("khoa@gaymail.com");
-        dto.setPwd("12345");
-        dto.setPhone("4242355235");
-        dto.setAddress("312 Gay Str.");
-        controller.createNewDependent(dto);
-    }
 }

@@ -12,22 +12,9 @@ import java.util.List;
 
 public class SystemUserRepository extends Repository<SystemUser> implements AllRetrievable<SystemUser> {
     @Override
-    public void delete(SystemUser item) {
-
-    }
-
-    @Override
     public SystemUser retrieveActorById(String id) {
         Query query = entityManager.createQuery("FROM SystemUser su WHERE su.id=:id");
         query.setParameter("id", id);
-        return (SystemUser) query.getSingleResult();
-    }
-
-
-    @Override
-    public SystemUser retrieveActorByEmail(String email) {
-        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.email=:email");
-        query.setParameter("email", email);
         return (SystemUser) query.getSingleResult();
     }
 

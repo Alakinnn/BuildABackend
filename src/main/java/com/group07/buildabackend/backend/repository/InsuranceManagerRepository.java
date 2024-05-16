@@ -25,11 +25,6 @@ public class InsuranceManagerRepository extends Repository<InsuranceManager>{
     }
 
     @Override
-    public void delete(InsuranceManager item) {
-
-    }
-
-    @Override
     public InsuranceManager retrieveActorById(String id) {
         Query query = entityManager.createQuery("FROM InsuranceManager im WHERE im.id = :id");
         query.setParameter("id", id);

@@ -6,4 +6,6 @@ public interface Retrievable<T> {
     T retrieveActorById(String id);
 
     T retrieveActorByEmail(String email);
+
+    T retrieveActorByPhone(String phoneNumber);
 }

@@ -11,6 +11,4 @@ public class UserActionRepository extends Repository<UserAction> {
 
         return (UserAction) query.getSingleResult();
     }
-
-
 }

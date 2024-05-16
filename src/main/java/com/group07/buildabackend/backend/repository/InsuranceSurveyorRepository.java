@@ -10,11 +10,6 @@ public class InsuranceSurveyorRepository extends Repository<InsuranceSurveyor>{
     }
 
     @Override
-    public void delete(InsuranceSurveyor item) {
-
-    }
-
-    @Override
     public InsuranceSurveyor retrieveActorById(String id) {
         try{
             Query query = entityManager.createNamedQuery("find surveyor by id");

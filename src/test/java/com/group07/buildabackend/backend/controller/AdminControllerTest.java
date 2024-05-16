@@ -100,4 +100,35 @@ class AdminControllerTest {
         SystemUser createdUser = response.getData();
         assertNotNull(createdUser);
     }
+
+    @Test
+        //    ENTER DIFFERENT PHONE, EMAIL VALUES TO TEST
+    void deleteUser() {
+        // Create test data
+        LoginInfoDTO loginInfoDTO = new LoginInfoDTO();
+        loginInfoDTO.setPwd("admin");
+        loginInfoDTO.setEmail("admin@rmit.edu.vn");
+        AdminController testAdminController = new AdminController();
+
+//        PolicyHolderDTO policyHolderDTO = new PolicyHolderDTO();
+//        policyHolderDTO.setPhone("0915521561");
+//        policyHolderDTO.setAddress("69 Elm St");
+//        policyHolderDTO.setFirstName("Elley");
+//        policyHolderDTO.setLastName("Melly");
+//        policyHolderDTO.setEmail("elly.melly@example.com");
+//        policyHolderDTO.setPwd("password456");
+//        policyHolderDTO.setPolicyOwnerId("u_7b85436d");
+
+        LoginService.login(loginInfoDTO);
+
+//        Response<PolicyHolder> createUserRes = testAdminController.createNewPolicyHolder(policyHolderDTO);
+
+        Response<SystemUser> response = testAdminController.deleteUser("u_4d4e9b00");
+
+        assertNotNull(response);
+        assertEquals(200, response.getStatusCode());
+
+        SystemUser createdUser = response.getData();
+        assertNotNull(createdUser);
+    }
 }

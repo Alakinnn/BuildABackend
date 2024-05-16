@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.repository;
 
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -12,20 +13,6 @@ import java.util.List;
 
 public class PolicyHolderRepository extends Repository<PolicyHolder> implements ClaimRetrievable<InsuranceClaim>, DependentRetrievable<Dependent> {
     public PolicyHolderRepository() {
-    }
-
-    @Override
-    public void add(PolicyHolder item) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(item);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        }
     }
 
     @Override

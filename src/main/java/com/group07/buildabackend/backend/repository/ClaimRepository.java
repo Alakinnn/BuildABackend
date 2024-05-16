@@ -11,20 +11,6 @@ public class ClaimRepository extends Repository<InsuranceClaim> implements AllRe
     }
 
     @Override
-    public void delete(InsuranceClaim item) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.remove(item);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
-            throw e;
-        }
-    }
-
-    @Override
     public InsuranceClaim retrieveActorById(String id) {
             Query query = entityManager.createQuery("FROM InsuranceClaim ic WHERE ic.id=:id");
             query.setParameter("id", id);

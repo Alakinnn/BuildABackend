@@ -6,11 +6,6 @@ import jakarta.persistence.Query;
 
 public class CredentialsRepository extends Repository<Credentials> {
     @Override
-    public void delete(Credentials item) {
-
-    }
-
-    @Override
     public Credentials retrieveActorById(String userId) {
         Query query = entityManager.createQuery("FROM Credentials c WHERE c.userId=:userId");
         query.setParameter("userId", userId);

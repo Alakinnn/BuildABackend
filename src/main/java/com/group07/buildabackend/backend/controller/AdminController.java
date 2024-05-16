@@ -5,6 +5,7 @@ import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficia
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceManagerDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorDTO;
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
@@ -32,6 +33,7 @@ public class AdminController extends SystemController {
         return createPolicyOwnerService.create(policyOwnerDTO);
     }
 
-
-
+    public Response<SystemUser> deleteUser(String id) {
+        return deleteUserService.deleteUser(id);
+    }
 }

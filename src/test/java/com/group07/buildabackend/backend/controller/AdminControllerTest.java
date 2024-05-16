@@ -55,7 +55,6 @@ class AdminControllerTest {
         surveyorDTO.setLastName("Smith");
         surveyorDTO.setEmail("jane.smith@example.com");
         surveyorDTO.setPwd("password456");
-        surveyorDTO.setInsuranceManagerId("u_893f615a");
 
         LoginInfoDTO loginInfoDTO = new LoginInfoDTO();
         loginInfoDTO.setPwd("admin");

@@ -13,7 +13,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import static com.group07.buildabackend.backend.service.user.UserCredentialsService.createCredentials;
 
-public class CreateInsuranceSurveyorService extends CreateSystemUserService<InsuranceSurveyorDTO, InsuranceSurveyor> implements SystemUserProduct<InsuranceSurveyorDTO, InsuranceSurveyor>, InsuranceSurveyorRelationRetrievable {
+public class CreateInsuranceSurveyorService extends CreateSystemUserService<InsuranceSurveyorDTO, InsuranceSurveyor> implements SystemUserProduct<InsuranceSurveyorDTO, InsuranceSurveyor> {
     @Override
     public Response<com.group07.buildabackend.backend.model.provider.InsuranceSurveyor> createUser(InsuranceSurveyorDTO dto) {
         return execute(dto, SystemUserType.insurance_surveyor);
@@ -26,10 +26,9 @@ public class CreateInsuranceSurveyorService extends CreateSystemUserService<Insu
 
         insuranceSurveyor = InsuranceSurveyorMapper.toEntity(dto);
 
-        InsuranceManager insuranceManager = retrieveInsuranceManager(dto.getInsuranceManagerId());
         Credentials credentials = createCredentials(dto.getPwd(), insuranceSurveyor);
 
-        setRelations(insuranceSurveyor, insuranceManager, credentials);
+        setRelations(insuranceSurveyor, credentials);
 
         systemUserRepository.add(insuranceSurveyor);
 
@@ -38,16 +37,9 @@ public class CreateInsuranceSurveyorService extends CreateSystemUserService<Insu
 
     @Override
     public void setRelations(com.group07.buildabackend.backend.model.provider.InsuranceSurveyor user, Object... args) {
-        InsuranceManager insuranceManager = (InsuranceManager) args[0];
-        Credentials credentials = (Credentials) args[1];
+        Credentials credentials = (Credentials) args[0];
 
-        user.setInsuranceManager(insuranceManager);
         user.setCredentials(credentials);
-    }
-
-    @Override
-    public InsuranceManager retrieveInsuranceManager(String insuranceManagerId) {
-        return insuranceManagerRepository.retrieveActorById(insuranceManagerId);
     }
 }
 

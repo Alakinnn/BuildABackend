@@ -16,9 +16,6 @@ public class InsuranceManager extends Provider {
     @Where(clause = "status = 'PROPOSED'")
     private Set<InsuranceClaim> proposedClaims = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, mappedBy = "insuranceManager",cascade = CascadeType.ALL)
-    private Set<InsuranceSurveyor> insuranceSurveyors;
-
     public InsuranceManager() {
     }
 
@@ -31,25 +28,6 @@ public class InsuranceManager extends Provider {
     }
 
     // Updated method name and references to InsuranceSurveyor
-    public void addInsuranceSurveyor(InsuranceSurveyor insuranceSurveyor) {
-        if (this.insuranceSurveyors == null) {
-            this.insuranceSurveyors = new HashSet<>();
-        }
-        if (this.insuranceSurveyors.contains(insuranceSurveyor)) {
-            return;
-        }
-        insuranceSurveyors.add(insuranceSurveyor);
-        insuranceSurveyor.setInsuranceManager(this);
-    }
-
-    // Updated method name and references to InsuranceSurveyor
-    public void removeInsuranceSurveyor(InsuranceSurveyor insuranceSurveyor) {
-        if (!insuranceSurveyors.contains(insuranceSurveyor))
-            return ;
-        insuranceSurveyors.remove(insuranceSurveyor);
-        insuranceSurveyor.setInsuranceManager(null);
-    }
-
 
     @Override
     public SystemUserType getDefaultUserType() {

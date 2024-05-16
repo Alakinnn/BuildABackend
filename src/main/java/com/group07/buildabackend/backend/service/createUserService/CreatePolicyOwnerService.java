@@ -26,10 +26,9 @@ public class CreatePolicyOwnerService extends CreateSystemUserService<PolicyOwne
 
         policyOwner = PolicyOwnerMapper.toEntity(dto);
 
-        InsuranceCard insuranceCard = new InsuranceCard();
         Credentials credentials = createCredentials(dto.getPwd(), policyOwner);
 
-        setRelations(policyOwner, insuranceCard, credentials);
+        setRelations(policyOwner, credentials);
         systemUserRepository.add(policyOwner);
         handleSuccess(response, "Successfully created new policy owner", 200, policyOwner);
 

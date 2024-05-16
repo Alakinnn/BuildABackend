@@ -2,14 +2,12 @@ package com.group07.buildabackend.gui.components.user.controllers;
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.controller.UserController;
-import com.group07.buildabackend.backend.dto.userActionDTO.UserActionDTO;
+import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
 import com.group07.buildabackend.backend.model.userAction.UserAction;
-import com.group07.buildabackend.backend.repository.UserActionRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,7 +37,7 @@ public class UserActionListController implements Initializable, ComponentControl
     }
 
     private List<UserAction> fetchActions() {
-        UserActionDTO dto = new UserActionDTO();
+        UserQueryDTO dto = new UserQueryDTO();
         dto.setSystemUserId(userId);
 
         UserController controller = new UserController();

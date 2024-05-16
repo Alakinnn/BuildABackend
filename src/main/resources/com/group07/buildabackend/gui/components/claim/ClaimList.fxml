@@ -5,22 +5,22 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.claim.controllers.ClaimListController">
    <children>
-      <VBox prefHeight="226.0" prefWidth="421.0">
+      <VBox prefHeight="303.0" prefWidth="532.0">
          <children>
             <HBox>
                <children>
-                  <TextField fx:id="filterValField" prefHeight="26.0" prefWidth="260.0" promptText="Filter" />
+                  <TextField fx:id="filterValField" prefHeight="26.0" prefWidth="370.0" promptText="Filter" />
                   <ChoiceBox fx:id="filterChoice" prefHeight="26.0" prefWidth="91.0" />
                   <Button mnemonicParsing="false" onAction="#onFilter" prefHeight="26.0" prefWidth="70.0" text="Filter" />
                </children>
             </HBox>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="530.0">
+            <TableView fx:id="table" prefHeight="291.0" prefWidth="532.0">
               <columns>
-                <TableColumn fx:id="claimIdCol" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="customerCol" prefWidth="125.39998626708984" text="Customer" />
-                <TableColumn fx:id="amountCol" prefWidth="66.79998779296875" text="Amount" />
-                  <TableColumn fx:id="statusCol" prefWidth="58.0" text="Status" />
-                  <TableColumn fx:id="claimDateCol" prefWidth="95.60003662109375" text="Claim Date" />
+                <TableColumn fx:id="claimIdCol" prefWidth="92.20001524686813" text="ID" />
+                  <TableColumn fx:id="customerCol" prefWidth="157.20001220703125" text="Customer" />
+                <TableColumn fx:id="amountCol" prefWidth="91.59996032714844" text="Amount" />
+                  <TableColumn fx:id="statusCol" prefWidth="76.39996337890625" text="Status" />
+                  <TableColumn fx:id="claimDateCol" prefWidth="110.79998779296875" text="Claim Date" />
               </columns>
             </TableView>
          </children>

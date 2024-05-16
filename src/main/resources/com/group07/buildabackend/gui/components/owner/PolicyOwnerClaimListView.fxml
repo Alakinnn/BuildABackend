@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.owner.controllers.PolicyOwnerClaimListController">
    <children>
-      <VBox prefHeight="274.0" prefWidth="441.0">
+      <VBox prefWidth="441.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="442.0" spacing="10.0">
                <children>

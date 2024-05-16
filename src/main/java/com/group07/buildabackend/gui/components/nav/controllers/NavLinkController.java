@@ -5,11 +5,15 @@ import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-public class NavLinkController implements ComponentController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class NavLinkController implements ComponentController, Initializable {
 
     @FXML
     private Button navButton;
@@ -18,6 +22,10 @@ public class NavLinkController implements ComponentController {
     public NavLinkController() {
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        navButton.setFocusTraversable(false);
+    }
 
     public void onNavButtonClick(ActionEvent event) {
         SceneManager.getInstance().switchToPage(page);
@@ -30,4 +38,6 @@ public class NavLinkController implements ComponentController {
     public void setLabel(String label) {
         navButton.setText(label);
     }
+
+
 }

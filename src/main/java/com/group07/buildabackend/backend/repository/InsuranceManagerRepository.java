@@ -4,9 +4,7 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 import jakarta.persistence.Query;
 
-import java.util.List;
-
-public class InsuranceManagerRepository extends Repository<InsuranceManager>{
+public class InsuranceManagerRepository extends SystemUserRepository<InsuranceManager>{
     public InsuranceManagerRepository() {
     }
 

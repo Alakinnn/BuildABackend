@@ -54,18 +54,4 @@ public abstract class Repository<T> implements Addable<T>, Deletable<T>, Retriev
             throw e;
         }
     }
-
-    @Override
-    public T retrieveActorByPhone(String phoneNumber) {
-        Query query = entityManager.createQuery("FROM PolicyHolder su WHERE su.phone=:phoneNumber");
-        query.setParameter("phoneNumber", phoneNumber);
-        return (T) query.getSingleResult();
-    }
-
-    @Override
-    public T retrieveActorByEmail(String email) {
-        Query query = entityManager.createQuery("FROM PolicyHolder su WHERE su.email=:email");
-        query.setParameter("email", email);
-        return (T) query.getSingleResult();
-    }
 }

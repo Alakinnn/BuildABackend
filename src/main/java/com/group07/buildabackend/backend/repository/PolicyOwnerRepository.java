@@ -9,7 +9,7 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class PolicyOwnerRepository extends Repository<PolicyOwner> implements ClaimRetrievable<InsuranceClaim>, BeneficiaryRetrievable<Beneficiary> {
+public class PolicyOwnerRepository extends SystemUserRepository<PolicyOwner> implements ClaimRetrievable<InsuranceClaim>, BeneficiaryRetrievable<Beneficiary> {
 
     @Override
     public PolicyOwner retrieveActorById(String id) {

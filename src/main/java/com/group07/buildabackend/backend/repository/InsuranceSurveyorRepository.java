@@ -5,7 +5,7 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class InsuranceSurveyorRepository extends Repository<InsuranceSurveyor>{
+public class InsuranceSurveyorRepository extends SystemUserRepository<InsuranceSurveyor>{
     public InsuranceSurveyorRepository() {
     }
 

@@ -1,6 +1,5 @@
 package com.group07.buildabackend.backend.repository;
 
-import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -11,7 +10,7 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class PolicyHolderRepository extends Repository<PolicyHolder> implements ClaimRetrievable<InsuranceClaim>, DependentRetrievable<Dependent> {
+public class PolicyHolderRepository extends SystemUserRepository<PolicyHolder> implements ClaimRetrievable<InsuranceClaim>, DependentRetrievable<Dependent> {
     public PolicyHolderRepository() {
     }
 

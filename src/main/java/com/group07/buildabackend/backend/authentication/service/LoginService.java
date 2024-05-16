@@ -14,15 +14,15 @@ public class LoginService extends Authentication {
             String email = loginInfoDTO.getEmail();
             String pwd = loginInfoDTO.getPwd();
 
-            SystemUser systemUser = SYSTEM_USER_REPOSITORY.retrieveActorByEmail(email);
+            SystemUser systemUser = (SystemUser) systemUserRepository.retrieveActorByEmail(email);
 
             if (systemUser == null) {
                 throw new InvalidCredentialsException("Email not found", 400);
             }
 
             boolean isCorrectPwd;
-            String hashedPwd = SYSTEM_USER_REPOSITORY.retrieveHashedPwdById(systemUser.getUserId());
-            String salt = SYSTEM_USER_REPOSITORY.retrieveSaltById(systemUser.getUserId());
+            String hashedPwd = systemUserRepository.retrieveHashedPwdById(systemUser.getUserId());
+            String salt = systemUserRepository.retrieveSaltById(systemUser.getUserId());
             isCorrectPwd = PasswordVerification.verifyPassword(pwd, hashedPwd, salt);
 
             if (!isCorrectPwd) {

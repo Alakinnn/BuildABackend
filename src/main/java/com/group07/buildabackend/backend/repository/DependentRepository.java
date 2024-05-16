@@ -8,7 +8,7 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class DependentRepository extends Repository<Dependent> implements ClaimRetrievable<InsuranceClaim> {
+public class DependentRepository extends SystemUserRepository<Dependent> implements ClaimRetrievable<InsuranceClaim> {
     @Override
     public Dependent retrieveActorById(String id) {
         Query query = entityManager.createQuery("FROM Dependent d WHERE d.id=:id");

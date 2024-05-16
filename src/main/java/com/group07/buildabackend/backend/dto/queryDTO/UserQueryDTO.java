@@ -2,6 +2,9 @@ package com.group07.buildabackend.backend.dto.queryDTO;
 
 public class UserQueryDTO {
     private String nameVal;
+    private String systemUserId;
+    private String email;
+    private String userType;
     private boolean isAsc;
     private boolean isDesc;
 
@@ -14,6 +17,30 @@ public class UserQueryDTO {
 
     public void setNameVal(String nameVal) {
         this.nameVal = nameVal;
+    }
+
+    public String getSystemUserId() {
+        return systemUserId;
+    }
+
+    public void setSystemUserId(String systemUserId) {
+        this.systemUserId = systemUserId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public boolean isAsc() {

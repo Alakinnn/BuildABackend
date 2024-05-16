@@ -30,7 +30,7 @@ public class UserQueryService extends SystemUserService {
     }
 
     public static Response<List<SystemUser>> retrieveAll(){
-        SystemUserRepository repo = new SystemUserRepository();
+        SystemUserRepository<SystemUser> repo = new SystemUserRepository<>();
 
         Response<List<SystemUser>> response = new Response<>(null);
         try{

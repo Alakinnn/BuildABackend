@@ -13,12 +13,12 @@ public class InsuranceSurveyorQueryService extends InsuranceSurveyorService {
         InsuranceSurveyorRepository repo = new InsuranceSurveyorRepository();
 
         Response<List<SystemUser>> response = new Response<>(null);
-//        try{
-//            List<InsuranceSurveyor> data = repo.retrieveAll();
-//            handleSuccess(response, "Query Success", 200, data);
-//        } catch(Exception e){
-//            handleException(response, e.getMessage(), 400);
-//        }
+        try{
+            List<SystemUser> data = repo.retrieveAll();
+            handleSuccess(response, "Query Success", 200, data);
+        } catch(Exception e){
+            handleException(response, e.getMessage(), 400);
+        }
 
         return response;
     }

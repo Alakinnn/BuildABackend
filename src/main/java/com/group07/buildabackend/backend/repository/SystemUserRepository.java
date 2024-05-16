@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SystemUserRepository<T extends SystemUser> extends Repository<SystemUser> implements AllRetrievable<T>, SystemUserRetrievable<T> {
+public class SystemUserRepository<T extends SystemUser> extends Repository<SystemUser> implements AllRetrievable<SystemUser>, SystemUserRetrievable<T> {
     @Override
     public SystemUser retrieveActorById(String id) {
-        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.id=:id");
+        Query query = entityManager.createQuery("FROM SystemUser su WHERE su.userId=:id");
         query.setParameter("id", id);
         return (SystemUser) query.getSingleResult();
     }
@@ -49,7 +49,7 @@ public class SystemUserRepository<T extends SystemUser> extends Repository<Syste
     }
 
     @Override
-    public List<T> retrieveAll() {
+    public List<SystemUser> retrieveAll() {
         Query query = entityManager.createQuery("FROM SystemUser u");
         return query.getResultList();
     }

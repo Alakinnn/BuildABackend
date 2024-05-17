@@ -9,12 +9,11 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.model.userAction.operations.UpdateOperation;
-import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.time.LocalDate;
 
-public class UpdateDependentClaimService extends Service {
+public class UpdateDependentClaimService extends PolicyHolderService {
     public static Response<InsuranceClaim> updateDependentClaim(InsuranceClaimDTO insuranceClaimDTO){
         Response<InsuranceClaim> response = new Response<>(null);
         OperationType userAction = new ClaimAction(new UpdateOperation());

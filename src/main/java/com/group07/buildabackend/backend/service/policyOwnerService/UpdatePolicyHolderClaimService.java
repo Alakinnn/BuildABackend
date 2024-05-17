@@ -14,7 +14,7 @@ import com.group07.buildabackend.backend.validation.customExceptions.InvalidInpu
 
 import java.time.LocalDate;
 
-public class UpdatePolicyHolderClaimService extends Service {
+public class UpdatePolicyHolderClaimService extends PolicyOwnerService {
     public static Response<InsuranceClaim> updatePolicyHolderClaim(InsuranceClaimDTO insuranceClaimDTO){
         Response<InsuranceClaim> response = new Response<>(null);
         OperationType userAction = new ClaimAction(new UpdateOperation());

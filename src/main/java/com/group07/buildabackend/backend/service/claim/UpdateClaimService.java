@@ -11,7 +11,7 @@ import com.group07.buildabackend.backend.repository.ClaimRepository;
 import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
-public class UpdateClaimService extends Service {
+public class UpdateClaimService extends ClaimService {
     public static Response<InsuranceClaim> updateClaim(UpdateClaimDTO dto) {
         Response<InsuranceClaim> response = new Response<>(null);
         OperationType userAction = new ClaimAction(new UpdateOperation());

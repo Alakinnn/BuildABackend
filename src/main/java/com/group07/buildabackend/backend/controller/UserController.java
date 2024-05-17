@@ -1,37 +1,58 @@
 package com.group07.buildabackend.backend.controller;
 
+import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;
 import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
 import com.group07.buildabackend.backend.dto.user.UpdateUserDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.UserAction;
+import com.group07.buildabackend.backend.service.user.QueryClaimService;
 import com.group07.buildabackend.backend.service.user.UpdateUserService;
 import com.group07.buildabackend.backend.service.user.UserActionService;
-import com.group07.buildabackend.backend.service.user.UserQueryService;
+import com.group07.buildabackend.backend.service.user.QueryUserService;
 
 import java.util.List;
 
 public class UserController {
     public Response<List<SystemUser>> fetchUsersByName(UserQueryDTO dto){
-        return UserQueryService.queryUsersByName(dto);
+        return QueryUserService.queryUsersByName(dto);
     }
 
     public Response<List<SystemUser>> fetchUsersByEmail(UserQueryDTO dto){
-        return UserQueryService.queryUsersByEmail(dto);
+        return QueryUserService.queryUsersByEmail(dto);
     }
 
     public Response<List<SystemUser>> fetchUsersByUserType(UserQueryDTO dto){
-        return UserQueryService.queryUsersByUserType(dto);
+        return QueryUserService.queryUsersByUserType(dto);
+    }
+
+    public Response<List<InsuranceClaim>> fetchClaimsByStatus(ClaimQueryDTO dto){
+        return QueryClaimService.fetchClaimsByStatus(dto);
+    }
+
+    public Response<List<InsuranceClaim>> fetchClaimsByAmount(ClaimQueryDTO dto){
+        return QueryClaimService.fetchClaimsByAmount(dto);
+    }
+
+    public Response<List<InsuranceClaim>> fetchClaimsByClaimDate(ClaimQueryDTO dto){
+        return QueryClaimService.fetchClaimsByClaimDate(dto);
+    }
+
+    public Response<List<InsuranceClaim>> fetchClaimsByExamDate(ClaimQueryDTO dto){
+        return QueryClaimService.fetchClaimsByExamDate(dto);
+    }
+
+    public Response<List<UserAction>> fetchUserActionsByActorId(UserQueryDTO dto){
+        return UserActionService.fetchUserActionsByActorId(dto);
     }
 
     public Response<List<SystemUser>> retrieveAll() {
-        return UserQueryService.retrieveAll();
+        return QueryUserService.retrieveAll();
     }
 
     public Response<SystemUser> updateUser(UpdateUserDTO dto) {
         return UpdateUserService.updateUser(dto);
     }
 
-    public Response<List<UserAction>> fetchUserActionsByActorId(UserQueryDTO dto){
-        return UserActionService.fetchUserActionsByActorId(dto);
-    }
+
 }

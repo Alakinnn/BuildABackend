@@ -3,6 +3,7 @@ package com.group07.buildabackend.backend.repository;
 import com.group07.buildabackend.backend.model.SystemUser;
 
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
+import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.UserAction;
 import com.group07.buildabackend.backend.repository.operations.AllRetrievable;
 import com.group07.buildabackend.backend.repository.operations.SystemUserRetrievable;
@@ -40,6 +41,11 @@ public class SystemUserRepository<T> extends Repository<SystemUser> implements A
     public InsuranceCard executeQueryInsuranceCard(String insuranceCardQuery){
         Query query = entityManager.createQuery(insuranceCardQuery);
         return (InsuranceCard) query.getSingleResult();
+    }
+
+    public List<InsuranceClaim> executeQueryInsuranceClaim(String claimQuery){
+        Query query = entityManager.createQuery(claimQuery);
+        return query.getResultList();
     }
 
     public List<UserAction> fetchUserActionsByUserId (String userActionQuery){

@@ -12,6 +12,7 @@ public class PolicyOwnerMapper {
         policyOwner.setLastName(policyOwnerDTO.getLastName());
         policyOwner.setFirstName(policyOwnerDTO.getFirstName());
         policyOwner.setAddress(policyOwnerDTO.getAddress());
+        policyOwner.setYearlyRate(policyOwnerDTO.getYearlyRate());
         return policyOwner;
     }
 }

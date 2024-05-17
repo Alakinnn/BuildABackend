@@ -152,8 +152,6 @@ module com.group07.buildabackend {
 
     exports com.group07.buildabackend.gui.components.manager.controllers;
 
-    exports com.group07.buildabackend.gui.components.admin.controllers to javafx.fxml;
-
     opens com.group07.buildabackend.gui.components.admin.controllers;
 
     exports com.group07.buildabackend.gui.components.nav.controllers;
@@ -183,4 +181,7 @@ module com.group07.buildabackend {
     exports com.group07.buildabackend.gui.components.auth.controllers;
 
     opens com.group07.buildabackend.gui.components.auth.controllers to javafx.fxml;
+    exports com.group07.buildabackend.gui.components.admin.controllers;
+    exports com.group07.buildabackend.gui.components.admin;
+    opens com.group07.buildabackend.gui.components.admin to javafx.fxml;
 }

@@ -1,11 +1,14 @@
 package com.group07.buildabackend.gui.components.user.controllers;
 
+import com.group07.buildabackend.backend.controller.UserController;
+import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.claim.ClaimHyperlink;
 import com.group07.buildabackend.gui.components.user.UserHyperlink;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -33,6 +36,7 @@ public class UserListController implements Initializable, ComponentController {
 
     private enum UserFilerOption {
         NAME,
+        EMAIL,
         ROLE
     }
 
@@ -42,14 +46,37 @@ public class UserListController implements Initializable, ComponentController {
         initTable();
     }
 
+    private List<SystemUser> fetchUsers() {
+        UserController controller = new UserController();
+
+        UserFilerOption filter = UserFilerOption.valueOf(filterChoice.getValue());
+        String filterVal = filterValField.getText();
+
+        UserQueryDTO dto = new UserQueryDTO();
+        return switch (filter) {
+            case NAME:
+                dto.setNameVal(filterVal);
+                yield controller.fetchUsersByName(dto).getData();
+            case EMAIL:
+                dto.setEmail(filterVal);
+                yield controller.fetchUsersByEmail(dto).getData();
+            case ROLE:
+                dto.setUserType(filterVal);
+                yield controller.fetchUsersByUserType(dto).getData();
+        };
+    }
+
     public void onFilter() {
-        // TODO: implement backend
-        System.out.println(filterChoice.getValue());
-        System.out.println(filterValField.getText());
+        if (filterChoice.getValue() == null || filterValField.getText() == null) return;
+
+        table.getItems().clear();
+        TaskRunner<List<SystemUser>> runner = new TaskRunner<>(this::fetchUsers, this::addAllUsers);
+        runner.run();
     }
 
     private void initFilter() {
         filterChoice.getItems().add(UserFilerOption.NAME.toString());
+        filterChoice.getItems().add(UserFilerOption.EMAIL.toString());
         filterChoice.getItems().add(UserFilerOption.ROLE.toString());
     }
 

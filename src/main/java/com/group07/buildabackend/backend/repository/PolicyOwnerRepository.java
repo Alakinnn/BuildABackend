@@ -2,6 +2,7 @@ package com.group07.buildabackend.backend.repository;
 
 import com.group07.buildabackend.backend.controller.PolicyOwnerController;
 import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
@@ -92,5 +93,12 @@ public class PolicyOwnerRepository extends SystemUserRepository<PolicyOwner> imp
         Query query = entityManager.createQuery("SELECT o.yearlyRate FROM PolicyOwner o WHERE o.userId='" + ownerId + "'");
 
         return (double) query.getSingleResult();
+    }
+
+    @Override
+    public List<SystemUser> retrieveAll() {
+        Query query = entityManager.createQuery("FROM SystemUser u WHERE u.userType=policy_owner");
+
+        return query.getResultList();
     }
 }

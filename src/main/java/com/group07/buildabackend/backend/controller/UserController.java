@@ -26,22 +26,6 @@ public class UserController {
         return QueryUserService.queryUsersByUserType(dto);
     }
 
-    public Response<List<InsuranceClaim>> fetchClaimsByStatus(ClaimQueryDTO dto){
-        return QueryClaimService.fetchClaimsByStatus(dto);
-    }
-
-    public Response<List<InsuranceClaim>> fetchClaimsByAmount(ClaimQueryDTO dto){
-        return QueryClaimService.fetchClaimsByAmount(dto);
-    }
-
-    public Response<List<InsuranceClaim>> fetchClaimsByClaimDate(ClaimQueryDTO dto){
-        return QueryClaimService.fetchClaimsByClaimDate(dto);
-    }
-
-    public Response<List<InsuranceClaim>> fetchClaimsByExamDate(ClaimQueryDTO dto){
-        return QueryClaimService.fetchClaimsByExamDate(dto);
-    }
-
     public Response<List<UserAction>> fetchUserActionsByActorId(UserQueryDTO dto){
         return UserActionService.fetchUserActionsByActorId(dto);
     }

@@ -20,7 +20,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="635.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="152.0" text="Claim Amount:">
+                  <Label prefHeight="20.0" prefWidth="152.0" text="Claim Amount (USD):">
                      <font>
                         <Font size="14.0" />
                      </font>

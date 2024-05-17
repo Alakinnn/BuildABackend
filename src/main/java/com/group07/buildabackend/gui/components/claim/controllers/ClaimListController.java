@@ -1,11 +1,14 @@
 package com.group07.buildabackend.gui.components.claim.controllers;
 
+import com.group07.buildabackend.backend.controller.InsuranceClaimController;
+import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.claim.ClaimHyperlink;
 import com.group07.buildabackend.gui.components.user.UserHyperlink;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import jakarta.persistence.Table;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -37,12 +40,12 @@ public class ClaimListController implements Initializable, ComponentController {
     @FXML
     private TextField filterValField;
     @FXML
-    private ChoiceBox<ClaimFilterOption> filterChoice;
+    private ChoiceBox<String> filterChoice;
 
 
     private enum ClaimFilterOption {
         STATUS,
-        AMOUNT
+        AMOUNT,
     }
 
     @Override
@@ -53,8 +56,8 @@ public class ClaimListController implements Initializable, ComponentController {
 
 
     private void initFilter() {
-        filterChoice.getItems().add(ClaimFilterOption.STATUS);
-        filterChoice.getItems().add(ClaimFilterOption.AMOUNT);
+        filterChoice.getItems().add(ClaimFilterOption.STATUS.toString());
+        filterChoice.getItems().add(ClaimFilterOption.AMOUNT.toString());
     }
 
     private void initTable() {
@@ -80,10 +83,32 @@ public class ClaimListController implements Initializable, ComponentController {
         });
     }
 
+    private List<InsuranceClaim> fetchClaims() {
+        ClaimFilterOption filter = ClaimFilterOption.valueOf(filterChoice.getValue());
+        String filterVal = filterValField.getText();
+
+        InsuranceClaimController controller = new InsuranceClaimController();
+
+        ClaimQueryDTO dto = new ClaimQueryDTO();
+
+        return switch (filter) {
+            case AMOUNT:
+                dto.setAmount(Double.valueOf(filterVal));
+                yield controller.fetchClaimsByAmount(dto).getData();
+            case STATUS:
+                dto.setStatus(filterVal);
+                yield controller.fetchClaimsByStatus(dto).getData();
+        };
+    }
+
     public void onFilter() {
-        // TODO: implement backend
-        System.out.println(filterValField.getText());
-        System.out.println(filterChoice.getValue());
+        if (filterValField.getText() == null || filterChoice.getValue() == null) return;
+
+        table.getItems().clear();
+
+        TaskRunner<List<InsuranceClaim>> runner = new TaskRunner<>(this::fetchClaims, this::addAllClaims);
+
+        runner.run();
     }
 
     public void addClaim(InsuranceClaim claim) {

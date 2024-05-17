@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.user.controllers.CreateRoleBasedUserFormController">
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.admin.controllers.SystemAdminCreateOtherUserFormController">
    <children>
       <VBox prefHeight="300.0" prefWidth="437.0" spacing="10.0">
          <children>
@@ -23,7 +23,19 @@
                </padding>
             </HBox>
             <HBox fx:id="createUserFormContainer" />
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </HBox>
          </children>
+
       </VBox>
    </children>
 </AnchorPane>

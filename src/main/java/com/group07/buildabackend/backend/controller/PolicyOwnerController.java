@@ -4,17 +4,20 @@ import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
 import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentClaimService;
-import com.group07.buildabackend.backend.service.policyOwnerService.CalculateService;
-import com.group07.buildabackend.backend.service.policyOwnerService.DeleteBeneficiaryClaimService;
-import com.group07.buildabackend.backend.service.policyOwnerService.DeleteSelfClaimService;
-import com.group07.buildabackend.backend.service.policyOwnerService.UpdatePolicyHolderClaimService;
+import com.group07.buildabackend.backend.service.policyOwnerService.*;
+
+import java.util.List;
 
 public class PolicyOwnerController extends SystemController {
+    public Response<List<SystemUser>> retrieveAll() {
+        return PolicyOwnerQueryService.retrieveAll();
+    }
     public Response<Double> calculateAnnualCost(InsuranceCostDTO insuranceCostDTO) {
         return CalculateService.calculateAnnualCost(insuranceCostDTO);
     }

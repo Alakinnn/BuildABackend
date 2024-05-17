@@ -1,5 +1,10 @@
 package com.group07.buildabackend.backend.repository;
 
+import com.group07.buildabackend.backend.authentication.service.LoginService;
+import com.group07.buildabackend.backend.controller.AdminController;
+import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceManagerDTO;
+import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;

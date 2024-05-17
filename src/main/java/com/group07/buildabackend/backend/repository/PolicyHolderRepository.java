@@ -1,5 +1,6 @@
 package com.group07.buildabackend.backend.repository;
 
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -77,5 +78,11 @@ public class PolicyHolderRepository extends SystemUserRepository<PolicyHolder> i
         query.setParameter("holderId", holderId);
         query.setParameter("dependentId", dependentId);
         return (Dependent) query.getSingleResult();
+    }
+
+    @Override
+    public List<SystemUser> retrieveAll() {
+        Query query = entityManager.createQuery("FROM SystemUser u WHERE u.userType='policy_holder'");
+        return query.getResultList();
     }
 }

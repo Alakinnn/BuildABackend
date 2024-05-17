@@ -3,14 +3,18 @@ package com.group07.buildabackend.backend.controller;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
+import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
-import com.group07.buildabackend.backend.service.policyHolderService.AddClaimInfoService;
-import com.group07.buildabackend.backend.service.policyHolderService.CreateClaimService;
-import com.group07.buildabackend.backend.service.policyHolderService.UpdateDependentClaimService;
-import com.group07.buildabackend.backend.service.policyHolderService.UpdateSelfClaimService;
+import com.group07.buildabackend.backend.service.policyHolderService.*;
+
+import java.util.List;
 
 public class PolicyHolderController extends SystemController {
+
+    public Response<List<SystemUser>> retrieveAll() {
+        return PolicyHolderQueryService.retrieveAll();
+    }
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }

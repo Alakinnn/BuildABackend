@@ -11,7 +11,7 @@ import com.group07.buildabackend.backend.repository.SystemUserRepository;
 
 import java.util.List;
 
-public class UserQueryService extends SystemUserService {
+public class QueryUserService extends SystemUserService {
     public static Response<List<SystemUser>> queryUsersByName(UserQueryDTO dto){
         UserQuery userQuery = new UserQuery();
         SystemUserRepository systemUserRepository = new SystemUserRepository();

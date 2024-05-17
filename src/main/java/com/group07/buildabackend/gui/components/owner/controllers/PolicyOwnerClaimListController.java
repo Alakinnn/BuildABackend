@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.owner.controllers;
 
+import com.group07.buildabackend.backend.controller.PolicyOwnerController;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
@@ -60,6 +61,8 @@ public class PolicyOwnerClaimListController implements ComponentController {
         dependentClaims.resetClaims();
 
         TaskRunner<List<List<InsuranceClaim>>> runner = new TaskRunner<>(this::fetchClaims, claims -> {
+            if (claims == null) return;
+
             customerClaims.addAllClaims(claims.get(0));
             dependentClaims.addAllClaims(claims.get(1));
         });
@@ -73,9 +76,10 @@ public class PolicyOwnerClaimListController implements ComponentController {
         res.add(new ArrayList<>());
         res.add(new ArrayList<>());
 
-        // TODO: Use controllers instead
-        PolicyOwnerRepository repo = new PolicyOwnerRepository();
-        Beneficiary beneficiary = repo.retrieveOneBeneficiary(beneficiaryId, policyOwnerId);
+        PolicyOwnerController controller = new PolicyOwnerController();
+        Beneficiary beneficiary = controller.retrieveBeneficiary(beneficiaryId, policyOwnerId).getData();
+
+        if (beneficiary == null) return null;
 
         if (beneficiary.getUserType() == SystemUserType.dependent) {
             DependentRepository depRepo = new DependentRepository();
@@ -97,9 +101,8 @@ public class PolicyOwnerClaimListController implements ComponentController {
     }
 
     private List<Beneficiary> fetchBeneficiaries() {
-        // TODO: Use controllers instead
-        PolicyOwnerRepository repo = new PolicyOwnerRepository();
-        return repo.retrieveAllBeneficiary(policyOwnerId);
+        PolicyOwnerController controller = new PolicyOwnerController();
+        return controller.retrieveAllBeneficiaries(policyOwnerId).getData();
     }
 
 }

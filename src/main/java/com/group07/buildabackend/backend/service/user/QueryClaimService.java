@@ -99,4 +99,17 @@ public class QueryClaimService extends Service {
 
         return res;
     }
+
+    public static Response<InsuranceClaim> retrieveById(String claimId) {
+        Response<InsuranceClaim> res = new Response<>(null);
+        try {
+            ClaimRepository repo = new ClaimRepository();
+            InsuranceClaim claims = repo.retrieveActorById(claimId);
+            handleSuccess(res, "Query Success", 200, claims);
+        } catch (Exception e) {
+            handleException(res, e.getMessage(), 400);
+        }
+
+        return res;
+    }
 }

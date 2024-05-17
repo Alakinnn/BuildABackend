@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.holder.controllers;
 
+import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
@@ -38,10 +39,9 @@ public class PolicyHolderClaimListController implements Initializable, Component
     }
 
     private List<List<InsuranceClaim>> fetchClaims() {
-        // TODO: Change this to controller instead of Repository
-        PolicyHolderRepository repo = new PolicyHolderRepository();
-        List<InsuranceClaim> holderClaims = repo.retrieveAllClaimsByActorId(phId);
-        List<InsuranceClaim> dependentClaims = repo.retrieveAllDependentClaim(phId);
+        PolicyHolderController controller = new PolicyHolderController();
+        List<InsuranceClaim> holderClaims = controller.retrieveAllClaimsById(phId).getData();
+        List<InsuranceClaim> dependentClaims = controller.retrieveAllDependentClaims(phId).getData();
 
         List<List<InsuranceClaim>> res = new ArrayList<>(2);
         res.add(holderClaims);

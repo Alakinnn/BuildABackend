@@ -34,9 +34,8 @@ public class EditClaimFormController extends FormController<InsuranceClaim> impl
     private TextField accountNumberField;
 
     private InsuranceClaim fetchClaim() {
-        // TODO: Use controller
-        ClaimRepository repo = new ClaimRepository();
-        return repo.retrieveActorById(claimId.getText());
+        InsuranceClaimController controller = new InsuranceClaimController();
+        return controller.retrieveById(claimId.getText()).getData();
     }
 
     public void initPage(String claimId) {

@@ -23,11 +23,8 @@ public class PolicyHolderCreateClaimPage extends Page {
     }
 
     private List<Dependent> retrieveDependents() {
-        // TODO: Use controllers instead
-        PolicyHolderRepository repo = new PolicyHolderRepository();
-        List<Dependent> dependents = repo.retrieveAllDependent(phId);
-
-        return dependents;
+        PolicyHolderController controller = new PolicyHolderController();
+        return controller.retrieveAllDependents(phId).getData();
     }
 
     @Override

@@ -15,6 +15,19 @@ public class PolicyHolderController extends SystemController {
     public Response<List<SystemUser>> retrieveAll() {
         return PolicyHolderQueryService.retrieveAll();
     }
+
+    public Response<List<Dependent>> retrieveAllDependents(String userId) {
+        return PolicyHolderQueryService.retrieveAllDependents(userId);
+    }
+
+    public Response<List<InsuranceClaim>> retrieveAllClaimsById(String userId) {
+        return PolicyHolderQueryService.retrieveAllClaimsById(userId);
+    }
+
+    public Response<List<InsuranceClaim>> retrieveAllDependentClaims(String userId) {
+        return PolicyHolderQueryService.retrieveAllDependentClaims(userId);
+    }
+
     public Response<InsuranceClaim> createClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return CreateClaimService.createClaim(insuranceClaimDTO);
     }

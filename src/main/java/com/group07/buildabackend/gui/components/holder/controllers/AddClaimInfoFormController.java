@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.holder.controllers;
 
+import com.group07.buildabackend.backend.controller.InsuranceClaimController;
 import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.AddClaimInfoDTO;
@@ -58,9 +59,8 @@ public class AddClaimInfoFormController extends FormController<InsuranceClaim> i
     }
 
     private InsuranceClaim fetchClaim() {
-        // TODO: controllers instead of repo
-        ClaimRepository repo = new ClaimRepository();
-        return repo.retrieveActorById(claimId);
+        InsuranceClaimController controller = new InsuranceClaimController();
+        return controller.retrieveById(claimId).getData();
     }
 
     public void initPage(String claimId) {

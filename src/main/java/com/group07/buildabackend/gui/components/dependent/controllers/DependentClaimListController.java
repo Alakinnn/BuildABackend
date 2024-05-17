@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.dependent.controllers;
 
+import com.group07.buildabackend.backend.controller.DependentController;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.DependentRepository;
@@ -31,11 +32,9 @@ public class DependentClaimListController implements Initializable, ComponentCon
     }
 
     public void innitPage(String dId) {
-        // TODO: Change this to controller instead of Repository
         try {
-
-            DependentRepository repo = new DependentRepository();
-            List<InsuranceClaim> claims = repo.retrieveAllClaimsByActorId(dId);
+            DependentController controller = new DependentController();
+            List<InsuranceClaim> claims = controller.retrieveAllClaimsById(dId).getData();
 
             for (InsuranceClaim claim: claims) {
                 myClaims.addClaim(claim);

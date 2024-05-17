@@ -23,9 +23,9 @@ public class PolicyOwnerCreateClaimPage extends Page {
     }
 
     private List<Beneficiary> retrieveBeneficiaries() {
-        // TODO: use controllers
-        PolicyOwnerRepository repo = new PolicyOwnerRepository();
-        return repo.retrieveAllBeneficiary(poId);
+        PolicyOwnerController controller = new PolicyOwnerController();
+
+        return controller.retrieveAllBeneficiaries(poId).getData();
     }
 
     @Override

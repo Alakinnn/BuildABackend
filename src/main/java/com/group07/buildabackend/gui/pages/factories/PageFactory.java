@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.pages.factories;
 
+import com.group07.buildabackend.backend.controller.UserController;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.repository.SystemUserRepository;
 import com.group07.buildabackend.gui.pages.Page;
@@ -18,10 +19,7 @@ public abstract class PageFactory {
     protected String targetUserId;
 
     protected SystemUser fetchUser() {
-        // TODO: Use controllers
-        SystemUserRepository<SystemUser> repo = new SystemUserRepository<>();
-        SystemUser res = repo.retrieveActorById(targetUserId);
-
-        return res;
+        UserController controller = new UserController();
+        return controller.retrieveById(targetUserId).getData();
     }
 }

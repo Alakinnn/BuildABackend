@@ -38,5 +38,8 @@ public class UserController {
         return UpdateUserService.updateUser(dto);
     }
 
+    public Response<SystemUser> retrieveById(String userId) {
+        return QueryUserService.retrieveById(userId);
+    }
 
 }

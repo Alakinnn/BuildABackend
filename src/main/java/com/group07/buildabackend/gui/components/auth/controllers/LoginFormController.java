@@ -2,6 +2,7 @@ package com.group07.buildabackend.gui.components.auth.controllers;
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.authentication.service.LoginService;
+import com.group07.buildabackend.backend.controller.AuthController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
@@ -39,12 +40,13 @@ public class LoginFormController extends FormController<SystemUser> implements C
 
     @Override
     public Response<SystemUser> sendFormRequest() {
-        // TODO: Please move this service to a AuthController or UserController
+        AuthController controller = new AuthController();
+
         LoginInfoDTO dto = new LoginInfoDTO();
         dto.setEmail(emailField.getText());
         dto.setPwd(passwordField.getText());
 
-        return LoginService.login(dto);
+        return controller.login(dto);
     }
 
     private Object goToDefaultPage() {

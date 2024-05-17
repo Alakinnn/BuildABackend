@@ -1,5 +1,6 @@
 package com.group07.buildabackend.gui.components.claim.controllers;
 
+import com.group07.buildabackend.backend.controller.InsuranceClaimController;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.ClaimRepository;
@@ -50,10 +51,8 @@ public class ClaimViewController implements ComponentController {
     private String claimId;
 
     private InsuranceClaim fetchClaim() {
-        // TODO: controller instead of repo
-
-        ClaimRepository repo = new ClaimRepository();
-        return repo.retrieveActorById(claimId);
+        InsuranceClaimController controller = new InsuranceClaimController();
+        return controller.retrieveById(claimId).getData();
     };
 
     public void initPage(String claimId) {

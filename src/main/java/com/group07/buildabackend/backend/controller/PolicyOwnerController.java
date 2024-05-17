@@ -5,6 +5,7 @@ import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficia
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
@@ -18,6 +19,15 @@ public class PolicyOwnerController extends SystemController {
     public Response<List<SystemUser>> retrieveAll() {
         return PolicyOwnerQueryService.retrieveAll();
     }
+
+    public Response<List<Beneficiary>> retrieveAllBeneficiaries(String userId) {
+        return PolicyOwnerQueryService.retrieveAllBeneficiaries(userId);
+    }
+
+    public Response<Beneficiary> retrieveBeneficiary(String beneficiaryId, String policyOwnerId) {
+        return PolicyOwnerQueryService.retrieveBeneficiary(beneficiaryId, policyOwnerId);
+    }
+
     public Response<Double> calculateAnnualCost(InsuranceCostDTO insuranceCostDTO) {
         return CalculateService.calculateAnnualCost(insuranceCostDTO);
     }

@@ -2,6 +2,7 @@ package com.group07.buildabackend.gui.components.user.controllers;
 
 import com.group07.buildabackend.backend.controller.InsuranceCardController;
 import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.controller.UserController;
 import com.group07.buildabackend.backend.dto.queryDTO.InsuranceCardQueryDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
@@ -39,9 +40,8 @@ public class UserProfileController implements ComponentController {
     private String userId;
 
     private SystemUser fetchUser() {
-        // TODO: Use controller
-        SystemUserRepository<SystemUser> repo = new SystemUserRepository<>();
-        return repo.retrieveActorById(userId);
+        UserController controller = new UserController();
+        return controller.retrieveById(userId).getData();
     }
 
     private InsuranceCard fetchCard() {

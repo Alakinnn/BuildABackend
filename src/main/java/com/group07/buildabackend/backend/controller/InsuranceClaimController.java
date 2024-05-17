@@ -15,6 +15,10 @@ public class InsuranceClaimController {
         return QueryClaimService.retrieveAll();
     }
 
+    public Response<InsuranceClaim> retrieveById(String claimId) {
+        return QueryClaimService.retrieveById(claimId);
+    }
+
     public Response<InsuranceClaim> updateClaim(UpdateClaimDTO dto) {
         return UpdateClaimService.updateClaim(dto);
     }

@@ -36,9 +36,8 @@ public class PolicyOwnerBeneficiaryListViewController implements ComponentContro
     }
 
     private List<Beneficiary> fetchUsers() {
-        // TODO: Use controller
-        PolicyOwnerRepository repo = new PolicyOwnerRepository();
-        return repo.retrieveAllBeneficiary(poId);
+        PolicyOwnerController controller = new PolicyOwnerController();
+        return controller.retrieveAllBeneficiaries(poId).getData();
     }
 
     private List<Double> fetchYearlyCost() {

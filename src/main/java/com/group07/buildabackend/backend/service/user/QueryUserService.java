@@ -12,6 +12,20 @@ import com.group07.buildabackend.backend.repository.SystemUserRepository;
 import java.util.List;
 
 public class QueryUserService extends SystemUserService {
+    public static Response<SystemUser> retrieveById(String userId) {
+        Response<SystemUser> response = new Response<>(null);
+        SystemUserRepository<SystemUser> repo = new SystemUserRepository<>();
+
+
+        try{
+            SystemUser data = repo.retrieveActorById(userId);
+            handleSuccess(response, "Query Success", 200, data);
+        } catch(Exception e){
+            handleException(response, e.getMessage(), 400);
+        }
+
+        return response;
+    }
     public static Response<List<SystemUser>> queryUsersByName(UserQueryDTO dto){
         UserQuery userQuery = new UserQuery();
         SystemUserRepository systemUserRepository = new SystemUserRepository();

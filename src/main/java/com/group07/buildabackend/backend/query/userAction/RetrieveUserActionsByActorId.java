@@ -1,5 +1,13 @@
 package com.group07.buildabackend.backend.query.userAction;
 
+import com.group07.buildabackend.backend.controller.Response;
+import com.group07.buildabackend.backend.controller.UserController;
+import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
+import com.group07.buildabackend.backend.dto.userActionDTO.UserActionDTO;
+import com.group07.buildabackend.backend.model.userAction.UserAction;
+
+import java.util.List;
+
 public class RetrieveUserActionsByActorId extends UserActionQuery{
     private UserActionQuery userActionQuery;
     private String systemUserId;

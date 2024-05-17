@@ -19,7 +19,7 @@ public abstract class PageFactory {
 
     protected SystemUser fetchUser() {
         // TODO: Use controllers
-        SystemUserRepository repo = new SystemUserRepository();
+        SystemUserRepository<SystemUser> repo = new SystemUserRepository<>();
         SystemUser res = repo.retrieveActorById(targetUserId);
 
         return res;

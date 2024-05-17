@@ -1,9 +1,11 @@
-package com.group07.buildabackend.gui.components.dependent.controllers;
+package com.group07.buildabackend.gui.components.owner.controllers;
 
 import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;
+import com.group07.buildabackend.backend.model.customer.PolicyHolder;
+import com.group07.buildabackend.backend.repository.PolicyOwnerRepository;
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormChoiceBox;
@@ -11,6 +13,7 @@ import com.group07.buildabackend.gui.components.form.fields.FormPasswordField;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
 import com.group07.buildabackend.gui.components.user.CreateUserForm;
 import com.group07.buildabackend.gui.components.user.controllers.CreateUserFormController;
+import com.group07.buildabackend.gui.tasks.TaskRunner;
 import com.group07.buildabackend.gui.utils.AlertManager;
 import com.group07.buildabackend.gui.utils.ChoiceField;
 import javafx.fxml.FXML;
@@ -19,10 +22,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class CreateDependentFormController extends FormController<Dependent>
-        implements ComponentController, Initializable {
+public class PolicyOwnerCreateDependentFormController extends FormController<Dependent> implements ComponentController, Initializable {
     @FXML
     private ChoiceBox<ChoiceField<String>> policyHolderChoice;
 
@@ -30,6 +33,8 @@ public class CreateDependentFormController extends FormController<Dependent>
     private HBox createUserFormContainer;
 
     private CreateUserFormController userFormController;
+
+    private String poId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,9 +53,21 @@ public class CreateDependentFormController extends FormController<Dependent>
 
     }
 
-    public void presetPolicyHolderId(String phId) {
-        policyHolderChoice.setValue(new ChoiceField<>("Myself", phId));
-        policyHolderChoice.setDisable(true);
+    private List<PolicyHolder> fetchPolicyHolders() {
+        // TODO: User controller
+        PolicyOwnerRepository repo = new PolicyOwnerRepository();
+        return repo.retrieveAllPolicyHolders(poId);
+    }
+
+    public void initPage(String poId) {
+        this.poId = poId;
+        TaskRunner<List<PolicyHolder>> runner = new TaskRunner<>(this::fetchPolicyHolders, holders -> {
+            for (PolicyHolder holder: holders) {
+                String label = holder.getFullName() + " (" + holder.getUserId() + ")";
+                policyHolderChoice.getItems().add(new ChoiceField<>(label, holder.getUserId()));
+            }
+        });
+        runner.run();
     }
 
     @Override

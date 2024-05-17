@@ -4,10 +4,7 @@ import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.holder.PolicyHolderDependentProfilePage;
-import com.group07.buildabackend.gui.pages.owner.PolicyOwnerClaimViewPage;
-import com.group07.buildabackend.gui.pages.owner.PolicyOwnerClaimsPage;
-import com.group07.buildabackend.gui.pages.owner.PolicyOwnerDependentProfilePage;
-import com.group07.buildabackend.gui.pages.owner.PolicyOwnerHolderProfilePage;
+import com.group07.buildabackend.gui.pages.owner.*;
 import com.group07.buildabackend.gui.pages.user.UserProfilePage;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
 
@@ -17,7 +14,7 @@ public class PolicyOwnerPageFactory extends PageFactory{
     @Override
     public Page createDefaultPage() {
         SystemUser user = CurrentUserManager.getCurrentUser();
-        return new PolicyOwnerClaimsPage(user.getUserId());
+        return new PolicyOwnerBeneficiariesPage(user.getUserId());
     }
 
     @Override

@@ -19,6 +19,10 @@ public class PolicyOwnerController extends SystemController {
         return CalculateService.calculateAnnualCost(insuranceCostDTO);
     }
 
+    public Response<Double> getYearlyRate(InsuranceCostDTO insuranceCostDTO) {
+        return CalculateService.getYearlyRate(insuranceCostDTO);
+    }
+
     public Response<InsuranceClaim> updatePolicyHolderClaim(InsuranceClaimDTO insuranceClaimDTO) {
         return UpdatePolicyHolderClaimService.updatePolicyHolderClaim(insuranceClaimDTO);
     }

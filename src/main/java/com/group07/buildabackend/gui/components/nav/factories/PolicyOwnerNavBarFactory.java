@@ -4,12 +4,8 @@ import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.gui.components.nav.NavBar;
 import com.group07.buildabackend.gui.pages.auth.LoginPage;
-import com.group07.buildabackend.gui.pages.claim.PolicyHolderCreateClaimPage;
-import com.group07.buildabackend.gui.pages.dependent.CreateDependentPage;
 import com.group07.buildabackend.gui.pages.factories.PageFactoryManager;
-import com.group07.buildabackend.gui.pages.holder.PolicyHolderClaimsPage;
-import com.group07.buildabackend.gui.pages.owner.PolicyOwnerClaimsPage;
-import com.group07.buildabackend.gui.pages.user.UserProfilePage;
+import com.group07.buildabackend.gui.pages.owner.*;
 
 public class PolicyOwnerNavBarFactory implements NavBarFactory {
     @Override
@@ -17,9 +13,11 @@ public class PolicyOwnerNavBarFactory implements NavBarFactory {
         SystemUser user = CurrentUserManager.getCurrentUser();
         NavBar navBar = new NavBar();
 
-        navBar.addNavLink(new PolicyOwnerClaimsPage(user.getUserId()), "My Claims");
-        navBar.addNavLink(new PolicyHolderCreateClaimPage(user.getUserId()), "File New Claim");
-        navBar.addNavLink(new CreateDependentPage(user.getUserId()), "Add Dependent");
+        navBar.addNavLink(new PolicyOwnerBeneficiariesPage(user.getUserId()), "My Beneficiaries");
+        navBar.addNavLink(new PolicyOwnerClaimsPage(user.getUserId()), "Beneficiary Claims");
+        navBar.addNavLink(new PolicyOwnerCreateClaimPage(user.getUserId()), "File New Claim");
+        navBar.addNavLink(new PolicyOwnerCreateHolderPage(user.getUserId()), "Add Policy Holder");
+        navBar.addNavLink(new PolicyOwnerCreateDependentPage(user.getUserId()), "Add Dependent");
         navBar.addNavLink(PageFactoryManager.getFactory().createMyProfilePage(), "My Profile");
         navBar.addNavLink(new LoginPage(), "Logout");
         return navBar;

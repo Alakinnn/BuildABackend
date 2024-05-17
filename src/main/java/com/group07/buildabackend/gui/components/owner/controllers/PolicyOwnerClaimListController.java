@@ -70,6 +70,8 @@ public class PolicyOwnerClaimListController implements ComponentController {
     private List<List<InsuranceClaim>> fetchClaims() {
         String beneficiaryId = beneficiaryChoice.getValue().getValue();
         List<List<InsuranceClaim>> res = new ArrayList<>(2);
+        res.add(new ArrayList<>());
+        res.add(new ArrayList<>());
 
         // TODO: Use controllers instead
         PolicyOwnerRepository repo = new PolicyOwnerRepository();
@@ -79,7 +81,7 @@ public class PolicyOwnerClaimListController implements ComponentController {
             DependentRepository depRepo = new DependentRepository();
             List<InsuranceClaim> claims = depRepo.retrieveAllClaimsByActorId(beneficiary.getUserId());
 
-            res.add(claims);
+            res.set(0, claims);
         }
 
         if (beneficiary.getUserType() == SystemUserType.policy_holder) {
@@ -87,8 +89,8 @@ public class PolicyOwnerClaimListController implements ComponentController {
             List<InsuranceClaim> phClaims = phRepo.retrieveAllClaimsByActorId(beneficiaryId);
             List<InsuranceClaim> depClaims = phRepo.retrieveAllDependentClaim(beneficiaryId);
 
-            res.add(phClaims);
-            res.add(depClaims);
+            res.set(0, phClaims);
+            res.add(1, depClaims);
         }
 
         return res;

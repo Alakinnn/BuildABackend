@@ -4,13 +4,14 @@ import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.admin.SystemAdminClaimViewPage;
 import com.group07.buildabackend.gui.pages.admin.SystemAdminMyProfilePage;
 import com.group07.buildabackend.gui.pages.admin.SystemAdminPublicProfilePage;
+import com.group07.buildabackend.gui.pages.admin.SystemAdminUsersPage;
 
 import java.util.function.Consumer;
 
 public class SystemAdminPageFactory extends PageFactory{
     @Override
     public Page createDefaultPage() {
-        return new SystemAdminMyProfilePage();
+        return new SystemAdminUsersPage();
     }
 
     @Override

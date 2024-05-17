@@ -1,10 +1,11 @@
-package com.group07.buildabackend.gui.pages.claim;
+package com.group07.buildabackend.gui.pages.holder;
 
 import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;
 import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.gui.components.claim.CreateClaimForm;
+import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
@@ -47,8 +48,8 @@ public class PolicyHolderCreateClaimPage extends Page {
         runner.run();
 
         root = form.getRoot();
-
-        Page page = new NavDecorator(new Page(root));
+        Page page = new HeaderDecorator(new Page(root), "File New Claim");
+        page = new NavDecorator(page);
 
         return page.getRoot();
     }

@@ -14,4 +14,8 @@ public class UserList extends ControlledComponent<UserListController> {
     public void addAllUsers(List<SystemUser> users) {
         controller.addAllUsers(users);
     }
+
+    public void addUser(SystemUser user) {
+        controller.addUser(user);
+    }
 }

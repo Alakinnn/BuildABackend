@@ -8,8 +8,10 @@ import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.userAction.actions.AnnualCostAction;
+import com.group07.buildabackend.backend.model.userAction.operations.CalculateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
+import com.group07.buildabackend.backend.repository.PolicyOwnerRepository;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;
 
 import java.util.List;
@@ -17,8 +19,8 @@ import java.util.List;
 public class CalculateService extends PolicyOwnerService {
     public static Response<Double> calculateAnnualCost(InsuranceCostDTO dto){
         final double dependentCost = 0.6;
-        Response<Double> response = new Response(null);
-        OperationType userAction = new AnnualCostAction(new CreateOperation());
+        Response<Double> response = new Response<>(null);
+        OperationType userAction = new AnnualCostAction(new CalculateOperation());
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);
 
@@ -56,5 +58,19 @@ public class CalculateService extends PolicyOwnerService {
         }
 
         return holderCount * yearlyRate + dependentCount * yearlyRate * dependentCost;
+    }
+
+    public static Response<Double> getYearlyRate(InsuranceCostDTO dto) {
+        Response<Double> response = new Response<>(null);
+        try {
+            PolicyOwnerRepository repo = new PolicyOwnerRepository();
+
+            double yearlyRate = repo.getYearlyRate(dto.getId());
+
+            handleSuccess(response, "Query Success", 200, yearlyRate);
+        } catch (Exception e) {
+            handleException(response, e.getMessage(), 400);
+        }
+        return response;
     }
 }

@@ -1,6 +1,9 @@
 package com.group07.buildabackend.backend.repository;
 
+import com.group07.buildabackend.backend.controller.PolicyOwnerController;
+import com.group07.buildabackend.backend.dto.InsuranceCostDTO;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
+import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.operations.BeneficiaryRetrievable;
@@ -23,6 +26,16 @@ public class PolicyOwnerRepository extends SystemUserRepository<PolicyOwner> imp
         Query query = entityManager.createQuery("SELECT b " +
                 "FROM Beneficiary b " +
                 "WHERE b.policyOwner.userId = :ownerId");
+        query.setParameter("ownerId", ownerId);
+
+        return query.getResultList();
+    }
+
+    public List<PolicyHolder> retrieveAllPolicyHolders(String ownerId) {
+        Query query = entityManager.createQuery("SELECT ph " +
+                "FROM PolicyHolder ph " +
+                "LEFT JOIN Beneficiary b ON ph.userId=b.userId " +
+                "WHERE b.policyOwner.userId=:ownerId");
         query.setParameter("ownerId", ownerId);
 
         return query.getResultList();
@@ -73,5 +86,11 @@ public class PolicyOwnerRepository extends SystemUserRepository<PolicyOwner> imp
         query.setParameter("claimId", claimId);
 
         return (InsuranceClaim) query.getResultList();
+    }
+
+    public double getYearlyRate(String ownerId) {
+        Query query = entityManager.createQuery("SELECT o.yearlyRate FROM PolicyOwner o WHERE o.userId='" + ownerId + "'");
+
+        return (double) query.getSingleResult();
     }
 }

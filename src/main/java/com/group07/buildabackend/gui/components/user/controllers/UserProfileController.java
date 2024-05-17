@@ -12,6 +12,7 @@ import com.group07.buildabackend.gui.components.user.UserActionList;
 import com.group07.buildabackend.gui.components.utils.ActionField;
 import com.group07.buildabackend.gui.tasks.TaskRunner;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -39,7 +40,7 @@ public class UserProfileController implements ComponentController {
 
     private SystemUser fetchUser() {
         // TODO: Use controller
-        SystemUserRepository repo = new SystemUserRepository();
+        SystemUserRepository<SystemUser> repo = new SystemUserRepository<>();
         return repo.retrieveActorById(userId);
     }
 
@@ -69,17 +70,21 @@ public class UserProfileController implements ComponentController {
             role.setText(user.getUserType().toString());
 
 
+
             TaskRunner<InsuranceCard> cardRunner = new TaskRunner<>(this::fetchCard, card -> {
-                if (card == null) return;
-                insuranceCardContainer.getChildren().add(new InsuranceCardView(card).getRoot());
+                if (card != null) {
+                    insuranceCardContainer.getChildren().add(new InsuranceCardView(card).getRoot());
+                }
+
                 actionHistoryContainer.getChildren().add(new UserActionList(userId).getRoot());
             });
-
             cardRunner.run();
         });
-
         runner.run();
+    }
 
+    private UserActionList generateActionList() {
+        return new UserActionList(userId);
     }
 
     public void setActionField(ActionField actionField) {

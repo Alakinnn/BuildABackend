@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.insuranceClaimDTO;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 
 import java.time.LocalDate;

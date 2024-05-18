@@ -1,13 +1,15 @@
 package com.group07.buildabackend.backend.model;
 
-import com.group07.buildabackend.backend.model.customer.Dependent;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.userAction.UserAction;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Entity

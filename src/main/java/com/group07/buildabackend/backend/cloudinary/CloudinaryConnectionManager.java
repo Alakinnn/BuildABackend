@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.cloudinary;
 
+/**
+ * @author Group_7
+ */
+
 import com.cloudinary.*;
 import io.github.cdimascio.dotenv.Dotenv;
 

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.connectionManager;
 
+/**
+ * @author Group_7
+ */
+
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 

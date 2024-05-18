@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.dto.authenticationDTO.RegisterInfoDTO;
 
 public class PolicyOwnerDTO extends RegisterInfoDTO {

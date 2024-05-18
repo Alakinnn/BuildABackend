@@ -1,12 +1,14 @@
 package com.group07.buildabackend.backend.model.userAction;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.SystemUser;
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 

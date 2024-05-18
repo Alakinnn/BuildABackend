@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.authentication;
 
+/**
+ * @author Group_7
+ */
+
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;

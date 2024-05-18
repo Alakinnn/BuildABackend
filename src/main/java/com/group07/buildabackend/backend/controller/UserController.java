@@ -1,12 +1,13 @@
 package com.group07.buildabackend.backend.controller;
 
-import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
 import com.group07.buildabackend.backend.dto.user.UpdateUserDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
-import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.UserAction;
-import com.group07.buildabackend.backend.service.user.QueryClaimService;
 import com.group07.buildabackend.backend.service.user.UpdateUserService;
 import com.group07.buildabackend.backend.service.user.UserActionService;
 import com.group07.buildabackend.backend.service.user.QueryUserService;

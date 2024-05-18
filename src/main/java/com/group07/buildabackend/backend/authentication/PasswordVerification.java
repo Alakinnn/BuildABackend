@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.authentication;
 
+/**
+ * @author Group_7
+ */
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;

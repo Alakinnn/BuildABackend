@@ -1,5 +1,8 @@
-
 package com.group07.buildabackend.backend.model.provider;
+
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;

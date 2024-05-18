@@ -14,8 +14,8 @@ public class SystemAdminNavBarFactory implements NavBarFactory{
     public NavBar createNavBar() {
         NavBar navBar = new NavBar();
 
-        navBar.addNavLink(new SystemAdminClaimsPage(), "Claims");
         navBar.addNavLink(new SystemAdminUsersPage(), "Users");
+        navBar.addNavLink(new SystemAdminClaimsPage(), "Claims");
         navBar.addNavLink(new SystemAdminCreateDependentPage(), "Create Dependent");
         navBar.addNavLink(new SystemAdminCreateHolderPage(), "Create Policy Holder");
         navBar.addNavLink(new SystemAdminCreateOwnerPage(), "Create Policy Owner");

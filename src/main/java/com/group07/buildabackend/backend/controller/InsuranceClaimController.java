@@ -3,6 +3,7 @@ package com.group07.buildabackend.backend.controller;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.UpdateClaimDTO;
 import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
+import com.group07.buildabackend.backend.service.claim.DeleteClaimService;
 import com.group07.buildabackend.backend.service.user.QueryClaimService;
 import com.group07.buildabackend.backend.service.claim.UpdateClaimService;
 
@@ -22,6 +23,12 @@ public class InsuranceClaimController {
     public Response<InsuranceClaim> updateClaim(UpdateClaimDTO dto) {
         return UpdateClaimService.updateClaim(dto);
     }
+
+    public Response<InsuranceClaim> deleteClaim(String claimId) {
+        return DeleteClaimService.deleteClaim(claimId);
+    }
+
+
     public Response<List<InsuranceClaim>> fetchClaimsByStatus(ClaimQueryDTO dto){
         return QueryClaimService.fetchClaimsByStatus(dto);
     }

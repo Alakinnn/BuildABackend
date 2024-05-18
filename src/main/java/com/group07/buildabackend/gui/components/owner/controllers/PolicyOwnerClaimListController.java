@@ -57,6 +57,8 @@ public class PolicyOwnerClaimListController implements ComponentController {
     }
 
     public void onFind() {
+        if (beneficiaryChoice.getValue() == null) return;
+
         customerClaims.resetClaims();
         dependentClaims.resetClaims();
 

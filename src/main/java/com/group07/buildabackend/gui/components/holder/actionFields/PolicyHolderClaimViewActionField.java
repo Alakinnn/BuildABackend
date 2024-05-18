@@ -10,7 +10,6 @@ public class PolicyHolderClaimViewActionField extends ActionField {
     public PolicyHolderClaimViewActionField(String claimId) {
         super();
         addButton(new EditClaimBtn(claimId).getRoot());
-        addButton(new DeleteClaimBtn(claimId).getRoot());
         addButton(new AddClaimInfoBtn(claimId).getRoot());
     }
 }

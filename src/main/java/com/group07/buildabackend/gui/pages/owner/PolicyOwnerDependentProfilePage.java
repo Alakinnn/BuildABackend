@@ -21,7 +21,7 @@ public class PolicyOwnerDependentProfilePage extends Page {
         ActionField actionField = new PolicyOwnerDependentProfileActionField(targetUserId);
         root = new UserProfile(targetUserId, actionField).getRoot();
 
-        Page page = new HeaderDecorator(new Page(root), "My Profile");
+        Page page = new HeaderDecorator(new Page(root), "User Profile");
         page = new NavDecorator(page);
 
         return page.getRoot();

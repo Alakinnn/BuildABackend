@@ -24,7 +24,7 @@ public class SystemAdminPublicProfilePage extends Page {
 
         root = new UserProfile(targetUserId, actionField).getRoot();
 
-        Page page = new HeaderDecorator(new Page(root), "Profile");
+        Page page = new HeaderDecorator(new Page(root), "User Profile");
         page = new NavDecorator(page);
 
         return page.getRoot();

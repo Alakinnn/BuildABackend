@@ -1,6 +1,10 @@
 package com.group07.buildabackend.gui.utils;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
+import java.util.concurrent.Callable;
 
 public class AlertManager {
 

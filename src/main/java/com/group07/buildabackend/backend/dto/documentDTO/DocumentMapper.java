@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.documentDTO;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 
 public class DocumentMapper {

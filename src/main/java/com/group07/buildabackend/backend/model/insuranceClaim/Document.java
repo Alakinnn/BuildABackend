@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.model.insuranceClaim;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.utils.idGenerator.CustomIDGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;

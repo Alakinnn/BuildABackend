@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.controller;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.UpdateClaimDTO;
 import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;

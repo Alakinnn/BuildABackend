@@ -1,7 +1,9 @@
 package com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO;
 
-import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 
 public class PolicyOwnerMapper {

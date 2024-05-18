@@ -1,12 +1,15 @@
 package com.group07.buildabackend.backend.model.customer;
+
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.SystemUser;
-import com.group07.buildabackend.backend.model.SystemUserType;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 @Entity
 @Table(name = "customer", schema = "public")

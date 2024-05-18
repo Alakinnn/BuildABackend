@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.authentication.service;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.authentication.PasswordVerification;
 import com.group07.buildabackend.backend.controller.Response;

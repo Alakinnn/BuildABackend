@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.queryDTO;
 
+/**
+ * @author Group_7
+ */
+
 public class ClaimQueryDTO{
     private String status;
     private String year;

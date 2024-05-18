@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.user;
 
+/**
+ * @author Group_7
+ */
+
 public class UpdateUserDTO {
     private String userId;
     private String firstName;

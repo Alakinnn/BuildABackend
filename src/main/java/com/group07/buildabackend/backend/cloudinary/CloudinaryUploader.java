@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.cloudinary;
 
+/**
+ * @author Group_7
+ */
+
 import com.cloudinary.Uploader;
 import com.cloudinary.utils.ObjectUtils;
 

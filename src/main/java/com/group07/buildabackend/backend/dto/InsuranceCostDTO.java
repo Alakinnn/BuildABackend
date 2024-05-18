@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto;
 
+/**
+ * @author Group_7
+ */
+
 public class InsuranceCostDTO implements DTO{
     private String id;
 

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.controller;
 
+/**
+ * @author Group_7
+ */
+
 public class Response<T> {
     private T data;
     private String responseMsg;

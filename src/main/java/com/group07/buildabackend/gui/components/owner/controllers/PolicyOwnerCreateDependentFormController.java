@@ -58,7 +58,6 @@ public class PolicyOwnerCreateDependentFormController extends FormController<Dep
     }
 
     private List<PolicyHolder> fetchPolicyHolders() {
-        // TODO: User controller
         PolicyOwnerRepository repo = new PolicyOwnerRepository();
         return repo.retrieveAllPolicyHolders(poId);
     }

@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.service.policyHolderService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
@@ -6,7 +9,6 @@ import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMapper;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Customer;
-import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;

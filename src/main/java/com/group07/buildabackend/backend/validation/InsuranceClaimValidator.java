@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.validation;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;

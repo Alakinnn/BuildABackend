@@ -1,7 +1,9 @@
 package com.group07.buildabackend.backend.repository;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.model.customer.Dependent;
-import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.repository.operations.ClaimRetrievable;
 import jakarta.persistence.Query;

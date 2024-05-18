@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.service.user;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.PasswordHashing;
 import com.group07.buildabackend.backend.controller.Response;

@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.query.user;
-
+/**
+ * @author Group_7
+ */
 public class UserQuery {
     public UserQuery(){
     }

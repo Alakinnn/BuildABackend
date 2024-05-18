@@ -1,11 +1,13 @@
 package com.group07.buildabackend.backend.service.insuranceManagerService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStatus;
 import com.group07.buildabackend.backend.model.userAction.actions.ClaimAction;
-import com.group07.buildabackend.backend.model.userAction.operations.ApproveOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.model.userAction.operations.RejectOperation;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;

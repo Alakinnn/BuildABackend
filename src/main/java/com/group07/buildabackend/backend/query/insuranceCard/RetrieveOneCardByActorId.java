@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.query.insuranceCard;
-
+/**
+ * @author Group_7
+ */
 public class RetrieveOneCardByActorId extends InsuranceCardQuery{
     private InsuranceCardQuery insuranceCardQuery;
     private final String systemUserId;

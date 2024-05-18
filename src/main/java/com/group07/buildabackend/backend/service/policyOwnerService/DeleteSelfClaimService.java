@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;

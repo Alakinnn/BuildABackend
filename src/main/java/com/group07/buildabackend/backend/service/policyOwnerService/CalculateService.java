@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
@@ -9,7 +12,6 @@ import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.userAction.actions.AnnualCostAction;
 import com.group07.buildabackend.backend.model.userAction.operations.CalculateOperation;
-import com.group07.buildabackend.backend.model.userAction.operations.CreateOperation;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.repository.PolicyOwnerRepository;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidInputException;

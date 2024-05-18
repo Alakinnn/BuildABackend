@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.service.userActionService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.SystemUser;
@@ -7,7 +10,6 @@ import com.group07.buildabackend.backend.service.Service;
 import com.group07.buildabackend.backend.validation.ActionValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.ActionLoggingException;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LogActionService extends Service {

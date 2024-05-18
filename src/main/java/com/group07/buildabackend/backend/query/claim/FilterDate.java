@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.query.claim;
-
+/**
+ * @author Group_7
+ */
 public abstract class FilterDate extends ClaimQuery{
     private ClaimQuery claimQuery;
     private String year;

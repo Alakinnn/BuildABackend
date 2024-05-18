@@ -1,10 +1,10 @@
 package com.group07.buildabackend.backend.utils.idGenerator;
+/**
+ * @author Group_7
+ */
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Random;
-import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
-import jakarta.persistence.Query;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
 

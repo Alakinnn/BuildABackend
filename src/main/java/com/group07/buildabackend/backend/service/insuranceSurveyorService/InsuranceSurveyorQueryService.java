@@ -1,10 +1,11 @@
 package com.group07.buildabackend.backend.service.insuranceSurveyorService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.SystemUser;
-import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
 import com.group07.buildabackend.backend.repository.InsuranceSurveyorRepository;
-import com.group07.buildabackend.backend.repository.SystemUserRepository;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.query.claim;
-
+/**
+ * @author Group_7
+ */
 public class FilterClaimDate extends FilterDate{
     public FilterClaimDate(ClaimQuery claimQuery, String year, String month, String day) {
         super(claimQuery, year, month, day);

@@ -1,11 +1,13 @@
 package com.group07.buildabackend.backend.service.createUserService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.provider.InsuranceSurveyorMapper;
 import com.group07.buildabackend.backend.model.Credentials;
 import com.group07.buildabackend.backend.model.SystemUserType;
-import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
 import com.group07.buildabackend.backend.validation.SystemUserValidator;
 import com.group07.buildabackend.backend.validation.customExceptions.InvalidCredentialsException;

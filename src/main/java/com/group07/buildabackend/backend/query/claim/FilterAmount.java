@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.query.claim;
+/**
+ * @author Group_7
+ */
 
 public class FilterAmount extends ClaimQuery{
     private ClaimQuery claimQuery;

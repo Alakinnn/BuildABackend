@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.validation.customExceptions;
-
+/**
+ * @author Group_7
+ */
 public class BadFormatException extends Exception{
     private final int errorCode;
 

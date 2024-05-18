@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.service.user;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;

@@ -1,9 +1,11 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
-import com.group07.buildabackend.backend.repository.PolicyHolderRepository;
 import com.group07.buildabackend.backend.repository.PolicyOwnerRepository;
 
 import java.util.List;

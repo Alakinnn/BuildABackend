@@ -1,8 +1,10 @@
 package com.group07.buildabackend.backend.service.policyOwnerService;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
-import com.group07.buildabackend.backend.dto.documentDTO.DocumentDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimDTO;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.InsuranceClaimMapper;
 import com.group07.buildabackend.backend.model.customer.Dependent;

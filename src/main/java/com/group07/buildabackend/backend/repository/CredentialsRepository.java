@@ -1,7 +1,9 @@
 package com.group07.buildabackend.backend.repository;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.model.Credentials;
-import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import jakarta.persistence.Query;
 
 public class CredentialsRepository extends Repository<Credentials> {

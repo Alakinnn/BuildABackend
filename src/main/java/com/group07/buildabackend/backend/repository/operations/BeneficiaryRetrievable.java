@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.repository.operations;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;

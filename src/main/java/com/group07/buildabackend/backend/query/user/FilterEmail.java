@@ -1,5 +1,7 @@
 package com.group07.buildabackend.backend.query.user;
-
+/**
+ * @author Group_7
+ */
 public class FilterEmail extends UserQuery{
     private UserQuery userQuery;
     private String emailVal;

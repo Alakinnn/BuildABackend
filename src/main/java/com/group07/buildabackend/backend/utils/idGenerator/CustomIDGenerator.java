@@ -1,4 +1,7 @@
 package com.group07.buildabackend.backend.utils.idGenerator;
+/**
+ * @author Group_7
+ */
 
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;

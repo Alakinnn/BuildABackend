@@ -1,10 +1,12 @@
 package com.group07.buildabackend.backend.service.user;
+/**
+ * @author Group_7
+ */
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.user.UpdateUserDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
-
 import com.group07.buildabackend.backend.model.userAction.actions.SystemUserAction;
 import com.group07.buildabackend.backend.model.userAction.operations.OperationType;
 import com.group07.buildabackend.backend.model.userAction.operations.UpdateOperation;

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.model.SystemUser;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;

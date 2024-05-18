@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.PolicyHolderController;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.model.customer.Dependent;

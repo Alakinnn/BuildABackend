@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.claim.btn;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.InsuranceSurveyorController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.insuranceClaimDTO.ProposeClaimDTO;

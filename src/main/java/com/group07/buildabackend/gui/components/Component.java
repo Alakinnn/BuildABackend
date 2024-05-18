@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components;
 
+/**
+ * @author Group_7
+ */
+
 import javafx.scene.Node;
 
 public class Component {

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.user;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.authentication.service.LoginService;
 import com.group07.buildabackend.backend.controller.AdminController;

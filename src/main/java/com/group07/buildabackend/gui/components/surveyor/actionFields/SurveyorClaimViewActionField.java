@@ -1,12 +1,12 @@
 package com.group07.buildabackend.gui.components.surveyor.actionFields;
 
-import com.group07.buildabackend.gui.components.Component;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.claim.btn.ProposeClaimBtn;
 import com.group07.buildabackend.gui.components.claim.btn.RequestClaimInfoBtn;
 import com.group07.buildabackend.gui.components.utils.ActionField;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.layout.HBox;
 
 public class SurveyorClaimViewActionField extends ActionField {
 

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.user.controllers;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.UserController;
 import com.group07.buildabackend.backend.dto.queryDTO.UserQueryDTO;
 import com.group07.buildabackend.backend.model.SystemUser;

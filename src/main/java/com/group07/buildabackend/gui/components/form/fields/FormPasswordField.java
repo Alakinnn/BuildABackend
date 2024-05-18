@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.form.fields;
 
+/**
+ * @author Group_7
+ */
+
 import javafx.scene.control.PasswordField;
 
 public class FormPasswordField extends FormField<PasswordField, String>{

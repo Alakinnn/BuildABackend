@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.claim.btn;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.components.Component;
 import com.group07.buildabackend.gui.pages.holder.AddClaimInfoPage;

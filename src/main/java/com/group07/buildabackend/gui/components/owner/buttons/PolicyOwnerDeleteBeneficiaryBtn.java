@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.owner.buttons;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.AdminController;
 import com.group07.buildabackend.backend.controller.PolicyOwnerController;
 import com.group07.buildabackend.backend.controller.Response;

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.owner;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.PolicyOwnerController;
 import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.Dependent;

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.upload;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.upload.filters.FileFilter;
 import javafx.fxml.FXML;

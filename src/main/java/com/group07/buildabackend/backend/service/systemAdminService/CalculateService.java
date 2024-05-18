@@ -13,19 +13,26 @@ import com.group07.buildabackend.backend.service.user.SystemUserService;
 import java.util.List;
 
 public class CalculateService extends SystemUserService {
-    public static Response<Integer> calculateSuccessfulClaims(ClaimQueryDTO dto) {
-        Response<Integer> response = new Response<>(null);
+    public static Response<Double> calculateSuccessfulClaimsAmount() {
+        Response<Double> response = new Response<>(null);
         OperationType userAction = new ApprovedClaimAction(new CalculateOperation());
         String actionDescription = userAction.getDescription();
         response.setAction(actionDescription);
 
+        ClaimQueryDTO dto = new ClaimQueryDTO();
         dto.setStatus(InsuranceClaimStatus.APPROVED.toString());
+        double claimedAmount = 0;
 
         try{
             InsuranceClaimController controller = new InsuranceClaimController();
-            int successfulClaims = controller.fetchClaimsByStatus(dto).getData().size();
+            Response<List<InsuranceClaim>> data = controller.fetchClaimsByStatus(dto);
+            List<InsuranceClaim> claims = data.getData();
 
-            handleSuccess(response, "Query Success", 200, successfulClaims);
+            for(InsuranceClaim claim: claims){
+                claimedAmount += claim.getAmount();
+            }
+
+            handleSuccess(response, "Query Success", 200, claimedAmount);
         } catch (Exception e){
             handleException(response, e.getMessage(), 400);
         }

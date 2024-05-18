@@ -1,6 +1,5 @@
 package com.group07.buildabackend.backend.controller;
 
-import com.group07.buildabackend.backend.dto.queryDTO.ClaimQueryDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.PolicyOwnerDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.DependentDTO;
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
@@ -15,8 +14,8 @@ import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
 import com.group07.buildabackend.backend.service.systemAdminService.CalculateService;
 
 public class AdminController extends SystemController {
-    public Response<Integer> calculateSuccessfulClaims(ClaimQueryDTO dto){
-        return CalculateService.calculateSuccessfulClaims(dto);
+    public Response<Double> calculateSuccessfulClaimsAmount(){
+        return CalculateService.calculateSuccessfulClaimsAmount();
     }
 
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {

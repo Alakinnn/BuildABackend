@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.dependent;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.dependent.DependentClaimListView;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.insuranceClaimDTO;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.dto.DTO;
 import com.group07.buildabackend.backend.model.customer.Customer;
 import com.group07.buildabackend.backend.model.insuranceClaim.Document;
@@ -7,7 +11,7 @@ import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaimStat
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.List;
 
 public class InsuranceClaimDTO implements DTO {

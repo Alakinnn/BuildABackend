@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.model;
 
+/**
+ * @author Group_7
+ */
+
 import jakarta.persistence.*;
 
 @Entity

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.admin.controllers;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.AdminController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.authenticationDTO.RegisterInfoDTO;
@@ -24,7 +28,6 @@ import javafx.scene.layout.HBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class SystemAdminCreateOtherUserFormController extends FormController<SystemUser> implements ComponentController, Initializable {
     @FXML

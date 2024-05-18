@@ -1,5 +1,9 @@
 package com.group07.buildabackend;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.connectionManager.DatabaseFactoryManager;
 import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
 import com.group07.buildabackend.gui.SceneManager;

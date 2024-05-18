@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.holder.PolicyHolderClaimListView;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;

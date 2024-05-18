@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.admin;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.admin.SystemAdminUserListView;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;

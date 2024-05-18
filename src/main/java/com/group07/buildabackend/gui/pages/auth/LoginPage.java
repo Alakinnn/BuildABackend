@@ -5,6 +5,10 @@ import com.group07.buildabackend.gui.components.auth.LoginForm;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;
 
+/**
+ * @author Group_7
+ */
+
 public class LoginPage extends Page {
 
     @Override

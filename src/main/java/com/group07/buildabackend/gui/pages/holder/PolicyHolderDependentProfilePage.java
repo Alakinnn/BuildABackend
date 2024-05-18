@@ -1,10 +1,11 @@
 package com.group07.buildabackend.gui.pages.holder;
 
-import com.group07.buildabackend.backend.authentication.CurrentUserManager;
-import com.group07.buildabackend.backend.model.SystemUser;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.holder.actionFields.PolicyHolderDependentProfileActionField;
-import com.group07.buildabackend.gui.components.holder.actionFields.PolicyHolderMyProfileActionField;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.components.user.UserProfile;
 import com.group07.buildabackend.gui.components.utils.ActionField;

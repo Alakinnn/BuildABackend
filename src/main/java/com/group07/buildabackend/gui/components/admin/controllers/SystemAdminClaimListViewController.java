@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.admin.controllers;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.AdminController;
 import com.group07.buildabackend.backend.controller.InsuranceClaimController;
 import com.group07.buildabackend.backend.controller.Response;

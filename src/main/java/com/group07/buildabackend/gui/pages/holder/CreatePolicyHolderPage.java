@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.holder;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.holder.CreatePolicyHolderForm;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;
 import com.group07.buildabackend.gui.pages.Page;

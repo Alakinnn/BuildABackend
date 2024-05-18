@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.factories;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.pages.Page;
 import com.group07.buildabackend.gui.pages.admin.SystemAdminClaimViewPage;
 import com.group07.buildabackend.gui.pages.admin.SystemAdminMyProfilePage;

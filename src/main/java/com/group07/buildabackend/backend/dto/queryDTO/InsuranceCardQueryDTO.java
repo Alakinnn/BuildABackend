@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.dto.queryDTO;
 
+/**
+ * @author Group_7
+ */
+
 public class InsuranceCardQueryDTO {
     private String systemUserId;
 

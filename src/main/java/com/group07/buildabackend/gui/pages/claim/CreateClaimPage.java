@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.pages.claim;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.claim.CreateClaimForm;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;

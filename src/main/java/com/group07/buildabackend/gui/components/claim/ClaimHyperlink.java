@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.claim;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.gui.SceneManager;
 import com.group07.buildabackend.gui.components.Component;

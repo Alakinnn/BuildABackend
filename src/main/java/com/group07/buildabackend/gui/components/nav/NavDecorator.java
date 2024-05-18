@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.nav;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.nav.factories.NavBarFactoryManager;
 import com.group07.buildabackend.gui.pages.Page;
 import javafx.scene.Node;

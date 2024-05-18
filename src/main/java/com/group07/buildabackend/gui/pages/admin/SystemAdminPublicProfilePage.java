@@ -1,8 +1,9 @@
 package com.group07.buildabackend.gui.pages.admin;
 
-import com.group07.buildabackend.backend.authentication.CurrentUserManager;
-import com.group07.buildabackend.backend.model.SystemUser;
-import com.group07.buildabackend.gui.components.admin.actionFields.SystemAdminMyProfileActionField;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.admin.actionFields.SystemAdminPublicProfileActionField;
 import com.group07.buildabackend.gui.components.header.HeaderDecorator;
 import com.group07.buildabackend.gui.components.nav.NavDecorator;

@@ -1,6 +1,9 @@
 package com.group07.buildabackend.gui.components.admin;
 
-import com.group07.buildabackend.gui.components.Component;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.ControlledComponent;
 import com.group07.buildabackend.gui.components.admin.controllers.SystemAdminClaimListViewController;
 

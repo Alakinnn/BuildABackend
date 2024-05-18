@@ -1,8 +1,10 @@
-
 package com.group07.buildabackend.backend.model.provider;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.SystemUser;
-import com.group07.buildabackend.backend.model.SystemUserType;
 import jakarta.persistence.*;
 
 @Entity

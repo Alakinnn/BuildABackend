@@ -1,7 +1,9 @@
 package com.group07.buildabackend.gui.components.auth.controllers;
 
-import com.group07.buildabackend.backend.authentication.CurrentUserManager;
-import com.group07.buildabackend.backend.authentication.service.LoginService;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.controller.AuthController;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.dto.authenticationDTO.LoginInfoDTO;
@@ -12,12 +14,9 @@ import com.group07.buildabackend.gui.components.form.FormController;
 import com.group07.buildabackend.gui.components.form.fields.FormPasswordField;
 import com.group07.buildabackend.gui.components.form.fields.FormTextField;
 import com.group07.buildabackend.gui.components.nav.factories.NavBarFactoryManager;
-import com.group07.buildabackend.gui.exceptions.MissingRequiredFieldException;
 import com.group07.buildabackend.gui.pages.factories.PageFactoryManager;
 import com.group07.buildabackend.gui.pages.Page;
-import com.group07.buildabackend.gui.tasks.TaskRunner;
-import com.group07.buildabackend.gui.utils.AlertManager;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.exceptions;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.form.fields.FormField;
 
 import java.util.List;

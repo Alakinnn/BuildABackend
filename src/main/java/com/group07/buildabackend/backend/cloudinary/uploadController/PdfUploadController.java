@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.cloudinary.uploadController;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.cloudinary.CloudinaryUploader;
 import com.group07.buildabackend.backend.controller.Response;
 import com.group07.buildabackend.backend.validation.customExceptions.BadFormatException;

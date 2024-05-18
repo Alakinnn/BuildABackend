@@ -1,5 +1,9 @@
 package com.group07.buildabackend.backend.model.customer;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import jakarta.persistence.*;
 

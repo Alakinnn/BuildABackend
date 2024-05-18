@@ -1,6 +1,9 @@
 package com.group07.buildabackend.backend.controller;
 
-import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.insuranceClaim.InsuranceClaim;
 import com.group07.buildabackend.backend.service.dependent.DependentService;
 

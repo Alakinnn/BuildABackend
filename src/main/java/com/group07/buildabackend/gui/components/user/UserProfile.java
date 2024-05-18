@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.user;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.ControlledComponent;
 import com.group07.buildabackend.gui.components.user.controllers.UserProfileController;
 import com.group07.buildabackend.gui.components.utils.ActionField;

@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.card.controllers;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.backend.model.insuranceCard.InsuranceCard;
 import com.group07.buildabackend.gui.components.ComponentController;
 import javafx.fxml.FXML;

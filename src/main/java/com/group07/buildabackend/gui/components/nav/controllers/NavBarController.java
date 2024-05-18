@@ -1,5 +1,9 @@
 package com.group07.buildabackend.gui.components.nav.controllers;
 
+/**
+ * @author Group_7
+ */
+
 import com.group07.buildabackend.gui.components.ComponentController;
 import com.group07.buildabackend.gui.components.nav.NavLink;
 import com.group07.buildabackend.gui.pages.Page;

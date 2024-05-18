@@ -2,6 +2,7 @@ package com.group07.buildabackend.backend.controller;
 
 import com.group07.buildabackend.backend.dto.systemUserDTO.customerDTO.beneficiaryDTO.PolicyHolderDTO;
 import com.group07.buildabackend.backend.model.SystemUser;
+import com.group07.buildabackend.backend.model.customer.Beneficiary;
 import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +30,18 @@ class PolicyOwnerControllerTest {
 
         SystemUser createdUser = response.getData();
         assertNotNull(createdUser);
+    }
+
+    @Test
+        //    ENTER DIFFERENT BENEFICIARY ID
+    void deleteBeneficiary() {
+        PolicyOwnerController testPolicyOwnerController = new PolicyOwnerController();
+        Response<Beneficiary> response = testPolicyOwnerController.deleteBeneficiary("u_e23fc536");
+
+        assertNotNull(response);
+        assertEquals(200, response.getStatusCode());
+
+        SystemUser deletedUser = response.getData();
+        assertNotNull(deletedUser);
     }
 }

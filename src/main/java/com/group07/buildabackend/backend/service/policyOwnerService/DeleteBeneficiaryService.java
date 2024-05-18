@@ -24,9 +24,13 @@ public class DeleteBeneficiaryService extends SystemUserService {
             String actionDescription = userAction.getDescription();
             response.setAction(actionDescription);
 
+            beneficiaryRepository.delete(beneficiary);
+
             handleSuccess(response, "Successfully deleted beneficiary", 200, beneficiary);
         } catch (InvalidInputException e) {
             handleException(response, e.getMessage(), e.getErrorCode());
+        } finally {
+            logUserAction(CurrentUserManager.getCurrentUser().getUserId(), response.getAction(), response.getStatusCode(), response);
         }
         return response;
     }

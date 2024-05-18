@@ -14,6 +14,7 @@ public abstract class Service {
     protected static final UserActionRepository userActionRepository = new UserActionRepository();
     protected static final DependentRepository dependentRepository = new DependentRepository();
     protected static final InsuranceManagerRepository insuranceManagerRepository = new InsuranceManagerRepository();
+    protected static final BeneficiaryRepository beneficiaryRepository = new BeneficiaryRepository();
 
     public static <T> void handleException(Response<T> response, String message, int statusCode) {
         response.setResponseMsg(message);

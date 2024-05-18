@@ -63,4 +63,8 @@ public class PolicyOwnerController extends SystemController {
     public Response<Dependent> createNewDependent(DependentDTO dependentDTO) {
         return createDependentService.create(dependentDTO);
     }
+
+    public Response<Beneficiary> deleteBeneficiary(String beneficiaryId) {
+        return DeleteBeneficiaryService.deleteBeneficiary(beneficiaryId);
+    }
 }

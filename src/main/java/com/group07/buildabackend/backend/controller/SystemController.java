@@ -10,7 +10,7 @@ import com.group07.buildabackend.backend.model.customer.PolicyHolder;
 import com.group07.buildabackend.backend.model.customer.PolicyOwner;
 import com.group07.buildabackend.backend.model.provider.InsuranceManager;
 import com.group07.buildabackend.backend.model.provider.InsuranceSurveyor;
-import com.group07.buildabackend.backend.service.SystemAdminService.DeleteUserService;
+import com.group07.buildabackend.backend.service.systemAdminService.DeleteUserService;
 import com.group07.buildabackend.backend.service.createUserService.*;
 
 public abstract class SystemController extends Controller {

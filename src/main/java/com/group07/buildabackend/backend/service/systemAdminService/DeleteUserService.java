@@ -1,4 +1,4 @@
-package com.group07.buildabackend.backend.service.SystemAdminService;
+package com.group07.buildabackend.backend.service.systemAdminService;
 
 import com.group07.buildabackend.backend.authentication.CurrentUserManager;
 import com.group07.buildabackend.backend.controller.Response;

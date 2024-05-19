@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.user.controllers.UserActionListController">
+   <children>
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="348.0">
+        <columns>
+          <TableColumn fx:id="actionCol" prefWidth="147.0" text="Action" />
+          <TableColumn fx:id="timeCol" prefWidth="130.99998474121094" text="Time" />
+            <TableColumn fx:id="statusCol" prefWidth="66.5999755859375" text="Status" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

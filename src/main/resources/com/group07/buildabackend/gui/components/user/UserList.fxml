@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.user.controllers.UserListController">
+   <children>
+      <VBox prefHeight="297.0" prefWidth="527.0">
+         <children>
+            <HBox>
+               <children>
+                  <TextField fx:id="filterValField" prefHeight="26.0" prefWidth="381.0" promptText="Filter" />
+                  <ChoiceBox fx:id="filterChoice" prefHeight="26.0" prefWidth="82.0" />
+                  <Button mnemonicParsing="false" onAction="#onFilter" prefHeight="26.0" prefWidth="62.0" text="Filter" />
+               </children>
+            </HBox>
+            <TableView fx:id="table" prefHeight="270.0" prefWidth="334.0">
+              <columns>
+                <TableColumn fx:id="idCol" prefWidth="182.80001527071" text="ID" />
+                <TableColumn fx:id="fullNameCol" prefWidth="127.80000305175781" text="Full Name" />
+                  <TableColumn fx:id="roleCol" minWidth="8.5999755859375" prefWidth="73.0" text="Role" />
+                  <TableColumn fx:id="emailCol" prefWidth="139.79995727539062" text="Email" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.nav.controllers.NavLinkController">
+   <children>
+      <Button fx:id="navButton" mnemonicParsing="false" onAction="#onNavButtonClick" prefHeight="42.0" prefWidth="162.0" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-border-width: 0; -fx-border-color: none;" text="link" textFill="#4e5ea4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

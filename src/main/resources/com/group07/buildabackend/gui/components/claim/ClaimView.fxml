@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group07.buildabackend.gui.components.claim.controllers.ClaimViewController">
+    <children>
+        <VBox layoutX="46.0" prefHeight="400.0" prefWidth="514.0" spacing="10.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="514.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="150.0" text="Claim ID:">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Text fx:id="id" strokeType="OUTSIDE" strokeWidth="0.0" text="claimId">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+            <HBox>
+               <children>
+                  <Label prefHeight="20.0" prefWidth="150.0" text="Customer:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
+                  <AnchorPane fx:id="customer" />
+               </children>
+            </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="514.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="150.0" text="Status:">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                  <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" text="status">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Text>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="514.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="150.0" text="Claim Amount (USD):">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                  <Text fx:id="amount" strokeType="OUTSIDE" strokeWidth="0.0" text="amount">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="514.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="150.0" text="Exam Date:">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                  <Text fx:id="examDate" strokeType="OUTSIDE" strokeWidth="0.0" text="examDate">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="586.0">
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="150.0" text="Claim Date:">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                  <Text fx:id="claimDate" strokeType="OUTSIDE" strokeWidth="0.0" text="claimDate">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                    </children>
+                </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="168.0" prefHeight="26.0" prefWidth="586.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="111.0" text="Notes:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <TextArea fx:id="notes" editable="false" prefHeight="295.0" prefWidth="515.0" />
+               </children>
+            </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="635.0">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="635.0" style="-fx-background-color: rgba(194, 223, 237);">
+                            <children>
+                                <Label prefHeight="20.0" prefWidth="578.0" text=" Banking Info">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            <HBox prefHeight="30.0" prefWidth="514.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="150.0" text="Bank Name:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="bankName" strokeType="OUTSIDE" strokeWidth="0.0" text="bankName">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="514.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="150.0" text="Receiver Name:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="receiverName" strokeType="OUTSIDE" strokeWidth="0.0" text="receiverName">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children></HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="635.0">
+                    <children>
+                  <HBox prefHeight="30.0" prefWidth="514.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="150.0" text="Account Number:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="accountNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="accountNumber">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                    </children></HBox>
+            <HBox>
+               <children>
+                        <Label prefHeight="33.0" prefWidth="582.0" style="-fx-background-color: rgba(194, 223, 237);" text=" Documents">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="uploadedDocsContainer" layoutX="10.0" layoutY="332.0" />
+            <HBox fx:id="actionFieldContainer" alignment="CENTER_LEFT" spacing="20.0" />
+            </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+        </VBox>
+    </children>
+</AnchorPane>
